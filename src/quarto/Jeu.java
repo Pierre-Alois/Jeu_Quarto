@@ -1,11 +1,16 @@
 package quarto;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Jeu {
     
     //Attributs
+    
     
     
     // Constructeur
@@ -22,39 +27,27 @@ public class Jeu {
     */
     public int Choix_Joueur(){
         Random rd = new Random();
-        int player = rd.nextInt(1,3);
-        return player;   
+        int choix_PL  = rd.nextInt(1,3);
+        return choix_PL;   
     }
     
     /*
     Méthode permettant au joueur en cours de choisir une pièce et de la donner
     à son adversaire.
     */
-    public Piece Choix_Piece(Joueur joueur){
-        
-        Piece piece = null;
-        // Ajouter des caractéristiques
-        System.out.println(joueur + ", vous allez devoir une pièce : " +
-                "\n" + "h = haute, b = basse" + "\n" +
-                "n = noir, bl = blanche" +
-                "\n" + "r = ronde, c = carree" + 
-                "\n" + "p = pleine, cr= creuse"); 
-        
-    return piece;  
-    }
+    
     
     // Méthode permettant de choisir la taille du plateau (3*3,4*4,5*5)
     public int Grille(Joueur joueur){
         
-        int size ;
-        
+        int taille ;
         Scanner sc = new Scanner(System.in);
         System.out.println(joueur + "Quelle taille du plateau choisissez-vous:" 
-                                  + "\n" + "Tapez 3-4 ou 5");
-        
-        size = sc.nextInt();
-        return size;      
+                                  + "\n" + "Tapez 3,4 ou 5");
+        taille = sc.nextInt();
+        return taille;      
     }
+    
     
     // Méthode permettant de placer une pièce sur une case libre du plateau
     public void Placer(){
