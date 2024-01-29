@@ -1,4 +1,7 @@
-
+/*
+Projet Java - Jeu Quarto
+BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
+*/
 package quarto;
 
 import java.util.ArrayList;
@@ -11,33 +14,46 @@ public class Plateau {
     // Attributs
     
     private int taille;
-    private int[][] plateau;
+    private Piece[][] plateau;
+    private int x,y;
+    
     
     
     // Constructeur
     
-    public Plateau(int taille, int[][] plateau){
+    public Plateau(int taille, Piece[][] plateau, int x, int y){
         
         this.taille = taille;
-        this.plateau = plateau;
-            
+        this.plateau = new Piece[taille][taille]; 
+        this.x = x;
+        this.y = y;
     }
     
-    //Méthode permettant d'afficher le plateau de jeu 
-    
-    public void plateau(){
+    /*
+      Méthode permettant de choisir la taille du plateau (3*3,4*4,5*5) 
+      et de le créer.
+     */
+    public Piece[][] plateau (Joueur joueur){
         
-        for(int i=0;i<taille;i++){
-            for(int j=0; j<taille;j++){
-                
-                
+        int taille ;
+        Piece[][] plateau;
+        Scanner sc = new Scanner(System.in);
+        System.out.println(joueur + "Quelle taille du plateau choisissez-vous:" 
+                                  + "\n" + "Tapez 3,4 ou 5");
+        taille = sc.nextInt();
+        plateau = new Piece[taille][taille];
+        
+        for(int p=0;p<taille*taille;p++){
+            for(int q=0;q<taille*taille;q++){  
             }
         }
+        
+     return plateau;      
     }
     
     public void Choix_Piece(Joueur joueur, int taille){
         
-        Scanner choix_PI = new Scanner(System.in);
+        Scanner Scp = new Scanner(System.in);
         List<Piece> PI_dispo = new ArrayList<>();
         
         for(boolean haute : Arrays.asList(true,false)){
@@ -51,16 +67,20 @@ public class Plateau {
                 }
             }
         }
-        
+        int choix_pi=0;
+        Scanner scp = new Scanner(System.in);
         System.out.println(joueur + ", vous allez devoir une pièce.\n " 
                 + "Voici les pièces actuellement disponibles : \n" );
         
         for(Piece piece : PI_dispo){
             System.out.println(piece);
-        }     
+        }
+        while(choix_pi<1 && choix_pi>PI_dispo.size()){
+            choix_pi = scp.nextInt();
+        }
+        System.out.println("La pièce que vous avez choisie est donc : " 
+                + PI_dispo.get(choix_pi));   
     }
-    
-    
     
     //Méthode permettant de vérifier l'alignement de pièces sur le plateau.
     public int Verif_alignement(){
@@ -70,14 +90,12 @@ public class Plateau {
         
         return cpt;
     }
-
-
     
-    
-    
- 
-    
-    
-    
-       
+    public Piece Case_Libre(int x, int y){
+   
+        x= 0;
+        y= 0;
+        return plateau[x][y];
+             
+    }
 }

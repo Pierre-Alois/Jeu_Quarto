@@ -1,4 +1,7 @@
-
+/*
+Projet Java - Jeu Quarto
+BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
+*/
 package quarto;
 
 public class Piece {
@@ -6,7 +9,7 @@ public class Piece {
     //Attributs
     
     private boolean haute;
-    private String concistance;
+    private String consistance;
     private String matiere;
     private String couleur;
     private String forme;
@@ -14,76 +17,65 @@ public class Piece {
     
     // Constructeu
     
-    public Piece(boolean haute,String concistance, String matiere , String couleur, String forme){
+    public Piece(boolean haute,String consistance, String matiere , String couleur, String forme){
         
         this.haute = haute;
-        this.concistance = concistance;
+        this.consistance = consistance;
         this.matiere = matiere;
         this.couleur = couleur; 
-        this.forme = forme;
-         
+        this.forme = forme;    
     }
+    
     //Getters
     
     public boolean gettaille(){
-        
         return haute;
     }
     
     public String getconcistance(){
-        
-        return concistance;
+        return consistance;
     }
     
     public String getMadeOf(){
-        
         return matiere;
     }
     
     public String getcolor(){
-        
         return couleur;
     }
     
     public String getforme(){
-        
         return forme;
     }
     
     //Setters
     
     public void settaille(){
-        
         this.haute = haute;
     }
     
     public void setconcistance(){
-        
-        this.concistance = concistance;
+        this.consistance = consistance;
     }
     
     public void setMadeOf(){
-        
         this.matiere = matiere;
     }
     
     public void setcolor(){
-        
         this.couleur = couleur; 
     }
     
     public void setforme(){
-        
         this.forme = forme; 
     }
     
     //Méthode permettant d'afficher les pièces sur le plateau.
     public void Afficher_Piece(){
         
-    System.out.println("Voici les caractéristiques de la pièce : \n" 
-     + haute + "," + concistance + "," + matiere + "," + couleur + "," + forme);
+        System.out.println("Voici les caractéristiques de la pièce : \n" 
+     + haute + "," + consistance + "," + matiere + "," + couleur + "," + forme);
               
     }
-    
-      
+  
 }

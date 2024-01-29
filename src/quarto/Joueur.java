@@ -1,3 +1,7 @@
+/*
+Projet Java - Jeu Quarto
+BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
+*/
 
 package quarto;
 
@@ -6,7 +10,6 @@ public class Joueur {
     //Attributs
     
     String pseudo_J1,pseudo_J2;
-    
     
     //Constructeur
     
@@ -17,4 +20,8 @@ public class Joueur {
        
     }
     
+    public String getpseudo(){
+        return pseudo_J1 + pseudo_J2;
+    }
+       
 }
