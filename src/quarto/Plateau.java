@@ -17,16 +17,11 @@ public class Plateau {
     private Piece[][] plateau;
     private int x,y;
     
-    
-    
     // Constructeur
     
-    public Plateau(int taille, Piece[][] plateau, int x, int y){
-        
+    public Plateau(int taille, Piece[][] plateau){
         this.taille = taille;
-        this.plateau = new Piece[taille][taille]; 
-        this.x = x;
-        this.y = y;
+        this.plateau = new Piece[taille][taille];     
     }
     
     /*
@@ -35,31 +30,37 @@ public class Plateau {
      */
     public Piece[][] plateau (Joueur joueur){
         
-        int taille ;
         Piece[][] plateau;
-        Scanner sc = new Scanner(System.in);
+        Scanner pl = new Scanner(System.in);
         System.out.println(joueur + "Quelle taille du plateau choisissez-vous:" 
                                   + "\n" + "Tapez 3,4 ou 5");
-        taille = sc.nextInt();
-        plateau = new Piece[taille][taille];
+        taille = pl.nextInt();
+        this.plateau = new Piece[taille][taille];
         
-        for(int p=0;p<taille*taille;p++){
-            for(int q=0;q<taille*taille;q++){  
-            }
-        }
-        
-     return plateau;      
+    return this.plateau;      
     }
     
-    public void Choix_Piece(Joueur joueur, int taille){
+    //Getters
+    
+    public Piece[][] getPlateau(){
+        return plateau;   
+    }
+    
+    public int gettaille(){
+        return taille;
+    }
+    
+    public Piece Choix_Piece(Joueur joueur, int taille){
         
+        Piece piece = null;
         Scanner Scp = new Scanner(System.in);
         List<Piece> PI_dispo = new ArrayList<>();
         
+        //On pourra changer les caractéristiques
         for(boolean haute : Arrays.asList(true,false)){
             for(String concistance : Arrays.asList("pleine","creuse")){
                 for(String matiere : Arrays.asList("bois","marbre")){
-                    for(String couleur : Arrays.asList("clair","foncée")){
+                    for(String couleur : Arrays.asList("claire","foncée")){
                         for(String forme : Arrays.asList("ronde","carrée")){
                             PI_dispo.add(new Piece(haute,concistance,matiere,couleur,forme));
                         } 
@@ -68,34 +69,59 @@ public class Plateau {
             }
         }
         int choix_pi=0;
-        Scanner scp = new Scanner(System.in);
-        System.out.println(joueur + ", vous allez devoir une pièce.\n " 
-                + "Voici les pièces actuellement disponibles : \n" );
+        String choix_J;
+        Piece joker = null; 
         
-        for(Piece piece : PI_dispo){
-            System.out.println(piece);
-        }
-        while(choix_pi<1 && choix_pi>PI_dispo.size()){
-            choix_pi = scp.nextInt();
-        }
+        System.out.println(joueur + ", vous allez devoir une pièce");
+        
+        // Piece Joker
+        if(taille == 3){
+            System.out.println("Souhaitez-vous utiliser la pièce Joker 0/N ?");
+            choix_J = Scp.nextLine();
+            
+            if(choix_J.equals("O")){
+                piece = joker;
+                return piece;
+            }
+            else{
+                System.out.println("Voici alors les pièces disponibles :\n" );
+                for(Piece pieces : PI_dispo){
+                    System.out.println(pieces);
+                }       
+                while(choix_pi<1 && choix_pi>PI_dispo.size()){
+                    choix_pi = Scp.nextInt();
+                }
         System.out.println("La pièce que vous avez choisie est donc : " 
-                + PI_dispo.get(choix_pi));   
+                + PI_dispo.get(choix_pi));
+                
+            }
+        return PI_dispo.get(choix_pi); 
+        }
+    return piece;   
     }
     
-    //Méthode permettant de vérifier l'alignement de pièces sur le plateau.
-    public int Verif_alignement(){
+    /* 
+    Méthode permettant de vérifier l'alignement de pièces sur le plateau. 
+    On vérifiera d'abord verticalement et horizontalement puis en diagonale.
+    */
+    public boolean Verif_alignement(int taille, int x, int y){
         
         int cpt = 0;
-        boolean algnt = false;
+        Piece piece1,piece2,piece3,piece4,piece5 = plateau[x][y];
         
-        return cpt;
+        // Vérifications
+        for(int i = 0;i<plateau.length;i++){
+            for(int j = 0; j<plateau.length;j++){
+                
+            }
+        }
+        
+    return cpt == taille; // Si le compteur vaut la taille du plateau → 3-4-5 pièces sont alignées 
     }
     
     public Piece Case_Libre(int x, int y){
-   
-        x= 0;
-        y= 0;
-        return plateau[x][y];
-             
-    }
+        x = 0;
+        y = 0;
+        return plateau[x][y]= null;        
+    }    
 }

@@ -17,7 +17,8 @@ public class Piece {
     
     // Constructeu
     
-    public Piece(boolean haute,String consistance, String matiere , String couleur, String forme){
+    public Piece(boolean haute,String consistance, String matiere ,  
+                 String couleur, String forme){
         
         this.haute = haute;
         this.consistance = consistance;
@@ -48,34 +49,9 @@ public class Piece {
         return forme;
     }
     
-    //Setters
-    
-    public void settaille(){
-        this.haute = haute;
-    }
-    
-    public void setconcistance(){
-        this.consistance = consistance;
-    }
-    
-    public void setMadeOf(){
-        this.matiere = matiere;
-    }
-    
-    public void setcolor(){
-        this.couleur = couleur; 
-    }
-    
-    public void setforme(){
-        this.forme = forme; 
-    }
-    
     //Méthode permettant d'afficher les pièces sur le plateau.
     public void Afficher_Piece(){
-        
         System.out.println("Voici les caractéristiques de la pièce : \n" 
-     + haute + "," + consistance + "," + matiere + "," + couleur + "," + forme);
-              
-    }
-  
+        + haute + "," + consistance + "," + matiere + "," + couleur + "," + forme);         
+    } 
 }

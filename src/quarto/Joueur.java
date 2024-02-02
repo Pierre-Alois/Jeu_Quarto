@@ -17,11 +17,11 @@ public class Joueur {
         
         this.pseudo_J1 = pseudo_J1;
         this.pseudo_J2 = pseudo_J2;
-       
     }
+    
+    //Getter
     
     public String getpseudo(){
         return pseudo_J1 + pseudo_J2;
-    }
-       
+    }    
 }

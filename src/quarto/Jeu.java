@@ -10,38 +10,59 @@ import javax.swing.JOptionPane;
 
 public class Jeu {
     
-    //Attributs
-    
-    // Constructeur
-    
-    public Jeu(){
-           
-    }
-    
     /*
     Méthode permettant le tirage au sort d'un joueur.
     Les chiffres 1 et 2 sont choisis au hasard. Si c'est 1 alors le joueur 1
     commence. 2 sinon . 
     */
-    public Joueur Choix_Joueur(Joueur joueur1, Joueur joueur2){
+    public Joueur Choix_Joueur( Joueur joueur, Joueur joueur1, Joueur joueur2){
         
         Random rd = new Random();
         int choix_PL  = rd.nextInt(1,3);
+        
         if(choix_PL == 1){
             System.out.println( joueur1.getpseudo() + "vous commencez.");
+            joueur1 = joueur; 
             return joueur1;
         }
         else;
-        System.out.println(joueur2.getpseudo() + "vous commencez");
-        return joueur2 ;   
+            System.out.println(joueur2.getpseudo() + "vous commencez");
+            joueur2 = joueur;
+            return joueur2 ;   
     }
     
-    // Méthode permettant de placer une pièce sur une case libre du plateau
-    public void Placer(Joueur joueur, int taille, Piece piece, Piece[][] plateau){
+     /*
+      Méthode permettant de la placer une piece sur le plateau de jeu. 
+    */
+    public Piece Placer(Joueur joueur, int taille, Piece piece, Plateau plateau,
+                       int x, int y){
         
-        System.out.println("Voici la pièce que vous avez choisie :" 
-                + piece);
+        Scanner sc = new Scanner(System.in);
+        Piece [][] place = new Piece[taille][taille];
+        int cln,ln = 0;
+        
+        while(x<0 || y<0 || x>=plateau.gettaille()|| y>=plateau.gettaille()){
+            
+            for(x=0;x<taille*taille;x++){
+                for(y=0;y<taille*taille;y++){
+                
+                    if(plateau.Case_Libre(x,y) != null){
+                        System.out.println(place[x][y] + "est déjà prise");
+                    }
+                
+                    else{
+                        ln = sc.nextInt();
+                        cln = sc.nextInt();
+                    System.out.println("Où voules-vous placer votre pièce ? \n " 
+                    + "ligne : " + ln + "\n" + "colonne: " + cln);
+                        piece = place[ln][cln];
+                    }
+                }
+            }
+        }
+    return piece;    
     }
+    
     
     //Méthode permettant la mise ne pause d'une partie,ainsi que sa sauvegarde.
     public void Sauvegarde(){
@@ -60,31 +81,13 @@ public class Jeu {
     
     //Méthode permettant de jouer une partie
     public void jouer(String joueur1,String joueur2){
-        
+    
+    //On demande les pseudos des 2 joueurs
     joueur1 = JOptionPane.showInputDialog(" Joueur 1, write your pseudo : ");
     JOptionPane.showMessageDialog(null, "So il will be" 
             + joueur1);
     joueur2 = JOptionPane.showInputDialog(" Joueur 2, write your pseudo : ");
     JOptionPane.showMessageDialog(null, "So il will be" 
-            + joueur2);
-        
-    }
-    
-    
-    
-    
-    
-
-
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
+            + joueur2);   
+    }   
 }
