@@ -13,7 +13,7 @@ public class Piece {
     private String matiere;
     private String couleur;
     private String forme;
-    private boolean creuse; 
+    private boolean creuse;
     
     // Constructeu
     

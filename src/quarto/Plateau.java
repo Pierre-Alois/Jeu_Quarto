@@ -76,8 +76,8 @@ public class Plateau {
         
         // Piece Joker
         if(taille == 3){
-            System.out.println("Souhaitez-vous utiliser la pièce Joker 0/N ?");
-            choix_J = Scp.nextLine();
+           System.out.println("Souhaitez-vous utiliser la pièce Joker 0/N ?");
+           choix_J = Scp.nextLine();
             
             if(choix_J.equals("O")){
                 piece = joker;
