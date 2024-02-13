@@ -16,12 +16,14 @@ public class Plateau {
     private int taille;
     private Piece[][] plateau;
     private int x,y;
+    private List liste; 
     
     // Constructeur
     
-    public Plateau(int taille, Piece[][] plateau){
+    public Plateau(int taille, Piece[][] plateau, List liste){
         this.taille = taille;
-        this.plateau = new Piece[taille][taille];     
+        this.plateau = new Piece[taille][taille];
+        this.liste = liste; 
     }
     
     /*
@@ -35,9 +37,9 @@ public class Plateau {
         System.out.println(joueur + "Quelle taille du plateau choisissez-vous:" 
                                   + "\n" + "Tapez 3,4 ou 5");
         taille = pl.nextInt();
-        this.plateau = new Piece[taille][taille];
+        plateau = new Piece[taille][taille];
         
-    return this.plateau;      
+        return plateau;      
     }
     
     //Getters
@@ -50,54 +52,101 @@ public class Plateau {
         return taille;
     }
     
-    public Piece Choix_Piece(Joueur joueur, int taille){
+    public List getliste(){
+        return liste;
+    }
+    
+    /*
+     Méthode où sont stockées l'ensemble des différentes pièces selon
+     les plateaux
+    */
+    public List Banque(){
         
-        Piece piece = null;
-        Scanner Scp = new Scanner(System.in);
+        System.out.println("Vous avez choisi un plateau de taille " 
+        + gettaille() + "par" + gettaille() + "\n" + "Voici donc l'ensemble"
+        + " des pièces disponibles : ");
+        
+        Piece piece;
         List<Piece> PI_dispo = new ArrayList<>();
         
-        //On pourra changer les caractéristiques
-        for(boolean haute : Arrays.asList(true,false)){
-            for(String concistance : Arrays.asList("pleine","creuse")){
-                for(String matiere : Arrays.asList("bois","marbre")){
-                    for(String couleur : Arrays.asList("claire","foncée")){
-                        for(String forme : Arrays.asList("ronde","carrée")){
-                            PI_dispo.add(new Piece(haute,concistance,matiere,couleur,forme));
-                        } 
+        if(gettaille()==3){
+            // PI_dispo.add(piece_joker) On ajoute dans la liste la pièce Joker.
+            for(boolean haute : Arrays.asList(true,false)){
+                for(String couleur : Arrays.asList("claire","foncée")){
+                    for(String forme : Arrays.asList("ronde","carrée")){
+                        PI_dispo.add(new Piece(haute,couleur,forme));
                     }
                 }
             }
         }
-        int choix_pi=0;
-        String choix_J;
-        Piece joker = null; 
+        else if(gettaille()== 4){
+            for(boolean haute : Arrays.asList(true,false)){
+                for(String couleur : Arrays.asList("claire","foncée")){
+                    for(String forme : Arrays.asList("ronde","carrée")){
+                        for(String concistance : Arrays.asList("pleine","creuse")){
+                            PI_dispo.add(new Piece(haute,couleur,forme,concistance));  
+                        }   
+                    }
+                }
+            }
+        }
+        else{
+            for(boolean haute : Arrays.asList(true,false)){
+                for(String couleur : Arrays.asList("claire","foncée")){
+                    for(String forme : Arrays.asList("ronde","carrée")){
+                        for(String concistance : Arrays.asList("pleine","creuse")){
+                            for(String matiere : Arrays.asList("bois","marbre")){
+                                PI_dispo.add(new Piece(haute,couleur,forme,concistance,matiere));  
+                            }    
+                        }   
+                    }
+                }
+            }  
+        }
+        for(Piece pieces : PI_dispo){
+            System.out.println(pieces);   
+        }
+        return PI_dispo;
+    }
+    
+    public Piece Choix_Piece(Joueur joueur){
         
+        Scanner Sc = new Scanner(System.in);
+        String choix_p; //Choix piece
+        Piece piece_J = null; // Piece jouée
+        Piece joker = null;
         System.out.println(joueur + ", vous allez devoir une pièce");
         
-        // Piece Joker
-        if(taille == 3){
-           System.out.println("Souhaitez-vous utiliser la pièce Joker 0/N ?");
-           choix_J = Scp.nextLine();
-            
-            if(choix_J.equals("O")){
-                piece = joker;
-                return piece;
+        /* Piece Joker
+           Si le plateau est 3*3, on introduit alors une pièce Joker neutre qui
+           ne s'associe avec aucune pièce. 
+        */
+        if(gettaille() == 3){
+            System.out.println("Souhaitez-vous utiliser la pièce Joker 0/N ?");
+            choix_p = Sc.nextLine();
+            while(!choix_p.equals("O")||!choix_p.equals("N")){
+                System.out.println("Souhaitez-vous utiliser la pièce Joker"
+                                  + " 0/N ?");          
+            }
+            if(choix_p.equals("O")){
+                piece_J = joker; 
+                return piece_J;
             }
             else{
-                System.out.println("Voici alors les pièces disponibles :\n" );
-                for(Piece pieces : PI_dispo){
-                    System.out.println(pieces);
-                }       
-                while(choix_pi<1 && choix_pi>PI_dispo.size()){
-                    choix_pi = Scp.nextInt();
+                System.out.println("Voici alors les pièces disponibles :\n");
+                for(Object pieces : getliste()){
+                    for(int j=0;j<gettaille()*gettaille();j++){
+                        System.out.println("j:" + pieces);
+                    }   
                 }
+                
         System.out.println("La pièce que vous avez choisie est donc : " 
-                + PI_dispo.get(choix_pi));
+                + getliste());
                 
             }
-        return PI_dispo.get(choix_pi); 
+        return piece_J;
         }
-    return piece;   
+    return piece_J;   
     }
     
     /* 
