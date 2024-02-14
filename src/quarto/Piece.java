@@ -8,7 +8,7 @@ public class Piece {
 
     //Attributs
     private boolean haute;
-    private String consistance;
+    private String concistance;
     private String matiere;
     private String couleur;
     private String forme;
@@ -26,15 +26,15 @@ public class Piece {
         this.haute = haute;
         this.couleur = couleur;
         this.forme = forme;
-        this.consistance = consistance;
+        this.concistance = concistance;
     }
 
     public Piece(boolean haute, String couleur, String forme,
-            String consistance, String matiere) {
+            String concistance, String matiere) {
         this.haute = haute;
         this.couleur = couleur;
         this.forme = forme;
-        this.consistance = consistance;
+        this.concistance = concistance;
         this.matiere = matiere;
     }
 
@@ -43,12 +43,12 @@ public class Piece {
      les plateaux
      */
     //Getters
-    public boolean gettaille() {
+    public boolean gethauteur() {
         return haute;
     }
 
     public String getconcistance() {
-        return consistance;
+        return concistance;
     }
 
     public String getMadeOf() {
@@ -66,6 +66,10 @@ public class Piece {
     //Méthode permettant d'afficher les pièces sur le plateau.
     public void Afficher_Piece() {
         System.out.println("Voici les caractéristiques de la pièce : \n"
-                + haute + "," + consistance + "," + matiere + "," + couleur + "," + forme);
+                + haute + "," + concistance + "," + matiere + "," + couleur + "," + forme);
+    }
+    
+    public String toString(){
+        return haute + couleur + forme + concistance + matiere; 
     }
 }
