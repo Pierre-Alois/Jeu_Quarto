@@ -221,7 +221,7 @@ public class Plateau {
             }
         }
 
-        //Vérification sur la diagonale Haut gauche - Bas droite
+        //Vérification sur la diagonale Haut gaucheB → as droite
         for (int p = 0; p < taille - 2; p++) {
             for (int q = 0; q < taille - 2; q++) {
                 if (plateau[p][q].gethauteur() == plateau[p + 1][q + 1].gethauteur()) {
@@ -252,7 +252,7 @@ public class Plateau {
             }
         }
 
-        //Verification sur la diagonale Bas gauche - Haut droit
+        //Verification sur la diagonale Bas gauche → Haut droit
         for (int m = taille - 1; m >= 0; m--) {
             for (int n = 0; n < taille; n++) {
 
@@ -284,8 +284,9 @@ public class Plateau {
             }
         }
 
-        // Vérifications des "L
-        // Vérification des "carrés"
+        // Vérifications des "L" Grille 3*3
+        
+        // Vérification des "carrés" Grille 4*4
         for (int r = 0; r < 2;) {
             for (int s = 0; s < 2;) {
                 if (plateau[r][s].gethauteur() == plateau[r][s + 1].gethauteur()) {
@@ -379,6 +380,7 @@ public class Plateau {
         }
 
         // Vérifications pour grille 5*5
+        
         return cpt >= gettaille();
     }
 
