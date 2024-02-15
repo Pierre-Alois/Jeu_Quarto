@@ -14,7 +14,9 @@ public class Piece {
     private String forme;
     private boolean creuse;
 
-    // Constructeurs
+    /*
+      Constructeurs au nombre de 3 car 3 types de pièces différentes. 
+    */
     public Piece(boolean haute, String couleur, String forme) {
         this.haute = haute;
         this.couleur = couleur;
@@ -37,11 +39,7 @@ public class Piece {
         this.concistance = concistance;
         this.matiere = matiere;
     }
-
-    /*
-     Méthodes où sont stockées l'ensemble des différentes pièces selon
-     les plateaux
-     */
+    
     //Getters
     public boolean gethauteur() {
         return haute;
@@ -63,12 +61,6 @@ public class Piece {
         return forme;
     }
 
-    //Méthode permettant d'afficher les pièces sur le plateau.
-    public void Afficher_Piece() {
-        System.out.println("Voici les caractéristiques de la pièce : \n"
-                + haute + "," + concistance + "," + matiere + "," + couleur + "," + forme);
-    }
-    
     public String toString(){
         return haute + couleur + forme + concistance + matiere; 
     }

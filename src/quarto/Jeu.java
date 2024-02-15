@@ -21,8 +21,7 @@ public class Jeu {
     public Joueur Choix_Joueur(Joueur joueur, Joueur joueur1, Joueur joueur2){
         
         Random rd = new Random();
-        int choix_PL  = rd.nextInt(1,3);
-        
+        int choix_PL  = rd.nextInt(1,3);       
         if(choix_PL == 1){
             System.out.println(joueur1.getpseudo() + "vous commencez." 
                     + "Vous allez devoir choisir une pièce.");
@@ -88,10 +87,10 @@ public class Jeu {
     
     //On demande les pseudos des 2 joueurs
     joueur1 = JOptionPane.showInputDialog(" Joueur 1, write your pseudo : ");
-    JOptionPane.showMessageDialog(null, "So il will be" 
+    JOptionPane.showMessageDialog(null, "Vous vous appelez donc : " 
             + joueur1);
     joueur2 = JOptionPane.showInputDialog(" Joueur 2, write your pseudo : ");
-    JOptionPane.showMessageDialog(null, "So il will be" 
+    JOptionPane.showMessageDialog(null, "Vous vous appelez donc : " 
             + joueur2);   
     }   
 }
