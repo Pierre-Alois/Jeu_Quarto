@@ -104,7 +104,7 @@ public class Plateau {
       Méthode permettant au joueur de choisir la piece qu'il souhaite poser. 
       Elle renvoie un Objet de type Piece (si c'est la pièce Joker). Int sinon 
      */
-    public Object Choix_Piece(Joueur joueur) {
+    public Object Choix_Piece(Joueur joueur , int choix) {
 
         Scanner Sc = new Scanner(System.in);
         String choix_J; //Piece Joker
@@ -171,7 +171,7 @@ public class Plateau {
                 }
                 if (plateau[i][j].getforme().equals(plateau[i][j + 1].getforme())) {
                     cpt += 1;
-                } else {
+                } else { 
                     cpt = 1;
                 }
                 if (plateau[i][j].getconcistance().equals(plateau[i][j + 1].getconcistance())) {

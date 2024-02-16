@@ -83,7 +83,7 @@ public class Jeu {
     }
     
     //Méthode permettant de jouer une partie. Boucle principale
-    public void jouer(String joueur1,String joueur2){
+    public void jouer(String joueur1,String joueur2, Plateau plateau){
     
     //On demande les pseudos des 2 joueurs
     joueur1 = JOptionPane.showInputDialog(" Joueur 1, write your pseudo : ");
@@ -91,6 +91,8 @@ public class Jeu {
             + joueur1);
     joueur2 = JOptionPane.showInputDialog(" Joueur 2, write your pseudo : ");
     JOptionPane.showMessageDialog(null, "Vous vous appelez donc : " 
-            + joueur2);   
+            + joueur2);
+    
+    Jeu J = new Jeu();
     }   
 }

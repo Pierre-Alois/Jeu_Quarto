@@ -34,7 +34,25 @@ public class QUARTO {
            faire un tour de jeu
            interrompre partie
            reprendre partie
+        
+        public void choix_Piece (int choix){
+            ...
+        }
+        → Prgrm principal(main){
+        Jeu j = new Jeu()
+        Scanner sc = new Scanner();
+        sout("Choisissez un numéro de pièce : )
+        int choix = sc.nextInt()
+        j.choix_Piece(choix)
+        
+        OU (après sout, et après avoir afficher toutes les pièces)
+        
+        j.choix_Piece(2) par exemple. 
+        
+        
+        }
         */
+        
     }
     
 }
