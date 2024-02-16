@@ -78,8 +78,8 @@ public class Plateau {
             for (boolean haute : Arrays.asList(true, false)) {
                 for (String couleur : Arrays.asList("claire", "foncée")) {
                     for (String forme : Arrays.asList("ronde", "carrée")) {
-                        for (String concistance : Arrays.asList("pleine", "creuse")) {
-                            PI_dispo.add(new Piece(haute, couleur, forme, concistance));
+                        for (String consistance : Arrays.asList("pleine", "creuse")) {
+                            PI_dispo.add(new Piece(haute, couleur, forme, consistance));
                         }
                     }
                 }
@@ -88,9 +88,9 @@ public class Plateau {
             for (boolean haute : Arrays.asList(true, false)) {
                 for (String couleur : Arrays.asList("claire", "foncée")) {
                     for (String forme : Arrays.asList("ronde", "carrée")) {
-                        for (String concistance : Arrays.asList("pleine", "creuse")) {
+                        for (String consistance : Arrays.asList("pleine", "creuse")) {
                             for (String matiere : Arrays.asList("bois", "marbre")) {
-                                PI_dispo.add(new Piece(haute, couleur, forme, concistance, matiere));
+                                PI_dispo.add(new Piece(haute, couleur, forme, consistance, matiere));
                             }
                         }
                     }
@@ -174,7 +174,7 @@ public class Plateau {
                 } else { 
                     cpt = 1;
                 }
-                if (plateau[i][j].getconcistance().equals(plateau[i][j + 1].getconcistance())) {
+                if (plateau[i][j].getconsistance().equals(plateau[i][j + 1].getconsistance())) {
                     cpt += 1;
                 } else {
                     cpt = 1;
@@ -207,7 +207,7 @@ public class Plateau {
                 } else {
                     cpt = 1;
                 }
-                if (plateau[a][b].getconcistance().equals(plateau[a + 1][b].getconcistance())) {
+                if (plateau[a][b].getconsistance().equals(plateau[a + 1][b].getconsistance())) {
                     cpt += 1;
                 } else {
                     cpt = 1;
@@ -239,7 +239,7 @@ public class Plateau {
                 } else {
                     cpt = 1;
                 }
-                if (plateau[p][q].getconcistance().equals(plateau[p + 1][q + 1].getconcistance())) {
+                if (plateau[p][q].getconsistance().equals(plateau[p + 1][q + 1].getconsistance())) {
                     cpt += 1;
                 } else {
                     cpt = 1;
@@ -271,7 +271,7 @@ public class Plateau {
                 } else {
                     cpt = 1;
                 }
-                if (plateau[m][n].getconcistance().equals(plateau[m - 1][n + 1].getconcistance())) {
+                if (plateau[m][n].getconsistance().equals(plateau[m - 1][n + 1].getconsistance())) {
                     cpt += 1;
                 } else {
                     cpt = 1;
@@ -340,13 +340,13 @@ public class Plateau {
                 } else {
                     cpt = 1;
                 }
-                if (plateau[r][s].getconcistance().equals(plateau[r][s + 1].getconcistance())) {
+                if (plateau[r][s].getconsistance().equals(plateau[r][s + 1].getconsistance())) {
                     cpt += 1;
                     r++;
-                    if (plateau[r - 1][s].getconcistance().equals(plateau[r][s].getconcistance())) {
+                    if (plateau[r - 1][s].getconsistance().equals(plateau[r][s].getconsistance())) {
                         cpt += 1;
                         s++;
-                        if (plateau[r - 1][s - 1].getconcistance().equals(plateau[r][s].getconcistance())) {
+                        if (plateau[r - 1][s - 1].getconsistance().equals(plateau[r][s].getconsistance())) {
                             cpt += 1;
                         } else {
                             cpt = 1;
