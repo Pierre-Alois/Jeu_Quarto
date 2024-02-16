@@ -70,5 +70,4 @@ public class QUARTO {
     
     //Jeu J = new Jeu();
     }
-    
 }

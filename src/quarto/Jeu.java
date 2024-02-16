@@ -74,7 +74,7 @@ public class Jeu {
 
     }
     
-    //Méthode permettant la reprise d'une partie précédement suavegardée. 
+    //Méthode permettant la reprise d'une partie précédement sauvegardée. 
     public void Rependre_partie(){
     
     }
