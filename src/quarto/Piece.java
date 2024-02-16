@@ -8,7 +8,7 @@ public class Piece {
 
     //Attributs
     private boolean haute;
-    private String concistance;
+    private String consistance;
     private String matiere;
     private String couleur;
     private String forme;
@@ -28,15 +28,15 @@ public class Piece {
         this.haute = haute;
         this.couleur = couleur;
         this.forme = forme;
-        this.concistance = concistance;
+        this.consistance = consistance;
     }
 
     public Piece(boolean haute, String couleur, String forme,
-            String concistance, String matiere) {
+            String consistance, String matiere) {
         this.haute = haute;
         this.couleur = couleur;
         this.forme = forme;
-        this.concistance = concistance;
+        this.consistance = consistance;
         this.matiere = matiere;
     }
     
@@ -45,8 +45,8 @@ public class Piece {
         return haute;
     }
 
-    public String getconcistance() {
-        return concistance;
+    public String getconsistance() {
+        return consistance;
     }
 
     public String getMadeOf() {
@@ -62,6 +62,6 @@ public class Piece {
     }
 
     public String toString(){
-        return haute + couleur + forme + concistance + matiere; 
+        return haute + couleur + forme + consistance + matiere; 
     }
 }
