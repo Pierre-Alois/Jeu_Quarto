@@ -18,6 +18,7 @@ public class Jeu {
     commence. 2 sinon . 
     Le 1er joueur doit choisir une pièce.
     */
+    /*
     public Joueur Choix_Joueur(Joueur joueur, Joueur joueur1, Joueur joueur2){
         
         Random rd = new Random();
@@ -34,10 +35,11 @@ public class Jeu {
             joueur2 = joueur;
             return joueur2;   
     }
-    
-     /*
-      Méthode permettant de la placer une piece sur le plateau de jeu.
     */
+     
+      //Méthode permettant de la placer une piece sur le plateau de jeu.
+    
+    /*
     public Piece Placer(Joueur joueur, int taille, Piece piece, Plateau plateau,
                         int x, int y){
         
@@ -81,7 +83,7 @@ public class Jeu {
     public void Recommencer_Partie(){
         
     }
-    
+    */
     //Méthode permettant de jouer une partie. Boucle principale
     public void jouer(String joueur1,String joueur2, Plateau plateau){
     
@@ -93,6 +95,6 @@ public class Jeu {
     JOptionPane.showMessageDialog(null, "Vous vous appelez donc : " 
             + joueur2);
     
-    Jeu J = new Jeu();
+    //Jeu J = new Jeu();
     }   
 }

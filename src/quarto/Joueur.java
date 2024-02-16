@@ -8,19 +8,19 @@ public class Joueur {
     
     //Attributs
     
-    String pseudo_J1,pseudo_J2;
+    String pseudo;
     
     //Constructeur
     
-    public Joueur(String pseudo_J1,String pseudo_J2){
+    public Joueur(String pseudo){
         
-        this.pseudo_J1 = pseudo_J1;
-        this.pseudo_J2 = pseudo_J2;
+        this.pseudo = pseudo;
+        
     }
     
     //Getter
     
     public String getpseudo(){
-        return pseudo_J1 + pseudo_J2;
+        return pseudo;
     }    
 }
