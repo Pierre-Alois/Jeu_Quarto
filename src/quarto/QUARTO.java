@@ -35,8 +35,6 @@ public class QUARTO {
            interrompre partie
            reprendre partie
         */
-        for(int i=7;i>=4;i--){
-            System.out.println("jadore");
         }
     }
     
