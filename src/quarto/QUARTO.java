@@ -35,6 +35,8 @@ public class QUARTO {
            interrompre partie
            reprendre partie
         */
+        
+        System.out.println("Hello world");
     }
     
 }
