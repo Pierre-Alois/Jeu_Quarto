@@ -54,7 +54,7 @@ public class QUARTO {
         
         }
         */      
-          //Pion 00000 → Blanc-Carré-Plein(trou)-Grand-Entier(section)
+          
         
         //System.out.println("Hello world");
         

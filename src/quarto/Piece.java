@@ -1,14 +1,14 @@
 /*
 Projet Java - Jeu Quarto
 BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
- */
+*/
 package quarto;
 
 public class Piece {
 
-    // Attribut :
-    private String ISBN;
-    
+    // Attribut :               // Pion 00000 → Blanc  - Carré - Plein(trou) - Grand - Entier(section)
+    private final String ISBN;  // Pion 11111 →  Noir  - Rond  -    Troué    - Petit - Tranché
+                                // Pion xxxxx → Violet - Croix -   Taillé    - Moyen - Arrondi (SPÉCIAL 4×4 !!!)
     // Constructeur :
     public Piece(String ISBN){
         this.ISBN = ISBN;

@@ -1,7 +1,7 @@
 /*
 Projet Java - Jeu Quarto
 BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
- */
+*/
 package quarto;
 
 import java.util.ArrayList;
@@ -59,9 +59,8 @@ public class Plateau {
     
     public List Banque() {
 
-        System.out.println("Vous avez choisi un plateau de taille "
-                + gettaille() + "par" + gettaille() + "\n" + "Voici donc l'ensemble"
-                + " des pièces disponibles : ");
+        System.out.println("Vous avez choisi un plateau de taille " + gettaille() + "par" + gettaille() + "\n"
+                + "Voici donc l'ensemble des pièces disponibles : ");
 
         Piece piece;
         List<Piece> PI_dispo = new ArrayList<>();

@@ -13,9 +13,7 @@ public class Joueur {
     //Constructeur
     
     public Joueur(String pseudo){
-        
         this.pseudo = pseudo;
-        
     }
     
     //Getter
