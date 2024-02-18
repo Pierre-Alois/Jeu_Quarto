@@ -56,7 +56,7 @@ public class Plateau {
     /*
      Méthode où sont stockées l'ensemble des différentes pièces selon
      les plateaux
-     */
+    
     public List Banque() {
 
         System.out.println("Vous avez choisi un plateau de taille "
@@ -99,6 +99,7 @@ public class Plateau {
         }
     return PI_dispo;
     }
+    */
 
     /*
       Méthode permettant au joueur de choisir la piece qu'il souhaite poser. 
@@ -151,7 +152,29 @@ public class Plateau {
     On vérifiera d'abord les alignements standards(lignes, colonnes et
     diagonales) avant se vérifier les formes. 
      */
-    public boolean Verif_alignements(int taille, Piece[][] plateau, Piece piece) {
+    
+    
+    
+    // VERIF :
+    public boolean verifFin(int taille, Piece[][] plateau, int x, int y){
+        for(int i=0 ; i<taille ; i++){
+            int cpt = 1;
+            char cara = plateau[x][y].getISBN().charAt(i);
+            
+        }
+        return true;
+    }
+    /*
+    char val = plateau[x][y].getISBN().charAT(i);
+    if(val == 0){
+        cpt++;
+    }
+    */
+    
+    
+    
+    
+    /*public boolean Verif_alignements(int taille, Piece[][] plateau, Piece piece){
 
         // List<Integer> cpt = new ArrayList<>();
         int cpt = 1;
@@ -381,8 +404,9 @@ public class Plateau {
 
         // Vérifications pour grille 5*5
         
-        return cpt >= gettaille();
+        return cpt >= taille;
     }
+    */
 
     public Piece Case_Libre(int x, int y) {
         x = 0;

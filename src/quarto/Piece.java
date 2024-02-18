@@ -6,6 +6,30 @@ package quarto;
 
 public class Piece {
 
+    // Attribut :
+    private String ISBN;
+    
+    // Constructeur :
+    public Piece(String ISBN){
+        this.ISBN = ISBN;
+    }
+    
+    // Getter :
+    public String getISBN(){
+        return ISBN;
+    }
+    
+    // toString :
+    @Override
+    public String toString(){
+        return ISBN; 
+    }
+}
+
+
+// OLD
+
+/*
     //Attributs
     private boolean haute;
     private String consistance;
@@ -14,32 +38,30 @@ public class Piece {
     private String forme;
     private boolean creuse;
 
-    /*
-      Constructeurs au nombre de 3 car 3 types de pièces différentes. 
-    */
-    public Piece(boolean haute, String couleur, String forme) {
+    
+    //Constructeurs au nombre de 3 car 3 types de pièces différentes. 
+    
+    public Piece(boolean haute, String couleur, String forme){
         this.haute = haute;
         this.couleur = couleur;
         this.forme = forme;
     }
 
-    public Piece(boolean haute, String couleur, String forme,
-            String consistance) {
+    public Piece(boolean haute, String couleur, String forme, String consistance){
         this.haute = haute;
         this.couleur = couleur;
         this.forme = forme;
         this.consistance = consistance;
     }
 
-    public Piece(boolean haute, String couleur, String forme,
-            String consistance, String matiere) {
+    public Piece(boolean haute, String couleur, String forme, String consistance, String matiere){
         this.haute = haute;
         this.couleur = couleur;
         this.forme = forme;
         this.consistance = consistance;
         this.matiere = matiere;
     }
-    
+
     //Getters
     public boolean gethauteur() {
         return haute;
@@ -60,8 +82,4 @@ public class Piece {
     public String getforme() {
         return forme;
     }
-
-    public String toString(){
-        return haute + couleur + forme + consistance + matiere; 
-    }
-}
+*/
