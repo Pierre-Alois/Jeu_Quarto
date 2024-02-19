@@ -143,42 +143,39 @@ public class Plateau {
             ArrayList<String> annuaire = new ArrayList<String>();
             annuaire.add(coo);
             
-            coo = convert(x+1,y);
-            if(ajout(annuaire, coo, cara, i)){
-                cpt++;
-                verifFig(taille, x+1, y);       // A AVANCER !!!
-            }
-            coo = convert(x,y+1);
-            if(ajout(annuaire, coo, cara, i)){
-                cpt++;
-            }
-            coo = convert(x-1,y);
-            if(ajout(annuaire, coo, cara, i)){
-                cpt++;
-            }
-            coo = convert(x,y-1);
-            if(ajout(annuaire, coo, cara, i)){
-                cpt++;
-            }
+            cpt += boucle(annuaire, x, y, cara, i);
+            
             if(cpt >= 5){
                 return true;
             }
         }
         return false;
     }
-    /*
-    char val = plateau[x][y].getISBN().charAT(i);
-    if(val == 0){
-        cpt++;
-    }
-    */
     
-    public boolean ajout(ArrayList livre, String coo, char cara, int n){
-        int x = Integer.valueOf(coo.charAt(0));
-        int y = Integer.valueOf(coo.charAt(1));
-        if(plateau[x][y].getISBN().charAt(n) == cara && !livre.contains(coo)){
-            livre.add(coo);
+    public int boucle(ArrayList annuaire, int x, int y, char cara, int n){
+        int cpt = 0;
+        if(ajout(annuaire, x+1, y, cara, n)){
+            cpt += 1 + boucle(annuaire, x+1, y, cara, n);
+        }
+        if(ajout(annuaire, x, y+1, cara, n)){
+            cpt += 1 + boucle(annuaire, x, y+1, cara, n);
+        }
+        if(ajout(annuaire, x-1, y, cara, n)){
+            cpt += 1 + boucle(annuaire, x-1, y, cara, n);
+        }
+        if(ajout(annuaire, x, y-1, cara, n)){
+            cpt += 1 + boucle(annuaire, x, y-1, cara, n);
+        }
+        return cpt;
+    }
+    
+    public boolean ajout(ArrayList annuaire, int x, int y, char cara, int n){
+        if(plateau[x][y].getISBN().charAt(n) == cara){
+            String coo = convert(x, y);
+            if(!annuaire.contains(coo)){
+            annuaire.add(coo);
             return true;
+            }
         }
         return false;
     }
@@ -188,7 +185,6 @@ public class Plateau {
         String v = "" + y;
         return u + v;
     }
-    
     
     /*public boolean Verif_alignements(int taille, Piece[][] plateau, Piece piece){
 
