@@ -7,36 +7,59 @@ package quarto;
 import java.util.Random;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
-/*
 
-*/
+
 public class Jeu {
     
     /*
     Méthode permettant le tirage au sort d'un joueur.
     Les chiffres 1 et 2 sont choisis au hasard. Si c'est 1 alors le joueur 1
-    commence. 2 sinon . 
-    Le 1er joueur doit choisir une pièce.
+    commence et vice-versa. 
+    Le 1er joueur devra ensuite choisir une pièce.
     */
-    /*
+    
     public Joueur Choix_Joueur(Joueur joueur, Joueur joueur1, Joueur joueur2){
         
         Random rd = new Random();
         int choix_PL  = rd.nextInt(1,3);       
         if(choix_PL == 1){
-            System.out.println(joueur1.getpseudo() + "vous commencez." 
-                    + "Vous allez devoir choisir une pièce.");
+            System.out.println(joueur1.getpseudo() + ", vous commencez. Vous allez devoir choisir une pièce.");
             joueur1 = joueur; 
             return joueur1;
         }
         else;
-            System.out.println(joueur2.getpseudo() + "vous commencez " 
-                    + " Vous allez devoir choisir une pièce.");
+            System.out.println(joueur2.getpseudo() + ", vous commencez. Vous allez devoir choisir une pièce.");
             joueur2 = joueur;
             return joueur2;   
     }
+
+    /*
+    Méthode permettant de choisir la taille du plateau (3×3,4×4,5×5) 
+    et de le créer.
     */
-     
+    public int taille(){
+        Scanner pl = new Scanner(System.in);
+        int taille;
+        while(true){
+            System.out.println("""
+                               Quelle taille du plateau choisissez-vous ?
+                               Tapez 3,4 ou 5.""");
+            taille = pl.nextInt();
+            if(taille == 3 || taille == 4 || taille == 5){
+                break;
+            }
+            System.out.println("Valeur incorrecte.");
+        }
+        return taille;
+    }
+    
+    /*
+    Instance plateau.
+    */
+    Plateau plateau = new Plateau(taille());
+    
+    
+    
       //Méthode permettant de la placer une piece sur le plateau de jeu.
     
     /*

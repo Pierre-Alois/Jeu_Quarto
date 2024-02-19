@@ -8,7 +8,7 @@ public class Joueur {
     
     //Attributs
     
-    String pseudo;
+    private final String pseudo;
     
     //Constructeur
     
@@ -20,5 +20,11 @@ public class Joueur {
     
     public String getpseudo(){
         return pseudo;
-    }    
+    }
+    
+    // toString :
+    @Override
+    public String toString(){
+        return pseudo; 
+    }
 }

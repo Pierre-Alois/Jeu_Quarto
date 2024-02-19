@@ -5,39 +5,20 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
 package quarto;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class Plateau {
 
     // Attributs
-    private int taille;
+    private final int taille;
     private Piece[][] plateau;
-    private int x, y;
-    private List liste;
+    private ArrayList liste;
 
     // Constructeur
-    public Plateau(int taille, Piece[][] plateau, List liste) {
+    public Plateau(int taille) {
         this.taille = taille;
         this.plateau = new Piece[taille][taille];
-        this.liste = liste;
-    }
-
-    /*
-      Méthode permettant de choisir la taille du plateau (3*3,4*4,5*5) 
-      et de le créer.
-     */
-    public Piece[][] plateau(Joueur joueur) {
-
-        Piece[][] plateau;
-        Scanner pl = new Scanner(System.in);
-        System.out.println(joueur + "Quelle taille du plateau choisissez-vous:"
-                + "\n" + "Tapez 3,4 ou 5");
-        taille = pl.nextInt();
-        plateau = new Piece[taille][taille];
-
-        return plateau;
+        
     }
 
     //Getters
@@ -49,7 +30,7 @@ public class Plateau {
         return taille;
     }
 
-    public List getliste() {
+    public ArrayList getliste() {
         return liste;
     }
 
@@ -153,15 +134,37 @@ public class Plateau {
      */
     
     
-    
-    // VERIF :
-    public boolean verifFin(int taille, Piece[][] plateau, int x, int y){
+    // VERIF (valable pour 3×3 et 5×5 seulement !) :
+    public boolean verifFig(int taille, int x, int y){
         for(int i=0 ; i<taille ; i++){
             int cpt = 1;
             char cara = plateau[x][y].getISBN().charAt(i);
+            String coo = convert(x, y);
+            ArrayList<String> annuaire = new ArrayList<String>();
+            annuaire.add(coo);
             
+            coo = convert(x+1,y);
+            if(ajout(annuaire, coo, cara, i)){
+                cpt++;
+                verifFig(taille, x+1, y);       // A AVANCER !!!
+            }
+            coo = convert(x,y+1);
+            if(ajout(annuaire, coo, cara, i)){
+                cpt++;
+            }
+            coo = convert(x-1,y);
+            if(ajout(annuaire, coo, cara, i)){
+                cpt++;
+            }
+            coo = convert(x,y-1);
+            if(ajout(annuaire, coo, cara, i)){
+                cpt++;
+            }
+            if(cpt >= 5){
+                return true;
+            }
         }
-        return true;
+        return false;
     }
     /*
     char val = plateau[x][y].getISBN().charAT(i);
@@ -170,7 +173,21 @@ public class Plateau {
     }
     */
     
+    public boolean ajout(ArrayList livre, String coo, char cara, int n){
+        int x = Integer.valueOf(coo.charAt(0));
+        int y = Integer.valueOf(coo.charAt(1));
+        if(plateau[x][y].getISBN().charAt(n) == cara && !livre.contains(coo)){
+            livre.add(coo);
+            return true;
+        }
+        return false;
+    }
     
+    public String convert(int x, int y){
+        String u = "" + x;
+        String v = "" + y;
+        return u + v;
+    }
     
     
     /*public boolean Verif_alignements(int taille, Piece[][] plateau, Piece piece){
