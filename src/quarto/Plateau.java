@@ -102,7 +102,7 @@ public class Plateau {
             System.out.println("Souhaitez-vous utiliser la pièce Joker 0/N ?");
             choix_J = Sc.nextLine();
             while (!choix_J.equals("O") || !choix_J.equals("N")) {
-                System.out.println("Je n'ai pas comrpris : \n"
+                System.out.println("Je n'ai pas bien compris : \n"
                         + "Souhaitez-vous utiliser la pièce Joker ?" + " 0/N ?");
             }
             if (choix_J.equals("O")) {
@@ -118,7 +118,7 @@ public class Plateau {
                 System.out.println("Taper le numéro pour choisir la pièce :");
                 choix_p = Sc.nextInt();
                 while (choix_p < gettaille() * gettaille() || choix_p >= 0) {
-                    System.out.println("ERREUR: Il faut rentre un numéro.");
+                    System.out.println("ERREUR: Il faut rentrer un numéro.");
                     choix_p = Sc.nextInt();
                     return choix_p;
                 }
@@ -130,7 +130,7 @@ public class Plateau {
     /* 
     Méthodes permettant de vérifier l'alignement de pièces sur le plateau. 
     On vérifiera d'abord les alignements standards(lignes, colonnes et
-    diagonales) avant se vérifier les formes. 
+    diagonales) avant de vérifier les formes. 
      */
     
     
