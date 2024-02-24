@@ -4,7 +4,10 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
 */
 package quarto;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Plateau {
@@ -13,13 +16,100 @@ public class Plateau {
     private final int taille;
     private Piece[][] plateau;
     private ArrayList liste;
-
+    
+    private static final String FichierQuarto = "FichierQuarto.txt";
     // Constructeur
     public Plateau(int taille) {
         this.taille = taille;
         this.plateau = new Piece[taille][taille];
+        List<Piece> PI_dispo = new ArrayList<>();
         
+        PI_dispo.add(new Piece("000"));
+        PI_dispo.add(new Piece("001"));
+        PI_dispo.add(new Piece("010"));
+        PI_dispo.add(new Piece("011"));
+        PI_dispo.add(new Piece("100"));
+        PI_dispo.add(new Piece("101"));
+        PI_dispo.add(new Piece("110"));
+        PI_dispo.add(new Piece("111"));
+        
+        PI_dispo.add(new Piece("0000"));
+        PI_dispo.add(new Piece("0001"));
+        PI_dispo.add(new Piece("0010"));
+        PI_dispo.add(new Piece("0011"));
+        PI_dispo.add(new Piece("00100"));
+        PI_dispo.add(new Piece("0101"));
+        PI_dispo.add(new Piece("0110"));
+        PI_dispo.add(new Piece("0111"));
+        PI_dispo.add(new Piece("1000"));
+        PI_dispo.add(new Piece("1001"));
+        PI_dispo.add(new Piece("1010"));
+        PI_dispo.add(new Piece("1011"));
+        PI_dispo.add(new Piece("1100"));
+        PI_dispo.add(new Piece("1101"));
+        PI_dispo.add(new Piece("1110"));
+        PI_dispo.add(new Piece("1111"));
+        
+        PI_dispo.add(new Piece("00000"));
+        PI_dispo.add(new Piece("00001"));
+        PI_dispo.add(new Piece("00010"));
+        PI_dispo.add(new Piece("00011"));
+        PI_dispo.add(new Piece("00100"));
+        PI_dispo.add(new Piece("00101"));
+        PI_dispo.add(new Piece("00110"));
+        PI_dispo.add(new Piece("00111"));
+        PI_dispo.add(new Piece("01000"));
+        PI_dispo.add(new Piece("01001"));
+        PI_dispo.add(new Piece("01010"));
+        PI_dispo.add(new Piece("01011"));
+        PI_dispo.add(new Piece("01100"));
+        PI_dispo.add(new Piece("01101"));
+        PI_dispo.add(new Piece("01110"));
+        PI_dispo.add(new Piece("01111"));
+        PI_dispo.add(new Piece("10000"));
+        PI_dispo.add(new Piece("10001"));
+        PI_dispo.add(new Piece("10010"));
+        PI_dispo.add(new Piece("10011"));
+        PI_dispo.add(new Piece("10100"));
+        PI_dispo.add(new Piece("10101"));
+        PI_dispo.add(new Piece("10110"));
+        PI_dispo.add(new Piece("10111"));
+        PI_dispo.add(new Piece("11000"));
+        PI_dispo.add(new Piece("11001"));
+        PI_dispo.add(new Piece("11010"));
+        PI_dispo.add(new Piece("11011"));
+        PI_dispo.add(new Piece("11100"));
+        PI_dispo.add(new Piece("11101"));
+        PI_dispo.add(new Piece("11110"));
+        PI_dispo.add(new Piece("11111"));
+               
     }
+    public Piece Case_Libre(int x, int y) {
+        x = 0;
+        y = 0;
+        return plateau[x][y] = null;
+    }
+    
+    // Méthode de sauvegarde. Gestion d'erreur à ajouter ! 
+    public void Sauvegarde(String pseudo_J1,String pseudo_J2) throws IOException{
+        
+        FileWriter fich = new FileWriter(FichierQuarto);
+        fich.write("Pseudo Joueur 1 : " + pseudo_J1 + System.lineSeparator()
+              +"\n" + "Pseudo Joueur2 : " + pseudo_J2 + System.lineSeparator());
+        fich.write("Taille du plateau : " + taille + System.lineSeparator());
+        
+        for(int y = 0;y<taille;y++){
+            for(int x = 0; x<taille;x++){
+                if(Case_Libre(y,x)!= null){
+                    fich.write(plateau[y][x].getISBN());   
+                }
+                else{
+                    fich.write("null");
+                }
+            }
+        }
+    }
+    
 
     //Getters
     public Piece[][] getPlateau() {
@@ -420,9 +510,4 @@ public class Plateau {
     }
     */
 
-    public Piece Case_Libre(int x, int y) {
-        x = 0;
-        y = 0;
-        return plateau[x][y] = null;
-    }
 }

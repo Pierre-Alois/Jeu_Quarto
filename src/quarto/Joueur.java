@@ -22,6 +22,8 @@ public class Joueur {
         return pseudo;
     }
     
+    
+    
     // toString :
     @Override
     public String toString(){
