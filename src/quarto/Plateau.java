@@ -24,6 +24,23 @@ public class Plateau {
         this.plateau = new Piece[taille][taille];
         List<Piece> PI_dispo = new ArrayList<>();
         
+        
+        for(int b = 0; b<8;b++){
+            String bin = Integer.toBinaryString(b);
+            PI_dispo.add(new Piece(bin));
+            
+        }
+        for(int b = 0; b<16;b++){
+            String bin = Integer.toBinaryString(b);
+            PI_dispo.add(new Piece(bin));
+            
+        }
+        for(int b = 0; b<32;b++){
+            String bin = Integer.toBinaryString(b);
+            PI_dispo.add(new Piece(bin));
+            
+        }
+        
         PI_dispo.add(new Piece("000"));
         PI_dispo.add(new Piece("001"));
         PI_dispo.add(new Piece("010"));
@@ -84,6 +101,7 @@ public class Plateau {
         PI_dispo.add(new Piece("11111"));
                
     }
+    
     public Piece Case_Libre(int x, int y) {
         x = 0;
         y = 0;
