@@ -7,17 +7,14 @@ package quarto;
 public class Joueur {
     
     //Attributs
-    
     private final String pseudo;
     
     //Constructeur
-    
     public Joueur(String pseudo){
         this.pseudo = pseudo;
     }
     
     //Getter
-    
     public String getpseudo(){
         return pseudo;
     }

@@ -58,16 +58,16 @@ public class QUARTO {
         
         //System.out.println("Hello world");
         
-     //public void jouer(String joueur1,String joueur2){
+        //public void jouer(String joueur1,String joueur2){
     
-    //On demande les pseudos des 2 joueurs
-    String joueur1 = JOptionPane.showInputDialog(" Joueur 1, write your pseudo : ");
-    JOptionPane.showMessageDialog(null, "Vous vous appelez donc : " 
-            + joueur1);
-    String joueur2 = JOptionPane.showInputDialog(" Joueur 2, write your pseudo : ");
-    JOptionPane.showMessageDialog(null, "Vous vous appelez donc : " 
-            + joueur2);
+        //On demande les pseudos des 2 joueurs
+        /*String joueur1 = JOptionPane.showInputDialog(" Joueur 1, write your pseudo : ");
+        JOptionPane.showMessageDialog(null, "Vous vous appelez donc : " + joueur1);
+        String joueur2 = JOptionPane.showInputDialog(" Joueur 2, write your pseudo : ");
+        JOptionPane.showMessageDialog(null, "Vous vous appelez donc : " + joueur2);*/
     
-    //Jeu J = new Jeu();
+        //Jeu J = new Jeu();
+        
+
     }
 }

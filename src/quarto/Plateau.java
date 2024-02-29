@@ -7,7 +7,6 @@ package quarto;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Plateau {
@@ -18,11 +17,34 @@ public class Plateau {
     private ArrayList liste;
     
     private static final String FichierQuarto = "FichierQuarto.txt";
+    
     // Constructeur
-    public Plateau(int taille) {
+    public Plateau(int taille){
         this.taille = taille;
         this.plateau = new Piece[taille][taille];
-        List<Piece> PI_dispo = new ArrayList<>();
+        
+        ArrayList<Piece> liste = new ArrayList<>();
+        int nb = 1;
+        for(int f=0;f<taille;f++){
+            nb = nb*2;
+        }
+        for(int t=0;t<nb;t++){
+            String binary = Integer.toBinaryString(t);
+
+            int s = binary.length();
+
+            String z = "";
+
+            for(int i=0;i<5-s;i++){
+                z += "0";
+            }
+            binary = z + binary;
+            
+            liste.add(new Piece(binary));
+        }
+        
+        
+        /*ArrayList<Piece> PI_dispo = new ArrayList<>();
         
         
         for(int b = 0; b<8;b++){
@@ -54,7 +76,7 @@ public class Plateau {
         PI_dispo.add(new Piece("0001"));
         PI_dispo.add(new Piece("0010"));
         PI_dispo.add(new Piece("0011"));
-        PI_dispo.add(new Piece("00100"));
+        PI_dispo.add(new Piece("0010"));
         PI_dispo.add(new Piece("0101"));
         PI_dispo.add(new Piece("0110"));
         PI_dispo.add(new Piece("0111"));
@@ -99,7 +121,7 @@ public class Plateau {
         PI_dispo.add(new Piece("11101"));
         PI_dispo.add(new Piece("11110"));
         PI_dispo.add(new Piece("11111"));
-               
+        */
     }
     
     public Piece Case_Libre(int x, int y) {
@@ -244,7 +266,7 @@ public class Plateau {
     
     // VERIF (valable pour 3×3 et 5×5 seulement !) :
     public boolean verifFig(int taille, int x, int y){
-        for(int i=0 ; i<taille ; i++){
+        for(int i=taille-1 ; i>=0 ; i--){
             int cpt = 1;
             char cara = plateau[x][y].getISBN().charAt(i);
             String coo = convert(x, y);
