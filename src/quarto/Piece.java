@@ -4,6 +4,9 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
 */
 package quarto;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Piece {
 
     // Attribut :                   // Pion 00000 → Entier(section) - Grand - Plein(trou) - Carré - Blanc
@@ -24,8 +27,8 @@ public class Piece {
     public String toString(){
         return ISBN; 
     }
+    
 }
-
 
 
 // OLD

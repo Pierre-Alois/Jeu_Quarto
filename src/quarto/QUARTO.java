@@ -4,11 +4,13 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
 */
 package quarto;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class QUARTO {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         
         /*
         
@@ -66,8 +68,22 @@ public class QUARTO {
         String joueur2 = JOptionPane.showInputDialog(" Joueur 2, write your pseudo : ");
         JOptionPane.showMessageDialog(null, "Vous vous appelez donc : " + joueur2);*/
     
-        //Jeu J = new Jeu();
+        //Tests
         
-
+        Joueur J1 = new Joueur("Didier");
+        Joueur J2 = new Joueur("PA");
+        
+        ArrayList<Piece> liste_P = new ArrayList<>();
+        liste_P.add(new Piece("000"));
+        liste_P.add(new Piece("11111"));
+        liste_P.add(new Piece("1001"));
+        
+        Piece P_J1 = J1.Banque(liste_P);
+        Piece P_J2 = J2.Banque(liste_P);
+        
+        Plateau plateau = new Plateau(3);
+        
+        plateau.Sauvegarde(J1.getpseudo(), J2.getpseudo(),plateau.getPlateau());
+        
     }
 }

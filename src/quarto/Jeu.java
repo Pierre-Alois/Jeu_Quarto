@@ -14,21 +14,18 @@ public class Jeu {
     /*
     Méthode permettant le tirage au sort d'un joueur.
     Les chiffres 1 et 2 sont choisis au hasard. Si c'est 1 alors le joueur 1
-    commence et vice-versa. 
+    commence. Sinon c'est le joueur 2 
     Le 1er joueur devra ensuite choisir une pièce.
     */
-    
     public Joueur Choix_Joueur(Joueur joueur, Joueur joueur1, Joueur joueur2){
         
         Random rd = new Random();
         int choix_PL  = rd.nextInt(1,3);       
-        if(choix_PL == 1){
-            System.out.println(joueur1.getpseudo() + ", vous commencez. Vous allez devoir choisir une pièce.");
+        if(choix_PL == 1){           
             joueur1 = joueur; 
             return joueur1;
         }
         else;
-            System.out.println(joueur2.getpseudo() + ", vous commencez. Vous allez devoir choisir une pièce.");
             joueur2 = joueur;
             return joueur2;   
     }
@@ -37,18 +34,18 @@ public class Jeu {
     Méthode permettant de choisir la taille du plateau (3×3,4×4,5×5) 
     et de le créer.
     */
-    public int taille(){
+    public int taille_Plateau(){
         Scanner pl = new Scanner(System.in);
         int taille;
         while(true){
-            System.out.println("""
-                               Quelle taille du plateau choisissez-vous ?
-                               Tapez 3,4 ou 5.""");
+            //System.out.println("""
+                               //Quelle taille du plateau choisissez-vous ?
+                               //Tapez 3,4 ou 5.""");
             taille = pl.nextInt();
             if(taille == 3 || taille == 4 || taille == 5){
                 break;
             }
-            System.out.println("Valeur incorrecte.");
+            //System.out.println("Valeur incorrecte.");
         }
         return taille;
     }
@@ -56,57 +53,23 @@ public class Jeu {
     /*
     Instance plateau.
     */
-    Plateau plateau = new Plateau(taille());
+    Plateau plateau = new Plateau(taille_Plateau());
     
-    
-    
-      //Méthode permettant de la placer une piece sur le plateau de jeu.
-    
-    /*
-    public Piece Placer(Joueur joueur, int taille, Piece piece, Plateau plateau,
-                        int x, int y){
+    public Piece[][] Placer_Piece(int taille){
         
-        Scanner sc = new Scanner(System.in);
-        Piece [][] place = new Piece[taille][taille];
-        int cln,ln = 0;
+        Piece[][] plateau = new Piece[taille][taille];
         
-        while(x<0 || y<0 || x>=plateau.gettaille()|| y>=plateau.gettaille()){
-            
-            for(x=0;x<taille*taille;x++){
-                for(y=0;y<taille*taille;y++){
-                
-                    if(plateau.Case_Libre(x,y) != null){
-                        System.out.println(place[x][y] + "est déjà prise");
-                    }
-                
-                    else{
-                        ln = sc.nextInt();
-                        cln = sc.nextInt();
-                    System.out.println("Où voules-vous placer votre pièce ? \n " 
-                    + "ligne : " + ln + "\n" + "colonne: " + cln);
-                        piece = place[ln][cln];
-                    }
-                }
-            }
-        }
-    return piece;    
-    }
-    
-    //Méthode permettant la mise ne pause d'une partie,ainsi que sa sauvegarde.
-    public void Sauvegarde(){
-
+        return plateau;
     }
     
     //Méthode permettant la reprise d'une partie précédement sauvegardée. 
     public void Rependre_partie(){
-    
     }
     
     //Méthode permettant de recommencer une nouvelle partie à zéro. 
-    public void Recommencer_Partie(){
-        
+    public void Recommencer_Partie(){   
     }
-    */
+    
     //Méthode permettant de jouer une partie. Boucle principale
     public void jouer(String joueur1,String joueur2, Plateau plateau){
     

@@ -7,6 +7,7 @@ package quarto;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Plateau {
@@ -23,6 +24,10 @@ public class Plateau {
         this.taille = taille;
         this.plateau = new Piece[taille][taille];
         
+        /*
+         A l'aide de la variable ISBN de type String, on use du langage binaire
+         pour ajouter une piece unique à notre liste. 
+        */
         ArrayList<Piece> liste = new ArrayList<>();
         int nb = 1;
         for(int f=0;f<taille;f++){
@@ -42,11 +47,115 @@ public class Plateau {
             
             liste.add(new Piece(binary));
         }
+    }
+    public Piece[][] getPlateau(){
+        return plateau;
+    }
+            
+    /* 
+    Méthodes permettant de vérifier l'alignement de pièces sur le plateau. 
+    On vérifiera d'abord les alignements standards(lignes, colonnes et
+    diagonales) avant de vérifier les formes. 
+     */
+    
+    // VERIF (valable pour 3×3 et 5×5 seulement !) :
+    public boolean verifFig(int taille, int x, int y){
+        for(int i=taille-1 ; i>=0 ; i--){
+            int cpt = 1;
+            char cara = plateau[x][y].getISBN().charAt(i);
+            String coo = convert(x, y);
+            ArrayList<String> annuaire = new ArrayList<String>();
+            annuaire.add(coo);
+            
+            cpt += boucle(annuaire, x, y, cara, i);
+            
+            if(cpt >= 5){
+                return true;
+            }
+        }
+        return false;
+    }
+    /*
+      Méthode permettant de reboucler la vérification d'un alignement sur les 
+      3 différentes grilles.
+    */
+    public int boucle(ArrayList annuaire, int x, int y, char cara, int n){
+        int cpt = 0;
+        if(ajout(annuaire, x+1, y, cara, n)){
+            cpt += 1 + boucle(annuaire, x+1, y, cara, n);
+        }
+        if(ajout(annuaire, x, y+1, cara, n)){
+            cpt += 1 + boucle(annuaire, x, y+1, cara, n);
+        }
+        if(ajout(annuaire, x-1, y, cara, n)){
+            cpt += 1 + boucle(annuaire, x-1, y, cara, n);
+        }
+        if(ajout(annuaire, x, y-1, cara, n)){
+            cpt += 1 + boucle(annuaire, x, y-1, cara, n);
+        }
+        return cpt;
+    }
+    
+    
+    //Méthode ajoutant les coordonnées de la case étudiée dans la liste si...
+    
+    public boolean ajout(ArrayList annuaire, int x, int y, char cara, int n){
+        if(plateau[x][y].getISBN().charAt(n) == cara){
+            String coo = convert(x, y);
+            if(!annuaire.contains(coo)){
+            annuaire.add(coo);
+            return true;
+            }
+        }
+        return false;
+    }
+    
+    //Méthode convertissant int → String pour plus de simplicité
+    
+    public String convert(int x, int y){
+        String u = "" + x;
+        String v = "" + y;
+        return u + v;
+    }
+    
+    // Méthode vérifiant si une case du plateau n'est pas occupée
+    public Piece Case_Libre(int x, int y) {
+        x = 0;
+        y = 0;
+        return plateau[x][y] = null;
+    }
+    
+    
+    //Méthode de sauvegarde. Gestion d'erreur à ajouter ! 
+    public void Sauvegarde(String pseudo_J1,String pseudo_J2, 
+                           Piece [][] plateau) throws IOException{
+    
+        try{
+            FileWriter writer = new FileWriter("sauvegarde_quarto.txt");
         
+        FileWriter fich = new FileWriter(FichierQuarto);
+        fich.write(pseudo_J1 + System.lineSeparator()
+              + pseudo_J2 + System.lineSeparator());
+        fich.write(taille + System.lineSeparator());
         
+        for(int y = 0;y<taille;y++){
+            for(int x = 0; x<taille;x++){
+                if(Case_Libre(y,x)!= null){
+                    fich.write(plateau[y][x].getISBN());   
+                }
+                else{
+                    fich.write("null");
+                }
+            }
+        }
+        } catch(IOException ex){
+            System.out.println("Le fichier n'a pas pu être chargé");
+        }
+    }
+    /*OLD
+    
         /*ArrayList<Piece> PI_dispo = new ArrayList<>();
-        
-        
+                
         for(int b = 0; b<8;b++){
             String bin = Integer.toBinaryString(b);
             PI_dispo.add(new Piece(bin));
@@ -59,98 +168,12 @@ public class Plateau {
         }
         for(int b = 0; b<32;b++){
             String bin = Integer.toBinaryString(b);
-            PI_dispo.add(new Piece(bin));
-            
-        }
-        
-        PI_dispo.add(new Piece("000"));
-        PI_dispo.add(new Piece("001"));
-        PI_dispo.add(new Piece("010"));
-        PI_dispo.add(new Piece("011"));
-        PI_dispo.add(new Piece("100"));
-        PI_dispo.add(new Piece("101"));
-        PI_dispo.add(new Piece("110"));
-        PI_dispo.add(new Piece("111"));
-        
-        PI_dispo.add(new Piece("0000"));
-        PI_dispo.add(new Piece("0001"));
-        PI_dispo.add(new Piece("0010"));
-        PI_dispo.add(new Piece("0011"));
-        PI_dispo.add(new Piece("0010"));
-        PI_dispo.add(new Piece("0101"));
-        PI_dispo.add(new Piece("0110"));
-        PI_dispo.add(new Piece("0111"));
-        PI_dispo.add(new Piece("1000"));
-        PI_dispo.add(new Piece("1001"));
-        PI_dispo.add(new Piece("1010"));
-        PI_dispo.add(new Piece("1011"));
-        PI_dispo.add(new Piece("1100"));
-        PI_dispo.add(new Piece("1101"));
-        PI_dispo.add(new Piece("1110"));
-        PI_dispo.add(new Piece("1111"));
-        
-        PI_dispo.add(new Piece("00000"));
-        PI_dispo.add(new Piece("00001"));
-        PI_dispo.add(new Piece("00010"));
-        PI_dispo.add(new Piece("00011"));
-        PI_dispo.add(new Piece("00100"));
-        PI_dispo.add(new Piece("00101"));
-        PI_dispo.add(new Piece("00110"));
-        PI_dispo.add(new Piece("00111"));
-        PI_dispo.add(new Piece("01000"));
-        PI_dispo.add(new Piece("01001"));
-        PI_dispo.add(new Piece("01010"));
-        PI_dispo.add(new Piece("01011"));
-        PI_dispo.add(new Piece("01100"));
-        PI_dispo.add(new Piece("01101"));
-        PI_dispo.add(new Piece("01110"));
-        PI_dispo.add(new Piece("01111"));
-        PI_dispo.add(new Piece("10000"));
-        PI_dispo.add(new Piece("10001"));
-        PI_dispo.add(new Piece("10010"));
-        PI_dispo.add(new Piece("10011"));
-        PI_dispo.add(new Piece("10100"));
-        PI_dispo.add(new Piece("10101"));
-        PI_dispo.add(new Piece("10110"));
-        PI_dispo.add(new Piece("10111"));
-        PI_dispo.add(new Piece("11000"));
-        PI_dispo.add(new Piece("11001"));
-        PI_dispo.add(new Piece("11010"));
-        PI_dispo.add(new Piece("11011"));
-        PI_dispo.add(new Piece("11100"));
-        PI_dispo.add(new Piece("11101"));
-        PI_dispo.add(new Piece("11110"));
-        PI_dispo.add(new Piece("11111"));
-        */
+            PI_dispo.add(new Piece(bin));    
+        }      
     }
     
-    public Piece Case_Libre(int x, int y) {
-        x = 0;
-        y = 0;
-        return plateau[x][y] = null;
-    }
-    
-    // Méthode de sauvegarde. Gestion d'erreur à ajouter ! 
-    public void Sauvegarde(String pseudo_J1,String pseudo_J2) throws IOException{
-        
-        FileWriter fich = new FileWriter(FichierQuarto);
-        fich.write("Pseudo Joueur 1 : " + pseudo_J1 + System.lineSeparator()
-              +"\n" + "Pseudo Joueur2 : " + pseudo_J2 + System.lineSeparator());
-        fich.write("Taille du plateau : " + taille + System.lineSeparator());
-        
-        for(int y = 0;y<taille;y++){
-            for(int x = 0; x<taille;x++){
-                if(Case_Libre(y,x)!= null){
-                    fich.write(plateau[y][x].getISBN());   
-                }
-                else{
-                    fich.write("null");
-                }
-            }
-        }
-    }
-    
-
+    */
+/*
     //Getters
     public Piece[][] getPlateau() {
         return plateau;
@@ -164,9 +187,9 @@ public class Plateau {
         return liste;
     }
 
-    /*
-     Méthode où sont stockées l'ensemble des différentes pièces selon
-     les plateaux
+    
+    Méthode où sont stockées l'ensemble des différentes pièces selon
+    les plateaux
     
     public List Banque() {
 
@@ -209,12 +232,11 @@ public class Plateau {
         }
     return PI_dispo;
     }
-    */
-
+    
     /*
       Méthode permettant au joueur de choisir la piece qu'il souhaite poser. 
       Elle renvoie un Objet de type Piece (si c'est la pièce Joker). Int sinon 
-     */
+    
     public Object Choix_Piece(Joueur joueur , int choix) {
 
         Scanner Sc = new Scanner(System.in);
@@ -224,10 +246,10 @@ public class Plateau {
         Piece joker = null;
         System.out.println(joueur + ", vous allez devoir une pièce");
 
-        /* Piece Joker
+           Piece Joker
            Si le plateau est 3*3, on introduit alors une pièce Joker neutre qui
            ne s'associe avec aucune pièce. 
-         */
+        
         if (gettaille() == 3) {
             System.out.println("Souhaitez-vous utiliser la pièce Joker 0/N ?");
             choix_J = Sc.nextLine();
@@ -256,67 +278,9 @@ public class Plateau {
         }
         return piece;
     }
-
-    /* 
-    Méthodes permettant de vérifier l'alignement de pièces sur le plateau. 
-    On vérifiera d'abord les alignements standards(lignes, colonnes et
-    diagonales) avant de vérifier les formes. 
-     */
-    
-    
-    // VERIF (valable pour 3×3 et 5×5 seulement !) :
-    public boolean verifFig(int taille, int x, int y){
-        for(int i=taille-1 ; i>=0 ; i--){
-            int cpt = 1;
-            char cara = plateau[x][y].getISBN().charAt(i);
-            String coo = convert(x, y);
-            ArrayList<String> annuaire = new ArrayList<String>();
-            annuaire.add(coo);
-            
-            cpt += boucle(annuaire, x, y, cara, i);
-            
-            if(cpt >= 5){
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    public int boucle(ArrayList annuaire, int x, int y, char cara, int n){
-        int cpt = 0;
-        if(ajout(annuaire, x+1, y, cara, n)){
-            cpt += 1 + boucle(annuaire, x+1, y, cara, n);
-        }
-        if(ajout(annuaire, x, y+1, cara, n)){
-            cpt += 1 + boucle(annuaire, x, y+1, cara, n);
-        }
-        if(ajout(annuaire, x-1, y, cara, n)){
-            cpt += 1 + boucle(annuaire, x-1, y, cara, n);
-        }
-        if(ajout(annuaire, x, y-1, cara, n)){
-            cpt += 1 + boucle(annuaire, x, y-1, cara, n);
-        }
-        return cpt;
-    }
-    
-    public boolean ajout(ArrayList annuaire, int x, int y, char cara, int n){
-        if(plateau[x][y].getISBN().charAt(n) == cara){
-            String coo = convert(x, y);
-            if(!annuaire.contains(coo)){
-            annuaire.add(coo);
-            return true;
-            }
-        }
-        return false;
-    }
-    
-    public String convert(int x, int y){
-        String u = "" + x;
-        String v = "" + y;
-        return u + v;
-    }
-    
-    /*public boolean Verif_alignements(int taille, Piece[][] plateau, Piece piece){
+   */
+    /*
+    public boolean Verif_alignements(int taille, Piece[][] plateau, Piece piece){
 
         // List<Integer> cpt = new ArrayList<>();
         int cpt = 1;
@@ -352,7 +316,8 @@ public class Plateau {
             }
             i++;
         }
-
+*/
+    /*
         //Vérification des colonnes
         for (int a = 0; a < taille - 1; a++) {
             for (int b = 0; b < taille;) {
@@ -385,7 +350,8 @@ public class Plateau {
                 b++;
             }
         }
-
+*/
+    /*
         //Vérification sur la diagonale Haut gaucheB → as droite
         for (int p = 0; p < taille - 2; p++) {
             for (int q = 0; q < taille - 2; q++) {
@@ -416,7 +382,8 @@ public class Plateau {
                 }
             }
         }
-
+*/
+    /*
         //Verification sur la diagonale Bas gauche → Haut droit
         for (int m = taille - 1; m >= 0; m--) {
             for (int n = 0; n < taille; n++) {
@@ -448,7 +415,8 @@ public class Plateau {
                 }
             }
         }
-
+*/
+    /*
         // Vérifications des "L" Grille 3*3
         
         // Vérification des "carrés" Grille 4*4
@@ -549,5 +517,4 @@ public class Plateau {
         return cpt >= taille;
     }
     */
-
 }
