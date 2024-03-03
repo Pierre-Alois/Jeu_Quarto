@@ -7,7 +7,6 @@ package quarto;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Plateau {
@@ -28,7 +27,7 @@ public class Plateau {
          A l'aide de la variable ISBN de type String, on use du langage binaire
          pour ajouter une piece unique à notre liste. 
         */
-        ArrayList<Piece> liste = new ArrayList<>();
+        ArrayList<Piece> liste = new ArrayList<Piece>();
         int nb = 1;
         for(int f=0;f<taille;f++){
             nb = nb*2;
@@ -47,19 +46,77 @@ public class Plateau {
             
             liste.add(new Piece(binary));
         }
+        if(taille==3){
+            liste.add(new Piece("xxxxx"));
+        }
     }
-    public Piece[][] getPlateau(){
+    
+    //Getters
+    public Piece[][] getplateau(){
         return plateau;
     }
+
+    public int gettaille() {
+        return taille;
+    }
+
+    public ArrayList getliste() {
+        return liste;
+    }
             
-    /* 
-    Méthodes permettant de vérifier l'alignement de pièces sur le plateau. 
-    On vérifiera d'abord les alignements standards(lignes, colonnes et
-    diagonales) avant de vérifier les formes. 
-     */
     
-    // VERIF (valable pour 3×3 et 5×5 seulement !) :
-    public boolean verifFig(int taille, int x, int y){
+    
+    // VÉRIF
+    
+    // Valable pour tout :
+    
+    /*
+    Méthodes pour vérifier un alignement dans les diagonales qui fonctionnent
+    pour les 3 grilles.
+    Il faut juste s'assurer que x == y pour diag315()
+    et que taille-1-x == y pour diag45().
+    */
+    // Diagonale bas-gauche --> haut-droite
+    public boolean diag45(){
+        for(int i=taille-1 ; i>=0 ; i--){
+            int cpt = 0;
+            char cara = plateau[taille-1][0].getISBN().charAt(i);
+            for(int j=1;j<taille;j++){
+                if(plateau[taille-1-j][j].getISBN().charAt(i)!= cara){
+                    break;
+                }
+                cpt++;
+            }
+            if(cpt == taille){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    // Diagonale haut-gauche -->  bas-droite
+    public boolean diag315(){
+        for(int i=taille-1 ; i>=0 ; i--){
+            int cpt = 1;
+            char cara = plateau[0][0].getISBN().charAt(i);
+            for(int j=1;j<taille;j++){
+                if(plateau[j][j].getISBN().charAt(i)!= cara){
+                    break;
+                }
+                cpt++;
+            }
+            if(cpt == taille){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    // Valable pour 3×3 et 5×5 seulement :
+    /*
+    Méthode pour vérifier une figure dans les grilles 3×3 et 5×5.
+    */
+    public boolean verifFig(int x, int y){
         for(int i=taille-1 ; i>=0 ; i--){
             int cpt = 1;
             char cara = plateau[x][y].getISBN().charAt(i);
@@ -69,36 +126,46 @@ public class Plateau {
             
             cpt += boucle(annuaire, x, y, cara, i);
             
-            if(cpt >= 5){
+            if(cpt >= taille){
                 return true;
             }
         }
         return false;
     }
+    
     /*
-      Méthode permettant de reboucler la vérification d'un alignement sur les 
-      3 différentes grilles.
+    Méthode récursive qui vérifie si une piéce l adjacente à la précédente
+    possède la caractéristique de référence.
     */
     public int boucle(ArrayList annuaire, int x, int y, char cara, int n){
         int cpt = 0;
-        if(ajout(annuaire, x+1, y, cara, n)){
-            cpt += 1 + boucle(annuaire, x+1, y, cara, n);
+        if(x != taille-1){
+            if(ajout(annuaire, x+1, y, cara, n)){
+                cpt += 1 + boucle(annuaire, x+1, y, cara, n);
+            }
         }
-        if(ajout(annuaire, x, y+1, cara, n)){
-            cpt += 1 + boucle(annuaire, x, y+1, cara, n);
+        if(y != taille-1){
+            if(ajout(annuaire, x, y+1, cara, n)){
+                cpt += 1 + boucle(annuaire, x, y+1, cara, n);
+            }
         }
-        if(ajout(annuaire, x-1, y, cara, n)){
-            cpt += 1 + boucle(annuaire, x-1, y, cara, n);
+        if(x != 0){
+            if(ajout(annuaire, x-1, y, cara, n)){
+                cpt += 1 + boucle(annuaire, x-1, y, cara, n);
+            }
         }
-        if(ajout(annuaire, x, y-1, cara, n)){
-            cpt += 1 + boucle(annuaire, x, y-1, cara, n);
+        if(y != 0){
+            if(ajout(annuaire, x, y-1, cara, n)){
+                cpt += 1 + boucle(annuaire, x, y-1, cara, n);
+            }
         }
         return cpt;
     }
     
-    
-    //Méthode ajoutant les coordonnées de la case étudiée dans la liste si...
-    
+    /*
+    Méthode ajoutant les coordonnées de la case étudiée dans la liste
+    si un pion y est présent avec la même carctéristique que le premier.
+    */
     public boolean ajout(ArrayList annuaire, int x, int y, char cara, int n){
         if(plateau[x][y].getISBN().charAt(n) == cara){
             String coo = convert(x, y);
@@ -110,21 +177,121 @@ public class Plateau {
         return false;
     }
     
-    //Méthode convertissant int → String pour plus de simplicité
-    
+    /*
+    Méthode convertissant les deux entiers correspondant à des coordonnées
+    en une chaîne.
+    */
     public String convert(int x, int y){
         String u = "" + x;
         String v = "" + y;
         return u + v;
     }
     
-    // Méthode vérifiant si une case du plateau n'est pas occupée
-    public Piece Case_Libre(int x, int y) {
-        x = 0;
-        y = 0;
-        return plateau[x][y] = null;
+    // Valable pour 4×4 seulement :
+    
+    /*
+    Méthode pour vérifier un carré en 4×4.
+    */
+    public boolean carre(int x, int y){
+        for(int i=3 ; i>=0 ; i--){
+            char cara = plateau[x][y].getISBN().charAt(i);
+            boolean bas, droite, haut, gauche;
+    // Définition de bas, droite, haut et gauche correspondant aux cases autour du pion posé.
+            if(x != 3){
+                if(plateau[x+1][y].getISBN().charAt(i) == cara){
+                    bas = true;
+                }
+            }
+            bas = false;
+            if(y != 3){
+                if(plateau[x][y+1].getISBN().charAt(i) == cara){
+                    droite = true;
+                }
+            }
+            droite = false;
+            if(x != 0){
+                if(plateau[x-1][y].getISBN().charAt(i) == cara){
+                    haut = true;
+                }
+            }
+            haut = false;
+            if(y != 0){
+                if(plateau[x][y-1].getISBN().charAt(i) == cara){
+                    gauche = true;
+                }
+            }
+            gauche = false;
+    // Vérification des carrés en fonction de bas, droite, haut et gauche.
+            if(bas && droite){
+                if(plateau[x+1][y+1].getISBN().charAt(i) == cara){
+                    return true;
+                }
+            }
+            if(droite && haut){
+                if(plateau[x-1][y+1].getISBN().charAt(i) == cara){
+                    return true;
+                }
+            }
+            if(haut && gauche){
+                if(plateau[x-1][y-1].getISBN().charAt(i) == cara){
+                    return true;
+                }
+            }
+            if(gauche && bas){
+                if(plateau[x+1][y-1].getISBN().charAt(i) == cara){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
     
+    /*
+    Méthode pour vérifier un alignement horizontal.
+    */
+    public boolean horizontal(int x){
+        for(int i=3 ; i>=0 ; i--){
+            int cpt = 1;
+            char cara = plateau[x][0].getISBN().charAt(i);
+            for(int j=1;j<4;j++){
+                if(plateau[x][j].getISBN().charAt(i)!= cara){
+                    break;
+                }
+                cpt++;
+            }
+            if(cpt == 4){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /*
+    Méthode pour vérifier un alignement vertical.
+    */
+    public boolean vertical(int y){
+        for(int i=3 ; i>=0 ; i--){
+            int cpt = 1;
+            char cara = plateau[0][y].getISBN().charAt(i);
+            for(int j=1;j<4;j++){
+                if(plateau[j][y].getISBN().charAt(i)!= cara){
+                    break;
+                }
+                cpt++;
+            }
+            if(cpt == 4){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    // FIN VÉRIF
+    
+    // Méthode vérifiant si une case du plateau n'est pas occupée.
+    public boolean caseLibre(int x, int y) {
+        return plateau[x][y] == null;
+    }
     
     //Méthode de sauvegarde. Gestion d'erreur à ajouter ! 
     public void Sauvegarde(String pseudo_J1,String pseudo_J2, 
@@ -140,7 +307,7 @@ public class Plateau {
         
         for(int y = 0;y<taille;y++){
             for(int x = 0; x<taille;x++){
-                if(Case_Libre(y,x)!= null){
+                if(!caseLibre(y,x)){
                     fich.write(plateau[y][x].getISBN());   
                 }
                 else{
@@ -151,86 +318,6 @@ public class Plateau {
         } catch(IOException ex){
             System.out.println("Le fichier n'a pas pu être chargé");
         }
-    }
-    /*OLD
-    
-        /*ArrayList<Piece> PI_dispo = new ArrayList<>();
-                
-        for(int b = 0; b<8;b++){
-            String bin = Integer.toBinaryString(b);
-            PI_dispo.add(new Piece(bin));
-            
-        }
-        for(int b = 0; b<16;b++){
-            String bin = Integer.toBinaryString(b);
-            PI_dispo.add(new Piece(bin));
-            
-        }
-        for(int b = 0; b<32;b++){
-            String bin = Integer.toBinaryString(b);
-            PI_dispo.add(new Piece(bin));    
-        }      
-    }
-    
-    */
-/*
-    //Getters
-    public Piece[][] getPlateau() {
-        return plateau;
-    }
-
-    public int gettaille() {
-        return taille;
-    }
-
-    public ArrayList getliste() {
-        return liste;
-    }
-
-    
-    Méthode où sont stockées l'ensemble des différentes pièces selon
-    les plateaux
-    
-    public List Banque() {
-
-        System.out.println("Vous avez choisi un plateau de taille " + gettaille() + "par" + gettaille() + "\n"
-                + "Voici donc l'ensemble des pièces disponibles : ");
-
-        Piece piece;
-        List<Piece> PI_dispo = new ArrayList<>();
-
-        if (gettaille() == 3) {
-            for (boolean haute : Arrays.asList(true, false)) {
-                for (String couleur : Arrays.asList("claire", "foncée")) {
-                    for (String forme : Arrays.asList("ronde", "carrée")) {
-                        PI_dispo.add(new Piece(haute, couleur, forme));
-                    }
-                }
-            }
-        } else if (gettaille() == 4) {
-            for (boolean haute : Arrays.asList(true, false)) {
-                for (String couleur : Arrays.asList("claire", "foncée")) {
-                    for (String forme : Arrays.asList("ronde", "carrée")) {
-                        for (String consistance : Arrays.asList("pleine", "creuse")) {
-                            PI_dispo.add(new Piece(haute, couleur, forme, consistance));
-                        }
-                    }
-                }
-            }
-        } else {
-            for (boolean haute : Arrays.asList(true, false)) {
-                for (String couleur : Arrays.asList("claire", "foncée")) {
-                    for (String forme : Arrays.asList("ronde", "carrée")) {
-                        for (String consistance : Arrays.asList("pleine", "creuse")) {
-                            for (String matiere : Arrays.asList("bois", "marbre")) {
-                                PI_dispo.add(new Piece(haute, couleur, forme, consistance, matiere));
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    return PI_dispo;
     }
     
     /*
@@ -279,242 +366,49 @@ public class Plateau {
         return piece;
     }
    */
-    /*
-    public boolean Verif_alignements(int taille, Piece[][] plateau, Piece piece){
+}
+/*
+    USINE À GAZ
+    
+    public List Banque() {
 
-        // List<Integer> cpt = new ArrayList<>();
-        int cpt = 1;
+        System.out.println("Vous avez choisi un plateau de taille " + gettaille() + "par" + gettaille() + "\n"
+                + "Voici donc l'ensemble des pièces disponibles : ");
 
-        // Verification des lignes
-        for (int i = 0; i < taille;) {
-            for (int j = 0; j < taille - 1; j++) {
-                if (plateau[i][j].gethauteur() == plateau[i][j + 1].gethauteur()) {
-                    cpt += 1;
-                } else {
-                    cpt = 1; // On réinitialise le compteur pour regarder les autres caractéristiques
-                }
-                if (plateau[i][j].getcolor().equals(plateau[i][j + 1].getcolor())) {
-                    cpt += 1;
-                } else {
-                    cpt = 1;
-                }
-                if (plateau[i][j].getforme().equals(plateau[i][j + 1].getforme())) {
-                    cpt += 1;
-                } else { 
-                    cpt = 1;
-                }
-                if (plateau[i][j].getconsistance().equals(plateau[i][j + 1].getconsistance())) {
-                    cpt += 1;
-                } else {
-                    cpt = 1;
-                }
-                if (plateau[i][j].getMadeOf().equals(plateau[i][j + 1].getMadeOf())) {
-                    cpt += 1;
-                } else {
-                    cpt = 1;
+        Piece piece;
+        List<Piece> PI_dispo = new ArrayList<>();
+
+        if (gettaille() == 3) {
+            for (boolean haute : Arrays.asList(true, false)) {
+                for (String couleur : Arrays.asList("claire", "foncée")) {
+                    for (String forme : Arrays.asList("ronde", "carrée")) {
+                        PI_dispo.add(new Piece(haute, couleur, forme));
+                    }
                 }
             }
-            i++;
-        }
-*/
-    /*
-        //Vérification des colonnes
-        for (int a = 0; a < taille - 1; a++) {
-            for (int b = 0; b < taille;) {
-
-                if (plateau[a][b].gethauteur() == plateau[a + 1][b].gethauteur()) {
-                    cpt += 1;
-                } else {
-                    cpt = 1;
+        } else if (gettaille() == 4) {
+            for (boolean haute : Arrays.asList(true, false)) {
+                for (String couleur : Arrays.asList("claire", "foncée")) {
+                    for (String forme : Arrays.asList("ronde", "carrée")) {
+                        for (String consistance : Arrays.asList("pleine", "creuse")) {
+                            PI_dispo.add(new Piece(haute, couleur, forme, consistance));
+                        }
+                    }
                 }
-                if (plateau[a][b].getcolor().equals(plateau[a + 1][b].getcolor())) {
-                    cpt += 1;
-                } else {
-                    cpt = 1;
-                }
-                if (plateau[a][b].getforme().equals(plateau[a + 1][b].getforme())) {
-                    cpt += 1;
-                } else {
-                    cpt = 1;
-                }
-                if (plateau[a][b].getconsistance().equals(plateau[a + 1][b].getconsistance())) {
-                    cpt += 1;
-                } else {
-                    cpt = 1;
-                }
-                if (plateau[a][b].getMadeOf().equals(plateau[a + 1][b].getMadeOf())) {
-                    cpt += 1;
-                } else {
-                    cpt = 1;
-                }
-                b++;
             }
-        }
-*/
-    /*
-        //Vérification sur la diagonale Haut gaucheB → as droite
-        for (int p = 0; p < taille - 2; p++) {
-            for (int q = 0; q < taille - 2; q++) {
-                if (plateau[p][q].gethauteur() == plateau[p + 1][q + 1].gethauteur()) {
-                    cpt += 1;
-                } else {
-                    cpt = 1;
-                }
-                if (plateau[p][q].getcolor().equals(plateau[p + 1][q + 1].getcolor())) {
-                    cpt += 1;
-                } else {
-                    cpt = 1;
-                }
-                if (plateau[p][q].getforme().equals(plateau[p + 1][q + 1].getforme())) {
-                    cpt += 1;
-                } else {
-                    cpt = 1;
-                }
-                if (plateau[p][q].getconsistance().equals(plateau[p + 1][q + 1].getconsistance())) {
-                    cpt += 1;
-                } else {
-                    cpt = 1;
-                }
-                if (plateau[p][q].getMadeOf().equals(plateau[p + 1][q + 1].getMadeOf())) {
-                    cpt += 1;
-                } else {
-                    cpt = 1;
+        } else {
+            for (boolean haute : Arrays.asList(true, false)) {
+                for (String couleur : Arrays.asList("claire", "foncée")) {
+                    for (String forme : Arrays.asList("ronde", "carrée")) {
+                        for (String consistance : Arrays.asList("pleine", "creuse")) {
+                            for (String matiere : Arrays.asList("bois", "marbre")) {
+                                PI_dispo.add(new Piece(haute, couleur, forme, consistance, matiere));
+                            }
+                        }
+                    }
                 }
             }
         }
-*/
-    /*
-        //Verification sur la diagonale Bas gauche → Haut droit
-        for (int m = taille - 1; m >= 0; m--) {
-            for (int n = 0; n < taille; n++) {
-
-                if (plateau[m][n].gethauteur() == plateau[m - 1][n + 1].gethauteur()) {
-                    cpt += 1;
-                } else {
-                    cpt = 1;
-                }
-                if (plateau[m][n].getcolor().equals(plateau[m - 1][n + 1].getcolor())) {
-                    cpt += 1;
-                } else {
-                    cpt = 1;
-                }
-                if (plateau[m][n].getforme().equals(plateau[m - 1][n + 1].getforme())) {
-                    cpt += 1;
-                } else {
-                    cpt = 1;
-                }
-                if (plateau[m][n].getconsistance().equals(plateau[m - 1][n + 1].getconsistance())) {
-                    cpt += 1;
-                } else {
-                    cpt = 1;
-                }
-                if (plateau[m][n].getMadeOf().equals(plateau[m - 1][n + 1].getMadeOf())) {
-                    cpt += 1;
-                } else {
-                    cpt = 1;
-                }
-            }
-        }
-*/
-    /*
-        // Vérifications des "L" Grille 3*3
-        
-        // Vérification des "carrés" Grille 4*4
-        for (int r = 0; r < 2;) {
-            for (int s = 0; s < 2;) {
-                if (plateau[r][s].gethauteur() == plateau[r][s + 1].gethauteur()) {
-                    cpt += 1;
-                    r++;
-                    if (plateau[r - 1][s].gethauteur() == plateau[r][s].gethauteur()) {
-                        cpt += 1;
-                        s++;
-                        if (plateau[r - 1][s - 1].gethauteur() == plateau[r][s].gethauteur()) {
-                            cpt += 1;
-                        } else {
-                            cpt = 1;
-                        }
-                    } else {
-                        cpt = 1;
-                    }
-                } else {
-                    cpt = 1;
-                }
-                if (plateau[r][s].getcolor().equals(plateau[r][s + 1].getcolor())) {
-                    cpt += 1;
-                    r++;
-                    if (plateau[r - 1][s].getcolor().equals(plateau[r][s].getcolor())) {
-                        cpt += 1;
-                        s++;
-                        if (plateau[r - 1][s - 1].getcolor().equals(plateau[r][s].getcolor())) {
-                            cpt += 1;
-                        } else {
-                            cpt = 1;
-                        }
-                    } else {
-                        cpt = 1;
-                    }
-                } else {
-                    cpt = 1;
-                }
-                if (plateau[r][s].getforme().equals(plateau[r][s + 1].getforme())) {
-                    cpt += 1;
-                    r++;
-                    if (plateau[r - 1][s].getforme().equals(plateau[r][s].getforme())) {
-                        cpt += 1;
-                        s++;
-                        if (plateau[r - 1][s - 1].getforme().equals(plateau[r][s].getforme())) {
-                            cpt += 1;
-                        } else {
-                            cpt = 1;
-                        }
-                    } else {
-                        cpt = 1;
-                    }
-                } else {
-                    cpt = 1;
-                }
-                if (plateau[r][s].getconsistance().equals(plateau[r][s + 1].getconsistance())) {
-                    cpt += 1;
-                    r++;
-                    if (plateau[r - 1][s].getconsistance().equals(plateau[r][s].getconsistance())) {
-                        cpt += 1;
-                        s++;
-                        if (plateau[r - 1][s - 1].getconsistance().equals(plateau[r][s].getconsistance())) {
-                            cpt += 1;
-                        } else {
-                            cpt = 1;
-                        }
-                    } else {
-                        cpt = 1;
-                    }
-                } else {
-                    cpt = 1;
-                }
-                if (plateau[r][s].getMadeOf().equals(plateau[r][s + 1].getMadeOf())) {
-                    cpt += 1;
-                    r++;
-                    if (plateau[r - 1][s].getMadeOf().equals(plateau[r][s].getMadeOf())) {
-                        cpt += 1;
-                        s++;
-                        if (plateau[r - 1][s - 1].getMadeOf().equals(plateau[r][s].getMadeOf())) {
-                            cpt += 1;
-                        } else {
-                            cpt = 1;
-                        }
-                    } else {
-                        cpt = 1;
-                    }
-                } else {
-                    cpt = 1;
-                }
-                s++;
-            }
-            r++;
-        }
-
-        // Vérifications pour grille 5*5
-        
-        return cpt >= taille;
+    return PI_dispo;
     }
     */
-}

@@ -13,7 +13,6 @@ public class QUARTO {
     public static void main(String[] args) throws IOException {
         
         /*
-        
         Class Main : 
         Appeler les méthodes pour vérifier si ça marche. 
         
@@ -83,7 +82,7 @@ public class QUARTO {
         
         Plateau plateau = new Plateau(3);
         
-        plateau.Sauvegarde(J1.getpseudo(), J2.getpseudo(),plateau.getPlateau());
+        plateau.Sauvegarde(J1.getpseudo(), J2.getpseudo(),plateau.getplateau());
         
     }
 }
