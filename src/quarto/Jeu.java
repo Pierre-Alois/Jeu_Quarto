@@ -9,7 +9,7 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 
-public class Jeu {
+public class Jeu{
     
     /*
     Méthode permettant le tirage au sort d'un joueur.
@@ -55,12 +55,7 @@ public class Jeu {
     */
     Plateau plateau = new Plateau(taille_Plateau());
     
-    public Piece[][] Placer_Piece(int taille){
-        
-        Piece[][] plateau = new Piece[taille][taille];
-        
-        return plateau;
-    }
+    
     
     //Méthode permettant la reprise d'une partie précédement sauvegardée. 
     public void Rependre_partie(){

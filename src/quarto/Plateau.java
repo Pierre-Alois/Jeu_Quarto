@@ -33,18 +33,18 @@ public class Plateau {
             nb = nb*2;
         }
         for(int t=0;t<nb;t++){
-            String binary = Integer.toBinaryString(t);
+            String binaire = Integer.toBinaryString(t);
 
-            int s = binary.length();
+            int s = binaire.length();
 
             String z = "";
 
             for(int i=0;i<5-s;i++){
                 z += "0";
             }
-            binary = z + binary;
+            binaire = z + binaire;
             
-            liste.add(new Piece(binary));
+            liste.add(new Piece(binaire));
         }
         if(taille==3){
             liste.add(new Piece("xxxxx"));
@@ -283,6 +283,65 @@ public class Plateau {
     }
     
     // FIN VÉRIF
+    
+    
+    
+    // Méthode pour choisir son PION.
+    public Piece choixPiece(){
+        String c, f, t, h = "", s = "", z = "";
+        while(true){
+            System.out.println("Quelle couleur ?");
+            //Scanner
+            c = "?";
+            System.out.println("Quelle forme ?");
+            //Scanner
+            f = "?";
+            System.out.println("Quel intérieur ?");
+            //Scanner
+            t = "?";
+            if(taille>=4){
+                System.out.println("Quelle taille ?");
+                //Scanner
+                h = "?";
+                if(taille>4){
+                    System.out.println("Quelle coupe ?");
+                    //Scanner
+                    s = "?";
+                }
+            }
+            if(taille==3){
+                z += "00";
+            }else if(taille==4){
+                z += "0";
+            }
+            if(liste.contains(z + s + h + t + f + c)){
+                break;
+            }
+            System.out.println("Cette pièce n'est pas disponible.");
+        }
+        
+        return ;
+    }
+    
+    // Méthode pour poser son PION.
+    public void position(Piece pion){
+        int x, y;
+        while(true){
+            System.out.println("Veuillez choisir la case où poser votre pion.");
+            //Scanner
+            String coo = "??";
+            /*
+            Valeur à rentrer manuellement, le scanner n'est pas utile pour l'instant
+            puisque la case sera choisie plus tard grâce à l'interface graphique.
+            */
+            x = coo.charAt(0);
+            y = coo.charAt(1);
+            if(caseLibre(x, y)){
+                break;
+            }
+        }
+        plateau[x-1][y-1] = pion;
+    }
     
     // Méthode vérifiant si une case du plateau n'est pas occupée.
     public boolean caseLibre(int x, int y) {
