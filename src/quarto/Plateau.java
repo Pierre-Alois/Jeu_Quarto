@@ -195,32 +195,28 @@ public class Plateau {
     public boolean carre(int x, int y){
         for(int i=3 ; i>=0 ; i--){
             char cara = plateau[x][y].getISBN().charAt(i);
-            boolean bas, droite, haut, gauche;
+            boolean bas = false, droite = false, haut = false, gauche = false;
     // Définition de bas, droite, haut et gauche correspondant aux cases autour du pion posé.
             if(x != 3){
                 if(plateau[x+1][y].getISBN().charAt(i) == cara){
                     bas = true;
                 }
             }
-            bas = false;
             if(y != 3){
                 if(plateau[x][y+1].getISBN().charAt(i) == cara){
                     droite = true;
                 }
             }
-            droite = false;
             if(x != 0){
                 if(plateau[x-1][y].getISBN().charAt(i) == cara){
                     haut = true;
                 }
             }
-            haut = false;
             if(y != 0){
                 if(plateau[x][y-1].getISBN().charAt(i) == cara){
                     gauche = true;
                 }
             }
-            gauche = false;
     // Vérification des carrés en fonction de bas, droite, haut et gauche.
             if(bas && droite){
                 if(plateau[x+1][y+1].getISBN().charAt(i) == cara){
@@ -294,8 +290,7 @@ public class Plateau {
     }
     
     //Méthode de sauvegarde. Gestion d'erreur à ajouter ! 
-    public void Sauvegarde(String pseudo_J1,String pseudo_J2, 
-                           Piece [][] plateau) throws IOException{
+    public void sauvegarde(String pseudo_J1,String pseudo_J2, Piece [][] plateau) throws IOException{
     
         try{
             FileWriter writer = new FileWriter("sauvegarde_quarto.txt");

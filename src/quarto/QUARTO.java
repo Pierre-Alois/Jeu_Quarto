@@ -69,7 +69,7 @@ public class QUARTO {
     
         //Tests
         
-        Joueur J1 = new Joueur("Didier");
+        /*Joueur J1 = new Joueur("Didier");
         Joueur J2 = new Joueur("PA");
         
         ArrayList<Piece> liste_P = new ArrayList<>();
@@ -82,7 +82,8 @@ public class QUARTO {
         
         Plateau plateau = new Plateau(3);
         
-        plateau.Sauvegarde(J1.getpseudo(), J2.getpseudo(),plateau.getplateau());
+        plateau.sauvegarde(J1.getpseudo(), J2.getpseudo(),plateau.getplateau());*/
+        
         
     }
 }
