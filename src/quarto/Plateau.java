@@ -290,14 +290,11 @@ public class Plateau {
     }
     
     //Méthode de sauvegarde. Gestion d'erreur à ajouter ! 
-    public void sauvegarde(String pseudo_J1,String pseudo_J2, Piece [][] plateau) throws IOException{
+    public void sauvegarde(String pseudo_J1,String pseudo_J2) throws IOException{
     
         try{
-            FileWriter writer = new FileWriter("sauvegarde_quarto.txt");
-        
         FileWriter fich = new FileWriter(FichierQuarto);
-        fich.write(pseudo_J1 + System.lineSeparator()
-              + pseudo_J2 + System.lineSeparator());
+        fich.write(pseudo_J1 + System.lineSeparator() + pseudo_J2 + System.lineSeparator());
         fich.write(taille + System.lineSeparator());
         
         for(int y = 0;y<taille;y++){
@@ -309,7 +306,8 @@ public class Plateau {
                     fich.write("null");
                 }
             }
-        }
+        } 
+        fich.close();
         } catch(IOException ex){
             System.out.println("Le fichier n'a pas pu être chargé");
         }
