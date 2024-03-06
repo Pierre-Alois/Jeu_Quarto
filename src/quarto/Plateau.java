@@ -4,10 +4,12 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
 */
 package quarto;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Plateau {
 
@@ -348,7 +350,9 @@ public class Plateau {
         return plateau[x][y] == null;
     }
     
-    //Méthode de sauvegarde. Gestion d'erreur à ajouter ! 
+    //Méthode de sauvegarde permettant la reprise d'une partie précédement sauvegardée. 
+    //Gestion d'erreur à ajouter ! 
+    
     public void sauvegarde(String pseudo_J1,String pseudo_J2) throws IOException{
     
         try{
@@ -356,21 +360,61 @@ public class Plateau {
         fich.write(pseudo_J1 + System.lineSeparator() + pseudo_J2 + System.lineSeparator());
         fich.write(taille + System.lineSeparator());
         
-        for(int y = 0;y<taille;y++){
-            for(int x = 0; x<taille;x++){
-                if(!caseLibre(y,x)){
-                    fich.write(plateau[y][x].getISBN());   
+        for(int x = 0;x<taille;x++){
+            for(int y = 0; y<taille;y++){
+                if(!caseLibre(x,y)){
+                    fich.write(plateau[x][y].getISBN());   
                 }
                 else{
                     fich.write("null");
                 }
             }
         } 
-        fich.close();
+        fich.close();              // ferme le fichier
         } catch(IOException ex){
             System.out.println("Le fichier n'a pas pu être chargé");
         }
     }
+    
+
+    //Méthode permettant de recommencer une nouvelle partie à zéro. 
+    public void Recommencer_Partie(){   
+    }
+    
+    public void depuisFichierCommandes() throws FileNotFoundException, IOException{
+        FileReader fileC = new FileReader(FichierQuarto);        // ouvrir le fichier en lecture
+        BufferedReader br = new BufferedReader(fileC);
+        String numero = br.readLine();                                 // lire une ligne du fichier
+        /*while(numero != null){
+            String donnees = br.readLine();
+            String[] info = donnees.split(" : ");
+            String email = info[0];
+            LocalDate emission = dateEcrite(info[1]);
+            LocalDate livraison = dateEcrite(info[2]);
+            float total = Float.valueOf(info[3]);
+            String nombreLignes = br.readLine();
+            int nbL = Integer.valueOf(nombreLignes);
+            LigneCommande[] lignes = new LigneCommande[nbL];
+            for (int i=0;i<nbL;i++){
+                String ligne = br.readLine();
+                String[] bon = ligne.split(" : ");
+                String ref = bon[0];
+                int nbExpl = Integer.valueOf(bon[1]);
+                Equipement eq = recherche(ref);
+                LigneCommande lc = new LigneCommande(nbExpl, eq);
+                lignes[i] = lc;
+            }
+            Commande com = new Commande(numero, email, emission, livraison, lignes);
+            lstCmd[nbCmd] = com;
+            nbCmd++;
+            numero = br.readLine();
+        }
+        classement();                   // On met les éléments dans l'ordre.
+        fich.close();                   // fermer le fichier
+    }
+
+    */
+    
     
     /*
       Méthode permettant au joueur de choisir la piece qu'il souhaite poser. 

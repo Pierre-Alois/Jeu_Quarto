@@ -22,17 +22,16 @@ public class Jeu{
         Random rd = new Random();
         int choix_PL  = rd.nextInt(1,3);       
         if(choix_PL == 1){           
-            joueur1 = joueur; 
+            joueur = joueur1; 
             return joueur1;
         }
         else;
-            joueur2 = joueur;
+            joueur = joueur2;
             return joueur2;   
     }
 
     /*
-    Méthode permettant de choisir la taille du plateau (3×3,4×4,5×5) 
-    et de le créer.
+    Méthode permettant de choisir la taille du plateau (3×3,4×4,5×5)et de le créer.
     */
     public int taille_Plateau(){
         Scanner pl = new Scanner(System.in);
@@ -55,16 +54,13 @@ public class Jeu{
     */
     Plateau plateau = new Plateau(taille_Plateau());
     
-    
-    
-    //Méthode permettant la reprise d'une partie précédement sauvegardée. 
-    public void Rependre_partie(){
+    public Piece[][] Placer_Piece(int taille){
+        
+        Piece[][] plateau = new Piece[taille][taille];
+        
+        return plateau;
     }
-    
-    //Méthode permettant de recommencer une nouvelle partie à zéro. 
-    public void Recommencer_Partie(){   
-    }
-    
+        
     //Méthode permettant de jouer une partie. Boucle principale
     public void jouer(String joueur1,String joueur2, Plateau plateau){
     
