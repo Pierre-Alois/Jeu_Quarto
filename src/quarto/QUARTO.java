@@ -54,36 +54,38 @@ public class QUARTO {
         
         
         }
-        */      
-          
+        */
         
-        //System.out.println("Hello world");
+        // Test
         
-        //public void jouer(String joueur1,String joueur2){
-    
-        //On demande les pseudos des 2 joueurs
-        /*String joueur1 = JOptionPane.showInputDialog(" Joueur 1, write your pseudo : ");
-        JOptionPane.showMessageDialog(null, "Vous vous appelez donc : " + joueur1);
-        String joueur2 = JOptionPane.showInputDialog(" Joueur 2, write your pseudo : ");
-        JOptionPane.showMessageDialog(null, "Vous vous appelez donc : " + joueur2);*/
-    
-        //Tests
+        Plateau p = new Plateau(5);
+        boolean fin;
+        int x;
+        int y;
         
-        /*Joueur J1 = new Joueur("Didier");
-        Joueur J2 = new Joueur("PA");
-        
-        ArrayList<Piece> liste_P = new ArrayList<>();
-        liste_P.add(new Piece("000"));
-        liste_P.add(new Piece("11111"));
-        liste_P.add(new Piece("1001"));
-        
-        Piece P_J1 = J1.Banque(liste_P);
-        Piece P_J2 = J2.Banque(liste_P);
-        
-        Plateau plateau = new Plateau(3);
-        
-        plateau.sauvegarde(J1.getpseudo(), J2.getpseudo(),plateau.getplateau());*/
-        
-        
+        while(true){
+            String coo = p.position(p.choixPiece());
+            
+            x = coo.charAt(0);
+            y = coo.charAt(1);
+            
+            fin = p.verifFig(x, y);
+            if(fin){
+                break;
+            }
+            if(x==y){
+                p.diag315();
+            }
+            if(fin){
+                break;
+            }
+            if(4-x == y){
+                p.diag45();
+            }
+            if(fin){
+                break;
+            }
+        }
+        System.out.println("FINIE");
     }
 }

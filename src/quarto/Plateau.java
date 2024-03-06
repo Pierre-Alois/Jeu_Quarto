@@ -11,6 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.ListIterator;
+import java.util.Scanner;
 
 public class Plateau {
 
@@ -52,6 +53,8 @@ public class Plateau {
         if(taille==3){
             liste.add(new Piece("xxxxx"));
         }
+        this.liste = new ArrayList<Piece>();
+        this.liste.addAll(liste);
     }
     
     //Getters
@@ -83,9 +86,10 @@ public class Plateau {
     public boolean diag45(){
         for(int i=taille-1 ; i>=0 ; i--){
             int cpt = 0;
-            char cara = plateau[taille-1][0].getISBN().charAt(i);
+            String cara = "" + plateau[taille-1][0].getISBN().charAt(i);
             for(int j=1;j<taille;j++){
-                if(plateau[taille-1-j][j].getISBN().charAt(i)!= cara){
+                String test = "" + plateau[taille-1-j][j].getISBN().charAt(i);
+                if(!test.equals(cara)){
                     break;
                 }
                 cpt++;
@@ -103,7 +107,8 @@ public class Plateau {
             int cpt = 1;
             char cara = plateau[0][0].getISBN().charAt(i);
             for(int j=1;j<taille;j++){
-                if(plateau[j][j].getISBN().charAt(i)!= cara){
+                String test = "" + plateau[j][j].getISBN().charAt(i);
+                if(!test.equals(cara)){
                     break;
                 }
                 cpt++;
@@ -122,7 +127,7 @@ public class Plateau {
     public boolean verifFig(int x, int y){
         for(int i=taille-1 ; i>=0 ; i--){
             int cpt = 1;
-            char cara = plateau[x][y].getISBN().charAt(i);
+            String cara = "" + plateau[x][y].getISBN().charAt(i);
             String coo = convert(x, y);
             ArrayList<String> annuaire = new ArrayList<String>();
             annuaire.add(coo);
@@ -140,7 +145,7 @@ public class Plateau {
     Méthode récursive qui vérifie si une piéce l adjacente à la précédente
     possède la caractéristique de référence.
     */
-    public int boucle(ArrayList annuaire, int x, int y, char cara, int n){
+    public int boucle(ArrayList annuaire, int x, int y, String cara, int n){
         int cpt = 0;
         if(x != taille-1){
             if(ajout(annuaire, x+1, y, cara, n)){
@@ -169,8 +174,9 @@ public class Plateau {
     Méthode ajoutant les coordonnées de la case étudiée dans la liste
     si un pion y est présent avec la même carctéristique que le premier.
     */
-    public boolean ajout(ArrayList annuaire, int x, int y, char cara, int n){
-        if(plateau[x][y].getISBN().charAt(n) == cara){
+    public boolean ajout(ArrayList annuaire, int x, int y, String cara, int n){
+        String test = "" + plateau[x][y].getISBN().charAt(n);
+        if(test.equals(cara)){
             String coo = convert(x, y);
             if(!annuaire.contains(coo)){
             annuaire.add(coo);
@@ -197,47 +203,55 @@ public class Plateau {
     */
     public boolean carre(int x, int y){
         for(int i=3 ; i>=0 ; i--){
-            char cara = plateau[x][y].getISBN().charAt(i);
+            String cara = "" + plateau[x][y].getISBN().charAt(i);
             boolean bas = false, droite = false, haut = false, gauche = false;
     // Définition de bas, droite, haut et gauche correspondant aux cases autour du pion posé.
             if(x != 3){
-                if(plateau[x+1][y].getISBN().charAt(i) == cara){
+                String test = "" + plateau[x+1][y].getISBN().charAt(i);
+                if(test.equals(cara)){
                     bas = true;
                 }
             }
             if(y != 3){
-                if(plateau[x][y+1].getISBN().charAt(i) == cara){
+                String test = "" + plateau[x][y+1].getISBN().charAt(i);
+                if(test.equals(cara)){
                     droite = true;
                 }
             }
             if(x != 0){
-                if(plateau[x-1][y].getISBN().charAt(i) == cara){
+                String test = "" + plateau[x-1][y].getISBN().charAt(i);
+                if(test.equals(cara)){
                     haut = true;
                 }
             }
             if(y != 0){
-                if(plateau[x][y-1].getISBN().charAt(i) == cara){
+                String test = "" + plateau[x][y-1].getISBN().charAt(i);
+                if(test.equals(cara)){
                     gauche = true;
                 }
             }
     // Vérification des carrés en fonction de bas, droite, haut et gauche.
             if(bas && droite){
-                if(plateau[x+1][y+1].getISBN().charAt(i) == cara){
+                String test = "" + plateau[x+1][y+1].getISBN().charAt(i);
+                if(test.equals(cara)){
                     return true;
                 }
             }
             if(droite && haut){
-                if(plateau[x-1][y+1].getISBN().charAt(i) == cara){
+                String test = "" + plateau[x-1][y+1].getISBN().charAt(i);
+                if(test.equals(cara)){
                     return true;
                 }
             }
             if(haut && gauche){
-                if(plateau[x-1][y-1].getISBN().charAt(i) == cara){
+                String test = "" + plateau[x-1][y-1].getISBN().charAt(i);
+                if(test.equals(cara)){
                     return true;
                 }
             }
             if(gauche && bas){
-                if(plateau[x+1][y-1].getISBN().charAt(i) == cara){
+                String test = "" + plateau[x+1][y-1].getISBN().charAt(i);
+                if(test.equals(cara)){
                     return true;
                 }
             }
@@ -251,9 +265,10 @@ public class Plateau {
     public boolean horizontal(int x){
         for(int i=3 ; i>=0 ; i--){
             int cpt = 1;
-            char cara = plateau[x][0].getISBN().charAt(i);
+            String cara = "" + plateau[x][0].getISBN().charAt(i);
             for(int j=1;j<4;j++){
-                if(plateau[x][j].getISBN().charAt(i)!= cara){
+                String test = "" + plateau[x][j].getISBN().charAt(i);
+                if(!test.equals(cara)){
                     break;
                 }
                 cpt++;
@@ -271,9 +286,10 @@ public class Plateau {
     public boolean vertical(int y){
         for(int i=3 ; i>=0 ; i--){
             int cpt = 1;
-            char cara = plateau[0][y].getISBN().charAt(i);
+            String cara = "" + plateau[0][y].getISBN().charAt(i);
             for(int j=1;j<4;j++){
-                if(plateau[j][y].getISBN().charAt(i)!= cara){
+                String test = "" + plateau[j][y].getISBN().charAt(i);
+                if(!test.equals(cara)){
                     break;
                 }
                 cpt++;
@@ -293,24 +309,25 @@ public class Plateau {
     public Piece choixPiece(){
         String c, f, t, h = "", s = "", z = "";
         String str = "";
+        boolean stop = false;
         while(true){
             System.out.println("Quelle couleur ?");
             //Scanner
-            c = "?";
+            c = scan();
             System.out.println("Quelle forme ?");
             //Scanner
-            f = "?";
+            f = scan();
             System.out.println("Quel intérieur ?");
             //Scanner
-            t = "?";
+            t = scan();
             if(taille>=4){
                 System.out.println("Quelle taille ?");
                 //Scanner
-                h = "?";
+                h = scan();
                 if(taille>4){
                     System.out.println("Quelle coupe ?");
                     //Scanner
-                    s = "?";
+                    s = scan();
                 }
             }
             if(taille==3){
@@ -319,47 +336,63 @@ public class Plateau {
                 z += "0";
             }
             str = z + s + h + t + f + c;
-            if(liste.contains(str)){
+            ListIterator<Piece> ite = liste.listIterator();
+            while(ite.hasNext()){
+                if(ite.next().getISBN().equals(str)){
+                    ite.remove();
+                    stop = true;
+                    break;
+                }
+            }
+            if(stop){
                 break;
             }
             System.out.println("Cette pièce n'est pas disponible.");
         }
-        
         Piece pion = new Piece(str);
-        
-        ListIterator<Piece> ite = liste.listIterator();
-        while(ite.hasNext()){
-            if(ite.next().getISBN().equals(str)){
-                ite.remove();
-            }
-        }
         return pion;
     }
     
     // Méthode pour poser son PION.
-    public void position(Piece pion){
+    public String position(Piece pion){
         int x, y;
+        String coo, u, v;
         while(true){
             System.out.println("Veuillez choisir la case où poser votre pion.");
             //Scanner
-            String coo = "??";
+            coo = scan();
             /*
             Valeur à rentrer manuellement, le scanner n'est pas utile pour l'instant
             puisque la case sera choisie plus tard grâce à l'interface graphique.
             */
-            x = coo.charAt(0);
-            y = coo.charAt(1);
+            u = "" + coo.charAt(0);
+            v = "" + coo.charAt(1);
+            System.out.println(v);
+            x = Integer.valueOf(u);
+            y = Integer.valueOf(v);
+            System.out.println(y);
             if(caseLibre(x, y)){
                 break;
             }
         }
         plateau[x-1][y-1] = pion;
+        x--;
+        y--;
+        coo = "" + x + y;
+        return coo;
     }
     
     // Méthode vérifiant si une case du plateau n'est pas occupée.
     public boolean caseLibre(int x, int y) {
-        return plateau[x][y] == null;
+        return plateau[x-1][y-1] == null;
     }
+    
+    //Scanner
+    public String scan(){
+        Scanner sc = new Scanner(System.in);
+        return sc.nextLine();
+    }
+    
     
     //Méthode de sauvegarde permettant la reprise d'une partie précédement sauvegardée. 
     //Gestion d'erreur à ajouter ! 
@@ -440,37 +473,6 @@ public class Plateau {
             ex.printStackTrace();           
         }
     }
-    
-    // Méthode pour charger une partie depuis un fichier
-
-    static EtatPartie chargerPartie(String cheminFichier) {
-
-        EtatPartie etatPartie = new EtatPartie();
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(cheminFichier))) {
-
-            // Lisez les informations depuis le fichier et mettez à jour l'état de la partie
-
-            etatPartie.score = Integer.parseInt(reader.readLine());
-
-            etatPartie.nomJoueur = reader.readLine();
-
-            // Ajoutez d'autres lignes pour lire d'autres informations si nécessaire
-
-            System.out.println("Partie chargée avec succès !");
-
-        } catch (IOException e) {
-
-            e.printStackTrace();
-
-            System.err.println("Erreur lors du chargement de la partie : " + e.getMessage());
-
-        }
-
-        return etatPartie;
-    }
-
-    
     
     
     /*
