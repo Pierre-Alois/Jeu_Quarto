@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 public class Plateau {
 
@@ -291,6 +292,7 @@ public class Plateau {
     // Méthode pour choisir son PION.
     public Piece choixPiece(){
         String c, f, t, h = "", s = "", z = "";
+        String str = "";
         while(true){
             System.out.println("Quelle couleur ?");
             //Scanner
@@ -316,13 +318,22 @@ public class Plateau {
             }else if(taille==4){
                 z += "0";
             }
-            if(liste.contains(z + s + h + t + f + c)){
+            str = z + s + h + t + f + c;
+            if(liste.contains(str)){
                 break;
             }
             System.out.println("Cette pièce n'est pas disponible.");
         }
         
-        return ;
+        Piece pion = new Piece(str);
+        
+        ListIterator<Piece> ite = liste.listIterator();
+        while(ite.hasNext()){
+            if(ite.next().getISBN().equals(str)){
+                ite.remove();
+            }
+        }
+        return pion;
     }
     
     // Méthode pour poser son PION.
@@ -411,9 +422,10 @@ public class Plateau {
         }
         classement();                   // On met les éléments dans l'ordre.
         fich.close();                   // fermer le fichier
+        */
     }
 
-    */
+    
     
     
     /*
