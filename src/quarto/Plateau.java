@@ -422,7 +422,52 @@ public class Plateau {
         }
         classement();                   // On met les éléments dans l'ordre.
         fich.close();                   // fermer le fichier
-        */
+        */   
+    }
+    public void charger() throws FileNotFoundException, IOException{
+        
+        String ligne ;                           // Lire une ligne du fichier
+        
+        try (BufferedReader br = new BufferedReader(new FileReader(FichierQuarto)))
+        {
+            while((ligne = br.readLine()) != null){
+                System.out.println(ligne);        // On affiche la ligne
+                ligne = br.readLine();              // On lit la ligne suivante
+            }
+        br.close();
+            
+        } catch(IOException ex){
+            ex.printStackTrace();           
+        }
+    }
+    
+    // Méthode pour charger une partie depuis un fichier
+
+    static EtatPartie chargerPartie(String cheminFichier) {
+
+        EtatPartie etatPartie = new EtatPartie();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(cheminFichier))) {
+
+            // Lisez les informations depuis le fichier et mettez à jour l'état de la partie
+
+            etatPartie.score = Integer.parseInt(reader.readLine());
+
+            etatPartie.nomJoueur = reader.readLine();
+
+            // Ajoutez d'autres lignes pour lire d'autres informations si nécessaire
+
+            System.out.println("Partie chargée avec succès !");
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+            System.err.println("Erreur lors du chargement de la partie : " + e.getMessage());
+
+        }
+
+        return etatPartie;
     }
 
     

@@ -43,6 +43,6 @@ public class Joueur {
             choix_PI = sc.nextInt();
         }
       
-    return  liste_P.get(choix_PI-1);
+    return  liste_P.get(choix_PI);
     }
 }
