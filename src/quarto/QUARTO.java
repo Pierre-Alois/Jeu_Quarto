@@ -57,32 +57,26 @@ public class QUARTO {
         */
         
         // Test
-        
-        Plateau p = new Plateau(5);
-        boolean fin;
-        int x;
-        int y;
+        int l = 4;
+        Plateau p = new Plateau(l);
+        int x, y;
         
         while(true){
             String coo = p.position(p.choixPiece());
             
-            x = coo.charAt(0);
-            y = coo.charAt(1);
+            x = Integer.valueOf("" + coo.charAt(0));
+            y = Integer.valueOf("" + coo.charAt(1));
             
-            fin = p.verifFig(x, y);
-            if(fin){
+            if(l != 4 && p.verifFig(x, y)){
                 break;
             }
-            if(x==y){
-                p.diag315();
-            }
-            if(fin){
+            if(x==y && p.diag315()){
                 break;
             }
-            if(4-x == y){
-                p.diag45();
+            if(l-1-x == y && p.diag45()){
+                break;
             }
-            if(fin){
+            if(l == 4 && p.carre(x, y)){
                 break;
             }
         }

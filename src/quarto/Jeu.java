@@ -17,7 +17,7 @@ public class Jeu{
     commence. Sinon c'est le joueur 2 
     Le 1er joueur devra ensuite choisir une pièce.
     */
-    public Joueur Choix_Joueur(Joueur joueur, Joueur joueur1, Joueur joueur2){
+    public Joueur choixJoueur(Joueur joueur, Joueur joueur1, Joueur joueur2){
         
         Random rd = new Random();
         int choix_PL  = rd.nextInt(1,3);       
@@ -54,13 +54,6 @@ public class Jeu{
     */
     Plateau plateau = new Plateau(taille_Plateau());
     
-    public Piece[][] Placer_Piece(int taille){
-        
-        Piece[][] plateau = new Piece[taille][taille];
-        
-        return plateau;
-    }
-        
     //Méthode permettant de jouer une partie. Boucle principale
     public void jouer(String joueur1,String joueur2, Plateau plateau){
     
