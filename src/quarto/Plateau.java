@@ -465,6 +465,14 @@ public class Plateau {
         return coo;
     }
     
+    public void afficher(){
+        for(int i=0;i<taille;i++){
+            for(int j=0;j<taille;j++){
+                System.out.print(plateau[i][j] + " | ");
+            }
+            System.out.println("\n");
+        }
+    }
     
     //Méthode de sauvegarde permettant la reprise d'une partie précédement sauvegardée. 
     //Gestion d'erreur à ajouter ! 

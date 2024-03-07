@@ -79,6 +79,13 @@ public class QUARTO {
             if(l == 4 && p.carre(x, y)){
                 break;
             }
+            if(l == 4 && p.vertical(y)){
+                break;
+            }
+            if(l == 4 && p.horizontal(x)){
+                break;
+            }
+            p.afficher();
         }
         System.out.println("FINIE");
     }
