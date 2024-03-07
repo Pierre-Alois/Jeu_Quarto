@@ -28,21 +28,4 @@ public class Joueur {
         return pseudo; 
     }
     
-    public Piece banque(ArrayList<Piece> liste_P){
-        
-        Scanner sc = new Scanner(System.in);
-        
-        //System.out.println("Voici l'ensemble des pieces disponibles : ");
-        for(int i = 0; i<liste_P.size();i++){
-            System.out.println((i+1) + "→ " + liste_P.get(i));
-        }
-        //System.out.println("Choisissez votre pièce par son numéro : ");
-        int choix_PI = sc.nextInt();
-        
-        while(choix_PI<1 || choix_PI>liste_P.size()){
-            choix_PI = sc.nextInt();
-        }
-      
-    return  liste_P.get(choix_PI);
-    }
 }
