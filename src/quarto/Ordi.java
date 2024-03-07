@@ -8,5 +8,6 @@ public class Ordi extends Joueur {
     
     public Ordi(String pseudo) {
         super(pseudo);
+        
     }
 }

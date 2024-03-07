@@ -28,7 +28,7 @@ public class Joueur {
         return pseudo; 
     }
     
-    public Piece Banque(ArrayList<Piece> liste_P){
+    public Piece banque(ArrayList<Piece> liste_P){
         
         Scanner sc = new Scanner(System.in);
         

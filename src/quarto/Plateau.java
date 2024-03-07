@@ -492,55 +492,58 @@ public class Plateau {
         }
     }
     
-    public void depuisFichierCommandes() throws FileNotFoundException, IOException{
-        FileReader fileC = new FileReader(FichierQuarto);        // ouvrir le fichier en lecture
-        BufferedReader br = new BufferedReader(fileC);
-        String numero = br.readLine();                                 // lire une ligne du fichier
-        /*while(numero != null){
-            String donnees = br.readLine();
-            String[] info = donnees.split(" : ");
-            String email = info[0];
-            LocalDate emission = dateEcrite(info[1]);
-            LocalDate livraison = dateEcrite(info[2]);
-            float total = Float.valueOf(info[3]);
-            String nombreLignes = br.readLine();
-            int nbL = Integer.valueOf(nombreLignes);
-            LigneCommande[] lignes = new LigneCommande[nbL];
-            for (int i=0;i<nbL;i++){
-                String ligne = br.readLine();
-                String[] bon = ligne.split(" : ");
-                String ref = bon[0];
-                int nbExpl = Integer.valueOf(bon[1]);
-                Equipement eq = recherche(ref);
-                LigneCommande lc = new LigneCommande(nbExpl, eq);
-                lignes[i] = lc;
-            }
-            Commande com = new Commande(numero, email, emission, livraison, lignes);
-            lstCmd[nbCmd] = com;
-            nbCmd++;
-            numero = br.readLine();
-        }
-        classement();                   // On met les éléments dans l'ordre.
-        fich.close();                   // fermer le fichier
-        */   
-    }
-    public void charger() throws FileNotFoundException, IOException{
+    public Object[][] charger() throws FileNotFoundException, IOException{
         
         String ligne ;                           // Lire une ligne du fichier
-        
+        String choix;
+        Scanner sc = new Scanner(System.in);
+        Object[][] p = new Object[0][8];
         try (BufferedReader br = new BufferedReader(new FileReader(FichierQuarto)))
         {
-            while((ligne = br.readLine()) != null){
+            System.out.println("Une partie a été sauvegardée. "
+                               + "Voulez-vous la reprendre (O/N) ? ");
+            choix = sc.nextLine();
+            while(!choix.equals("O")|| !choix.equals("N")){
+                System.out.println("Une partie a été sauvegardée. "
+           + "Voulez-vous la reprendre (O/N) ? ");
+                choix = sc.nextLine();
+            }
+            switch (choix){
+                
+                case "O" :
+                    while((ligne = br.readLine()) != null){
                 System.out.println(ligne);        // On affiche la ligne
                 ligne = br.readLine();              // On lit la ligne suivante
-            }
-        br.close();
-            
+                }
+                br.close();
+                break;
+                
+                case "N":
+          System.out.println("Vous avez abandonnée votre partie précédente."
+                             + " Voulez-vous recommencer une partie ? (O/N)");
+                choix = sc.nextLine();
+                while(!choix.equals("O")|| !choix.equals("N")){
+                    System.out.println("Vous avez abandonnée votre partie précédente."
+                             + " Voulez-vous recommencer une partie ? (O/N)");
+                    choix = sc.nextLine();   
+                }
+                switch (choix){
+                    
+                    case "O":
+                        // On créer une nouvelle partie
+                        break;
+                    
+                    case "N":
+              System.out.println("A très vite pour de nouvelle aventures :)");
+                        break;       
+                }
+                break;          
+            }   
         } catch(IOException ex){
             ex.printStackTrace();           
         }
-    }
-    
+    return p;   
+    }   
     
     /*
       Méthode permettant au joueur de choisir la piece qu'il souhaite poser. 
