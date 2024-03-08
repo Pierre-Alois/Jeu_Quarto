@@ -1,7 +1,7 @@
 /*
 Projet Java - Jeu Quarto
 BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
-*/
+ */
 package quarto;
 
 import java.io.IOException;
@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 public class QUARTO {
 
     public static void main(String[] args) throws IOException {
-        
+
         /*
         Class Main : 
         Appeler les méthodes pour vérifier si ça marche. 
@@ -54,35 +54,34 @@ public class QUARTO {
         
         
         }
-        */
-        
+         */
         // Test
         int l = 4;
         Plateau p = new Plateau(l);
         int x, y;
-        
-        while(true){
+
+        while (true) {
             String coo = p.position(p.choixPiece());
-            
+
             x = Integer.valueOf("" + coo.charAt(0));
             y = Integer.valueOf("" + coo.charAt(1));
-            
-            if(l != 4 && p.verifFig(x, y)){
+
+            if (l != 4 && p.verifFig(x, y)) {
                 break;
             }
-            if(x==y && p.diag315()){
+            if (x == y && p.diag315()) {
                 break;
             }
-            if(l-1-x == y && p.diag45()){
+            if (l - 1 - x == y && p.diag45()) {
                 break;
             }
-            if(l == 4 && p.carre(x, y)){
+            if (l == 4 && p.carre(x, y)) {
                 break;
             }
-            if(l == 4 && p.vertical(y)){
+            if (l == 4 && p.vertical(y)) {
                 break;
             }
-            if(l == 4 && p.horizontal(x)){
+            if (l == 4 && p.horizontal(x)) {
                 break;
             }
             p.afficher();

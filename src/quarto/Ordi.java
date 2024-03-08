@@ -1,14 +1,14 @@
 /*
 Projet Java - Jeu Quarto
 BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
-*/
+ */
 package quarto;
 
 public class Ordi extends Joueur {
-    
+
     // Attributs
     private final String id;
-    
+
     // Constructeur
     public Ordi(String pseudo) {
         super(pseudo);
@@ -16,7 +16,7 @@ public class Ordi extends Joueur {
             case "Ordi débutant":
                 id = "Y,6c3L=30Fln}k";
                 break;
-            case "Odri expérimenté":
+            case "Ordi expérimenté":
                 id = "c(W}6$eY4sY2l9";
                 break;
             case "Ordi expert":
@@ -27,9 +27,9 @@ public class Ordi extends Joueur {
                 break;
         }
     }
-    
+
     // Getter
-    public String getid(){
+    public String getid() {
         return id;
     }
 }
