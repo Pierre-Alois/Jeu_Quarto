@@ -10,6 +10,7 @@ public class Piece {
     private final String ISBN;   // Pion 11111 → Tranché - Petit - Troué - Rond - Noir
 
     // Pion joker (xxxxx) → Arrondi - Moyen - Taillé - Croix - Violet (pour plateau 3*3 uniquement)
+    
     // Constructeur 
     public Piece(String ISBN) {
         this.ISBN = ISBN;

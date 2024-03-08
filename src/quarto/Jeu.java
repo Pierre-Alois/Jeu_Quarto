@@ -55,14 +55,7 @@ public class Jeu{
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
+   
     public String scan(){
         Scanner sc = new Scanner(System.in);
         return sc.nextLine();
