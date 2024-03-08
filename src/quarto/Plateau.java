@@ -21,7 +21,7 @@ public class Plateau {
     private Piece[][] plateau;
     private ArrayList<Piece> liste;
     
-    private static final String FichierQuarto = "FichierQuarto.txt";
+    
     
     // Constructeur
     public Plateau(int taille){
@@ -58,7 +58,7 @@ public class Plateau {
         this.liste.addAll(liste);
     }
     
-    //Getters
+    // Getters
     public Piece[][] getplateau(){
         return plateau;
     }
@@ -71,7 +71,18 @@ public class Plateau {
         return liste;
     }
             
-    
+    // Setter
+    public void setplateau(int x, int y, String val){
+        ListIterator<Piece> ite = liste.listIterator();
+        while(ite.hasNext()){
+            if(ite.next().getISBN().equals(val)){
+                ite.remove();
+                break;
+            }
+        }
+        Piece pion = new Piece(val);
+        plateau[x][y] = pion;
+    }
     
     // VÉRIF
     
@@ -417,9 +428,13 @@ public class Plateau {
             v = "" + coo.charAt(1);
             x = Integer.valueOf(u);
             y = Integer.valueOf(v);
-                        
-            x--;
-            y--;
+            
+            if(x != 0){
+                x--;
+            }
+            if(y != 0){
+                y--;
+            }
             
             if(x >= taille || y >= taille){
                 System.out.println("Case inexistante.");
@@ -475,130 +490,7 @@ public class Plateau {
     }
     
     //Méthode de sauvegarde permettant la reprise d'une partie précédement sauvegardée. 
-    //Gestion d'erreur à ajouter ! 
-    
-    public void sauvegarde(String pseudo_J1,String pseudo_J2) throws IOException{
-    
-        try{
-        FileWriter fich = new FileWriter(FichierQuarto);
-        fich.write(pseudo_J1 + System.lineSeparator() + pseudo_J2 + System.lineSeparator());
-        fich.write(taille + System.lineSeparator());
-        
-        for(int x = 0;x<taille;x++){
-            for(int y = 0; y<taille;y++){
-                if(!caseLibre(x,y)){
-                    fich.write(plateau[x][y].getISBN());   
-                }
-                else{
-                    fich.write("null");
-                }
-            }
-        } 
-        fich.close();              // ferme le fichier
-        } catch(IOException ex){
-            System.out.println("Le fichier n'a pas pu être chargé");
-        }
-    }
-    
-    public Object[][] charger() throws FileNotFoundException, IOException{
-        
-        String ligne ;                           // Lire une ligne du fichier
-        String choix;
-        Scanner sc = new Scanner(System.in);
-        Object[][] p = new Object[0][8];
-        try (BufferedReader br = new BufferedReader(new FileReader(FichierQuarto)))
-        {
-            System.out.println("Une partie a été sauvegardée. "
-                               + "Voulez-vous la reprendre (O/N) ? ");
-            choix = sc.nextLine();
-            while(!choix.equals("O")|| !choix.equals("N")){
-                System.out.println("Une partie a été sauvegardée. "
-           + "Voulez-vous la reprendre (O/N) ? ");
-                choix = sc.nextLine();
-            }
-            switch (choix){
-                
-                case "O" :
-                    while((ligne = br.readLine()) != null){
-                System.out.println(ligne);        // On affiche la ligne
-                ligne = br.readLine();              // On lit la ligne suivante
-                }
-                br.close();
-                break;
-                
-                case "N":
-          System.out.println("Vous avez abandonnée votre partie précédente."
-                             + " Voulez-vous recommencer une partie ? (O/N)");
-                choix = sc.nextLine();
-                while(!choix.equals("O")|| !choix.equals("N")){
-                    System.out.println("Vous avez abandonnée votre partie précédente."
-                             + " Voulez-vous recommencer une partie ? (O/N)");
-                    choix = sc.nextLine();   
-                }
-                switch (choix){
-                    
-                    case "O":
-                        // On créer une nouvelle partie
-                        break;
-                    
-                    case "N":
-              System.out.println("A très vite pour de nouvelle aventures :)");
-                        break;       
-                }
-                break;          
-            }   
-        } catch(IOException ex){
-            ex.printStackTrace();           
-        }
-    return p;   
-    }   
-    
-    /*
-      Méthode permettant au joueur de choisir la piece qu'il souhaite poser. 
-      Elle renvoie un Objet de type Piece (si c'est la pièce Joker). Int sinon 
-    
-    public Object Choix_Piece(Joueur joueur , int choix) {
-
-        Scanner Sc = new Scanner(System.in);
-        String choix_J; //Piece Joker
-        int choix_p;
-        Piece piece = null; // Piece conervée
-        Piece joker = null;
-        System.out.println(joueur + ", vous allez devoir une pièce");
-
-           Piece Joker
-           Si le plateau est 3*3, on introduit alors une pièce Joker neutre qui
-           ne s'associe avec aucune pièce. 
-        
-        if (gettaille() == 3) {
-            System.out.println("Souhaitez-vous utiliser la pièce Joker 0/N ?");
-            choix_J = Sc.nextLine();
-            while (!choix_J.equals("O") || !choix_J.equals("N")) {
-                System.out.println("Je n'ai pas bien compris : \n"
-                        + "Souhaitez-vous utiliser la pièce Joker ?" + " 0/N ?");
-            }
-            if (choix_J.equals("O")) {
-                piece = joker;
-                return piece;
-            } else {
-                System.out.println("Voici alors les pièces disponibles :\n");
-                for (Object pieces : getliste()) {
-                    for (int j = 0; j < gettaille() * gettaille(); j++) { //taille de la boucle à vérifier
-                        System.out.println("j:" + pieces);
-                    }
-                }
-                System.out.println("Taper le numéro pour choisir la pièce :");
-                choix_p = Sc.nextInt();
-                while (choix_p < gettaille() * gettaille() || choix_p >= 0) {
-                    System.out.println("ERREUR: Il faut rentrer un numéro.");
-                    choix_p = Sc.nextInt();
-                    return choix_p;
-                }
-            }
-        }
-        return piece;
-    }
-   */
+    //Gestion d'erreur à ajouter !
 }
 /*
     USINE À GAZ

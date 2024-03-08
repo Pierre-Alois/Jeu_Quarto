@@ -96,6 +96,5 @@ public class QUARTO {
         System.out.println(q.isBlank());*/
         
         Jeu j = new Jeu();
-        j.tourDeJeu();
     }
 }
