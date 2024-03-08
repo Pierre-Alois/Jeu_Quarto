@@ -4,10 +4,7 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
 */
 package quarto;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
-public class Joueur {
+public class Joueur {   // super classe de la classe Ordi
     
     //Attributs
     private final String pseudo;

@@ -11,6 +11,86 @@ import javax.swing.JOptionPane;
 
 public class Jeu{
     
+    public void tourDeJeu(){
+        int dim;
+        while(true){
+            System.out.println("Sur quel taille de plateau voulez-vous jouer ?");
+            String taille = scan();
+            if(taille.length() == 1 && Character.isDigit(taille.charAt(0))){
+                dim = Integer.valueOf(taille);
+                break;
+            }
+        }
+        Plateau p = new Plateau(dim);
+        int x, y;
+        
+        while(true){
+            String coo = p.position(p.choixPiece());
+            
+            x = Integer.valueOf("" + coo.charAt(0));
+            y = Integer.valueOf("" + coo.charAt(1));
+            
+            if(p.gettaille() != 4 && p.verifFig(x, y)){
+                break;
+            }
+            if(x==y && p.diag315()){
+                break;
+            }
+            if(p.gettaille()-1-x == y && p.diag45()){
+                break;
+            }
+            if(p.gettaille() == 4 && p.carre(x, y)){
+                break;
+            }
+            if(p.gettaille() == 4 && p.vertical(y)){
+                break;
+            }
+            if(p.gettaille() == 4 && p.horizontal(x)){
+                break;
+            }
+            p.afficher();
+        }
+        System.out.println("FINIE");
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public String scan(){
+        Scanner sc = new Scanner(System.in);
+        return sc.nextLine();
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /*
     Méthode permettant le tirage au sort d'un joueur.
     Les chiffres 1 et 2 sont choisis au hasard. Si c'est 1 alors le joueur 1
