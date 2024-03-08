@@ -4,9 +4,9 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
 */
 package quarto;
 
-public class Joueur {   // super classe de la classe Ordi
+public class Joueur {   
     
-    //Attributs
+    //Attribut
     private final String pseudo;
     
     //Constructeur
@@ -19,7 +19,7 @@ public class Joueur {   // super classe de la classe Ordi
         return pseudo;
     }
        
-    // toString :
+    // toString
     @Override
     public String toString(){
         return pseudo; 

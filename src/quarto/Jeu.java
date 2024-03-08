@@ -14,7 +14,7 @@ public class Jeu{
     public void tourDeJeu(){
         int dim;
         while(true){
-            System.out.println("Sur quel taille de plateau voulez-vous jouer ?");
+            System.out.println("Sur quelle taille de plateau voulez-vous jouer ?");
             String taille = scan();
             if(taille.length() == 1 && Character.isDigit(taille.charAt(0))){
                 dim = Integer.valueOf(taille);
@@ -83,19 +83,11 @@ public class Jeu{
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
+
     /*
-    Méthode permettant le tirage au sort d'un joueur.
-    Les chiffres 1 et 2 sont choisis au hasard. Si c'est 1 alors le joueur 1
-    commence. Sinon c'est le joueur 2 
-    Le 1er joueur devra ensuite choisir une pièce.
+     Méthode permettant le choix aléatoire du joueur actuel. 
+     -1 → le joueur 1 joue
+      1 → le joueur 2 joue
     */
     public Joueur choixJoueur(Joueur joueur, Joueur joueur1, Joueur joueur2){
         
@@ -111,9 +103,11 @@ public class Jeu{
     }
 
     /*
-    Méthode permettant de choisir la taille du plateau (3×3,4×4,5×5)et de le créer.
+     Méthode permettant de choisir la taille du plateau (3×3,4×4,5×5)
+     et de le créer.
     */
-    public int taille_Plateau(){
+    public int taillePlateau(){
+        
         Scanner pl = new Scanner(System.in);
         int taille;
         while(true){
@@ -132,19 +126,6 @@ public class Jeu{
     /*
     Instance plateau.
     */
-    Plateau plateau = new Plateau(taille_Plateau());
-    
-    //Méthode permettant de jouer une partie. Boucle principale
-    public void jouer(String joueur1,String joueur2, Plateau plateau){
-    
-    //On demande les pseudos des 2 joueurs
-    joueur1 = JOptionPane.showInputDialog(" Joueur 1, write your pseudo : ");
-    JOptionPane.showMessageDialog(null, "Vous vous appelez donc : " 
-            + joueur1);
-    joueur2 = JOptionPane.showInputDialog(" Joueur 2, write your pseudo : ");
-    JOptionPane.showMessageDialog(null, "Vous vous appelez donc : " 
-            + joueur2);
-    
-    //Jeu J = new Jeu();
-    }   
+    Plateau plateau = new Plateau(taillePlateau());
+     
 }

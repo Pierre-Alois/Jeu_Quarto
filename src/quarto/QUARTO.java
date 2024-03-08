@@ -51,8 +51,6 @@ public class QUARTO {
         OU (après sout, et après avoir afficher toutes les pièces)
         
         j.choix_Piece(2) par exemple. 
-        
-        
         }
         */
         
