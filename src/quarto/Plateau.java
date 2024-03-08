@@ -19,7 +19,7 @@ public class Plateau {
     // Attributs
     private final int taille;
     private Piece[][] plateau;
-    private ArrayList liste;
+    private ArrayList<Piece> liste;
     
     private static final String FichierQuarto = "FichierQuarto.txt";
     
@@ -138,7 +138,7 @@ public class Plateau {
     Méthode pour vérifier une figure dans les grilles 3×3 et 5×5.
     */
     public boolean verifFig(int x, int y){
-        for(int i=taille-1 ; i>=0 ; i--){
+        for(int i=4 ; i>=5-taille ; i--){
             int cpt = 1;
             String cara = "" + plateau[x][y].getISBN().charAt(i);
             String coo = convert(x, y);
@@ -218,7 +218,7 @@ public class Plateau {
     Méthode pour vérifier un carré en 4×4.
     */
     public boolean carre(int x, int y){
-        for(int i=3 ; i>=0 ; i--){
+        for(int i=4 ; i>=1 ; i--){
             String cara = "" + plateau[x][y].getISBN().charAt(i);
             boolean bas = false, droite = false, haut = false, gauche = false;
     // Définition de bas, droite, haut et gauche correspondant aux cases autour du pion posé.
@@ -449,7 +449,7 @@ public class Plateau {
     
     public String ordiFacile(){
         Random alea = new Random();
-        Piece pion = (Piece) liste.remove(alea.nextInt(0, liste.size()));
+        Piece pion = liste.remove(alea.nextInt(0, liste.size()));
         ArrayList<String> libre = new ArrayList<String>();
         for(int i=0;i<taille;i++){
             for(int j=0;j<taille;j++){
@@ -458,7 +458,7 @@ public class Plateau {
                 }
             }
         }
-        String coo = (String) liste.get(alea.nextInt(0, libre.size()));
+        String coo = libre.get(alea.nextInt(0, libre.size()));
         int x = Integer.valueOf("" + coo.charAt(0));
         int y = Integer.valueOf("" + coo.charAt(1));
         plateau[x][y] = pion;
