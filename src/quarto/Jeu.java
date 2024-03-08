@@ -181,7 +181,6 @@ public class Jeu{
         String ligne, choix1;
         int qui = 0, taille;
         
-        Object[] p = new Object[8];
         try {
             FileReader fich = new FileReader(FichierQuarto);
             BufferedReader br = new BufferedReader(fich);
