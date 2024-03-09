@@ -143,7 +143,7 @@ public class Jeu{
     
     /*
     Méthode permettant le tirage au sort d'un joueur.
-    Les chiffres 1 et 2 sont choisis au hasard. Si c'est 1 alors le joueur 1
+    Les chiffres 1 et 2 sont choisis aléatoirement. Si c'est 1 alors le joueur 1
     commence. Sinon c'est le joueur 2 
     Le 1er joueur devra ensuite choisir une pièce.
     */
@@ -153,7 +153,7 @@ public class Jeu{
         return 1-2*n;
     }
     
-    public void sauvegarde(int qui) throws IOException{
+    public void sauvegarde(int qui) throws IOException{ // Méthode permettant de sauvegarder ou non la partie en cours
         try{
             FileWriter fich = new FileWriter(FichierQuarto);
             fich.write(j1 + System.lineSeparator() + j2.getpseudo() + System.lineSeparator());
@@ -176,7 +176,7 @@ public class Jeu{
         }
     }
     
-    public int charger() throws FileNotFoundException, IOException{
+    public int charger() throws FileNotFoundException, IOException{ // Méthode permettant de recharger la partie précédemment sauveagrdée ou non
         
         String ligne, choix1;
         int qui = 0, taille;

@@ -6,9 +6,14 @@ package quarto;
 
 public class Piece {
 
-    // Attribut :                   // Pion 00000 → Entier(section) - Grand - Plein(trou) - Carré - Blanc
-    private final String ISBN;      // Pion 11111 →     Tranché     - Petit -    Troué    -  Rond - Noir
-    // Pion xxxxx →     Arrondi     - Moyen -   Taillé    - Croix - Violet (SPÉCIAL 3×3 !!!)
+    // Attribut :     
+    
+    private final String ISBN;
+    
+// Pion 00000 → Entier(section) - Grand - Plein(trou) - Carré - Blanc    
+// Pion 11111 →     Tranché     - Petit -    Troué    -  Rond - Noir
+// Pion xxxxx →     Arrondi     - Moyen -   Taillé    - Croix - Violet (SPÉCIAL 3×3 !!!)
+   
     // Constructeur :
 
     public Piece(String ISBN) {

@@ -5,9 +5,6 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
 package quarto;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 public class QUARTO {
 
@@ -19,7 +16,7 @@ public class QUARTO {
         
         Classe Joueur : 
         pseudo
-        ordinateur → sous-class de joueur
+        ordinateur → sous-classe de joueur
         
         Class Piece : 
         5 caractéristiques
