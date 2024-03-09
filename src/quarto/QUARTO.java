@@ -6,6 +6,7 @@ package quarto;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class QUARTO {
@@ -56,11 +57,13 @@ public class QUARTO {
         }
          */
         // Test
-        int l = 4;
+        /*int l = 4;
         Plateau p = new Plateau(l);
         int x, y;
-
-        while (true) {
+        
+        System.out.println(p.getClass().getSimpleName());
+        
+        while(true){
             String coo = p.position(p.choixPiece());
 
             x = Integer.valueOf("" + coo.charAt(0));
@@ -87,5 +90,10 @@ public class QUARTO {
             p.afficher();
         }
         System.out.println("FINIE");
+        Scanner sc = new Scanner(System.in);
+        String q = sc.nextLine();
+        System.out.println(q.isBlank());*/
+        
+        Jeu j = new Jeu();
     }
 }

@@ -19,10 +19,10 @@ public class Plateau {
     // Attributs
     private final int taille;
     private Piece[][] plateau;
-    private ArrayList liste;
-
-    private static final String FichierQuarto = "FichierQuarto.txt";
-
+    private ArrayList<Piece> liste;
+    
+    
+    
     // Constructeur
     public Plateau(int taille) {
         this.taille = taille;
@@ -57,9 +57,9 @@ public class Plateau {
         this.liste = new ArrayList<Piece>();
         this.liste.addAll(liste);
     }
-
-    //Getters
-    public Piece[][] getplateau() {
+    
+    // Getters
+    public Piece[][] getplateau(){
         return plateau;
     }
 
@@ -70,7 +70,20 @@ public class Plateau {
     public ArrayList getliste() {
         return liste;
     }
-
+            
+    // Setter
+    public void setplateau(int x, int y, String val){
+        ListIterator<Piece> ite = liste.listIterator();
+        while(ite.hasNext()){
+            if(ite.next().getISBN().equals(val)){
+                ite.remove();
+                break;
+            }
+        }
+        Piece pion = new Piece(val);
+        plateau[x][y] = pion;
+    }
+    
     // VÉRIF
     // Valable pour tout :
     /*
@@ -131,10 +144,10 @@ public class Plateau {
 
     // Valable pour 3×3 et 5×5 seulement :
     /*
-    Méthode pour vérifier une figure des plateaux de taille 3×3 et 5×5.
-     */
-    public boolean verifFig(int x, int y) {
-        for (int i = taille - 1; i >= 0; i--) {
+    Méthode pour vérifier une figure dans les grilles 3×3 et 5×5.
+    */
+    public boolean verifFig(int x, int y){
+        for(int i=4 ; i>=5-taille ; i--){
             int cpt = 1;
             String cara = "" + plateau[x][y].getISBN().charAt(i);
             String coo = convert(x, y);
@@ -211,9 +224,9 @@ public class Plateau {
     // Valable pour 4×4 seulement :
     /*
     Méthode pour vérifier un carré en 4×4.
-     */
-    public boolean carre(int x, int y) {
-        for (int i = 3; i >= 0; i--) {
+    */
+    public boolean carre(int x, int y){
+        for(int i=4 ; i>=1 ; i--){
             String cara = "" + plateau[x][y].getISBN().charAt(i);
             boolean bas = false, droite = false, haut = false, gauche = false;
             // Définition de bas, droite, haut et gauche correspondant aux cases autour du pion posé.
@@ -409,11 +422,15 @@ public class Plateau {
             v = "" + coo.charAt(1);
             x = Integer.valueOf(u);
             y = Integer.valueOf(v);
-
-            x--;
-            y--;
-
-            if (x >= taille || y >= taille) {
+            
+            if(x != 0){
+                x--;
+            }
+            if(y != 0){
+                y--;
+            }
+            
+            if(x >= taille || y >= taille){
                 System.out.println("Case inexistante.");
                 continue;
             }
@@ -441,7 +458,7 @@ public class Plateau {
 
     public String ordiFacile() {
         Random alea = new Random();
-        Piece pion = (Piece) liste.remove(alea.nextInt(0, liste.size()));
+        Piece pion = liste.remove(alea.nextInt(0, liste.size()));
         ArrayList<String> libre = new ArrayList<String>();
         for (int i = 0; i < taille; i++) {
             for (int j = 0; j < taille; j++) {
@@ -450,7 +467,7 @@ public class Plateau {
                 }
             }
         }
-        String coo = (String) liste.get(alea.nextInt(0, libre.size()));
+        String coo = libre.get(alea.nextInt(0, libre.size()));
         int x = Integer.valueOf("" + coo.charAt(0));
         int y = Integer.valueOf("" + coo.charAt(1));
         plateau[x][y] = pion;
@@ -465,171 +482,6 @@ public class Plateau {
             System.out.println("\n");
         }
     }
-
-    //Méthode de sauvegarde permettant la reprise d'une partie précédement sauvegardée. 
-    public void sauvegarde(String pseudo_J1, String pseudo_J2) throws IOException {
-
-        try {
-            FileWriter fich = new FileWriter(FichierQuarto);
-            fich.write(pseudo_J1 + System.lineSeparator() + pseudo_J2 + System.lineSeparator());
-            fich.write(taille + System.lineSeparator());
-
-            for (int x = 0; x < taille; x++) {
-                for (int y = 0; y < taille; y++) {
-                    if (!caseLibre(x, y)) {
-                        fich.write(plateau[x][y].getISBN());
-                    } else {
-                        fich.write("null");
-                    }
-                }
-            }
-            fich.close();              // ferme le fichier
-        } catch (IOException ex) {
-            System.out.println("Le fichier n'a pas pu être chargé");
-        }
-    }
-
-    public Object[][] charger() throws FileNotFoundException, IOException {
-
-        String ligne;
-        String choix;
-        Scanner sc = new Scanner(System.in);
-        Object[][] p = new Object[0][8];
-        try (BufferedReader br = new BufferedReader(new FileReader(FichierQuarto))) {
-            System.out.println("Une partie a été sauvegardée. "
-                    + "Voulez-vous la reprendre (O/N) ? ");
-            choix = sc.nextLine();
-            while (!choix.equals("O") || !choix.equals("N")) {
-                System.out.println("Une partie a été sauvegardée. "
-                        + "Voulez-vous la reprendre (O/N) ? ");
-                choix = sc.nextLine();
-            }
-            switch (choix) {
-
-                case "O":
-                    while ((ligne = br.readLine()) != null) {
-                        System.out.println(ligne);        // On affiche la ligne
-                        ligne = br.readLine();              // On lit la ligne suivante
-                    }
-                    br.close();
-                    break;
-
-                case "N":
-                    System.out.println("Vous avez abandonnée votre partie précédente."
-                            + " Voulez-vous recommencer une partie ? (O/N)");
-                    choix = sc.nextLine();
-                    while (!choix.equals("O") || !choix.equals("N")) {
-                        System.out.println("Vous avez abandonnée votre partie précédente."
-                                + " Voulez-vous recommencer une partie ? (O/N)");
-                        choix = sc.nextLine();
-                    }
-                    switch (choix) {
-
-                        case "O":
-                            // On créer une nouvelle partie
-                            break;
-
-                        case "N":
-                            System.out.println("A très vite pour de nouvelles aventures ☺");
-                            break;
-                    }
-                    break;
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        return p;
-    }
-
-    /*
-      Méthode permettant au joueur de choisir la piece qu'il souhaite poser. 
-      Elle renvoie un Objet de type Piece (si c'est la pièce Joker). Int sinon 
-    
-    public Object Choix_Piece(Joueur joueur , int choix) {
-
-        Scanner Sc = new Scanner(System.in);
-        String choix_J; //Piece Joker
-        int choix_p;
-        Piece piece = null; // Piece conervée
-        Piece joker = null;
-        System.out.println(joueur + ", vous allez devoir une pièce");
-
-           Piece Joker
-           Si le plateau est 3*3, on introduit alors une pièce Joker neutre qui
-           ne s'associe avec aucune pièce. 
-        
-        if (gettaille() == 3) {
-            System.out.println("Souhaitez-vous utiliser la pièce Joker 0/N ?");
-            choix_J = Sc.nextLine();
-            while (!choix_J.equals("O") || !choix_J.equals("N")) {
-                System.out.println("Je n'ai pas bien compris : \n"
-                        + "Souhaitez-vous utiliser la pièce Joker ?" + " 0/N ?");
-            }
-            if (choix_J.equals("O")) {
-                piece = joker;
-                return piece;
-            } else {
-                System.out.println("Voici alors les pièces disponibles :\n");
-                for (Object pieces : getliste()) {
-                    for (int j = 0; j < gettaille() * gettaille(); j++) { //taille de la boucle à vérifier
-                        System.out.println("j:" + pieces);
-                    }
-                }
-                System.out.println("Taper le numéro pour choisir la pièce :");
-                choix_p = Sc.nextInt();
-                while (choix_p < gettaille() * gettaille() || choix_p >= 0) {
-                    System.out.println("ERREUR: Il faut rentrer un numéro.");
-                    choix_p = Sc.nextInt();
-                    return choix_p;
-                }
-            }
-        }
-        return piece;
-    }
-     */
 }
-/*
-    USINE À GAZ
-    
-    public List Banque() {
 
-        System.out.println("Vous avez choisi un plateau de taille " + gettaille() + "par" + gettaille() + "\n"
-                + "Voici donc l'ensemble des pièces disponibles : ");
-
-        Piece piece;
-        List<Piece> PI_dispo = new ArrayList<>();
-
-        if (gettaille() == 3) {
-            for (boolean haute : Arrays.asList(true, false)) {
-                for (String couleur : Arrays.asList("claire", "foncée")) {
-                    for (String forme : Arrays.asList("ronde", "carrée")) {
-                        PI_dispo.add(new Piece(haute, couleur, forme));
-                    }
-                }
-            }
-        } else if (gettaille() == 4) {
-            for (boolean haute : Arrays.asList(true, false)) {
-                for (String couleur : Arrays.asList("claire", "foncée")) {
-                    for (String forme : Arrays.asList("ronde", "carrée")) {
-                        for (String consistance : Arrays.asList("pleine", "creuse")) {
-                            PI_dispo.add(new Piece(haute, couleur, forme, consistance));
-                        }
-                    }
-                }
-            }
-        } else {
-            for (boolean haute : Arrays.asList(true, false)) {
-                for (String couleur : Arrays.asList("claire", "foncée")) {
-                    for (String forme : Arrays.asList("ronde", "carrée")) {
-                        for (String consistance : Arrays.asList("pleine", "creuse")) {
-                            for (String matiere : Arrays.asList("bois", "marbre")) {
-                                PI_dispo.add(new Piece(haute, couleur, forme, consistance, matiere));
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    return PI_dispo;
-    }
- */
+   
