@@ -19,8 +19,8 @@ public class Plateau {
     // Attributs
     private final int taille;
     private Piece[][] plateau;
-    private ArrayList liste;
-
+    private ArrayList<Piece> liste;
+    
     private static final String FichierQuarto = "FichierQuarto.txt";
 
     // Constructeur
@@ -130,10 +130,10 @@ public class Plateau {
     }
 
     /*
-      Méthode pour vérifier les figures "L" du plateau 3×3 et celles du 5×5.
-     */
-    public boolean verifFig(int x, int y) {
-        for (int i = taille - 1; i >= 0; i--) {
+    Méthode pour vérifier une figure dans les grilles 3×3 et 5×5.
+    */
+    public boolean verifFig(int x, int y){
+        for(int i=4 ; i>=5-taille ; i--){
             int cpt = 1;
             String cara = "" + plateau[x][y].getISBN().charAt(i); // On relève les caractéristiques du PION à cette coordonée
             String coo = convert(x, y);
@@ -210,10 +210,10 @@ public class Plateau {
     }
 
     /*
-    Méthode pour vérifier un carré dans le plateau 4×4.
-     */
-    public boolean carre(int x, int y) {
-        for (int i = 3; i >= 0; i--) {
+    Méthode pour vérifier un carré en 4×4.
+    */
+    public boolean carre(int x, int y){
+        for(int i=4 ; i>=1 ; i--){
             String cara = "" + plateau[x][y].getISBN().charAt(i);
             boolean bas = false, droite = false, haut = false, gauche = false;
 
@@ -451,14 +451,10 @@ public class Plateau {
         Scanner sc = new Scanner(System.in);
         return sc.nextLine();
     }
-
-    /*
-      Méthode permettant le fonctionnement de l'ordinateur facile
-     */
-    public String ordiFacile() {
-
-        Random alea = new Random();          // L'ordi pioche au hasard un PION dans la liste
-        Piece pion = (Piece) liste.remove(alea.nextInt(0, liste.size()));
+    
+    public String ordiFacile(){
+        Random alea = new Random();
+        Piece pion = liste.remove(alea.nextInt(0, liste.size()));
         ArrayList<String> libre = new ArrayList<String>();
         for (int i = 0; i < taille; i++) {
             for (int j = 0; j < taille; j++) {
@@ -467,8 +463,7 @@ public class Plateau {
                 }
             }
         }
-        // L'ordi place aléatoirement le PION sur une case libre
-        String coo = (String) liste.get(alea.nextInt(0, libre.size()));
+        String coo = libre.get(alea.nextInt(0, libre.size()));
         int x = Integer.valueOf("" + coo.charAt(0));
         int y = Integer.valueOf("" + coo.charAt(1));
         plateau[x][y] = pion;
