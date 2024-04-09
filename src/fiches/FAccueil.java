@@ -26,8 +26,8 @@ public class FAccueil extends javax.swing.JFrame {
         bReprendre = new javax.swing.JButton();
         TitleLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        mFichier = new javax.swing.JMenu();
+        mMenu = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -54,11 +54,11 @@ public class FAccueil extends javax.swing.JFrame {
         TitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TitleLabel.setText("JEU 4x4");
 
-        jMenu1.setText("Fichiers");
-        jMenuBar1.add(jMenu1);
+        mFichier.setText("Fichiers");
+        jMenuBar1.add(mFichier);
 
-        jMenu2.setText("Menu");
-        jMenuBar1.add(jMenu2);
+        mMenu.setText("Menu");
+        jMenuBar1.add(mMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -141,9 +141,9 @@ public class FAccueil extends javax.swing.JFrame {
     private javax.swing.JLabel TitleLabel;
     private javax.swing.JButton bCommencer;
     private javax.swing.JButton bReprendre;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenu mFichier;
+    private javax.swing.JMenu mMenu;
     // End of variables declaration//GEN-END:variables
 }
