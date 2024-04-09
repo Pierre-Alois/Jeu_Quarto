@@ -50,9 +50,9 @@ public class FAccueil extends javax.swing.JFrame {
             }
         });
 
-        TitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        TitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TitleLabel.setText("JEU 4x4");
+        lTitre.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lTitre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lTitre.setText("JEU 4x4");
 
         mFichier.setText("Fichiers");
         jMenuBar1.add(mFichier);
@@ -60,7 +60,7 @@ public class FAccueil extends javax.swing.JFrame {
         mMenu.setText("Menu");
         jMenuBar1.add(mMenu);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(mbAccueil);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,14 +75,14 @@ public class FAccueil extends javax.swing.JFrame {
                             .addComponent(bCommencer, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(309, 309, 309)
-                        .addComponent(TitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lTitre, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(183, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(TitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lTitre, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
                 .addComponent(bCommencer, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
