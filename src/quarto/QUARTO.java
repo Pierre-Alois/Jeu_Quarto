@@ -1,25 +1,22 @@
 /*
 Projet Java - Jeu Quarto
 BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
-*/
+ */
 package quarto;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 public class QUARTO {
 
     public static void main(String[] args) throws IOException {
-        
+
         /*
         Class Main : 
         Appeler les méthodes pour vérifier si ça marche. 
         
         Classe Joueur : 
         pseudo
-        ordinateur → sous-class de joueur
+        ordinateur → sous-classe de joueur
         
         Class Piece : 
         5 caractéristiques
@@ -53,8 +50,7 @@ public class QUARTO {
         
         j.choix_Piece(2) par exemple. 
         }
-        */
-        
+         */
         // Test
         /*int l = 4;
         Plateau p = new Plateau(l);
@@ -64,26 +60,26 @@ public class QUARTO {
         
         while(true){
             String coo = p.position(p.choixPiece());
-            
+
             x = Integer.valueOf("" + coo.charAt(0));
             y = Integer.valueOf("" + coo.charAt(1));
-            
-            if(l != 4 && p.verifFig(x, y)){
+
+            if (l != 4 && p.verifFig(x, y)) {
                 break;
             }
-            if(x==y && p.diag315()){
+            if (x == y && p.diag315()) {
                 break;
             }
-            if(l-1-x == y && p.diag45()){
+            if (l - 1 - x == y && p.diag45()) {
                 break;
             }
-            if(l == 4 && p.carre(x, y)){
+            if (l == 4 && p.carre(x, y)) {
                 break;
             }
-            if(l == 4 && p.vertical(y)){
+            if (l == 4 && p.vertical(y)) {
                 break;
             }
-            if(l == 4 && p.horizontal(x)){
+            if (l == 4 && p.horizontal(x)) {
                 break;
             }
             p.afficher();
@@ -94,6 +90,5 @@ public class QUARTO {
         System.out.println(q.isBlank());*/
         
         Jeu j = new Jeu();
-        j.tourDeJeu();
     }
 }

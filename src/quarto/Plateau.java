@@ -4,11 +4,6 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
  */
 package quarto;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.ListIterator;
 import java.util.Random;
@@ -21,8 +16,8 @@ public class Plateau {
     private Piece[][] plateau;
     private ArrayList<Piece> liste;
     
-    private static final String FichierQuarto = "FichierQuarto.txt";
-
+    
+    
     // Constructeur
     public Plateau(int taille) {
         this.taille = taille;
@@ -57,9 +52,9 @@ public class Plateau {
         this.liste = new ArrayList<Piece>();
         this.liste.addAll(liste); // La liste de pièce est prête pour le jeu
     }
-
-    //Getters
-    public Piece[][] getplateau() {
+    
+    // Getters
+    public Piece[][] getplateau(){
         return plateau;
     }
 
@@ -70,7 +65,20 @@ public class Plateau {
     public ArrayList getliste() {
         return liste;
     }
-
+            
+    // Setter
+    public void setplateau(int x, int y, String val){
+        ListIterator<Piece> ite = liste.listIterator();
+        while(ite.hasNext()){
+            if(ite.next().getISBN().equals(val)){
+                ite.remove();
+                break;
+            }
+        }
+        Piece pion = new Piece(val);
+        plateau[x][y] = pion;
+    }
+    
     // VÉRIF
     // Valable pour tout :
     /*
@@ -79,7 +87,7 @@ public class Plateau {
     Il faut juste s'assurer que x == y pour diag315()
     et que taille-1-x == y pour diag45().
      */
-    // Diagonale bas-gauche → haut-droite
+    // Diagonale bas-gauche --> haut-droite
     public boolean diag45() {
         for (int i = taille - 1; i >= 0; i--) {
             if (caseLibre(taille - 1, 0)) {
@@ -104,7 +112,7 @@ public class Plateau {
         return false;
     }
 
-    // Diagonale haut-gauche → bas-droite
+    // Diagonale haut-gauche -->  bas-droite
     public boolean diag315() {
         for (int i = taille - 1; i >= 0; i--) {
             if (caseLibre(0, 0)) {
@@ -129,6 +137,7 @@ public class Plateau {
         return false;
     }
 
+    // Valable pour 3×3 et 5×5 seulement :
     /*
     Méthode pour vérifier une figure dans les grilles 3×3 et 5×5.
     */
@@ -155,7 +164,6 @@ public class Plateau {
      */
     public int boucle(ArrayList annuaire, int x, int y, String cara, int n) {
         int cpt = 0;
-        // Si x ou y sont sur le plateau(hors bords), on regarde à côté de la case pour vérifier si l'alignement se poursuit
         if (x != taille - 1) {
             if (ajout(annuaire, x + 1, y, cara, n)) {
                 cpt += 1 + boucle(annuaire, x + 1, y, cara, n);
@@ -184,15 +192,14 @@ public class Plateau {
     si un pion y est présent avec la même carctéristique que le premier.
      */
     public boolean ajout(ArrayList annuaire, int x, int y, String cara, int n) {
-
-        if (caseLibre(x, y)) {   // On vérifie que la case est libre
+        if (caseLibre(x, y)) {
             return false;
         }
         String test = "" + plateau[x][y].getISBN().charAt(n);
         if (test.equals(cara)) {
             String coo = convert(x, y);
-            if (!annuaire.contains(coo)) { // On regarde si les coordonnées n'existent pas déjà dans la liste
-                annuaire.add(coo);          // Si ne c'est pas le cas, on rajoute les coordonnées relevées
+            if (!annuaire.contains(coo)) {
+                annuaire.add(coo);
                 return true;
             }
         }
@@ -209,6 +216,7 @@ public class Plateau {
         return u + v;
     }
 
+    // Valable pour 4×4 seulement :
     /*
     Méthode pour vérifier un carré en 4×4.
     */
@@ -216,7 +224,6 @@ public class Plateau {
         for(int i=4 ; i>=1 ; i--){
             String cara = "" + plateau[x][y].getISBN().charAt(i);
             boolean bas = false, droite = false, haut = false, gauche = false;
-
             // Définition de bas, droite, haut et gauche correspondant aux cases autour du pion posé.
             if (x != 3 && !caseLibre(x + 1, y)) {
                 String test = "" + plateau[x + 1][y].getISBN().charAt(i);
@@ -242,7 +249,6 @@ public class Plateau {
                     gauche = true;
                 }
             }
-
             // Vérification des carrés en fonction de bas, droite, haut et gauche.
             if (bas && droite && !caseLibre(x + 1, y + 1)) {
                 String test = "" + plateau[x + 1][y + 1].getISBN().charAt(i);
@@ -273,7 +279,7 @@ public class Plateau {
     }
 
     /*
-      Méthode pour vérifier un alignement horizontal.
+    Méthode pour vérifier un alignement horizontal.
      */
     public boolean horizontal(int x) {
         for (int i = 3; i >= 0; i--) {
@@ -325,17 +331,14 @@ public class Plateau {
         }
         return false;
     }
-    // FIN VÉRIF
 
-    /*
-      Méthode pour choisir son PION.
-     */
+    // FIN VÉRIF
+    // Méthode pour choisir son PION.
     public Piece choixPiece() {
         String c, f, t, h = "", s = "", z = "";
         String str = "";
         boolean stop = false;
-
-        while (true) { // On demande l'ensemble des caractéristiques du PION souhaité
+        while (true) {
             System.out.println("""
                                 Quelle couleur ?
                                 0 = blanc ; 1 = noir ; x = immeuble""");
@@ -366,8 +369,7 @@ public class Plateau {
                 }
             }
             if (taille == 3) {
-                if (c.equals("x") && f.equals("x")
-                        && t.equals("x")) {
+                if (c.equals("x") && f.equals("x") && t.equals("x")) {
                     z = "xx";
                 } else {
                     z = "00";
@@ -378,14 +380,14 @@ public class Plateau {
 
             str = z + s + h + t + f + c; // Ensemble des caractéristiques du PION
             ListIterator<Piece> ite = liste.listIterator();
-            while (ite.hasNext()) {        // On parcourt la liste pour trouver le PION choisit par le/la joueur(se)
+            while (ite.hasNext()) {
                 if (ite.next().getISBN().equals(str)) {
                     ite.remove();
                     stop = true; // Le PION existe bien et on le pioche
                     break;
                 }
             }
-            if (stop) {  // Le PION n'existe pas
+            if (stop) {
                 break;
             }
             System.out.println("Cette pièce n'est pas disponible.");
@@ -394,9 +396,7 @@ public class Plateau {
         return pion;
     }
 
-    /*
-      Méthode pour poser son PION.
-     */
+    // Méthode pour poser son PION.
     public String position(Piece pion) {
         int x, y;
         String coo, u, v;
@@ -418,11 +418,15 @@ public class Plateau {
             v = "" + coo.charAt(1);
             x = Integer.valueOf(u);
             y = Integer.valueOf(v);
-
-            x--;
-            y--;
-
-            if (x >= taille || y >= taille) { // Case hors du plateau
+            
+            if(x != 0){
+                x--;
+            }
+            if(y != 0){
+                y--;
+            }
+            
+            if(x >= taille || y >= taille){
                 System.out.println("Case inexistante.");
                 continue;
             }
@@ -437,22 +441,18 @@ public class Plateau {
         return coo;
     }
 
-    /*
-      Méthode vérifiant si une case du plateau n'est pas occupée.
-     */
+    // Méthode vérifiant si une case du plateau n'est pas occupée.
     public boolean caseLibre(int x, int y) {
         return plateau[x][y] == null;
     }
 
-    /*
-      Méthode Scanner
-     */
+    //Scanner
     public String scan() {
         Scanner sc = new Scanner(System.in);
         return sc.nextLine();
     }
-    
-    public String ordiFacile(){
+
+    public String ordiFacile() {
         Random alea = new Random();
         Piece pion = liste.remove(alea.nextInt(0, liste.size()));
         ArrayList<String> libre = new ArrayList<String>();
@@ -470,9 +470,6 @@ public class Plateau {
         return coo;
     }
 
-    /*
-      Méthode pour afficher le contenu des cases du tableau sur la console
-     */
     public void afficher() {
         for (int i = 0; i < taille; i++) {
             for (int j = 0; j < taille; j++) {
@@ -481,174 +478,6 @@ public class Plateau {
             System.out.println("\n");
         }
     }
-
-    /*
-      Méthode de sauvegarde permettant la reprise d'une partie
-     */
-    public void sauvegarde(String pseudo_J1, String pseudo_J2) throws IOException {
-
-        try {
-            FileWriter fich = new FileWriter(FichierQuarto); // On regarde si le fichier existe
-            fich.write(pseudo_J1 + System.lineSeparator() + pseudo_J2 + System.lineSeparator()); // On écrit les pseudos et la taille
-            fich.write(taille + System.lineSeparator());
-
-            for (int x = 0; x < taille; x++) {
-                for (int y = 0; y < taille; y++) {
-                    if (!caseLibre(x, y)) {
-                        fich.write(plateau[x][y].getISBN()); // On écrit les informations du plateau cases par cases 
-                    } else {
-                        fich.write("null");
-                    }
-                }
-            }
-            fich.close();              // On ferme le fichier
-        } catch (IOException ex) {
-            System.out.println("Le fichier n'a pas pu être chargé");
-        }
-    }
-
-    public Object[][] charger() throws FileNotFoundException, IOException {
-
-        String ligne;
-        String ch;
-        Object[][] p = new Object[2][6]; // Faux
-
-        try (BufferedReader br = new BufferedReader(new FileReader(FichierQuarto))) {
-            System.out.println("Une partie a été sauvegardée. "
-                    + "Voulez-vous la reprendre (O/N) ? ");
-            ch = scan();
-
-            while (!ch.equals("O") || !ch.equals("N")) {
-                System.out.println("Une partie a été sauvegardée. "
-                        + "Voulez-vous la reprendre (O/N) ? ");
-                ch = scan();
-            }
-            switch (ch) {
-
-                case "O":
-                    while ((ligne = br.readLine()) != null) {
-                        System.out.println(ligne);        // On affiche la ligne
-                        ligne = br.readLine();              // On lit la ligne suivante
-                    }
-                    br.close();
-                    break;
-
-                case "N":
-                    System.out.println("Vous avez abandonnée votre partie précédente."
-                            + " Voulez-vous recommencer une partie ? (O/N)");
-                    ch = scan();
-                    while (!ch.equals("O") || !ch.equals("N")) {
-                        System.out.println("Vous avez abandonnée votre partie précédente."
-                                + " Voulez-vous recommencer une partie ? (O/N)");
-                        ch = scan();
-                    }
-                    switch (ch) {
-
-                        case "O":
-                            // On créer une nouvelle partie A FAIRE
-                            break;
-
-                        case "N":
-                            System.out.println("A très vite pour de nouvelle aventures :)");
-                            break;
-                    }
-                    break;
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        return p;
-    }
-
-    /*
-      Méthode permettant au joueur de choisir la piece qu'il souhaite poser. 
-      Elle renvoie un Objet de type Piece (si c'est la pièce Joker). Int sinon 
-    
-    public Object Choix_Piece(Joueur joueur , int choix) {
-
-        Scanner Sc = new Scanner(System.in);
-        String choix_J; //Piece Joker
-        int choix_p;
-        Piece piece = null; // Piece conervée
-        Piece joker = null;
-        System.out.println(joueur + ", vous allez devoir une pièce");
-
-           Piece Joker
-           Si le plateau est 3*3, on introduit alors une pièce Joker neutre qui
-           ne s'associe avec aucune pièce. 
-        
-        if (gettaille() == 3) {
-            System.out.println("Souhaitez-vous utiliser la pièce Joker 0/N ?");
-            choix_J = Sc.nextLine();
-            while (!choix_J.equals("O") || !choix_J.equals("N")) {
-                System.out.println("Je n'ai pas bien compris : \n"
-                        + "Souhaitez-vous utiliser la pièce Joker ?" + " 0/N ?");
-            }
-            if (choix_J.equals("O")) {
-                piece = joker;
-                return piece;
-            } else {
-                System.out.println("Voici alors les pièces disponibles :\n");
-                for (Object pieces : getliste()) {
-                    for (int j = 0; j < gettaille() * gettaille(); j++) { //taille de la boucle à vérifier
-                        System.out.println("j:" + pieces);
-                    }
-                }
-                System.out.println("Taper le numéro pour choisir la pièce :");
-                choix_p = Sc.nextInt();
-                while (choix_p < gettaille() * gettaille() || choix_p >= 0) {
-                    System.out.println("ERREUR: Il faut rentrer un numéro.");
-                    choix_p = Sc.nextInt();
-                    return choix_p;
-                }
-            }
-        }
-        return piece;
-    }
-     */
 }
-/*
-    USINE À GAZ
-    
-    public List Banque() {
 
-        System.out.println("Vous avez choisi un plateau de taille " + gettaille() + "par" + gettaille() + "\n"
-                + "Voici donc l'ensemble des pièces disponibles : ");
-
-        Piece piece;
-        List<Piece> PI_dispo = new ArrayList<>();
-
-        if (gettaille() == 3) {
-            for (boolean haute : Arrays.asList(true, false)) {
-                for (String couleur : Arrays.asList("claire", "foncée")) {
-                    for (String forme : Arrays.asList("ronde", "carrée")) {
-                        PI_dispo.add(new Piece(haute, couleur, forme));
-                    }
-                }
-            }
-        } else if (gettaille() == 4) {
-            for (boolean haute : Arrays.asList(true, false)) {
-                for (String couleur : Arrays.asList("claire", "foncée")) {
-                    for (String forme : Arrays.asList("ronde", "carrée")) {
-                        for (String consistance : Arrays.asList("pleine", "creuse")) {
-                            PI_dispo.add(new Piece(haute, couleur, forme, consistance));
-                        }
-                    }
-                }
-            }
-        } else {
-            for (boolean haute : Arrays.asList(true, false)) {
-                for (String couleur : Arrays.asList("claire", "foncée")) {
-                    for (String forme : Arrays.asList("ronde", "carrée")) {
-                        for (String consistance : Arrays.asList("pleine", "creuse")) {
-                            for (String matiere : Arrays.asList("bois", "marbre")) {
-                                PI_dispo.add(new Piece(haute, couleur, forme, consistance, matiere));
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    return PI_dispo;
-    }
-    */
+   

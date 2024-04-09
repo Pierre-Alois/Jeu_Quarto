@@ -6,30 +6,36 @@ package quarto;
 
 public class Ordi extends Joueur {
 
-    // Attribut
-    private final String id;
-
+    // Attributs
+    private final String visible;
+    
     // Constructeur
     public Ordi(String pseudo) {
         super(pseudo);
         switch (pseudo) {
-            case "Ordi débutant":
-                id = "Y,6c3L=30Fln}k"; // Pseudonyme de l'ordi choisis aléatoirement
+            case "Y,6c3L=30Fln}k":
+                visible = "Ordi débutant";
                 break;
-            case "Odri expérimenté":
-                id = "c(W}6$eY4sY2l9";
+            case "c(W}6$eY4sY2l9":
+                visible = "Odri expérimenté";
                 break;
-            case "Ordi expert":
-                id = "_/9,EUzMj427ix";
+            case "_/9,EUzMj427ix":
+                visible = "Ordi expert";
                 break;
             default:
-                id = "";
+                visible = "";
                 break;
         }
     }
 
     // Getter
-    public String getid() {
-        return id;
+    public String getvisible(){
+        return visible;
+    }
+    
+    // toString
+    @Override
+    public String toString(){
+        return visible;
     }
 }
