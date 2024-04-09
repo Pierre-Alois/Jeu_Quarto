@@ -1,18 +1,13 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+Projet Java - Jeu Quarto
+BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
  */
 package fiches;
 
-/**
- *
- * @author i_am
- */
 public class FAccueil extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FAccueil
-     */
+    private FModeJeu modejeu; 
+    
     public FAccueil() {
         initComponents();
     }
@@ -37,9 +32,15 @@ public class FAccueil extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1012, 926));
 
         CButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         CButton.setText("Commencer Partie");
+        CButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CButtonActionPerformed(evt);
+            }
+        });
 
         RButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         RButton.setText("Reprendre Partie");
@@ -86,6 +87,11 @@ public class FAccueil extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CButtonActionPerformed
+        this.setVisible(false); 
+        modejeu.setVisible(true);
+    }//GEN-LAST:event_CButtonActionPerformed
 
     /**
      * @param args the command line arguments
