@@ -21,26 +21,24 @@ public class FAccueil extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
-        bCommencer1 = new javax.swing.JButton();
+        bCommencer = new javax.swing.JButton();
         bReprendre = new javax.swing.JButton();
         lTitre = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        mbAccueil = new javax.swing.JMenuBar();
         mFichier = new javax.swing.JMenu();
         mMenu = new javax.swing.JMenu();
-
-        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1012, 926));
 
-        bCommencer1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bCommencer1.setText("Commencer Partie");
-        bCommencer1.addActionListener(new java.awt.event.ActionListener() {
+        bCommencer.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bCommencer.setText("Commencer Partie");
+        bCommencer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bCommencer1ActionPerformed(evt);
+                bCommencerActionPerformed(evt);
             }
         });
+        getContentPane().add(bCommencer);
 
         bReprendre.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bReprendre.setText("Reprendre Partie");
@@ -49,54 +47,28 @@ public class FAccueil extends javax.swing.JFrame {
                 bReprendreActionPerformed(evt);
             }
         });
+        getContentPane().add(bReprendre);
 
         lTitre.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lTitre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lTitre.setText("JEU 4x4");
+        getContentPane().add(lTitre);
 
         mFichier.setText("Fichier");
-        jMenuBar1.add(mFichier);
+        mbAccueil.add(mFichier);
 
         mMenu.setText("Menu");
-        jMenuBar1.add(mMenu);
+        mbAccueil.add(mMenu);
 
         setJMenuBar(mbAccueil);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(172, 172, 172)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(bReprendre, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bCommencer1, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(309, 309, 309)
-                        .addComponent(lTitre, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(183, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(lTitre, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
-                .addComponent(bCommencer1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(bReprendre, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bCommencer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCommencer1ActionPerformed
+    private void bCommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCommencerActionPerformed
         this.setVisible(false); 
         infos.setVisible(true);
-    }//GEN-LAST:event_bCommencer1ActionPerformed
+    }//GEN-LAST:event_bCommencerActionPerformed
 
     private void bReprendreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bReprendreActionPerformed
         // TODO add your handling code here:
@@ -138,12 +110,11 @@ public class FAccueil extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bCommencer1;
+    private javax.swing.JButton bCommencer;
     private javax.swing.JButton bReprendre;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel lTitre;
     private javax.swing.JMenu mFichier;
     private javax.swing.JMenu mMenu;
+    private javax.swing.JMenuBar mbAccueil;
     // End of variables declaration//GEN-END:variables
 }

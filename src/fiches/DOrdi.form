@@ -39,7 +39,7 @@
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Component id="bRetour2" min="-2" pref="174" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="bCommencer3" min="-2" pref="222" max="-2" attributes="0"/>
+              <Component id="bCommencer" min="-2" pref="222" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -62,7 +62,7 @@
               </Group>
               <EmptySpace pref="95" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="bCommencer3" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
+                  <Component id="bCommencer" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
                   <Component id="bRetour2" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -91,7 +91,7 @@
         <Property name="text" type="java.lang.String" value="Difficile"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="bCommencer3">
+    <Component class="javax.swing.JButton" name="bCommencer">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>

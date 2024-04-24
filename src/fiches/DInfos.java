@@ -12,7 +12,12 @@ public class DInfos extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
-
+    
+    //Getter
+    public int tailledelagrille(){
+        return cbTGrille.getSelectedIndex();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,9 +34,8 @@ public class DInfos extends javax.swing.JDialog {
         tfJ1 = new javax.swing.JTextField();
         tfJ2 = new javax.swing.JTextField();
         cbTGrille = new javax.swing.JComboBox<>();
-        bCommencer2 = new javax.swing.JButton();
+        bCommencer = new javax.swing.JButton();
         bRetour1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -58,11 +62,11 @@ public class DInfos extends javax.swing.JDialog {
 
         cbTGrille.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3*3", "4*4", "5*5" }));
 
-        bCommencer2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        bCommencer2.setText("Commencer partie");
-        bCommencer2.addActionListener(new java.awt.event.ActionListener() {
+        bCommencer.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bCommencer.setText("Commencer partie");
+        bCommencer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bCommencer2ActionPerformed(evt);
+                bCommencerActionPerformed(evt);
             }
         });
 
@@ -73,8 +77,6 @@ public class DInfos extends javax.swing.JDialog {
                 bRetour1ActionPerformed(evt);
             }
         });
-
-        jLabel1.setText("sauve");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,22 +108,18 @@ public class DInfos extends javax.swing.JDialog {
                         .addGap(32, 32, 32)
                         .addComponent(bRetour1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bCommencer2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bCommencer, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(67, 67, 67))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(lInfos, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lInfos, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                .addComponent(lInfos, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -136,7 +134,7 @@ public class DInfos extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bRetour1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bCommencer2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bCommencer, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38))
         );
 
@@ -152,14 +150,15 @@ public class DInfos extends javax.swing.JDialog {
 
     }//GEN-LAST:event_tfJ2ActionPerformed
 
-    private void bCommencer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCommencer2ActionPerformed
+    private void bCommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCommencerActionPerformed
         String nom1 = tfJ1.getText();
         String nom2 = tfJ2.getText();
         if (nom1.length() !=0 && nom2.length() == 0){
             this.setVisible(false);
-            nivOrdi.setVisible(true);           
+            nivOrdi.setVisible(true);
+            
         }
-    }//GEN-LAST:event_bCommencer2ActionPerformed
+    }//GEN-LAST:event_bCommencerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,10 +205,9 @@ public class DInfos extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LnomJ1;
-    private javax.swing.JButton bCommencer2;
+    private javax.swing.JButton bCommencer;
     private javax.swing.JButton bRetour1;
     private javax.swing.JComboBox<String> cbTGrille;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lInfos;
     private javax.swing.JLabel lTGrille;
     private javax.swing.JLabel lnomJ2;
