@@ -45,70 +45,60 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="rbTranché" pref="110" max="32767" attributes="0"/>
-                                          <Component id="rbEntier" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="rbGrand" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
-                                          <Component id="rbPetit" alignment="1" min="-2" pref="98" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="rbTroué" min="-2" pref="98" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rbRond" min="-2" pref="98" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rbBlanc" min="-2" pref="98" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="rbPlein" min="-2" pref="98" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rbCarré" min="-2" pref="98" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rbNoir" min="-2" pref="98" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="rbMoyen" max="32767" attributes="0"/>
-                                  <Component id="rbArrondi" pref="110" max="32767" attributes="0"/>
+                                  <Component id="rbNoir" min="-2" pref="98" max="-2" attributes="0"/>
+                                  <Component id="rbBlanc" min="-2" pref="98" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="rbCroix" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="rbTaillé" min="-2" pref="104" max="-2" attributes="0"/>
+                                      <Component id="rbRond" min="-2" pref="98" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rbViolet" min="-2" pref="104" max="-2" attributes="0"/>
+                                      <Component id="rbTroué" min="-2" pref="98" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="rbCarré" min="-2" pref="98" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="rbPlein" min="-2" pref="98" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="rbPetit" min="-2" pref="98" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="rbTranché" min="-2" pref="110" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="rbGrand" min="-2" pref="98" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="rbEntier" min="-2" pref="110" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="rbJoker" min="-2" pref="98" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="298" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                               <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                               <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                               <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                               <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="bRegles" alignment="1" min="-2" pref="111" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="lChoixPion" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="307" max="-2" attributes="0"/>
+                      <Component id="bRegles" min="-2" pref="111" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -122,28 +112,32 @@
                   <Component id="lChoixPion" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bRegles" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="rbGrand" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rbPlein" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rbNoir" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rbCarré" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rbEntier" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rbArrondi" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rbTaillé" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rbViolet" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="rbPlein" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rbCarré" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rbEntier" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rbNoir" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rbGrand" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="rbBlanc" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rbRond" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rbTranché" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rbPetit" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rbTroué" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="rbJoker" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="rbPetit" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rbBlanc" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rbRond" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rbTranché" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rbTroué" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rbMoyen" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rbCroix" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
@@ -171,6 +165,7 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroupTaille"/>
         </Property>
+        <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Grand"/>
       </Properties>
     </Component>
@@ -187,6 +182,7 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroupDensit&#xe9;"/>
         </Property>
+        <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Plein"/>
       </Properties>
     </Component>
@@ -203,6 +199,7 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroupCouleur"/>
         </Property>
+        <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Noir"/>
       </Properties>
     </Component>
@@ -219,6 +216,7 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroupGeo"/>
         </Property>
+        <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Carr&#xe9;"/>
       </Properties>
     </Component>
@@ -235,6 +233,7 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroupCoupe"/>
         </Property>
+        <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Entier"/>
       </Properties>
     </Component>
@@ -244,46 +243,6 @@
           <ComponentRef name="buttonGroupCoupe"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Tranch&#xe9;"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="rbArrondi">
-      <Properties>
-        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="buttonGroupJoker"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Arrondi"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="rbMoyen">
-      <Properties>
-        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="buttonGroupJoker"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Moyen"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="rbTaill&#xe9;">
-      <Properties>
-        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="buttonGroupJoker"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Taill&#xe9;"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="rbCroix">
-      <Properties>
-        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="buttonGroupJoker"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Croix"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="rbViolet">
-      <Properties>
-        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="buttonGroupJoker"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Violet"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
@@ -416,6 +375,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bReglesActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="rbJoker">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Joker"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

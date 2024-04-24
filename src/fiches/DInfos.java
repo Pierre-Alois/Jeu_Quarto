@@ -4,11 +4,11 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
  */
 package fiches;
 
-public class FInfos extends javax.swing.JDialog {
+public class DInfos extends javax.swing.JDialog {
     
-    private FOrdi nivOrdi;
+    private DOrdi nivOrdi;
 
-    public FInfos(java.awt.Frame parent, boolean modal) {
+    public DInfos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -153,8 +153,9 @@ public class FInfos extends javax.swing.JDialog {
     }//GEN-LAST:event_tfJ2ActionPerformed
 
     private void bCommencer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCommencer2ActionPerformed
-        String nom = tfJ2.getText();
-        if (nom.length() == 0){
+        String nom1 = tfJ1.getText();
+        String nom2 = tfJ2.getText();
+        if (nom1.length() !=0 && nom2.length() == 0){
             this.setVisible(false);
             nivOrdi.setVisible(true);           
         }
@@ -177,20 +178,21 @@ public class FInfos extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FInfos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DInfos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FInfos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DInfos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FInfos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DInfos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FInfos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DInfos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FInfos dialog = new FInfos(new javax.swing.JFrame(), true);
+                DInfos dialog = new DInfos(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

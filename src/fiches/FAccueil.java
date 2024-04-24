@@ -6,7 +6,7 @@ package fiches;
 
 public class FAccueil extends javax.swing.JFrame {
 
-    private FInfos infos; 
+    private DInfos infos; 
     
     public FAccueil() {
         initComponents();
@@ -60,7 +60,7 @@ public class FAccueil extends javax.swing.JFrame {
         mMenu.setText("Menu");
         jMenuBar1.add(mMenu);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(mbAccueil);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
