@@ -4,8 +4,6 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
  */
 package fiches;
 
-import javax.swing.JComboBox;
-
 public class DInfos extends javax.swing.JDialog {
     
     private DOrdi Ordi;
@@ -14,14 +12,11 @@ public class DInfos extends javax.swing.JDialog {
     public DInfos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        Ordi = new DOrdi(this,false,this);
-        Pion = new DChoixPion(this,false);
-        
+        Ordi = new DOrdi(parent,modal);
+        Pion = new DChoixPion(parent, modal);
     }
     
-    //Getter
     public int tailledelagrille(){
-        
         return cbTGrille.getSelectedIndex();
     }
     

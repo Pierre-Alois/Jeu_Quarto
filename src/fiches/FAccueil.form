@@ -56,7 +56,7 @@
                       <Component id="lTitre" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="93" max="32767" attributes="0"/>
+              <EmptySpace pref="95" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -70,7 +70,7 @@
               </Group>
               <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
               <Component id="lTitre" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="163" max="32767" attributes="0"/>
+              <EmptySpace pref="123" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

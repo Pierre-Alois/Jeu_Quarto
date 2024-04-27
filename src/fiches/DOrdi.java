@@ -4,15 +4,12 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
  */
 package fiches;
 
-import java.awt.Dialog;
-
 public class DOrdi extends javax.swing.JDialog {
     
     private DInfos infos;
 
-    public DOrdi(Dialog parent, boolean modal, DInfos Infos) {
+    public DOrdi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        this.infos = Infos;
         initComponents();
     }
 
@@ -129,15 +126,14 @@ public class DOrdi extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                DInfos infos = new DInfos(new javax.swing.JFrame(), true);
-                DOrdi dialog = new DOrdi(infos, true,infos);
+                DOrdi dialog = new DOrdi(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);
                     }
                 });
-                infos.setVisible(true);
+                dialog.setVisible(true);
             }
         });
     }

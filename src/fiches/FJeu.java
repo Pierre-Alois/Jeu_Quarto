@@ -1,20 +1,15 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+Projet Java - Jeu Quarto
+BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
  */
 package fiches;
 
-/**
- *
- * @author i_am
- */
-public class FJeu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FJeu
-     */
+public class FJeu extends javax.swing.JFrame {
+    
     public FJeu() {
         initComponents();
+        
     }
 
     /**
