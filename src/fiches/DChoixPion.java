@@ -4,28 +4,51 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
  */
 package fiches;
 
-/**
- *
- * @author PA062
- */
+import java.awt.Dialog;
+
 public class DChoixPion extends javax.swing.JDialog {
     
-    private DInfos DInfos;
+    private DInfos Infos;
     private DChoixPion DChoixPion;
        
-    public DChoixPion(java.awt.Frame parent, boolean modal) {
+    public DChoixPion(Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
         
-        if(DInfos.tailledelagrille()==0){
+        if(Infos.tailledelagrille()==0){
             PanelTaille.setVisible(true);
             PanelCoupe.setVisible(false);
             PanelJoker.setVisible(false);
         }
-        if(DInfos.tailledelagrille() == 1){
+        if(Infos.tailledelagrille() == 1){
             PanelTaille.setVisible(true);
             PanelCoupe.setVisible(true);
             PanelJoker.setVisible(false);                       
+        }
+        PanelTaille.setVisible(false);
+        if(cbJoker.isSelected()){
+            rbNoir.setEnabled(false);
+            rbBlanc.setEnabled(false);
+            rbCarré.setEnabled(false);
+            rbRond.setEnabled(false);
+            rbPlein.setEnabled(false);
+            rbTroué.setEnabled(false);
+            rbGrand.setEnabled(false);
+            rbPetit.setEnabled(false);
+            rbEntier.setEnabled(false);
+            rbTranché.setEnabled(false);                      
+        } else{
+             
+            rbNoir.setEnabled(true);
+            rbBlanc.setEnabled(true);
+            rbCarré.setEnabled(true);
+            rbRond.setEnabled(true);
+            rbPlein.setEnabled(true);
+            rbTroué.setEnabled(true);
+            rbGrand.setEnabled(true);
+            rbPetit.setEnabled(true);
+            rbEntier.setEnabled(true);
+            rbTranché.setEnabled(true);
         }
         
     }
@@ -44,7 +67,6 @@ public class DChoixPion extends javax.swing.JDialog {
         bgDensité = new javax.swing.ButtonGroup();
         bgGeo = new javax.swing.ButtonGroup();
         bgCouleur = new javax.swing.ButtonGroup();
-        bgJoker = new javax.swing.ButtonGroup();
         lChoixPion = new javax.swing.JLabel();
         rbPlein = new javax.swing.JRadioButton();
         rbTroué = new javax.swing.JRadioButton();
@@ -65,7 +87,7 @@ public class DChoixPion extends javax.swing.JDialog {
         rbEntier = new javax.swing.JRadioButton();
         rbTranché = new javax.swing.JRadioButton();
         PanelJoker = new javax.swing.JPanel();
-        rbJoker = new javax.swing.JCheckBox();
+        cbJoker = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -73,14 +95,12 @@ public class DChoixPion extends javax.swing.JDialog {
         lChoixPion.setText("Choisissez un pion : ");
 
         bgDensité.add(rbPlein);
-        rbPlein.setSelected(true);
         rbPlein.setText("Plein");
 
         bgDensité.add(rbTroué);
         rbTroué.setText("Troué");
 
         bgCouleur.add(rbNoir);
-        rbNoir.setSelected(true);
         rbNoir.setText("Noir");
         rbNoir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,7 +112,6 @@ public class DChoixPion extends javax.swing.JDialog {
         rbBlanc.setText("Blanc");
 
         bgGeo.add(rbCarré);
-        rbCarré.setSelected(true);
         rbCarré.setText("Carré");
 
         bgGeo.add(rbRond);
@@ -243,10 +262,10 @@ public class DChoixPion extends javax.swing.JDialog {
 
         PanelJoker.setBackground(new java.awt.Color(255, 255, 255));
 
-        rbJoker.setText("Joker");
-        rbJoker.addActionListener(new java.awt.event.ActionListener() {
+        cbJoker.setText("Joker");
+        cbJoker.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbJokerActionPerformed(evt);
+                cbJokerActionPerformed(evt);
             }
         });
 
@@ -256,14 +275,14 @@ public class DChoixPion extends javax.swing.JDialog {
             PanelJokerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelJokerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(rbJoker, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbJoker, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         PanelJokerLayout.setVerticalGroup(
             PanelJokerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelJokerLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(rbJoker)
+                .addComponent(cbJoker)
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
@@ -312,7 +331,7 @@ public class DChoixPion extends javax.swing.JDialog {
                                 .addComponent(pPiece6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lChoixPion)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -363,9 +382,9 @@ public class DChoixPion extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_rbNoirActionPerformed
 
-    private void rbJokerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbJokerActionPerformed
-      
-    }//GEN-LAST:event_rbJokerActionPerformed
+    private void cbJokerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbJokerActionPerformed
+       
+    }//GEN-LAST:event_cbJokerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -398,14 +417,15 @@ public class DChoixPion extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                DChoixPion dialog = new DChoixPion(new javax.swing.JFrame(), true);
+                DInfos infos = new DInfos(new javax.swing.JFrame(), true);
+                DChoixPion dialog = new DChoixPion(infos, true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);
                     }
                 });
-                dialog.setVisible(true);
+                infos.setVisible(true);
             }
         });
     }
@@ -418,8 +438,8 @@ public class DChoixPion extends javax.swing.JDialog {
     private javax.swing.ButtonGroup bgCoupe;
     private javax.swing.ButtonGroup bgDensité;
     private javax.swing.ButtonGroup bgGeo;
-    private javax.swing.ButtonGroup bgJoker;
     private javax.swing.ButtonGroup bgTaille;
+    private javax.swing.JCheckBox cbJoker;
     private javax.swing.JLabel lChoixPion;
     private javax.swing.JPanel pPiece1;
     private javax.swing.JPanel pPiece2;
@@ -431,7 +451,6 @@ public class DChoixPion extends javax.swing.JDialog {
     private javax.swing.JRadioButton rbCarré;
     private javax.swing.JRadioButton rbEntier;
     private javax.swing.JRadioButton rbGrand;
-    private javax.swing.JCheckBox rbJoker;
     private javax.swing.JRadioButton rbNoir;
     private javax.swing.JRadioButton rbPetit;
     private javax.swing.JRadioButton rbPlein;

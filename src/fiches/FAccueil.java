@@ -8,8 +8,9 @@ public class FAccueil extends javax.swing.JFrame {
 
     private DInfos infos; 
     
-    public FAccueil() {
+    public FAccueil(){
         initComponents();
+        infos = new DInfos(this,false);
     }
 
     /**
@@ -38,7 +39,6 @@ public class FAccueil extends javax.swing.JFrame {
                 bCommencerActionPerformed(evt);
             }
         });
-        getContentPane().add(bCommencer);
 
         bReprendre.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bReprendre.setText("Reprendre Partie");
@@ -47,12 +47,10 @@ public class FAccueil extends javax.swing.JFrame {
                 bReprendreActionPerformed(evt);
             }
         });
-        getContentPane().add(bReprendre);
 
         lTitre.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lTitre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lTitre.setText("JEU 4x4");
-        getContentPane().add(lTitre);
 
         mFichier.setText("Fichier");
         mbAccueil.add(mFichier);
@@ -61,6 +59,34 @@ public class FAccueil extends javax.swing.JFrame {
         mbAccueil.add(mMenu);
 
         setJMenuBar(mbAccueil);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(bCommencer)
+                        .addGap(5, 5, 5)
+                        .addComponent(bReprendre))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(lTitre)))
+                .addContainerGap(93, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bCommencer)
+                    .addComponent(bReprendre))
+                .addGap(5, 5, 5)
+                .addComponent(lTitre)
+                .addContainerGap(163, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

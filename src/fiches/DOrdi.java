@@ -4,10 +4,15 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
  */
 package fiches;
 
-public class DOrdi extends javax.swing.JDialog {
+import java.awt.Dialog;
 
-    public DOrdi(java.awt.Frame parent, boolean modal) {
+public class DOrdi extends javax.swing.JDialog {
+    
+    private DInfos infos;
+
+    public DOrdi(Dialog parent, boolean modal, DInfos Infos) {
         super(parent, modal);
+        this.infos = Infos;
         initComponents();
     }
 
@@ -96,9 +101,6 @@ public class DOrdi extends javax.swing.JDialog {
         this.getParent().setVisible(true);
     }//GEN-LAST:event_bRetour2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -127,14 +129,15 @@ public class DOrdi extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                DOrdi dialog = new DOrdi(new javax.swing.JFrame(), true);
+                DInfos infos = new DInfos(new javax.swing.JFrame(), true);
+                DOrdi dialog = new DOrdi(infos, true,infos);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);
                     }
                 });
-                dialog.setVisible(true);
+                infos.setVisible(true);
             }
         });
     }

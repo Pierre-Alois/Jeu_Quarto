@@ -4,17 +4,24 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
  */
 package fiches;
 
+import javax.swing.JComboBox;
+
 public class DInfos extends javax.swing.JDialog {
     
-    private DOrdi nivOrdi;
+    private DOrdi Ordi;
+    private DChoixPion Pion;
 
     public DInfos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        Ordi = new DOrdi(this,false,this);
+        Pion = new DChoixPion(this,false);
+        
     }
     
     //Getter
     public int tailledelagrille(){
+        
         return cbTGrille.getSelectedIndex();
     }
     
@@ -155,7 +162,11 @@ public class DInfos extends javax.swing.JDialog {
         String nom2 = tfJ2.getText();
         if (nom1.length() !=0 && nom2.length() == 0){
             this.setVisible(false);
-            nivOrdi.setVisible(true);
+            Ordi.setVisible(true);    
+        }
+        else{
+            this.setVisible(false);
+            Pion.setVisible(true);
             
         }
     }//GEN-LAST:event_bCommencerActionPerformed
