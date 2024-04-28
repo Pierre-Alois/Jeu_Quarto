@@ -77,12 +77,40 @@ public class DChoixPion extends javax.swing.JDialog {
         rbBlanc = new javax.swing.JRadioButton();
         rbCarré = new javax.swing.JRadioButton();
         rbRond = new javax.swing.JRadioButton();
-        pPiece1 = new javax.swing.JPanel();
-        pPiece2 = new javax.swing.JPanel();
-        pPiece3 = new javax.swing.JPanel();
-        pPiece4 = new javax.swing.JPanel();
-        pPiece5 = new javax.swing.JPanel();
-        pPiece6 = new javax.swing.JPanel();
+        pPieces = new javax.swing.JPanel();
+        b00000 = new javax.swing.JButton();
+        b00001 = new javax.swing.JButton();
+        b00010 = new javax.swing.JButton();
+        b00011 = new javax.swing.JButton();
+        b00100 = new javax.swing.JButton();
+        b00101 = new javax.swing.JButton();
+        b00110 = new javax.swing.JButton();
+        b00111 = new javax.swing.JButton();
+        b01000 = new javax.swing.JButton();
+        b01001 = new javax.swing.JButton();
+        b01010 = new javax.swing.JButton();
+        b01011 = new javax.swing.JButton();
+        b01100 = new javax.swing.JButton();
+        b01101 = new javax.swing.JButton();
+        b01110 = new javax.swing.JButton();
+        b01111 = new javax.swing.JButton();
+        b10000 = new javax.swing.JButton();
+        b10001 = new javax.swing.JButton();
+        b10010 = new javax.swing.JButton();
+        b10011 = new javax.swing.JButton();
+        b10100 = new javax.swing.JButton();
+        b10101 = new javax.swing.JButton();
+        b10110 = new javax.swing.JButton();
+        b10111 = new javax.swing.JButton();
+        b11000 = new javax.swing.JButton();
+        b11001 = new javax.swing.JButton();
+        b11010 = new javax.swing.JButton();
+        b11011 = new javax.swing.JButton();
+        b11100 = new javax.swing.JButton();
+        b11101 = new javax.swing.JButton();
+        b11110 = new javax.swing.JButton();
+        b11111 = new javax.swing.JButton();
+        bxxxxx = new javax.swing.JButton();
         PanelTaille = new javax.swing.JPanel();
         rbPetit = new javax.swing.JRadioButton();
         rbGrand = new javax.swing.JRadioButton();
@@ -94,6 +122,7 @@ public class DChoixPion extends javax.swing.JDialog {
         bPoser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1360, 730));
 
         lChoixPion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lChoixPion.setText("Choisissez un pion : ");
@@ -121,83 +150,139 @@ public class DChoixPion extends javax.swing.JDialog {
         bgGeo.add(rbRond);
         rbRond.setText("Rond");
 
-        pPiece1.setBackground(new java.awt.Color(255, 255, 255));
+        pPieces.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout pPiece1Layout = new javax.swing.GroupLayout(pPiece1);
-        pPiece1.setLayout(pPiece1Layout);
-        pPiece1Layout.setHorizontalGroup(
-            pPiece1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        pPiece1Layout.setVerticalGroup(
-            pPiece1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        b00000.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00000.png"))); // NOI18N
+        b00000.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b00000);
 
-        pPiece2.setBackground(new java.awt.Color(255, 255, 255));
+        b00001.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00001.png"))); // NOI18N
+        b00001.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b00001);
 
-        javax.swing.GroupLayout pPiece2Layout = new javax.swing.GroupLayout(pPiece2);
-        pPiece2.setLayout(pPiece2Layout);
-        pPiece2Layout.setHorizontalGroup(
-            pPiece2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        pPiece2Layout.setVerticalGroup(
-            pPiece2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        b00010.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00010.png"))); // NOI18N
+        b00010.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b00010);
 
-        pPiece3.setBackground(new java.awt.Color(255, 255, 255));
+        b00011.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00011.png"))); // NOI18N
+        b00011.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b00011);
 
-        javax.swing.GroupLayout pPiece3Layout = new javax.swing.GroupLayout(pPiece3);
-        pPiece3.setLayout(pPiece3Layout);
-        pPiece3Layout.setHorizontalGroup(
-            pPiece3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        pPiece3Layout.setVerticalGroup(
-            pPiece3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        b00100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00100.png"))); // NOI18N
+        b00100.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b00100);
 
-        pPiece4.setBackground(new java.awt.Color(255, 255, 255));
+        b00101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00101.png"))); // NOI18N
+        b00101.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b00101);
 
-        javax.swing.GroupLayout pPiece4Layout = new javax.swing.GroupLayout(pPiece4);
-        pPiece4.setLayout(pPiece4Layout);
-        pPiece4Layout.setHorizontalGroup(
-            pPiece4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        pPiece4Layout.setVerticalGroup(
-            pPiece4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        b00110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00110.png"))); // NOI18N
+        b00110.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b00110);
 
-        pPiece5.setBackground(new java.awt.Color(255, 255, 255));
+        b00111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00111.png"))); // NOI18N
+        b00111.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b00111);
 
-        javax.swing.GroupLayout pPiece5Layout = new javax.swing.GroupLayout(pPiece5);
-        pPiece5.setLayout(pPiece5Layout);
-        pPiece5Layout.setHorizontalGroup(
-            pPiece5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        pPiece5Layout.setVerticalGroup(
-            pPiece5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        b01000.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01000.png"))); // NOI18N
+        b01000.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b01000);
 
-        pPiece6.setBackground(new java.awt.Color(255, 255, 255));
+        b01001.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01001.png"))); // NOI18N
+        b01001.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b01001);
 
-        javax.swing.GroupLayout pPiece6Layout = new javax.swing.GroupLayout(pPiece6);
-        pPiece6.setLayout(pPiece6Layout);
-        pPiece6Layout.setHorizontalGroup(
-            pPiece6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        pPiece6Layout.setVerticalGroup(
-            pPiece6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        b01010.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01010.png"))); // NOI18N
+        b01010.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b01010);
+
+        b01011.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01011.png"))); // NOI18N
+        b01011.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b01011);
+
+        b01100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01100.png"))); // NOI18N
+        b01100.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b01100);
+
+        b01101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01101.png"))); // NOI18N
+        b01101.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b01101);
+
+        b01110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01110.png"))); // NOI18N
+        b01110.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b01110);
+
+        b01111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01111.png"))); // NOI18N
+        b01111.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b01111);
+
+        b10000.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10000.png"))); // NOI18N
+        b10000.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b10000);
+
+        b10001.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10001.png"))); // NOI18N
+        b10001.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b10001);
+
+        b10010.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10010.png"))); // NOI18N
+        b10010.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b10010);
+
+        b10011.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10011.png"))); // NOI18N
+        b10011.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b10011);
+
+        b10100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10100.png"))); // NOI18N
+        b10100.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b10100);
+
+        b10101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10101.png"))); // NOI18N
+        b10101.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b10101);
+
+        b10110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10110.png"))); // NOI18N
+        b10110.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b10110);
+
+        b10111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10111.png"))); // NOI18N
+        b10111.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b10111);
+
+        b11000.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11000.png"))); // NOI18N
+        b11000.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b11000);
+
+        b11001.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11001.png"))); // NOI18N
+        b11001.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b11001);
+
+        b11010.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11010.png"))); // NOI18N
+        b11010.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b11010);
+
+        b11011.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11011.png"))); // NOI18N
+        b11011.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b11011);
+
+        b11100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11100.png"))); // NOI18N
+        b11100.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b11100);
+
+        b11101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11101.png"))); // NOI18N
+        b11101.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b11101);
+
+        b11110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11110.png"))); // NOI18N
+        b11110.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b11110);
+
+        b11111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11111.png"))); // NOI18N
+        b11111.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(b11111);
+
+        bxxxxx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/pxxxxx.png"))); // NOI18N
+        bxxxxx.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPieces.add(bxxxxx);
 
         PanelTaille.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -227,7 +312,7 @@ public class DChoixPion extends javax.swing.JDialog {
         PanelTailleLayout.setVerticalGroup(
             PanelTailleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTailleLayout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(rbGrand)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(rbPetit)
@@ -257,11 +342,10 @@ public class DChoixPion extends javax.swing.JDialog {
         PanelCoupeLayout.setVerticalGroup(
             PanelCoupeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelCoupeLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(rbEntier)
-                .addGap(18, 18, 18)
-                .addComponent(rbTranché)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rbTranché))
         );
 
         PanelJoker.setBackground(new java.awt.Color(255, 255, 255));
@@ -285,9 +369,9 @@ public class DChoixPion extends javax.swing.JDialog {
         PanelJokerLayout.setVerticalGroup(
             PanelJokerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelJokerLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(21, 21, 21)
                 .addComponent(cbJoker)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         bPoser.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -303,12 +387,13 @@ public class DChoixPion extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pPieces, javax.swing.GroupLayout.PREFERRED_SIZE, 949, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lChoixPion)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(rbNoir, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(rbBlanc, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -323,69 +408,43 @@ public class DChoixPion extends javax.swing.JDialog {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(rbTroué, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(PanelTaille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(PanelCoupe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(PanelTaille, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(PanelJoker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(pPiece1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(62, 62, 62)
-                                .addComponent(pPiece2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(62, 62, 62)
-                                .addComponent(pPiece3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(55, 55, 55)
-                                .addComponent(pPiece4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(56, 56, 56)
-                                .addComponent(pPiece5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(51, 51, 51)
-                                .addComponent(pPiece6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lChoixPion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bPoser)
-                        .addGap(46, 46, 46))))
+                                .addComponent(PanelCoupe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(PanelJoker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bPoser)
+                .addGap(224, 224, 224))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(lChoixPion)
-                .addGap(34, 34, 34)
-                .addComponent(PanelTaille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rbPlein)
-                            .addComponent(rbCarré)
-                            .addComponent(rbNoir))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rbBlanc)
-                            .addComponent(rbRond)
-                            .addComponent(rbTroué))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(28, Short.MAX_VALUE)
-                        .addComponent(bPoser)
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(PanelJoker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PanelCoupe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(73, 73, 73)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pPiece2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pPiece1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pPiece3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pPiece4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pPiece5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pPiece6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43))
+                        .addGap(25, 25, 25)
+                        .addComponent(lChoixPion)
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(PanelTaille, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(rbPlein)
+                                    .addComponent(rbCarré)
+                                    .addComponent(rbNoir))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(rbBlanc)
+                                    .addComponent(rbRond)
+                                    .addComponent(rbTroué)))
+                            .addComponent(PanelCoupe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(PanelJoker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(bPoser)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addComponent(pPieces, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -455,20 +514,48 @@ public class DChoixPion extends javax.swing.JDialog {
     private javax.swing.JPanel PanelCoupe;
     private javax.swing.JPanel PanelJoker;
     private javax.swing.JPanel PanelTaille;
+    private javax.swing.JButton b00000;
+    private javax.swing.JButton b00001;
+    private javax.swing.JButton b00010;
+    private javax.swing.JButton b00011;
+    private javax.swing.JButton b00100;
+    private javax.swing.JButton b00101;
+    private javax.swing.JButton b00110;
+    private javax.swing.JButton b00111;
+    private javax.swing.JButton b01000;
+    private javax.swing.JButton b01001;
+    private javax.swing.JButton b01010;
+    private javax.swing.JButton b01011;
+    private javax.swing.JButton b01100;
+    private javax.swing.JButton b01101;
+    private javax.swing.JButton b01110;
+    private javax.swing.JButton b01111;
+    private javax.swing.JButton b10000;
+    private javax.swing.JButton b10001;
+    private javax.swing.JButton b10010;
+    private javax.swing.JButton b10011;
+    private javax.swing.JButton b10100;
+    private javax.swing.JButton b10101;
+    private javax.swing.JButton b10110;
+    private javax.swing.JButton b10111;
+    private javax.swing.JButton b11000;
+    private javax.swing.JButton b11001;
+    private javax.swing.JButton b11010;
+    private javax.swing.JButton b11011;
+    private javax.swing.JButton b11100;
+    private javax.swing.JButton b11101;
+    private javax.swing.JButton b11110;
+    private javax.swing.JButton b11111;
     private javax.swing.JButton bPoser;
     private javax.swing.ButtonGroup bgCouleur;
     private javax.swing.ButtonGroup bgCoupe;
     private javax.swing.ButtonGroup bgDensité;
     private javax.swing.ButtonGroup bgGeo;
     private javax.swing.ButtonGroup bgTaille;
+    private javax.swing.JButton bxxxxx;
     private javax.swing.JCheckBox cbJoker;
     private javax.swing.JLabel lChoixPion;
-    private javax.swing.JPanel pPiece1;
-    private javax.swing.JPanel pPiece2;
-    private javax.swing.JPanel pPiece3;
-    private javax.swing.JPanel pPiece4;
-    private javax.swing.JPanel pPiece5;
-    private javax.swing.JPanel pPiece6;
+    private javax.swing.JPanel pPieces;
     private javax.swing.JRadioButton rbBlanc;
     private javax.swing.JRadioButton rbCarré;
     private javax.swing.JRadioButton rbEntier;

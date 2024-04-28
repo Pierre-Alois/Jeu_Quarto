@@ -39,7 +39,7 @@ public class FAccueil extends javax.swing.JFrame {
         mMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1012, 926));
+        setPreferredSize(new java.awt.Dimension(1360, 730));
 
         bCommencer.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bCommencer.setText("Commencer Partie");
@@ -83,7 +83,7 @@ public class FAccueil extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(133, 133, 133)
                         .addComponent(lTitre)))
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(985, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,7 +94,7 @@ public class FAccueil extends javax.swing.JFrame {
                     .addComponent(bReprendre))
                 .addGap(5, 5, 5)
                 .addComponent(lTitre)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

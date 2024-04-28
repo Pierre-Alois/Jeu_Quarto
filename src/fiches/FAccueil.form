@@ -20,7 +20,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1012, 926]"/>
+      <Dimension value="[1360, 730]"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -56,7 +56,7 @@
                       <Component id="lTitre" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="95" max="32767" attributes="0"/>
+              <EmptySpace pref="985" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -70,7 +70,7 @@
               </Group>
               <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
               <Component id="lTitre" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="123" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
