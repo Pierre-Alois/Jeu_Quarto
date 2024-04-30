@@ -28,28 +28,35 @@ public class DOrdi extends javax.swing.JDialog {
         rbOrdiDifficile = new javax.swing.JRadioButton();
         bCommencer = new javax.swing.JButton();
         bRetour = new javax.swing.JButton();
+        lPhotoOrdi = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        lNivOrdi.setFont(new java.awt.Font("SimSun", 1, 24)); // NOI18N
+        lNivOrdi.setFont(new java.awt.Font("Constantia", 1, 24)); // NOI18N
+        lNivOrdi.setForeground(new java.awt.Color(0, 102, 255));
         lNivOrdi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lNivOrdi.setText("Choisissez le niveau de l'ordinateur");
 
         bgNivOrdi.add(rbOrdifacile);
         rbOrdifacile.setFont(new java.awt.Font("Snap ITC", 1, 24)); // NOI18N
-        rbOrdifacile.setForeground(new java.awt.Color(255, 204, 0));
+        rbOrdifacile.setForeground(new java.awt.Color(0, 204, 0));
         rbOrdifacile.setSelected(true);
         rbOrdifacile.setText("Facile");
 
         bgNivOrdi.add(rbOrdiDifficile);
         rbOrdiDifficile.setFont(new java.awt.Font("Snap ITC", 1, 24)); // NOI18N
-        rbOrdiDifficile.setForeground(new java.awt.Color(0, 0, 102));
         rbOrdiDifficile.setText("Difficile");
 
-        bCommencer.setBackground(new java.awt.Color(0, 204, 102));
+        bCommencer.setBackground(new java.awt.Color(0, 204, 0));
         bCommencer.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         bCommencer.setForeground(new java.awt.Color(255, 255, 255));
         bCommencer.setText("Commencer partie");
+        bCommencer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCommencerActionPerformed(evt);
+            }
+        });
 
         bRetour.setBackground(new java.awt.Color(255, 102, 102));
         bRetour.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
@@ -60,42 +67,63 @@ public class DOrdi extends javax.swing.JDialog {
             }
         });
 
+        lPhotoOrdi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fiches/images.png"))); // NOI18N
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fiches/images.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(rbOrdifacile)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(rbOrdiDifficile)
-                .addGap(100, 100, 100))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(lNivOrdi)
+                        .addGap(0, 63, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lPhotoOrdi)
+                        .addGap(47, 47, 47))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(81, 81, 81)
-                        .addComponent(lNivOrdi))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(bRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(164, 164, 164)
-                        .addComponent(bCommencer, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                        .addComponent(bRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rbOrdifacile)
+                        .addGap(48, 48, 48)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rbOrdiDifficile)
+                    .addComponent(bCommencer, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(lNivOrdi)
-                .addGap(78, 78, 78)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lNivOrdi)
+                            .addComponent(lPhotoOrdi))
+                        .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rbOrdiDifficile)
+                            .addComponent(rbOrdifacile))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbOrdifacile)
-                    .addComponent(rbOrdiDifficile))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bCommencer, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26))
+                .addGap(43, 43, 43))
         );
 
         pack();
@@ -105,6 +133,10 @@ public class DOrdi extends javax.swing.JDialog {
         this.setVisible(false);
         this.getParent().setVisible(true);
     }//GEN-LAST:event_bRetourActionPerformed
+
+    private void bCommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCommencerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bCommencerActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -150,7 +182,9 @@ public class DOrdi extends javax.swing.JDialog {
     private javax.swing.JButton bCommencer;
     private javax.swing.JButton bRetour;
     private javax.swing.ButtonGroup bgNivOrdi;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lNivOrdi;
+    private javax.swing.JLabel lPhotoOrdi;
     private javax.swing.JRadioButton rbOrdiDifficile;
     private javax.swing.JRadioButton rbOrdifacile;
     // End of variables declaration//GEN-END:variables
