@@ -70,7 +70,7 @@ public class DOrdi extends javax.swing.JDialog {
         lPhotoOrdi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fiches/images.png"))); // NOI18N
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fiches/images.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("\n");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,13 +91,13 @@ public class DOrdi extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(bRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(rbOrdifacile)
-                        .addGap(48, 48, 48)))
+                        .addGap(48, 48, 48))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(bRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rbOrdiDifficile)
                     .addComponent(bCommencer, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
