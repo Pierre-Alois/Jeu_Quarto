@@ -7,14 +7,12 @@ package fiches;
 public class DChoixPion extends javax.swing.JDialog {
     
     private DInfos Infos;
-    //private Fjeu Poser;
     private int taille;
     
        
     public DChoixPion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents();
-        //Infos = new DInfos(parent, modal);       
+        initComponents();         
     }
     
     public int gettaille(){
@@ -56,9 +54,7 @@ public class DChoixPion extends javax.swing.JDialog {
             rbPetit.setEnabled(true);
             rbEntier.setEnabled(true);
             rbTranché.setEnabled(true);
-        }
-        
-    
+        }          
 }
    
     @SuppressWarnings("unchecked")
@@ -463,8 +459,8 @@ public class DChoixPion extends javax.swing.JDialog {
     }//GEN-LAST:event_cbJokerActionPerformed
 
     private void bPoserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPoserActionPerformed
-        //this.setVisible(false);
-        //Poser.setVisible(true);
+        FJeu poser = new FJeu();
+        poser.setVisible(true);
     }//GEN-LAST:event_bPoserActionPerformed
 
     /**

@@ -41,7 +41,9 @@ public class FAccueil extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1360, 730));
 
-        bCommencer.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bCommencer.setBackground(new java.awt.Color(0, 204, 102));
+        bCommencer.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        bCommencer.setForeground(new java.awt.Color(255, 255, 255));
         bCommencer.setText("Commencer Partie");
         bCommencer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,7 +51,9 @@ public class FAccueil extends javax.swing.JFrame {
             }
         });
 
-        bReprendre.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bReprendre.setBackground(new java.awt.Color(0, 204, 255));
+        bReprendre.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        bReprendre.setForeground(new java.awt.Color(255, 255, 255));
         bReprendre.setText("Reprendre Partie");
         bReprendre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,7 +63,7 @@ public class FAccueil extends javax.swing.JFrame {
 
         lTitre.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lTitre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lTitre.setText("JEU 4x4");
+        lTitre.setText("Quarto X OtrauQ");
 
         mFichier.setText("Fichier");
         mbAccueil.add(mFichier);
@@ -74,16 +78,15 @@ public class FAccueil extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(bCommencer)
-                        .addGap(5, 5, 5)
-                        .addComponent(bReprendre))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(lTitre)))
-                .addContainerGap(985, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addComponent(bCommencer)
+                .addGap(5, 5, 5)
+                .addComponent(bReprendre)
+                .addContainerGap(13, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lTitre)
+                .addGap(88, 88, 88))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,9 +95,9 @@ public class FAccueil extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bCommencer)
                     .addComponent(bReprendre))
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lTitre)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         pack();

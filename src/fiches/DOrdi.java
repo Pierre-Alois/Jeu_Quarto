@@ -22,31 +22,41 @@ public class DOrdi extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bgNivOrdi = new javax.swing.ButtonGroup();
         lNivOrdi = new javax.swing.JLabel();
         rbOrdifacile = new javax.swing.JRadioButton();
         rbOrdiDifficile = new javax.swing.JRadioButton();
         bCommencer = new javax.swing.JButton();
-        bRetour2 = new javax.swing.JButton();
+        bRetour = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        lNivOrdi.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lNivOrdi.setFont(new java.awt.Font("SimSun", 1, 24)); // NOI18N
         lNivOrdi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lNivOrdi.setText("Choisissez le niveau de l'ordinateur");
 
+        bgNivOrdi.add(rbOrdifacile);
+        rbOrdifacile.setFont(new java.awt.Font("Snap ITC", 1, 24)); // NOI18N
+        rbOrdifacile.setForeground(new java.awt.Color(255, 204, 0));
         rbOrdifacile.setSelected(true);
         rbOrdifacile.setText("Facile");
 
+        bgNivOrdi.add(rbOrdiDifficile);
+        rbOrdiDifficile.setFont(new java.awt.Font("Snap ITC", 1, 24)); // NOI18N
+        rbOrdiDifficile.setForeground(new java.awt.Color(0, 0, 102));
         rbOrdiDifficile.setText("Difficile");
 
-        bCommencer.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bCommencer.setBackground(new java.awt.Color(0, 204, 102));
+        bCommencer.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        bCommencer.setForeground(new java.awt.Color(255, 255, 255));
         bCommencer.setText("Commencer partie");
 
-        bRetour2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        bRetour2.setText("Retour");
-        bRetour2.addActionListener(new java.awt.event.ActionListener() {
+        bRetour.setBackground(new java.awt.Color(255, 102, 102));
+        bRetour.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        bRetour.setText("Retour");
+        bRetour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bRetour2ActionPerformed(evt);
+                bRetourActionPerformed(evt);
             }
         });
 
@@ -54,49 +64,47 @@ public class DOrdi extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addComponent(rbOrdifacile, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(76, 76, 76)
+                .addComponent(rbOrdifacile)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(rbOrdiDifficile, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(116, 116, 116))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(148, Short.MAX_VALUE)
-                .addComponent(lNivOrdi, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(145, 145, 145))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(bRetour2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bCommencer, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addComponent(rbOrdiDifficile)
+                .addGap(100, 100, 100))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(lNivOrdi))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(bRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(164, 164, 164)
+                        .addComponent(bCommencer, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(lNivOrdi, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rbOrdifacile)
-                            .addComponent(rbOrdiDifficile))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(lNivOrdi)
+                .addGap(78, 78, 78)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bCommencer, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bRetour2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18))
+                    .addComponent(rbOrdifacile)
+                    .addComponent(rbOrdiDifficile))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bCommencer, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bRetour2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetour2ActionPerformed
+    private void bRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetourActionPerformed
         this.setVisible(false);
         this.getParent().setVisible(true);
-    }//GEN-LAST:event_bRetour2ActionPerformed
+    }//GEN-LAST:event_bRetourActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -140,7 +148,8 @@ public class DOrdi extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCommencer;
-    private javax.swing.JButton bRetour2;
+    private javax.swing.JButton bRetour;
+    private javax.swing.ButtonGroup bgNivOrdi;
     private javax.swing.JLabel lNivOrdi;
     private javax.swing.JRadioButton rbOrdiDifficile;
     private javax.swing.JRadioButton rbOrdifacile;
