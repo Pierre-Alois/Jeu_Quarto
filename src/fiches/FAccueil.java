@@ -38,9 +38,6 @@ public class FAccueil extends javax.swing.JFrame {
         lTitre = new javax.swing.JLabel();
         bQuitter = new javax.swing.JButton();
         bRègles = new javax.swing.JButton();
-        mbAccueil = new javax.swing.JMenuBar();
-        mFichier = new javax.swing.JMenu();
-        mMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1360, 730));
@@ -79,7 +76,7 @@ public class FAccueil extends javax.swing.JFrame {
         });
 
         bRègles.setBackground(new java.awt.Color(255, 102, 255));
-        bRègles.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        bRègles.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         bRègles.setText("Règles de Jeu");
         bRègles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,54 +84,45 @@ public class FAccueil extends javax.swing.JFrame {
             }
         });
 
-        mFichier.setText("Fichier");
-        mbAccueil.add(mFichier);
-
-        mMenu.setText("Menu");
-        mbAccueil.add(mMenu);
-
-        setJMenuBar(mbAccueil);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(bQuitter, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(bCommencer)
-                        .addGap(35, 35, 35)
+                        .addGap(38, 38, 38)
                         .addComponent(bReprendre)
-                        .addGap(210, 210, 210))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(57, 57, 57))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lTitre)
-                        .addGap(18, 18, 18)
-                        .addComponent(bRègles)
-                        .addGap(159, 159, 159))))
+                        .addGap(149, 149, 149))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(167, 167, 167)
+                        .addComponent(bRègles, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(192, 192, 192)
+                        .addComponent(bQuitter, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lTitre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(11, Short.MAX_VALUE)
-                        .addComponent(bRègles, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addComponent(lTitre)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bCommencer, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bReprendre, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(189, 189, 189)
+                .addGap(40, 40, 40)
+                .addComponent(bRègles, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
                 .addComponent(bQuitter, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addGap(35, 35, 35))
         );
 
         pack();
@@ -230,8 +218,5 @@ public class FAccueil extends javax.swing.JFrame {
     private javax.swing.JButton bReprendre;
     private javax.swing.JButton bRègles;
     private javax.swing.JLabel lTitre;
-    private javax.swing.JMenu mFichier;
-    private javax.swing.JMenu mMenu;
-    private javax.swing.JMenuBar mbAccueil;
     // End of variables declaration//GEN-END:variables
 }
