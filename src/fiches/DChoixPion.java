@@ -8,6 +8,7 @@ public class DChoixPion extends javax.swing.JDialog {
     
     private DInfos Infos;
     private int taille;
+    private javax.swing.JButton[] tab;
     
        
     public DChoixPion(java.awt.Frame parent, boolean modal) {
@@ -20,17 +21,23 @@ public class DChoixPion extends javax.swing.JDialog {
     }
     
     public void ChoixPion(){
-        if(Infos.tailledelagrille()==0){
-            PanelTaille.setVisible(true);
-            PanelCoupe.setVisible(false);
-            PanelJoker.setVisible(false);
+        switch (Infos.tailledelagrille()) {
+            case 0:
+                pTaille.setVisible(false);
+                pCoupe.setVisible(false);
+                pJoker.setVisible(true);
+                break;
+            case 1:
+                pTaille.setVisible(true);
+                pCoupe.setVisible(false);
+                pJoker.setVisible(false);
+                break;
+            default:
+                pTaille.setVisible(true);
+                pCoupe.setVisible(true);
+                pJoker.setVisible(false);
+                break;
         }
-        if(Infos.tailledelagrille() == 1){
-            PanelTaille.setVisible(true);
-            PanelCoupe.setVisible(true);
-            PanelJoker.setVisible(false);                       
-        }
-        PanelTaille.setVisible(false);
         if(cbJoker.isSelected()){
             rbNoir.setEnabled(false);
             rbBlanc.setEnabled(false);
@@ -42,8 +49,7 @@ public class DChoixPion extends javax.swing.JDialog {
             rbPetit.setEnabled(false);
             rbEntier.setEnabled(false);
             rbTranché.setEnabled(false);                      
-        } else{
-             
+        }else {
             rbNoir.setEnabled(true);
             rbBlanc.setEnabled(true);
             rbCarré.setEnabled(true);
@@ -54,9 +60,45 @@ public class DChoixPion extends javax.swing.JDialog {
             rbPetit.setEnabled(true);
             rbEntier.setEnabled(true);
             rbTranché.setEnabled(true);
-        }          
+        }
+        
+        javax.swing.JButton tab[] = new javax.swing.JButton[33];
+        tab[0] = b00000;
+        tab[1] = b00001;
+        tab[2] = b00010;
+        tab[3] = b00011;
+        tab[4] = b00100;
+        tab[5] = b00101;
+        tab[6] = b00110;
+        tab[7] = b00111;
+        tab[8] = b01000;
+        tab[9] = b01001;
+        tab[10] = b01010;
+        tab[11] = b01011;
+        tab[12] = b01100;
+        tab[13] = b01101;
+        tab[14] = b01110;
+        tab[15] = b01111;
+        tab[16] = b10000;
+        tab[17] = b10001;
+        tab[18] = b10010;
+        tab[19] = b10011;
+        tab[20] = b10100;
+        tab[21] = b10101;
+        tab[22] = b10110;
+        tab[23] = b10111;
+        tab[24] = b11000;
+        tab[25] = b11001;
+        tab[26] = b11010;
+        tab[27] = b11011;
+        tab[28] = b11100;
+        tab[29] = b11101;
+        tab[30] = b11110;
+        tab[31] = b11111;
+        tab[32] = bxxxxx;
+        this.tab = tab;
 }
-   
+       
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -73,7 +115,19 @@ public class DChoixPion extends javax.swing.JDialog {
         rbBlanc = new javax.swing.JRadioButton();
         rbCarré = new javax.swing.JRadioButton();
         rbRond = new javax.swing.JRadioButton();
-        pPieces = new javax.swing.JPanel();
+        pTaille = new javax.swing.JPanel();
+        rbPetit = new javax.swing.JRadioButton();
+        rbGrand = new javax.swing.JRadioButton();
+        pCoupe = new javax.swing.JPanel();
+        rbEntier = new javax.swing.JRadioButton();
+        rbTranché = new javax.swing.JRadioButton();
+        pJoker = new javax.swing.JPanel();
+        cbJoker = new javax.swing.JCheckBox();
+        bPoser = new javax.swing.JButton();
+        lPion = new javax.swing.JLabel();
+        bReinitialiser = new javax.swing.JButton();
+        spPièces = new javax.swing.JScrollPane();
+        pPièces = new javax.swing.JPanel();
         b00000 = new javax.swing.JButton();
         b00001 = new javax.swing.JButton();
         b00010 = new javax.swing.JButton();
@@ -107,19 +161,14 @@ public class DChoixPion extends javax.swing.JDialog {
         b11110 = new javax.swing.JButton();
         b11111 = new javax.swing.JButton();
         bxxxxx = new javax.swing.JButton();
-        PanelTaille = new javax.swing.JPanel();
-        rbPetit = new javax.swing.JRadioButton();
-        rbGrand = new javax.swing.JRadioButton();
-        PanelCoupe = new javax.swing.JPanel();
-        rbEntier = new javax.swing.JRadioButton();
-        rbTranché = new javax.swing.JRadioButton();
-        PanelJoker = new javax.swing.JPanel();
-        cbJoker = new javax.swing.JCheckBox();
-        bPoser = new javax.swing.JButton();
-        bRetour = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1360, 730));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         lChoixPion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lChoixPion.setText("Choisissez un pion : ");
@@ -132,11 +181,6 @@ public class DChoixPion extends javax.swing.JDialog {
 
         bgCouleur.add(rbNoir);
         rbNoir.setText("Noir");
-        rbNoir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbNoirActionPerformed(evt);
-            }
-        });
 
         bgCouleur.add(rbBlanc);
         rbBlanc.setText("Blanc");
@@ -147,141 +191,7 @@ public class DChoixPion extends javax.swing.JDialog {
         bgGeo.add(rbRond);
         rbRond.setText("Rond");
 
-        pPieces.setBackground(new java.awt.Color(255, 255, 255));
-
-        b00000.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00000.png"))); // NOI18N
-        b00000.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b00000);
-
-        b00001.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00001.png"))); // NOI18N
-        b00001.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b00001);
-
-        b00010.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00010.png"))); // NOI18N
-        b00010.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b00010);
-
-        b00011.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00011.png"))); // NOI18N
-        b00011.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b00011);
-
-        b00100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00100.png"))); // NOI18N
-        b00100.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b00100);
-
-        b00101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00101.png"))); // NOI18N
-        b00101.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b00101);
-
-        b00110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00110.png"))); // NOI18N
-        b00110.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b00110);
-
-        b00111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00111.png"))); // NOI18N
-        b00111.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b00111);
-
-        b01000.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01000.png"))); // NOI18N
-        b01000.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b01000);
-
-        b01001.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01001.png"))); // NOI18N
-        b01001.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b01001);
-
-        b01010.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01010.png"))); // NOI18N
-        b01010.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b01010);
-
-        b01011.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01011.png"))); // NOI18N
-        b01011.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b01011);
-
-        b01100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01100.png"))); // NOI18N
-        b01100.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b01100);
-
-        b01101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01101.png"))); // NOI18N
-        b01101.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b01101);
-
-        b01110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01110.png"))); // NOI18N
-        b01110.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b01110);
-
-        b01111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01111.png"))); // NOI18N
-        b01111.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b01111);
-
-        b10000.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10000.png"))); // NOI18N
-        b10000.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b10000);
-
-        b10001.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10001.png"))); // NOI18N
-        b10001.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b10001);
-
-        b10010.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10010.png"))); // NOI18N
-        b10010.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b10010);
-
-        b10011.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10011.png"))); // NOI18N
-        b10011.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b10011);
-
-        b10100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10100.png"))); // NOI18N
-        b10100.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b10100);
-
-        b10101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10101.png"))); // NOI18N
-        b10101.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b10101);
-
-        b10110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10110.png"))); // NOI18N
-        b10110.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b10110);
-
-        b10111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10111.png"))); // NOI18N
-        b10111.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b10111);
-
-        b11000.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11000.png"))); // NOI18N
-        b11000.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b11000);
-
-        b11001.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11001.png"))); // NOI18N
-        b11001.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b11001);
-
-        b11010.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11010.png"))); // NOI18N
-        b11010.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b11010);
-
-        b11011.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11011.png"))); // NOI18N
-        b11011.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b11011);
-
-        b11100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11100.png"))); // NOI18N
-        b11100.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b11100);
-
-        b11101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11101.png"))); // NOI18N
-        b11101.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b11101);
-
-        b11110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11110.png"))); // NOI18N
-        b11110.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b11110);
-
-        b11111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11111.png"))); // NOI18N
-        b11111.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(b11111);
-
-        bxxxxx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/pxxxxx.png"))); // NOI18N
-        bxxxxx.setPreferredSize(new java.awt.Dimension(150, 150));
-        pPieces.add(bxxxxx);
-
-        PanelTaille.setBackground(new java.awt.Color(255, 255, 255));
+        pTaille.setBackground(new java.awt.Color(255, 255, 255));
 
         bgTaille.add(rbPetit);
         rbPetit.setText("Petit");
@@ -289,26 +199,21 @@ public class DChoixPion extends javax.swing.JDialog {
         bgTaille.add(rbGrand);
         rbGrand.setSelected(true);
         rbGrand.setText("Grand");
-        rbGrand.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbGrandActionPerformed(evt);
-            }
-        });
 
-        javax.swing.GroupLayout PanelTailleLayout = new javax.swing.GroupLayout(PanelTaille);
-        PanelTaille.setLayout(PanelTailleLayout);
-        PanelTailleLayout.setHorizontalGroup(
-            PanelTailleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelTailleLayout.createSequentialGroup()
+        javax.swing.GroupLayout pTailleLayout = new javax.swing.GroupLayout(pTaille);
+        pTaille.setLayout(pTailleLayout);
+        pTailleLayout.setHorizontalGroup(
+            pTailleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pTailleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelTailleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pTailleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rbGrand, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rbPetit, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        PanelTailleLayout.setVerticalGroup(
-            PanelTailleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTailleLayout.createSequentialGroup()
+        pTailleLayout.setVerticalGroup(
+            pTailleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pTailleLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(rbGrand)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -316,7 +221,7 @@ public class DChoixPion extends javax.swing.JDialog {
                 .addGap(30, 30, 30))
         );
 
-        PanelCoupe.setBackground(new java.awt.Color(255, 255, 255));
+        pCoupe.setBackground(new java.awt.Color(255, 255, 255));
 
         bgCoupe.add(rbEntier);
         rbEntier.setSelected(true);
@@ -325,53 +230,50 @@ public class DChoixPion extends javax.swing.JDialog {
         bgCoupe.add(rbTranché);
         rbTranché.setText("Tranché");
 
-        javax.swing.GroupLayout PanelCoupeLayout = new javax.swing.GroupLayout(PanelCoupe);
-        PanelCoupe.setLayout(PanelCoupeLayout);
-        PanelCoupeLayout.setHorizontalGroup(
-            PanelCoupeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelCoupeLayout.createSequentialGroup()
+        javax.swing.GroupLayout pCoupeLayout = new javax.swing.GroupLayout(pCoupe);
+        pCoupe.setLayout(pCoupeLayout);
+        pCoupeLayout.setHorizontalGroup(
+            pCoupeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pCoupeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelCoupeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pCoupeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rbEntier, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rbTranché, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        PanelCoupeLayout.setVerticalGroup(
-            PanelCoupeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelCoupeLayout.createSequentialGroup()
+        pCoupeLayout.setVerticalGroup(
+            pCoupeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pCoupeLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(rbEntier)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(rbTranché))
         );
 
-        PanelJoker.setBackground(new java.awt.Color(255, 255, 255));
+        pJoker.setBackground(new java.awt.Color(255, 255, 255));
 
         cbJoker.setText("Joker");
-        cbJoker.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbJokerActionPerformed(evt);
-            }
-        });
 
-        javax.swing.GroupLayout PanelJokerLayout = new javax.swing.GroupLayout(PanelJoker);
-        PanelJoker.setLayout(PanelJokerLayout);
-        PanelJokerLayout.setHorizontalGroup(
-            PanelJokerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelJokerLayout.createSequentialGroup()
+        javax.swing.GroupLayout pJokerLayout = new javax.swing.GroupLayout(pJoker);
+        pJoker.setLayout(pJokerLayout);
+        pJokerLayout.setHorizontalGroup(
+            pJokerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pJokerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cbJoker, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
-        PanelJokerLayout.setVerticalGroup(
-            PanelJokerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelJokerLayout.createSequentialGroup()
+        pJokerLayout.setVerticalGroup(
+            pJokerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pJokerLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(cbJoker)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        bPoser.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bPoser.setBackground(new java.awt.Color(0, 204, 51));
+        bPoser.setFont(new java.awt.Font("Baskerville Old Face", 1, 18)); // NOI18N
+        bPoser.setForeground(new java.awt.Color(255, 255, 255));
         bPoser.setText("Poser Pion");
         bPoser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -379,12 +281,157 @@ public class DChoixPion extends javax.swing.JDialog {
             }
         });
 
-        bRetour.setText("Retour");
-        bRetour.addActionListener(new java.awt.event.ActionListener() {
+        lPion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        lPion.setMaximumSize(new java.awt.Dimension(208, 429));
+        lPion.setMinimumSize(new java.awt.Dimension(208, 429));
+        lPion.setPreferredSize(new java.awt.Dimension(208, 429));
+
+        bReinitialiser.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bReinitialiser.setText("Réinitialiser");
+        bReinitialiser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bRetourActionPerformed(evt);
+                bReinitialiserActionPerformed(evt);
             }
         });
+
+        spPièces.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        pPièces.setBackground(new java.awt.Color(255, 255, 255));
+        pPièces.setPreferredSize(new java.awt.Dimension(950, 950));
+
+        b00000.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00000.png"))); // NOI18N
+        b00000.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b00000);
+
+        b00001.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00001.png"))); // NOI18N
+        b00001.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b00001);
+
+        b00010.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00010.png"))); // NOI18N
+        b00010.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b00010);
+
+        b00011.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00011.png"))); // NOI18N
+        b00011.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b00011);
+
+        b00100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00100.png"))); // NOI18N
+        b00100.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b00100);
+
+        b00101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00101.png"))); // NOI18N
+        b00101.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b00101);
+
+        b00110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00110.png"))); // NOI18N
+        b00110.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b00110);
+
+        b00111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00111.png"))); // NOI18N
+        b00111.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b00111);
+
+        b01000.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01000.png"))); // NOI18N
+        b01000.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b01000);
+
+        b01001.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01001.png"))); // NOI18N
+        b01001.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b01001);
+
+        b01010.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01010.png"))); // NOI18N
+        b01010.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b01010);
+
+        b01011.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01011.png"))); // NOI18N
+        b01011.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b01011);
+
+        b01100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01100.png"))); // NOI18N
+        b01100.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b01100);
+
+        b01101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01101.png"))); // NOI18N
+        b01101.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b01101);
+
+        b01110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01110.png"))); // NOI18N
+        b01110.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b01110);
+
+        b01111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01111.png"))); // NOI18N
+        b01111.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b01111);
+
+        b10000.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10000.png"))); // NOI18N
+        b10000.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b10000);
+
+        b10001.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10001.png"))); // NOI18N
+        b10001.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b10001);
+
+        b10010.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10010.png"))); // NOI18N
+        b10010.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b10010);
+
+        b10011.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10011.png"))); // NOI18N
+        b10011.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b10011);
+
+        b10100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10100.png"))); // NOI18N
+        b10100.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b10100);
+
+        b10101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10101.png"))); // NOI18N
+        b10101.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b10101);
+
+        b10110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10110.png"))); // NOI18N
+        b10110.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b10110);
+
+        b10111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10111.png"))); // NOI18N
+        b10111.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b10111);
+
+        b11000.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11000.png"))); // NOI18N
+        b11000.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b11000);
+
+        b11001.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11001.png"))); // NOI18N
+        b11001.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b11001);
+
+        b11010.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11010.png"))); // NOI18N
+        b11010.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b11010);
+
+        b11011.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11011.png"))); // NOI18N
+        b11011.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b11011);
+
+        b11100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11100.png"))); // NOI18N
+        b11100.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b11100);
+
+        b11101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11101.png"))); // NOI18N
+        b11101.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b11101);
+
+        b11110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11110.png"))); // NOI18N
+        b11110.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b11110);
+
+        b11111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11111.png"))); // NOI18N
+        b11111.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(b11111);
+
+        bxxxxx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/pxxxxx.png"))); // NOI18N
+        bxxxxx.setPreferredSize(new java.awt.Dimension(150, 150));
+        pPièces.add(bxxxxx);
+
+        spPièces.setViewportView(pPièces);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -392,15 +439,10 @@ public class DChoixPion extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lChoixPion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bPoser)
-                        .addGap(250, 250, 250))
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pPieces, javax.swing.GroupLayout.PREFERRED_SIZE, 949, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lChoixPion)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(rbNoir, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -416,68 +458,142 @@ public class DChoixPion extends javax.swing.JDialog {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(rbTroué, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(PanelTaille, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pTaille, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(PanelCoupe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(PanelJoker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(274, 274, 274)
-                                .addComponent(bRetour)))
-                        .addContainerGap(280, Short.MAX_VALUE))))
+                                .addComponent(pCoupe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(pJoker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(bReinitialiser)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bPoser)
+                        .addGap(124, 124, 124))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(spPièces, javax.swing.GroupLayout.PREFERRED_SIZE, 972, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                        .addComponent(lPion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(87, 87, 87))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lChoixPion)
-                    .addComponent(bPoser))
-                .addGap(26, 26, 26)
+                .addGap(71, 71, 71)
+                .addComponent(bPoser)
+                .addGap(47, 47, 47)
+                .addComponent(lPion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(PanelTaille, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(rbPlein)
-                                .addComponent(rbCarré)
-                                .addComponent(rbNoir))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(rbBlanc)
-                                .addComponent(rbRond)
-                                .addComponent(rbTroué)))
-                        .addComponent(PanelCoupe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(PanelJoker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(bRetour))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(pPieces, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(lChoixPion)
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pTaille, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(rbPlein)
+                                    .addComponent(rbCarré)
+                                    .addComponent(rbNoir))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(rbBlanc)
+                                    .addComponent(rbRond)
+                                    .addComponent(rbTroué)))
+                            .addComponent(pCoupe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pJoker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(bReinitialiser)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addComponent(spPièces, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void rbGrandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbGrandActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbGrandActionPerformed
-
-    private void rbNoirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNoirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbNoirActionPerformed
-
-    private void cbJokerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbJokerActionPerformed
-       
-    }//GEN-LAST:event_cbJokerActionPerformed
-
     private void bPoserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPoserActionPerformed
         FJeu poser = new FJeu();
         poser.setVisible(true);
     }//GEN-LAST:event_bPoserActionPerformed
 
-    private void bRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetourActionPerformed
-        this.setVisible(false);
-        this.getParent().setVisible(true);
-    }//GEN-LAST:event_bRetourActionPerformed
+    private void bReinitialiserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bReinitialiserActionPerformed
+        // En cliquant sur ce bouton, on décoche tous les autres boutons, ce qui affiche ainsi toutes les pièces.
+        rbBlanc.setSelected(false);
+        rbNoir.setSelected(false);
+        rbCarré.setSelected(false);
+        rbRond.setSelected(false);
+        rbPlein.setSelected(false);
+        rbTroué.setSelected(false);
+        cbJoker.setSelected(false);
+        rbPetit.setSelected(false);
+        rbTranché.setSelected(false);
+        if(Infos.tailledelagrille()>0){
+            rbGrand.setSelected(false);
+            if(Infos.tailledelagrille()==2){
+                rbEntier.setSelected(false);
+            }
+        }
+    }//GEN-LAST:event_bReinitialiserActionPerformed
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        for(int i=0;i>33;i++){
+            tab[i].setVisible(true);
+        }
+        if(!cbJoker.isSelected())
+            tab[32].setVisible(false);
+        
+        if(rbBlanc.isSelected()){
+            for(int i=1;i<=31;i+=2)
+                tab[i].setVisible(false);
+            
+        }else if(rbNoir.isSelected()){
+            for(int i=0;i<31;i+=2)
+                tab[i].setVisible(false);
+            
+        }
+        if(rbCarré.isSelected()){
+            for(int i=2;i<32;i+=4){
+                tab[i].setVisible(false);
+                tab[i+1].setVisible(false);
+            }
+        }else if(rbRond.isSelected()){
+            for(int i=0;i<32;i+=4){
+                tab[i].setVisible(false);
+                tab[i+1].setVisible(false);
+            }
+        }
+        if(rbPlein.isSelected()){
+            for(int i=4;i<32;i+=8){
+                for(int j=0;j<5;j++)
+                    tab[i+j].setVisible(false);
+            }
+        }else if(rbTroué.isSelected()){
+            for(int i=0;i<32;i+=8){
+                for(int j=0;j<5;j++)
+                    tab[i+j].setVisible(false);
+            }
+        }
+        if(rbGrand.isSelected()){
+            for(int i=8;i<16;i++)
+                tab[i].setVisible(false);
+            for(int i=24;i<32;i++)
+                tab[i].setVisible(false);
+        }else if(rbPetit.isSelected()){
+            for(int i=0;i<8;i++)
+                tab[i].setVisible(false);
+            for(int i=16;i<24;i++)
+                tab[i].setVisible(false);
+        }
+        if(rbEntier.isSelected()){
+            for(int i=31;i>15;i--)
+                tab[i].setVisible(false);
+        }else if(rbTranché.isSelected()){
+            for(int i=0;i<16;i++)
+                tab[i].setVisible(false);
+        }
+    }//GEN-LAST:event_formMouseClicked
 
     /**
      * @param args the command line arguments
@@ -523,9 +639,6 @@ public class DChoixPion extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PanelCoupe;
-    private javax.swing.JPanel PanelJoker;
-    private javax.swing.JPanel PanelTaille;
     private javax.swing.JButton b00000;
     private javax.swing.JButton b00001;
     private javax.swing.JButton b00010;
@@ -559,7 +672,7 @@ public class DChoixPion extends javax.swing.JDialog {
     private javax.swing.JButton b11110;
     private javax.swing.JButton b11111;
     private javax.swing.JButton bPoser;
-    private javax.swing.JButton bRetour;
+    private javax.swing.JButton bReinitialiser;
     private javax.swing.ButtonGroup bgCouleur;
     private javax.swing.ButtonGroup bgCoupe;
     private javax.swing.ButtonGroup bgDensité;
@@ -568,7 +681,11 @@ public class DChoixPion extends javax.swing.JDialog {
     private javax.swing.JButton bxxxxx;
     private javax.swing.JCheckBox cbJoker;
     private javax.swing.JLabel lChoixPion;
-    private javax.swing.JPanel pPieces;
+    private javax.swing.JLabel lPion;
+    private javax.swing.JPanel pCoupe;
+    private javax.swing.JPanel pJoker;
+    private javax.swing.JPanel pPièces;
+    private javax.swing.JPanel pTaille;
     private javax.swing.JRadioButton rbBlanc;
     private javax.swing.JRadioButton rbCarré;
     private javax.swing.JRadioButton rbEntier;
@@ -579,5 +696,6 @@ public class DChoixPion extends javax.swing.JDialog {
     private javax.swing.JRadioButton rbRond;
     private javax.swing.JRadioButton rbTranché;
     private javax.swing.JRadioButton rbTroué;
+    private javax.swing.JScrollPane spPièces;
     // End of variables declaration//GEN-END:variables
 }
