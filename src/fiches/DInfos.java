@@ -172,9 +172,9 @@ public class DInfos extends javax.swing.JDialog {
             this.setVisible(false);
             Ordi.setVisible(true);    
         }
-        else if (nom1.length() == 0 && nom2.length() == 0){ 
-            this.setVisible(true);
-            Pion.setVisible(false);   
+        else if(nom1.length() == 0 && nom2.length() !=0 
+             || nom1.length() == 0 && nom2.length() == 0 ){
+            this.setVisible(true);           
         }
         else{
             this.setVisible(false);

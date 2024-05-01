@@ -7,7 +7,7 @@ package fiches;
 public class DOrdi extends javax.swing.JDialog {
     
     private DInfos infos;
-
+    private DChoixPion Pion;
     public DOrdi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -50,6 +50,11 @@ public class DOrdi extends javax.swing.JDialog {
         bCommencer.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         bCommencer.setForeground(new java.awt.Color(255, 255, 255));
         bCommencer.setText("Commencer partie");
+        bCommencer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCommencerActionPerformed(evt);
+            }
+        });
 
         bRetour.setBackground(new java.awt.Color(255, 102, 102));
         bRetour.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
@@ -105,6 +110,11 @@ public class DOrdi extends javax.swing.JDialog {
         this.setVisible(false);
         this.getParent().setVisible(true);
     }//GEN-LAST:event_bRetourActionPerformed
+
+    private void bCommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCommencerActionPerformed
+        this.setVisible(false);
+        Pion.setVisible(true);
+    }//GEN-LAST:event_bCommencerActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

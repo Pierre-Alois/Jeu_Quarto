@@ -28,6 +28,7 @@ public class FJeu extends javax.swing.JFrame {
         pPlateau.setBackground(new java.awt.Color(246, 236, 221));
         pPlateau.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pPlateau.setToolTipText("");
+        pPlateau.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout pPlateauLayout = new javax.swing.GroupLayout(pPlateau);
         pPlateau.setLayout(pPlateauLayout);

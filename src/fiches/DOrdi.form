@@ -123,6 +123,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Commencer partie"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bCommencerActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bRetour">
       <Properties>
