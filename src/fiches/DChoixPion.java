@@ -7,15 +7,13 @@ package fiches;
 public class DChoixPion extends javax.swing.JDialog {
     
     private DInfos Infos;
-    //private Fjeu Poser;
     private int taille;
     private javax.swing.JButton[] tab;
     
        
     public DChoixPion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents();
-        //Infos = new DInfos(parent, modal);       
+        initComponents();         
     }
     
     public int gettaille(){
@@ -273,7 +271,9 @@ public class DChoixPion extends javax.swing.JDialog {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        bPoser.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bPoser.setBackground(new java.awt.Color(0, 204, 51));
+        bPoser.setFont(new java.awt.Font("Baskerville Old Face", 1, 18)); // NOI18N
+        bPoser.setForeground(new java.awt.Color(255, 255, 255));
         bPoser.setText("Poser Pion");
         bPoser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -487,7 +487,7 @@ public class DChoixPion extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(lChoixPion)
-                        .addGap(30, 30, 30)
+                        .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(pTaille, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
@@ -505,7 +505,7 @@ public class DChoixPion extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(92, 92, 92)
                         .addComponent(bReinitialiser)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(spPièces, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
@@ -514,8 +514,8 @@ public class DChoixPion extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bPoserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPoserActionPerformed
-        //this.setVisible(false);
-        //Poser.setVisible(true);
+        FJeu poser = new FJeu();
+        poser.setVisible(true);
     }//GEN-LAST:event_bPoserActionPerformed
 
     private void bReinitialiserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bReinitialiserActionPerformed
