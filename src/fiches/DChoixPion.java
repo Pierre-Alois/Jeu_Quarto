@@ -4,21 +4,20 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
  */
 package fiches;
 
+import javax.swing.ImageIcon;
+
 public class DChoixPion extends javax.swing.JDialog {
     
     private DInfos Infos;
-    private int taille;
     private javax.swing.JButton[] tab;
-    
+    private FJeu Jeu;
        
     public DChoixPion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();         
     }
     
-    public int gettaille(){
-        return taille;
-    }
+    
     
     public void ChoixPion(){
         switch (Infos.tailledelagrille()) {
@@ -163,6 +162,7 @@ public class DChoixPion extends javax.swing.JDialog {
         bxxxxx = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Choix du pion");
         setPreferredSize(new java.awt.Dimension(1360, 730));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -301,6 +301,11 @@ public class DChoixPion extends javax.swing.JDialog {
 
         b00000.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00000.png"))); // NOI18N
         b00000.setPreferredSize(new java.awt.Dimension(150, 150));
+        b00000.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b00000ActionPerformed(evt);
+            }
+        });
         pPièces.add(b00000);
 
         b00001.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00001.png"))); // NOI18N
@@ -594,6 +599,11 @@ public class DChoixPion extends javax.swing.JDialog {
                 tab[i].setVisible(false);
         }
     }//GEN-LAST:event_formMouseClicked
+
+    private void b00000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00000ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/00000.png"));
+        Jeu.setRefPion("00000");
+    }//GEN-LAST:event_b00000ActionPerformed
 
     /**
      * @param args the command line arguments

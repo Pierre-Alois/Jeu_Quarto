@@ -31,6 +31,7 @@ public class DOrdi extends javax.swing.JDialog {
         lPhotoOrdi = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Niveau de l'ordinateur");
 
         lNivOrdi.setFont(new java.awt.Font("Constantia", 1, 24)); // NOI18N
         lNivOrdi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

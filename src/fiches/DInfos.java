@@ -40,6 +40,7 @@ public class DInfos extends javax.swing.JDialog {
         bRetour = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Mode de jeu");
 
         lInfos.setFont(new java.awt.Font("Constantia", 1, 24)); // NOI18N
         lInfos.setForeground(new java.awt.Color(0, 102, 204));
