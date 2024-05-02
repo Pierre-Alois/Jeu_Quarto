@@ -7,7 +7,7 @@ package fiches;
 public class DOrdi extends javax.swing.JDialog {
     
     private DInfos infos;
-
+    private DChoixPion Pion;
     public DOrdi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -124,11 +124,13 @@ public class DOrdi extends javax.swing.JDialog {
 
     private void bRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetourActionPerformed
         this.setVisible(false);
-        this.getParent().setVisible(true);
+       infos.setVisible(true);
     }//GEN-LAST:event_bRetourActionPerformed
 
     private void bCommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCommencerActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        FJeu grille = new FJeu();
+        grille.setVisible(true);
     }//GEN-LAST:event_bCommencerActionPerformed
 
     public static void main(String args[]) {

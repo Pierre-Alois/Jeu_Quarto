@@ -7,11 +7,11 @@ package fiches;
 
 public class FJeu extends javax.swing.JFrame {
     
-    private String refPion;
+    private DChoixPion choix;
     
     public FJeu() {
         initComponents();
-        
+        choix = new DChoixPion(this,false);      
     }
 
     public void setRefPion(String refPion) {
@@ -25,7 +25,7 @@ public class FJeu extends javax.swing.JFrame {
 
         pPlateau = new javax.swing.JPanel();
         lJoueur = new javax.swing.JLabel();
-        lInstruction = new javax.swing.JLabel();
+        bChoix = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Plateau du Jeu");
@@ -48,6 +48,16 @@ public class FJeu extends javax.swing.JFrame {
             pPlateauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 418, Short.MAX_VALUE)
         );
+
+        lJoueur.setText("$j$o$u$e$u$r$");
+
+        bChoix.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        bChoix.setText("Choisir pion");
+        bChoix.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bChoixActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,7 +91,12 @@ public class FJeu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
+    private void bChoixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bChoixActionPerformed
+        this.setVisible(false);
+        choix.setVisible(true);
+    }//GEN-LAST:event_bChoixActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -118,8 +133,8 @@ public class FJeu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bChoix;
     private javax.swing.JLabel lInstruction;
     private javax.swing.JLabel lJoueur;
     private javax.swing.JPanel pPlateau;
     // End of variables declaration//GEN-END:variables
-}
