@@ -8,30 +8,32 @@ package fiches;
 public class FJeu extends javax.swing.JFrame {
     
     private DChoixPion choix;
+    private String refPion;
     
     public FJeu() {
+        
         initComponents();
         choix = new DChoixPion(this,false);      
     }
 
     public void setRefPion(String refPion) {
-        this.refPion = refPion;
+        this.refPion = refPion;       
     }
-    
-    
+       
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         pPlateau = new javax.swing.JPanel();
         lJoueur = new javax.swing.JLabel();
+        lInstruction = new javax.swing.JLabel();
         bChoix = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Plateau du Jeu");
         setMaximumSize(new java.awt.Dimension(700, 700));
         setMinimumSize(new java.awt.Dimension(100, 100));
-        setPreferredSize(new java.awt.Dimension(1360, 730));
+        setPreferredSize(new java.awt.Dimension(1360, 735));
 
         pPlateau.setBackground(new java.awt.Color(246, 236, 221));
         pPlateau.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -49,7 +51,9 @@ public class FJeu extends javax.swing.JFrame {
             .addGap(0, 418, Short.MAX_VALUE)
         );
 
-        lJoueur.setText("$j$o$u$e$u$r$");
+        getContentPane().add(pPlateau);
+        getContentPane().add(lJoueur);
+        getContentPane().add(lInstruction);
 
         bChoix.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         bChoix.setText("Choisir pion");
@@ -58,36 +62,7 @@ public class FJeu extends javax.swing.JFrame {
                 bChoixActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(577, 577, 577)
-                .addComponent(lJoueur)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(pPlateau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 756, Short.MAX_VALUE)
-                .addComponent(lInstruction)
-                .addGap(109, 109, 109))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(lJoueur)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(lInstruction))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 253, Short.MAX_VALUE)
-                        .addComponent(pPlateau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(25, 25, 25))
-        );
+        getContentPane().add(bChoix);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -138,3 +113,4 @@ public class FJeu extends javax.swing.JFrame {
     private javax.swing.JLabel lJoueur;
     private javax.swing.JPanel pPlateau;
     // End of variables declaration//GEN-END:variables
+}

@@ -22,6 +22,7 @@ public class FAccueil extends javax.swing.JFrame {
     }
     
     public int gettaille(){
+        //return pion.gettaille();
         return infos.tailledelagrille();
     }
     

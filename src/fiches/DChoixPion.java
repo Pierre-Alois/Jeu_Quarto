@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 public class DChoixPion extends javax.swing.JDialog {
     
     private DInfos Infos;
+    private int taille;
     private javax.swing.JButton[] tab;
     private FJeu Jeu;
        
@@ -17,7 +18,9 @@ public class DChoixPion extends javax.swing.JDialog {
         initComponents();         
     }
     
-    
+    public int gettaille(){
+        return taille;
+    }
     
     public void ChoixPion(){
         switch (Infos.tailledelagrille()) {
@@ -310,130 +313,290 @@ public class DChoixPion extends javax.swing.JDialog {
 
         b00001.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00001.png"))); // NOI18N
         b00001.setPreferredSize(new java.awt.Dimension(150, 150));
+        b00001.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b00001ActionPerformed(evt);
+            }
+        });
         pPièces.add(b00001);
 
         b00010.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00010.png"))); // NOI18N
         b00010.setPreferredSize(new java.awt.Dimension(150, 150));
+        b00010.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b00010ActionPerformed(evt);
+            }
+        });
         pPièces.add(b00010);
 
         b00011.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00011.png"))); // NOI18N
         b00011.setPreferredSize(new java.awt.Dimension(150, 150));
+        b00011.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b00011ActionPerformed(evt);
+            }
+        });
         pPièces.add(b00011);
 
         b00100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00100.png"))); // NOI18N
         b00100.setPreferredSize(new java.awt.Dimension(150, 150));
+        b00100.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b00100ActionPerformed(evt);
+            }
+        });
         pPièces.add(b00100);
 
         b00101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00101.png"))); // NOI18N
         b00101.setPreferredSize(new java.awt.Dimension(150, 150));
+        b00101.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b00101ActionPerformed(evt);
+            }
+        });
         pPièces.add(b00101);
 
         b00110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00110.png"))); // NOI18N
         b00110.setPreferredSize(new java.awt.Dimension(150, 150));
+        b00110.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b00110ActionPerformed(evt);
+            }
+        });
         pPièces.add(b00110);
 
         b00111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00111.png"))); // NOI18N
         b00111.setPreferredSize(new java.awt.Dimension(150, 150));
+        b00111.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b00111ActionPerformed(evt);
+            }
+        });
         pPièces.add(b00111);
 
         b01000.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01000.png"))); // NOI18N
         b01000.setPreferredSize(new java.awt.Dimension(150, 150));
+        b01000.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b01000ActionPerformed(evt);
+            }
+        });
         pPièces.add(b01000);
 
         b01001.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01001.png"))); // NOI18N
         b01001.setPreferredSize(new java.awt.Dimension(150, 150));
+        b01001.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b01001ActionPerformed(evt);
+            }
+        });
         pPièces.add(b01001);
 
         b01010.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01010.png"))); // NOI18N
         b01010.setPreferredSize(new java.awt.Dimension(150, 150));
+        b01010.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b01010ActionPerformed(evt);
+            }
+        });
         pPièces.add(b01010);
 
         b01011.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01011.png"))); // NOI18N
         b01011.setPreferredSize(new java.awt.Dimension(150, 150));
+        b01011.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b01011ActionPerformed(evt);
+            }
+        });
         pPièces.add(b01011);
 
         b01100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01100.png"))); // NOI18N
         b01100.setPreferredSize(new java.awt.Dimension(150, 150));
+        b01100.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b01100ActionPerformed(evt);
+            }
+        });
         pPièces.add(b01100);
 
         b01101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01101.png"))); // NOI18N
         b01101.setPreferredSize(new java.awt.Dimension(150, 150));
+        b01101.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b01101ActionPerformed(evt);
+            }
+        });
         pPièces.add(b01101);
 
         b01110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01110.png"))); // NOI18N
         b01110.setPreferredSize(new java.awt.Dimension(150, 150));
+        b01110.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b01110ActionPerformed(evt);
+            }
+        });
         pPièces.add(b01110);
 
         b01111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p01111.png"))); // NOI18N
         b01111.setPreferredSize(new java.awt.Dimension(150, 150));
+        b01111.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b01111ActionPerformed(evt);
+            }
+        });
         pPièces.add(b01111);
 
         b10000.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10000.png"))); // NOI18N
         b10000.setPreferredSize(new java.awt.Dimension(150, 150));
+        b10000.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b10000ActionPerformed(evt);
+            }
+        });
         pPièces.add(b10000);
 
         b10001.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10001.png"))); // NOI18N
         b10001.setPreferredSize(new java.awt.Dimension(150, 150));
+        b10001.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b10001ActionPerformed(evt);
+            }
+        });
         pPièces.add(b10001);
 
         b10010.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10010.png"))); // NOI18N
         b10010.setPreferredSize(new java.awt.Dimension(150, 150));
+        b10010.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b10010ActionPerformed(evt);
+            }
+        });
         pPièces.add(b10010);
 
         b10011.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10011.png"))); // NOI18N
         b10011.setPreferredSize(new java.awt.Dimension(150, 150));
+        b10011.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b10011ActionPerformed(evt);
+            }
+        });
         pPièces.add(b10011);
 
         b10100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10100.png"))); // NOI18N
         b10100.setPreferredSize(new java.awt.Dimension(150, 150));
+        b10100.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b10100ActionPerformed(evt);
+            }
+        });
         pPièces.add(b10100);
 
         b10101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10101.png"))); // NOI18N
         b10101.setPreferredSize(new java.awt.Dimension(150, 150));
+        b10101.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b10101ActionPerformed(evt);
+            }
+        });
         pPièces.add(b10101);
 
         b10110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10110.png"))); // NOI18N
         b10110.setPreferredSize(new java.awt.Dimension(150, 150));
+        b10110.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b10110ActionPerformed(evt);
+            }
+        });
         pPièces.add(b10110);
 
         b10111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p10111.png"))); // NOI18N
         b10111.setPreferredSize(new java.awt.Dimension(150, 150));
+        b10111.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b10111ActionPerformed(evt);
+            }
+        });
         pPièces.add(b10111);
 
         b11000.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11000.png"))); // NOI18N
         b11000.setPreferredSize(new java.awt.Dimension(150, 150));
+        b11000.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b11000ActionPerformed(evt);
+            }
+        });
         pPièces.add(b11000);
 
         b11001.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11001.png"))); // NOI18N
         b11001.setPreferredSize(new java.awt.Dimension(150, 150));
+        b11001.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b11001ActionPerformed(evt);
+            }
+        });
         pPièces.add(b11001);
 
         b11010.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11010.png"))); // NOI18N
         b11010.setPreferredSize(new java.awt.Dimension(150, 150));
+        b11010.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b11010ActionPerformed(evt);
+            }
+        });
         pPièces.add(b11010);
 
         b11011.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11011.png"))); // NOI18N
         b11011.setPreferredSize(new java.awt.Dimension(150, 150));
+        b11011.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b11011ActionPerformed(evt);
+            }
+        });
         pPièces.add(b11011);
 
         b11100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11100.png"))); // NOI18N
         b11100.setPreferredSize(new java.awt.Dimension(150, 150));
+        b11100.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b11100ActionPerformed(evt);
+            }
+        });
         pPièces.add(b11100);
 
         b11101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11101.png"))); // NOI18N
         b11101.setPreferredSize(new java.awt.Dimension(150, 150));
+        b11101.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b11101ActionPerformed(evt);
+            }
+        });
         pPièces.add(b11101);
 
         b11110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11110.png"))); // NOI18N
         b11110.setPreferredSize(new java.awt.Dimension(150, 150));
+        b11110.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b11110ActionPerformed(evt);
+            }
+        });
         pPièces.add(b11110);
 
         b11111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p11111.png"))); // NOI18N
         b11111.setPreferredSize(new java.awt.Dimension(150, 150));
+        b11111.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b11111ActionPerformed(evt);
+            }
+        });
         pPièces.add(b11111);
 
         bxxxxx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/pxxxxx.png"))); // NOI18N
         bxxxxx.setPreferredSize(new java.awt.Dimension(150, 150));
+        bxxxxx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bxxxxxActionPerformed(evt);
+            }
+        });
         pPièces.add(bxxxxx);
 
         spPièces.setViewportView(pPièces);
@@ -510,9 +673,9 @@ public class DChoixPion extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(92, 92, 92)
                         .addComponent(bReinitialiser)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                .addComponent(spPièces, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(spPièces, javax.swing.GroupLayout.PREFERRED_SIZE, 821, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -604,6 +767,166 @@ public class DChoixPion extends javax.swing.JDialog {
         lPion.setIcon(new ImageIcon("src/images_pions/00000.png"));
         Jeu.setRefPion("00000");
     }//GEN-LAST:event_b00000ActionPerformed
+
+    private void b00001ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00001ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/00001.png"));
+        Jeu.setRefPion("00001");
+    }//GEN-LAST:event_b00001ActionPerformed
+
+    private void b00010ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00010ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/00010.png"));
+        Jeu.setRefPion("00010");
+    }//GEN-LAST:event_b00010ActionPerformed
+
+    private void b00011ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00011ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/00011.png"));
+        Jeu.setRefPion("00011");
+    }//GEN-LAST:event_b00011ActionPerformed
+
+    private void b00100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00100ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/00100.png"));
+        Jeu.setRefPion("00100");
+    }//GEN-LAST:event_b00100ActionPerformed
+
+    private void b00101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00101ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/00101.png"));
+        Jeu.setRefPion("00101");
+    }//GEN-LAST:event_b00101ActionPerformed
+
+    private void b00110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00110ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/00110.png"));
+        Jeu.setRefPion("00110");
+    }//GEN-LAST:event_b00110ActionPerformed
+
+    private void b00111ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00111ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/00111.png"));
+        Jeu.setRefPion("00111");
+    }//GEN-LAST:event_b00111ActionPerformed
+
+    private void b01000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01000ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/01000.png"));
+        Jeu.setRefPion("01000");
+    }//GEN-LAST:event_b01000ActionPerformed
+
+    private void b01001ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01001ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/01001.png"));
+        Jeu.setRefPion("01001");
+    }//GEN-LAST:event_b01001ActionPerformed
+
+    private void b01010ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01010ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/01010.png"));
+        Jeu.setRefPion("01010");
+    }//GEN-LAST:event_b01010ActionPerformed
+
+    private void b01011ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01011ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/01011.png"));
+        Jeu.setRefPion("01011");
+    }//GEN-LAST:event_b01011ActionPerformed
+
+    private void b01100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01100ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/01100.png"));
+        Jeu.setRefPion("01100");
+    }//GEN-LAST:event_b01100ActionPerformed
+
+    private void b01101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01101ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/01101.png"));
+        Jeu.setRefPion("01101");
+    }//GEN-LAST:event_b01101ActionPerformed
+
+    private void b01110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01110ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/01110.png"));
+        Jeu.setRefPion("01110");
+    }//GEN-LAST:event_b01110ActionPerformed
+
+    private void b01111ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01111ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/01111.png"));
+        Jeu.setRefPion("01111");
+    }//GEN-LAST:event_b01111ActionPerformed
+
+    private void b10000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10000ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/10000.png"));
+        Jeu.setRefPion("10000");
+    }//GEN-LAST:event_b10000ActionPerformed
+
+    private void b10001ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10001ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/10001.png"));
+        Jeu.setRefPion("10001");
+    }//GEN-LAST:event_b10001ActionPerformed
+
+    private void b10010ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10010ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/10010.png"));
+        Jeu.setRefPion("10010");
+    }//GEN-LAST:event_b10010ActionPerformed
+
+    private void b10011ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10011ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/10011.png"));
+        Jeu.setRefPion("10011");
+    }//GEN-LAST:event_b10011ActionPerformed
+
+    private void b10100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10100ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/10100.png"));
+        Jeu.setRefPion("10100");
+    }//GEN-LAST:event_b10100ActionPerformed
+
+    private void b10101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10101ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/10101.png"));
+        Jeu.setRefPion("10101");
+    }//GEN-LAST:event_b10101ActionPerformed
+
+    private void b10110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10110ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/10110.png"));
+        Jeu.setRefPion("10110");
+    }//GEN-LAST:event_b10110ActionPerformed
+
+    private void b10111ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10111ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/10111.png"));
+        Jeu.setRefPion("10111");
+    }//GEN-LAST:event_b10111ActionPerformed
+
+    private void b11000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11000ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/11000.png"));
+        Jeu.setRefPion("11000");
+    }//GEN-LAST:event_b11000ActionPerformed
+
+    private void b11001ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11001ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/11001.png"));
+        Jeu.setRefPion("11001");
+    }//GEN-LAST:event_b11001ActionPerformed
+
+    private void b11010ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11010ActionPerformed
+       lPion.setIcon(new ImageIcon("src/images_pions/11010.png"));
+       Jeu.setRefPion("11010");
+    }//GEN-LAST:event_b11010ActionPerformed
+
+    private void b11011ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11011ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/11011.png"));
+        Jeu.setRefPion("11011");
+    }//GEN-LAST:event_b11011ActionPerformed
+
+    private void b11100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11100ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/11100.png"));
+        Jeu.setRefPion("11100");
+    }//GEN-LAST:event_b11100ActionPerformed
+
+    private void b11101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11101ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/11101.png"));
+        Jeu.setRefPion("11101");
+    }//GEN-LAST:event_b11101ActionPerformed
+
+    private void b11110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11110ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/11110.png"));
+        Jeu.setRefPion("11110");
+    }//GEN-LAST:event_b11110ActionPerformed
+
+    private void b11111ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11111ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/11111.png"));
+        Jeu.setRefPion("11111");
+    }//GEN-LAST:event_b11111ActionPerformed
+
+    private void bxxxxxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bxxxxxActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/xxxxx.png"));
+        Jeu.setRefPion("xxxxx");
+    }//GEN-LAST:event_bxxxxxActionPerformed
 
     /**
      * @param args the command line arguments
