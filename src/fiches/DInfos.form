@@ -67,10 +67,12 @@
                   <Component id="LnomJ1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="tfJ1" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                  <Component id="tfJ2" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                  <Component id="cbTGrille" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="tfJ2" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="cbTGrille" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="tfJ1" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="75" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -122,6 +124,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfJ1">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfJ1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfJ2">
       <Events>

@@ -52,6 +52,12 @@ public class DInfos extends javax.swing.JDialog {
         lTGrille.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lTGrille.setText("Taille de la grille");
 
+        tfJ1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfJ1ActionPerformed(evt);
+            }
+        });
+
         tfJ2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfJ2ActionPerformed(evt);
@@ -122,10 +128,11 @@ public class DInfos extends javax.swing.JDialog {
                     .addComponent(lnomJ2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LnomJ1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfJ1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfJ2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbTGrille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tfJ2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbTGrille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfJ1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bCommencer, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -146,22 +153,30 @@ public class DInfos extends javax.swing.JDialog {
     }//GEN-LAST:event_tfJ2ActionPerformed
 
     private void bCommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCommencerActionPerformed
-        String nom1 = tfJ1.getText();
+        String nom1 = tfJ1.getText(); // On récupère les Strings écrites pas les joueurs
         String nom2 = tfJ2.getText();
+        
+        // Choix de l'ordinateur
         if (nom1.length() !=0 && nom2.length() == 0){
             this.setVisible(false);
             Ordi.setVisible(true);    
         }
-        else if(nom1.length() == 0 && nom2.length() !=0 
-             || nom1.length() == 0 && nom2.length() == 0 ){
+        // Manque d'information ou confusion
+        else if(nom1.length() == 0 && nom2.length() !=0 || nom1.length() == 0 
+               && nom2.length() == 0 || nom1.length() == nom2.length()){
             this.setVisible(true);           
         }
+        // Partie avec 2 joueurs
         else{
             this.setVisible(false);
             FJeu grille = new FJeu();
             grille.setVisible(true); 
         }
     }//GEN-LAST:event_bCommencerActionPerformed
+
+    private void tfJ1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfJ1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfJ1ActionPerformed
 
     /**
      * @param args the command line arguments
