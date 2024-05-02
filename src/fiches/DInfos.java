@@ -61,7 +61,7 @@ public class DInfos extends javax.swing.JDialog {
         cbTGrille.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         cbTGrille.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3*3", "4*4", "5*5" }));
 
-        bCommencer.setBackground(new java.awt.Color(0, 204, 102));
+        bCommencer.setBackground(new java.awt.Color(204, 0, 0));
         bCommencer.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         bCommencer.setForeground(new java.awt.Color(255, 255, 255));
         bCommencer.setText("Commencer partie");
@@ -71,7 +71,7 @@ public class DInfos extends javax.swing.JDialog {
             }
         });
 
-        bRetour.setBackground(new java.awt.Color(255, 102, 102));
+        bRetour.setBackground(new java.awt.Color(209, 75, 33));
         bRetour.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         bRetour.setText("Retour");
         bRetour.addActionListener(new java.awt.event.ActionListener() {
@@ -158,7 +158,8 @@ public class DInfos extends javax.swing.JDialog {
         }
         else{
             this.setVisible(false);
-            Pion.setVisible(true); 
+            FJeu grille = new FJeu();
+            grille.setVisible(true); 
         }
     }//GEN-LAST:event_bCommencerActionPerformed
 

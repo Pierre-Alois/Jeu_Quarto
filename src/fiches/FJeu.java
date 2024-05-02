@@ -7,9 +7,11 @@ package fiches;
 
 public class FJeu extends javax.swing.JFrame {
     
+    private DChoixPion choix;
+    
     public FJeu() {
         initComponents();
-        
+        choix = new DChoixPion(this,false);      
     }
 
     @SuppressWarnings("unchecked")
@@ -18,6 +20,7 @@ public class FJeu extends javax.swing.JFrame {
 
         pPlateau = new javax.swing.JPanel();
         lJoueur = new javax.swing.JLabel();
+        bChoix = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Plateau du Jeu");
@@ -43,6 +46,14 @@ public class FJeu extends javax.swing.JFrame {
 
         lJoueur.setText("$j$o$u$e$u$r$");
 
+        bChoix.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        bChoix.setText("Choisir pion");
+        bChoix.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bChoixActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -50,9 +61,15 @@ public class FJeu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pPlateau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101)
-                .addComponent(lJoueur)
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(lJoueur)
+                        .addContainerGap(87, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bChoix)
+                        .addGap(55, 55, 55))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -63,12 +80,19 @@ public class FJeu extends javax.swing.JFrame {
                         .addComponent(pPlateau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(lJoueur)))
+                        .addComponent(lJoueur)
+                        .addGap(36, 36, 36)
+                        .addComponent(bChoix)))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bChoixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bChoixActionPerformed
+        this.setVisible(false);
+        choix.setVisible(true);
+    }//GEN-LAST:event_bChoixActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,6 +130,7 @@ public class FJeu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bChoix;
     private javax.swing.JLabel lJoueur;
     private javax.swing.JPanel pPlateau;
     // End of variables declaration//GEN-END:variables

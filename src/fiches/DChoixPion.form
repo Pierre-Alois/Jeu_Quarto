@@ -81,7 +81,7 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="spPièces" min="-2" pref="972" max="-2" attributes="0"/>
-                      <EmptySpace pref="145" max="32767" attributes="0"/>
+                      <EmptySpace pref="162" max="32767" attributes="0"/>
                       <Component id="lPion" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
                   </Group>

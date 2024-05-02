@@ -42,7 +42,7 @@ public class FAccueil extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1360, 730));
 
-        bCommencer.setBackground(new java.awt.Color(0, 204, 102));
+        bCommencer.setBackground(new java.awt.Color(153, 51, 0));
         bCommencer.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         bCommencer.setForeground(new java.awt.Color(255, 255, 255));
         bCommencer.setText("Commencer Partie");
@@ -68,6 +68,7 @@ public class FAccueil extends javax.swing.JFrame {
 
         bQuitter.setBackground(new java.awt.Color(255, 51, 0));
         bQuitter.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        bQuitter.setForeground(new java.awt.Color(255, 255, 255));
         bQuitter.setText("Quitter");
         bQuitter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

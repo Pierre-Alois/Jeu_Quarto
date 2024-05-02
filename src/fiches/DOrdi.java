@@ -128,7 +128,8 @@ public class DOrdi extends javax.swing.JDialog {
 
     private void bCommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCommencerActionPerformed
         this.setVisible(false);
-        Pion.setVisible(true);
+        FJeu grille = new FJeu();
+        grille.setVisible(true);
     }//GEN-LAST:event_bCommencerActionPerformed
 
     public static void main(String args[]) {
