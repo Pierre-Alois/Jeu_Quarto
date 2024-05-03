@@ -4,10 +4,12 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
  */
 package fiches;
 
+import java.util.HashSet;
+
 public class DOrdi extends javax.swing.JDialog {
     
     private DInfos infos;
-    private DChoixPion Pion;
+    
     public DOrdi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -28,7 +30,6 @@ public class DOrdi extends javax.swing.JDialog {
         rbOrdiDifficile = new javax.swing.JRadioButton();
         bCommencer = new javax.swing.JButton();
         bRetour = new javax.swing.JButton();
-        lPhotoOrdi = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Niveau de l'ordinateur");
@@ -67,20 +68,14 @@ public class DOrdi extends javax.swing.JDialog {
             }
         });
 
-        lPhotoOrdi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fiches/images.png"))); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(lPhotoOrdi, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(bRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(73, 73, 73)
+                .addComponent(bRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -101,18 +96,13 @@ public class DOrdi extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(lNivOrdi)
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rbOrdifacile)
-                            .addComponent(rbOrdiDifficile)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(lPhotoOrdi)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                .addGap(46, 46, 46)
+                .addComponent(lNivOrdi)
+                .addGap(176, 176, 176)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbOrdifacile)
+                    .addComponent(rbOrdiDifficile))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bCommencer, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -123,8 +113,8 @@ public class DOrdi extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetourActionPerformed
-        this.setVisible(false);
-       infos.setVisible(true);
+       this.setVisible(false);
+       this.getParent().setVisible(true);  
     }//GEN-LAST:event_bRetourActionPerformed
 
     private void bCommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCommencerActionPerformed
@@ -178,7 +168,6 @@ public class DOrdi extends javax.swing.JDialog {
     private javax.swing.JButton bRetour;
     private javax.swing.ButtonGroup bgNivOrdi;
     private javax.swing.JLabel lNivOrdi;
-    private javax.swing.JLabel lPhotoOrdi;
     private javax.swing.JRadioButton rbOrdiDifficile;
     private javax.swing.JRadioButton rbOrdifacile;
     // End of variables declaration//GEN-END:variables

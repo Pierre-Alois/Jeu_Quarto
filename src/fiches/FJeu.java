@@ -4,7 +4,6 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
  */
 package fiches;
 
-
 public class FJeu extends javax.swing.JFrame {
     
     private DChoixPion choix;

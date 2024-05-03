@@ -163,14 +163,14 @@ public class DInfos extends javax.swing.JDialog {
             Ordi.setVisible(true);    
         }
         // Partie avec 2 joueurs
-        else if(nom1.length() != 0 && nom2.length() !=0 && nom1 != nom2 ){
+        else if(nom1.length() != 0 && nom2.length() !=0 && !nom1.equalsIgnoreCase(nom2)){
             this.setVisible(true);  
             this.setVisible(false);
             FJeu grille = new FJeu();
             grille.setVisible(true);         
         }
         // Manque d'information ou confusion
-        else{
+        else if(nom1.length() == 0 && nom2.length() == 0 || nom1.equalsIgnoreCase(nom2)){
             this.setVisible(true);   
         }
     }//GEN-LAST:event_bCommencerActionPerformed
