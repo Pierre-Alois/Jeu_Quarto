@@ -162,16 +162,16 @@ public class DInfos extends javax.swing.JDialog {
             this.setVisible(false);
             Ordi.setVisible(true);    
         }
-        // Manque d'information ou confusion
-        else if(nom1.length() == 0 && nom2.length() !=0 || nom1.length() == 0 
-               && nom2.length() == 0 || nom1.length() == nom2.length()){
-            this.setVisible(true);           
-        }
         // Partie avec 2 joueurs
-        else{
+        else if(nom1.length() != 0 && nom2.length() !=0 && nom1 != nom2 ){
+            this.setVisible(true);  
             this.setVisible(false);
             FJeu grille = new FJeu();
-            grille.setVisible(true); 
+            grille.setVisible(true);         
+        }
+        // Manque d'information ou confusion
+        else{
+            this.setVisible(true);   
         }
     }//GEN-LAST:event_bCommencerActionPerformed
 
