@@ -51,9 +51,9 @@ public class FJeu extends javax.swing.JFrame {
             .addGap(0, 418, Short.MAX_VALUE)
         );
 
-        getContentPane().add(pPlateau);
-        getContentPane().add(lJoueur);
-        getContentPane().add(lInstruction);
+        getContentPane().add(pPlateau, java.awt.BorderLayout.CENTER);
+        getContentPane().add(lJoueur, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(lInstruction, java.awt.BorderLayout.PAGE_END);
 
         bChoix.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         bChoix.setText("Choisir pion");
@@ -62,7 +62,7 @@ public class FJeu extends javax.swing.JFrame {
                 bChoixActionPerformed(evt);
             }
         });
-        getContentPane().add(bChoix);
+        getContentPane().add(bChoix, java.awt.BorderLayout.LINE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
