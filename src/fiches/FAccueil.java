@@ -40,6 +40,7 @@ public class FAccueil extends javax.swing.JFrame {
         bQuitter = new javax.swing.JButton();
         bRègles = new javax.swing.JButton();
         bCredit = new javax.swing.JButton();
+        bCookie = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Accueil");
@@ -97,6 +98,13 @@ public class FAccueil extends javax.swing.JFrame {
             }
         });
 
+        bCookie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fiches/téléchargement.jpeg"))); // NOI18N
+        bCookie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCookieActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,10 +123,15 @@ public class FAccueil extends javax.swing.JFrame {
                 .addGap(165, 165, 165))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bCommencer)
-                .addGap(74, 74, 74)
-                .addComponent(bReprendre)
-                .addGap(187, 187, 187))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(bCommencer)
+                        .addGap(74, 74, 74)
+                        .addComponent(bReprendre)
+                        .addGap(187, 187, 187))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(bCookie)
+                        .addGap(416, 416, 416))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,7 +147,9 @@ public class FAccueil extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bCommencer, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bReprendre, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addComponent(bCookie, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bQuitter, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bCredit, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -200,6 +215,11 @@ public class FAccueil extends javax.swing.JFrame {
                              """;
         JOptionPane.showMessageDialog(this,credit);
     }//GEN-LAST:event_bCreditActionPerformed
+
+    private void bCookieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCookieActionPerformed
+       String cookie = "En appuyant sur ce bouton acceptez-vous les cookies présents sur notre jeu ?";
+       JOptionPane.showConfirmDialog(this, cookie);
+    }//GEN-LAST:event_bCookieActionPerformed
  
     /**
      * @param args the command line arguments
@@ -239,6 +259,7 @@ public class FAccueil extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCommencer;
+    private javax.swing.JButton bCookie;
     private javax.swing.JButton bCredit;
     private javax.swing.JButton bQuitter;
     private javax.swing.JButton bReprendre;
