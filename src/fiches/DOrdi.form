@@ -116,6 +116,9 @@
         <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Facile"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbOrdifacileActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rbOrdiDifficile">
       <Properties>
@@ -130,6 +133,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Difficile"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbOrdiDifficileActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bCommencer">
       <Properties>

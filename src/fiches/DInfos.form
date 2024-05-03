@@ -43,7 +43,7 @@
               <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Component id="bRetour" min="-2" pref="161" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="bCommencer" min="-2" pref="226" max="-2" attributes="0"/>
@@ -154,7 +154,7 @@
     <Component class="javax.swing.JButton" name="bCommencer">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="cc" type="rgb"/>
+          <Color blue="66" green="cc" red="0" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Showcard Gothic" size="18" style="1"/>

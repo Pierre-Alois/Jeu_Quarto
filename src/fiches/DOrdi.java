@@ -4,6 +4,8 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
  */
 package fiches;
 
+import javax.swing.JOptionPane;
+
 public class DOrdi extends javax.swing.JDialog {
     
     private DInfos infos;
@@ -42,11 +44,21 @@ public class DOrdi extends javax.swing.JDialog {
         rbOrdifacile.setForeground(new java.awt.Color(0, 204, 0));
         rbOrdifacile.setSelected(true);
         rbOrdifacile.setText("Facile");
+        rbOrdifacile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbOrdifacileActionPerformed(evt);
+            }
+        });
 
         bgNivOrdi.add(rbOrdiDifficile);
         rbOrdiDifficile.setFont(new java.awt.Font("Snap ITC", 1, 24)); // NOI18N
         rbOrdiDifficile.setForeground(new java.awt.Color(153, 0, 153));
         rbOrdiDifficile.setText("Difficile");
+        rbOrdiDifficile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbOrdiDifficileActionPerformed(evt);
+            }
+        });
 
         bCommencer.setBackground(new java.awt.Color(0, 204, 255));
         bCommencer.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
@@ -132,6 +144,20 @@ public class DOrdi extends javax.swing.JDialog {
         FJeu grille = new FJeu();
         grille.setVisible(true);
     }//GEN-LAST:event_bCommencerActionPerformed
+
+    private void rbOrdifacileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbOrdifacileActionPerformed
+        String ordisy = "Vous avez seléctionnés le mode facile, bonne chance ☺";
+        if (rbOrdifacile.isSelected() == true) {
+        JOptionPane.showConfirmDialog(this,ordisy);
+        }    
+    }//GEN-LAST:event_rbOrdifacileActionPerformed
+
+    private void rbOrdiDifficileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbOrdiDifficileActionPerformed
+        String ordiff = "Vous avez seléctionnés le mode facile, bonne chance ☺";
+        if (rbOrdiDifficile.isSelected() == true) {
+        JOptionPane.showConfirmDialog(this,ordiff);
+        }
+    }//GEN-LAST:event_rbOrdiDifficileActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
