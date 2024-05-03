@@ -40,7 +40,7 @@ public class DOrdi extends javax.swing.JDialog {
 
         bgNivOrdi.add(rbOrdifacile);
         rbOrdifacile.setFont(new java.awt.Font("Snap ITC", 1, 24)); // NOI18N
-        rbOrdifacile.setForeground(new java.awt.Color(0, 204, 0));
+        rbOrdifacile.setForeground(new java.awt.Color(0, 204, 255));
         rbOrdifacile.setSelected(true);
         rbOrdifacile.setText("Facile");
         rbOrdifacile.addActionListener(new java.awt.event.ActionListener() {
@@ -59,7 +59,7 @@ public class DOrdi extends javax.swing.JDialog {
             }
         });
 
-        bCommencer.setBackground(new java.awt.Color(0, 204, 255));
+        bCommencer.setBackground(new java.awt.Color(0, 204, 51));
         bCommencer.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         bCommencer.setForeground(new java.awt.Color(255, 255, 255));
         bCommencer.setText("Commencer partie");
@@ -83,40 +83,36 @@ public class DOrdi extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(73, 73, 73)
+                .addGap(95, 95, 95)
                 .addComponent(bRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bCommencer, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(82, 82, 82)
-                                .addComponent(rbOrdifacile)
-                                .addGap(71, 71, 71)
-                                .addComponent(rbOrdiDifficile))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(lNivOrdi)))
-                        .addContainerGap(87, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bCommencer, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(181, Short.MAX_VALUE)
+                .addComponent(lNivOrdi)
+                .addGap(191, 191, 191))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(246, 246, 246)
+                .addComponent(rbOrdifacile)
+                .addGap(58, 58, 58)
+                .addComponent(rbOrdiDifficile)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(lNivOrdi)
-                .addGap(176, 176, 176)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbOrdifacile)
                     .addComponent(rbOrdiDifficile))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bCommencer, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40))
+                .addGap(72, 72, 72))
         );
 
         pack();
@@ -141,7 +137,7 @@ public class DOrdi extends javax.swing.JDialog {
     }//GEN-LAST:event_rbOrdifacileActionPerformed
 
     private void rbOrdiDifficileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbOrdiDifficileActionPerformed
-        String ordiff = "Vous avez seléctionnés le mode difficile, bonne chance ☺";
+        String ordiff = "Vous avez seléctionnés le mode difficile, bon courage ☺";
         if (rbOrdiDifficile.isSelected() == true) {
         JOptionPane.showConfirmDialog(this,ordiff);
         }
