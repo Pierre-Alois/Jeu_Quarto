@@ -19,7 +19,7 @@ public class FAccueil extends javax.swing.JFrame {
         infos = new DInfos(this,false);
         ordi = new DOrdi(this, false);
         pion = new DChoixPion(this, false);
-    }
+        }
     
     public int gettaille(){
         //return pion.gettaille();
@@ -39,11 +39,12 @@ public class FAccueil extends javax.swing.JFrame {
         lTitre = new javax.swing.JLabel();
         bQuitter = new javax.swing.JButton();
         bRègles = new javax.swing.JButton();
+        bCredit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Accueil");
 
-        bCommencer.setBackground(new java.awt.Color(153, 51, 0));
+        bCommencer.setBackground(new java.awt.Color(0, 204, 102));
         bCommencer.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         bCommencer.setForeground(new java.awt.Color(255, 255, 255));
         bCommencer.setText("Commencer Partie");
@@ -86,47 +87,58 @@ public class FAccueil extends javax.swing.JFrame {
             }
         });
 
+        bCredit.setBackground(new java.awt.Color(185, 185, 185));
+        bCredit.setFont(new java.awt.Font("Constantia", 3, 14)); // NOI18N
+        bCredit.setForeground(new java.awt.Color(255, 255, 255));
+        bCredit.setText("Crédits");
+        bCredit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCreditActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(229, 229, 229)
-                .addComponent(bCommencer)
-                .addGap(324, 324, 324)
-                .addComponent(bReprendre)
-                .addContainerGap(434, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(1169, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
                 .addComponent(bRègles, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(bQuitter, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(324, 324, 324)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                 .addComponent(lTitre)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(292, 292, 292))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(167, 167, 167)
+                .addComponent(bQuitter, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bCredit, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(165, 165, 165))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bCommencer)
+                .addGap(74, 74, 74)
+                .addComponent(bReprendre)
+                .addGap(187, 187, 187))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(lTitre)
-                        .addGap(201, 201, 201)
-                        .addComponent(bReprendre, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bCommencer, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(112, 112, 112)))
-                .addComponent(bRègles, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
-                .addComponent(bQuitter, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                        .addGap(56, 56, 56)
+                        .addComponent(lTitre))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(bRègles, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(59, 59, 59)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bCommencer, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bReprendre, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bQuitter, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bCredit, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44))
         );
 
         pack();
@@ -147,11 +159,11 @@ public class FAccueil extends javax.swing.JFrame {
 
     private void bRèglesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRèglesActionPerformed
         String msg = """
-              Bienvenue cher joueur ☺,
+              Bienvenue cher(e) joueur(se) ☺,
                                    
               Voici l'emplacement où tu pourras retrouver les règles de jeu.
                                    
-              Vous disporez d'une grille de taille 3x3, 4x4 ou 5x5 en fonction de votre choix.
+              Vous disposez d'une grille de taille 3x3, 4x4 ou 5x5 en fonction de votre choix.
               Le jeu se joue à 2 joueurs, si vous êtes seul pas de problème, on a pensé à tout : 
               vous pourrez jouer contre un ordinateur avec 2 niveaux de difficulté.
                                    
@@ -174,12 +186,21 @@ public class FAccueil extends javax.swing.JFrame {
                Grille 5x5 : 25 pièces avec 5 caractéristiques
               → Nous ajoutons ici la section : la pièce est soit entière soit entière soit tranchée
                                    
-              Bon match et que le ou la meilleur(e) gagne et gare à l'ordinateur !
+              Bon match , que le ou la meilleur(e) gagne et gare à l'ordinateur ;) !
               
               """;
                 JOptionPane.showMessageDialog(this,msg);
     }//GEN-LAST:event_bRèglesActionPerformed
 
+    private void bCreditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCreditActionPerformed
+        String credit = """ 
+                        Réalisé par Pierre Calmet, Pierre-Aloïs Bertin et Gabriel Said
+                        Remerciement : Mme Goncalves pour cette année d'apprentissage
+                        Tous droits réservés © 
+                             """;
+        JOptionPane.showMessageDialog(this,credit);
+    }//GEN-LAST:event_bCreditActionPerformed
+ 
     /**
      * @param args the command line arguments
      */
@@ -218,6 +239,7 @@ public class FAccueil extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCommencer;
+    private javax.swing.JButton bCredit;
     private javax.swing.JButton bQuitter;
     private javax.swing.JButton bReprendre;
     private javax.swing.JButton bRègles;

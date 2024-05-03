@@ -68,7 +68,7 @@ public class DInfos extends javax.swing.JDialog {
         cbTGrille.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         cbTGrille.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3*3", "4*4", "5*5" }));
 
-        bCommencer.setBackground(new java.awt.Color(204, 0, 0));
+        bCommencer.setBackground(new java.awt.Color(0, 204, 102));
         bCommencer.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         bCommencer.setForeground(new java.awt.Color(255, 255, 255));
         bCommencer.setText("Commencer partie");
@@ -108,7 +108,7 @@ public class DInfos extends javax.swing.JDialog {
                 .addComponent(cbTGrille, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(84, 84, 84))
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(33, 33, 33)
                 .addComponent(bRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bCommencer, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
