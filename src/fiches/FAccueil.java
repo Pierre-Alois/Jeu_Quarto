@@ -42,7 +42,6 @@ public class FAccueil extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Accueil");
-        setPreferredSize(new java.awt.Dimension(1360, 730));
 
         bCommencer.setBackground(new java.awt.Color(153, 51, 0));
         bCommencer.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
