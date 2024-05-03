@@ -73,9 +73,9 @@
                   <Component id="bCommencer" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
                   <Component id="bReprendre" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="70" max="32767" attributes="0"/>
-              <Component id="bCookie" min="-2" pref="38" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+              <EmptySpace pref="92" max="32767" attributes="0"/>
+              <Component id="bCookie" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="bQuitter" min="-2" pref="47" max="-2" attributes="0"/>
                   <Component id="bCredit" min="-2" pref="47" max="-2" attributes="0"/>
