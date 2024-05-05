@@ -136,14 +136,14 @@ public class DOrdi extends javax.swing.JDialog {
     }//GEN-LAST:event_bCommencerActionPerformed
 
     private void rbFacileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbFacileActionPerformed
-        String ordisy = "Vous avez seléctionné le mode facile, bonne chance ☺";
+        String ordisy = "Vous avez seléctionnés le mode facile, bonne chance ☺";
         if (rbFacile.isSelected() == true) {
         JOptionPane.showMessageDialog(this,ordisy);
         }    
     }//GEN-LAST:event_rbFacileActionPerformed
 
     private void rbDifficileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbDifficileActionPerformed
-        String ordiff = "Vous avez seléctionné le mode difficile, bon courage ☺";
+        String ordiff = "Vous avez seléctionnés le mode difficile, bon courage ☺";
         if (rbDifficile.isSelected() == true) {
         JOptionPane.showMessageDialog(this,ordiff);
         }
