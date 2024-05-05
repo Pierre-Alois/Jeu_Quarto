@@ -4,12 +4,17 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
  */
 package fiches;
 
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+
 public class FJeu extends javax.swing.JFrame {
     
     private final DChoixPion choix;
     private String refPion;
     private int taille;
-    private javax.swing.JButton[] tab;
+    private final javax.swing.JButton[] tab;
+    private ArrayList<String> coord;
+    private String coordTemp;
     
     public FJeu() {
         initComponents();
@@ -89,6 +94,7 @@ public class FJeu extends javax.swing.JFrame {
         lInstruction = new javax.swing.JLabel();
         bValider = new javax.swing.JButton();
         pSlogan = new javax.swing.JLabel();
+        lPion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Plateau du Jeu");
@@ -111,6 +117,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b11.setBackground(new java.awt.Color(248, 189, 155));
         b11.setBorder(null);
+        b11.setMaximumSize(new java.awt.Dimension(150, 150));
+        b11.setMinimumSize(new java.awt.Dimension(110, 110));
         b11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b11ActionPerformed(evt);
@@ -120,6 +128,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b12.setBackground(new java.awt.Color(88, 60, 55));
         b12.setBorder(null);
+        b12.setMaximumSize(new java.awt.Dimension(150, 150));
+        b12.setMinimumSize(new java.awt.Dimension(110, 110));
         b12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b12ActionPerformed(evt);
@@ -129,6 +139,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b13.setBackground(new java.awt.Color(248, 189, 155));
         b13.setBorder(null);
+        b13.setMaximumSize(new java.awt.Dimension(150, 150));
+        b13.setMinimumSize(new java.awt.Dimension(110, 110));
         b13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b13ActionPerformed(evt);
@@ -138,6 +150,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b14.setBackground(new java.awt.Color(88, 60, 55));
         b14.setBorder(null);
+        b14.setMaximumSize(new java.awt.Dimension(150, 150));
+        b14.setMinimumSize(new java.awt.Dimension(110, 110));
         b14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b14ActionPerformed(evt);
@@ -147,6 +161,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b15.setBackground(new java.awt.Color(248, 189, 155));
         b15.setBorder(null);
+        b15.setMaximumSize(new java.awt.Dimension(150, 150));
+        b15.setMinimumSize(new java.awt.Dimension(110, 110));
         b15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b15ActionPerformed(evt);
@@ -156,6 +172,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b21.setBackground(new java.awt.Color(88, 60, 55));
         b21.setBorder(null);
+        b21.setMaximumSize(new java.awt.Dimension(150, 150));
+        b21.setMinimumSize(new java.awt.Dimension(110, 110));
         b21.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b21ActionPerformed(evt);
@@ -165,6 +183,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b22.setBackground(new java.awt.Color(248, 189, 155));
         b22.setBorder(null);
+        b22.setMaximumSize(new java.awt.Dimension(150, 150));
+        b22.setMinimumSize(new java.awt.Dimension(110, 110));
         b22.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b22ActionPerformed(evt);
@@ -174,6 +194,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b23.setBackground(new java.awt.Color(88, 60, 55));
         b23.setBorder(null);
+        b23.setMaximumSize(new java.awt.Dimension(150, 150));
+        b23.setMinimumSize(new java.awt.Dimension(110, 110));
         b23.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b23ActionPerformed(evt);
@@ -183,6 +205,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b24.setBackground(new java.awt.Color(248, 189, 155));
         b24.setBorder(null);
+        b24.setMaximumSize(new java.awt.Dimension(150, 150));
+        b24.setMinimumSize(new java.awt.Dimension(110, 110));
         b24.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b24ActionPerformed(evt);
@@ -192,6 +216,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b25.setBackground(new java.awt.Color(88, 60, 55));
         b25.setBorder(null);
+        b25.setMaximumSize(new java.awt.Dimension(150, 150));
+        b25.setMinimumSize(new java.awt.Dimension(110, 110));
         b25.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b25ActionPerformed(evt);
@@ -201,6 +227,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b31.setBackground(new java.awt.Color(248, 189, 155));
         b31.setBorder(null);
+        b31.setMaximumSize(new java.awt.Dimension(150, 150));
+        b31.setMinimumSize(new java.awt.Dimension(110, 110));
         b31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b31ActionPerformed(evt);
@@ -210,6 +238,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b32.setBackground(new java.awt.Color(88, 60, 55));
         b32.setBorder(null);
+        b32.setMaximumSize(new java.awt.Dimension(150, 150));
+        b32.setMinimumSize(new java.awt.Dimension(110, 110));
         b32.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b32ActionPerformed(evt);
@@ -219,6 +249,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b33.setBackground(new java.awt.Color(248, 189, 155));
         b33.setBorder(null);
+        b33.setMaximumSize(new java.awt.Dimension(150, 150));
+        b33.setMinimumSize(new java.awt.Dimension(110, 110));
         b33.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b33ActionPerformed(evt);
@@ -228,6 +260,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b34.setBackground(new java.awt.Color(88, 60, 55));
         b34.setBorder(null);
+        b34.setMaximumSize(new java.awt.Dimension(150, 150));
+        b34.setMinimumSize(new java.awt.Dimension(110, 110));
         b34.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b34ActionPerformed(evt);
@@ -237,6 +271,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b35.setBackground(new java.awt.Color(248, 189, 155));
         b35.setBorder(null);
+        b35.setMaximumSize(new java.awt.Dimension(150, 150));
+        b35.setMinimumSize(new java.awt.Dimension(110, 110));
         b35.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b35ActionPerformed(evt);
@@ -246,6 +282,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b41.setBackground(new java.awt.Color(88, 60, 55));
         b41.setBorder(null);
+        b41.setMaximumSize(new java.awt.Dimension(150, 150));
+        b41.setMinimumSize(new java.awt.Dimension(110, 110));
         b41.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b41ActionPerformed(evt);
@@ -255,6 +293,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b42.setBackground(new java.awt.Color(248, 189, 155));
         b42.setBorder(null);
+        b42.setMaximumSize(new java.awt.Dimension(150, 150));
+        b42.setMinimumSize(new java.awt.Dimension(110, 110));
         b42.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b42ActionPerformed(evt);
@@ -264,6 +304,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b43.setBackground(new java.awt.Color(88, 60, 55));
         b43.setBorder(null);
+        b43.setMaximumSize(new java.awt.Dimension(150, 150));
+        b43.setMinimumSize(new java.awt.Dimension(110, 110));
         b43.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b43ActionPerformed(evt);
@@ -273,6 +315,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b44.setBackground(new java.awt.Color(248, 189, 155));
         b44.setBorder(null);
+        b44.setMaximumSize(new java.awt.Dimension(150, 150));
+        b44.setMinimumSize(new java.awt.Dimension(110, 110));
         b44.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b44ActionPerformed(evt);
@@ -282,6 +326,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b45.setBackground(new java.awt.Color(88, 60, 55));
         b45.setBorder(null);
+        b45.setMaximumSize(new java.awt.Dimension(150, 150));
+        b45.setMinimumSize(new java.awt.Dimension(110, 110));
         b45.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b45ActionPerformed(evt);
@@ -291,6 +337,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b51.setBackground(new java.awt.Color(248, 189, 155));
         b51.setBorder(null);
+        b51.setMaximumSize(new java.awt.Dimension(150, 150));
+        b51.setMinimumSize(new java.awt.Dimension(110, 110));
         b51.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b51ActionPerformed(evt);
@@ -300,6 +348,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b52.setBackground(new java.awt.Color(88, 60, 55));
         b52.setBorder(null);
+        b52.setMaximumSize(new java.awt.Dimension(150, 150));
+        b52.setMinimumSize(new java.awt.Dimension(110, 110));
         b52.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b52ActionPerformed(evt);
@@ -309,6 +359,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b53.setBackground(new java.awt.Color(248, 189, 155));
         b53.setBorder(null);
+        b53.setMaximumSize(new java.awt.Dimension(150, 150));
+        b53.setMinimumSize(new java.awt.Dimension(110, 110));
         b53.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b53ActionPerformed(evt);
@@ -318,6 +370,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b54.setBackground(new java.awt.Color(88, 60, 55));
         b54.setBorder(null);
+        b54.setMaximumSize(new java.awt.Dimension(150, 150));
+        b54.setMinimumSize(new java.awt.Dimension(110, 110));
         b54.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b54ActionPerformed(evt);
@@ -327,6 +381,8 @@ public class FJeu extends javax.swing.JFrame {
 
         b55.setBackground(new java.awt.Color(248, 189, 155));
         b55.setBorder(null);
+        b55.setMaximumSize(new java.awt.Dimension(150, 150));
+        b55.setMinimumSize(new java.awt.Dimension(110, 110));
         b55.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b55ActionPerformed(evt);
@@ -352,59 +408,65 @@ public class FJeu extends javax.swing.JFrame {
         bValider.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         bValider.setText("Valider");
         bValider.setPreferredSize(new java.awt.Dimension(130, 130));
-        bValider.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bValiderActionPerformed(evt);
-            }
-        });
 
         pSlogan.setFont(new java.awt.Font("Segoe Script", 1, 24)); // NOI18N
         pSlogan.setText("Votre différence est votre plus grande force...");
+
+        lPion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        lPion.setMaximumSize(new java.awt.Dimension(208, 429));
+        lPion.setMinimumSize(new java.awt.Dimension(208, 429));
+        lPion.setPreferredSize(new java.awt.Dimension(208, 429));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pPlateau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pSlogan))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(pPlateau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lJoueur, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(220, 220, 220))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lPion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(59, 59, 59)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(bValider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bChoix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(183, 183, 183))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(pSlogan)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 364, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lJoueur, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(193, 193, 193))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(229, 229, 229)
                         .addComponent(lInstruction)
-                        .addGap(154, 154, 154))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(bValider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bChoix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(183, 183, 183))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(lInstruction)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lJoueur)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bChoix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(bValider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(262, 262, 262))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(pSlogan)
-                .addGap(18, 18, 18)
-                .addComponent(pPlateau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lInstruction)
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(bChoix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(47, 47, 47)
+                                .addComponent(bValider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lPion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(140, 140, 140))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(pSlogan)
+                            .addComponent(lJoueur))
+                        .addGap(18, 18, 18)
+                        .addComponent(pPlateau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(102, 102, 102))))
         );
 
         pack();
@@ -414,11 +476,7 @@ public class FJeu extends javax.swing.JFrame {
         choix.setTaille(taille);
         choix.setVisible(true);
     }//GEN-LAST:event_bChoixActionPerformed
-
-    private void bValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bValiderActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bValiderActionPerformed
-
+    
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         int x = 100;
         int y = 78;
@@ -452,6 +510,12 @@ public class FJeu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="ActionPerformed des 25 boutons">
     private void b11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11ActionPerformed
         System.out.println("b11");
+        if(!coord.contains("11") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "11";
+            if(taille != 2){
+                b11.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b11ActionPerformed
 
     private void b12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b12ActionPerformed
@@ -617,6 +681,7 @@ public class FJeu extends javax.swing.JFrame {
     private javax.swing.JButton bValider;
     private javax.swing.JLabel lInstruction;
     private javax.swing.JLabel lJoueur;
+    private javax.swing.JLabel lPion;
     private javax.swing.JPanel pPlateau;
     private javax.swing.JLabel pSlogan;
     // End of variables declaration//GEN-END:variables

@@ -13,6 +13,7 @@ public class DChoixPion extends javax.swing.JDialog {
     private final javax.swing.JButton[] tab;
     private String refPion = "";
     private boolean nouveau = false;
+    private int numero;
        
     public DChoixPion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -694,6 +695,7 @@ public class DChoixPion extends javax.swing.JDialog {
     private void bDonnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDonnerActionPerformed
         if(nouveau){
             this.setVisible(false);
+            this.getParent().setName("plateau");
         }
     }//GEN-LAST:event_bDonnerActionPerformed
 
@@ -717,6 +719,7 @@ public class DChoixPion extends javax.swing.JDialog {
         lPion.setIcon(new ImageIcon("src/images_pions/00000.png"));
         setRefPion("00000");
         nouveau = true;
+        numero = 0;
     }//GEN-LAST:event_b00000ActionPerformed
 
     private void b00001ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00001ActionPerformed
@@ -930,6 +933,7 @@ public class DChoixPion extends javax.swing.JDialog {
             bgCoupe.clearSelection();
         }
         bFiltrer.doClick();
+        nouveau = false;
     }//GEN-LAST:event_formComponentShown
 
     private void bFiltrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFiltrerActionPerformed
@@ -1015,7 +1019,6 @@ public class DChoixPion extends javax.swing.JDialog {
             rbEntier.setEnabled(true);
             rbTranché.setEnabled(true);
         }
-        
     }//GEN-LAST:event_bFiltrerActionPerformed
     
     /**

@@ -183,7 +183,7 @@ public class FAccueil extends javax.swing.JFrame {
               → La couleur : Noire ou blanche
               → La forme : Carrée ou Ronde 
               → Et/ou trouée 
-              Attention il existe une pièce joker disponible uniquement en 3x3, différente des autres.
+              Attention il existe une pièce joker, disponible uniquement en 3x3, différente des autres.
                                    
               Grille 4x4 : 16 pièces avec 4 caractéristiques 
               → Nous ajoutons la taille : la pièce est petite ou grande 
