@@ -66,6 +66,7 @@ public class FJeu extends javax.swing.JFrame {
 
         lJoueur.setText("lJoueur");
 
+        bChoix.setBackground(new java.awt.Color(255, 204, 51));
         bChoix.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         bChoix.setText("Choisir pion");
         bChoix.setPreferredSize(new java.awt.Dimension(130, 130));
@@ -77,7 +78,8 @@ public class FJeu extends javax.swing.JFrame {
 
         lInstruction.setText("lInstruction");
 
-        bValider.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        bValider.setBackground(new java.awt.Color(0, 204, 51));
+        bValider.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         bValider.setText("Valider");
         bValider.setPreferredSize(new java.awt.Dimension(130, 130));
         bValider.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +101,7 @@ public class FJeu extends javax.swing.JFrame {
                         .addGap(100, 100, 100)
                         .addComponent(pPlateau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
+                        .addGap(129, 129, 129)
                         .addComponent(pSloggan)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 307, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,10 +112,9 @@ public class FJeu extends javax.swing.JFrame {
                         .addComponent(lInstruction)
                         .addGap(154, 154, 154))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(bValider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(175, 175, 175))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(bChoix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(bValider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bChoix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(183, 183, 183))))
         );
         layout.setVerticalGroup(
@@ -125,9 +126,9 @@ public class FJeu extends javax.swing.JFrame {
                 .addComponent(lJoueur)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bChoix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addGap(47, 47, 47)
                 .addComponent(bValider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(263, 263, 263))
+                .addGap(262, 262, 262))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(pSloggan)

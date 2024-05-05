@@ -200,7 +200,7 @@ public class FAccueil extends javax.swing.JFrame {
     private void bCreditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCreditActionPerformed
         String credit = """ 
                         Réalisé par Pierre Calmet, Pierre-Aloïs Bertin et Gabriel Said
-                        Remerciement : Mme Goncalves pour cette année d'apprentissage
+                        Remerciement à toute l'équipe enseignante pour cette année d'apprentissage
                         Tous droits réservés © 
                              """;
         JOptionPane.showMessageDialog(this,credit);
