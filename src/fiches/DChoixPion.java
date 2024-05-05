@@ -160,7 +160,6 @@ public class DChoixPion extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Choix du pion");
-        setPreferredSize(new java.awt.Dimension(1360, 730));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
@@ -598,6 +597,9 @@ public class DChoixPion extends javax.swing.JDialog {
 
         bFiltrer.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bFiltrer.setText("Filtrer");
+        bFiltrer.setMaximumSize(new java.awt.Dimension(108, 27));
+        bFiltrer.setMinimumSize(new java.awt.Dimension(108, 27));
+        bFiltrer.setPreferredSize(new java.awt.Dimension(108, 27));
         bFiltrer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bFiltrerActionPerformed(evt);
@@ -637,16 +639,12 @@ public class DChoixPion extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(pJoker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(bReinitialiser)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 273, Short.MAX_VALUE)
-                                .addComponent(bDonner)
-                                .addGap(124, 124, 124))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(bFiltrer, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bReinitialiser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bFiltrer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 273, Short.MAX_VALUE)
+                        .addComponent(bDonner)
+                        .addGap(124, 124, 124))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(spPièces, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1019,7 +1017,6 @@ public class DChoixPion extends javax.swing.JDialog {
         }
         
     }//GEN-LAST:event_bFiltrerActionPerformed
-    // </editor-fold>
     
     /**
      * @param args the command line arguments

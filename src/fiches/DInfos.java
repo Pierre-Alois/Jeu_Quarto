@@ -71,7 +71,7 @@ public class DInfos extends javax.swing.JDialog {
         lTGrille.setText("Taille de la grille");
 
         cbTGrille.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        cbTGrille.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3*3", "4*4", "5*5" }));
+        cbTGrille.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3 × 3", "4 × 4", "5 × 5" }));
 
         bCommencer.setBackground(new java.awt.Color(0, 204, 102));
         bCommencer.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
