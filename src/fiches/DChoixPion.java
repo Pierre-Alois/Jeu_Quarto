@@ -8,7 +8,6 @@ import javax.swing.ImageIcon;
 
 public class DChoixPion extends javax.swing.JDialog {
     
-    //private DInfos Infos;
     private int taille;
     private final javax.swing.JButton[] tab;
     private String refPion = "";
@@ -67,32 +66,6 @@ public class DChoixPion extends javax.swing.JDialog {
 
     public void setTaille(int taille) {
         this.taille = taille;
-    }
-    
-    public void ChoixPion(){
-        if(cbJoker.isSelected()){
-            rbNoir.setEnabled(false);
-            rbBlanc.setEnabled(false);
-            rbCarré.setEnabled(false);
-            rbRond.setEnabled(false);
-            rbPlein.setEnabled(false);
-            rbTroué.setEnabled(false);
-            rbGrand.setEnabled(false);
-            rbPetit.setEnabled(false);
-            rbEntier.setEnabled(false);
-            rbTranché.setEnabled(false);                      
-        }else {
-            rbNoir.setEnabled(true);
-            rbBlanc.setEnabled(true);
-            rbCarré.setEnabled(true);
-            rbRond.setEnabled(true);
-            rbPlein.setEnabled(true);
-            rbTroué.setEnabled(true);
-            rbGrand.setEnabled(true);
-            rbPetit.setEnabled(true);
-            rbEntier.setEnabled(true);
-            rbTranché.setEnabled(true);
-        }
     }
        
     @SuppressWarnings("unchecked")
@@ -695,7 +668,6 @@ public class DChoixPion extends javax.swing.JDialog {
     private void bDonnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDonnerActionPerformed
         if(nouveau){
             this.setVisible(false);
-            this.getParent().setName("plateau");
         }
     }//GEN-LAST:event_bDonnerActionPerformed
 

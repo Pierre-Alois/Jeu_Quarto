@@ -11,7 +11,6 @@ public class FAccueil extends javax.swing.JFrame {
     private final DInfos infos;
     private DOrdi ordi;
     private FJeu jeu;
-    //private DChoixPion pion;
     
     private int taille;
     private String pseudoJ1;
