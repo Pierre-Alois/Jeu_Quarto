@@ -698,192 +698,224 @@ public class DChoixPion extends javax.swing.JDialog {
         lPion.setIcon(new ImageIcon("src/images_pions/00001.png"));
         setRefPion("00001");
         nouveau = true;
+        numero = 1;
     }//GEN-LAST:event_b00001ActionPerformed
 
     private void b00010ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00010ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/00010.png"));
         setRefPion("00010");
         nouveau = true;
+        numero = 2;
     }//GEN-LAST:event_b00010ActionPerformed
 
     private void b00011ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00011ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/00011.png"));
         setRefPion("00011");
         nouveau = true;
+        numero = 3;
     }//GEN-LAST:event_b00011ActionPerformed
 
     private void b00100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00100ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/00100.png"));
         setRefPion("00100");
         nouveau = true;
+        numero = 4;
     }//GEN-LAST:event_b00100ActionPerformed
 
     private void b00101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00101ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/00101.png"));
         setRefPion("00101");
         nouveau = true;
+        numero = 5;
     }//GEN-LAST:event_b00101ActionPerformed
 
     private void b00110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00110ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/00110.png"));
         setRefPion("00110");
         nouveau = true;
+        numero = 6;
     }//GEN-LAST:event_b00110ActionPerformed
 
     private void b00111ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00111ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/00111.png"));
         setRefPion("00111");
         nouveau = true;
+        numero = 7;
     }//GEN-LAST:event_b00111ActionPerformed
 
     private void b01000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01000ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/01000.png"));
         setRefPion("01000");
         nouveau = true;
+        numero = 8;
     }//GEN-LAST:event_b01000ActionPerformed
 
     private void b01001ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01001ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/01001.png"));
         setRefPion("01001");
         nouveau = true;
+        numero = 9;
     }//GEN-LAST:event_b01001ActionPerformed
 
     private void b01010ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01010ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/01010.png"));
         setRefPion("01010");
         nouveau = true;
+        numero = 10;
     }//GEN-LAST:event_b01010ActionPerformed
 
     private void b01011ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01011ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/01011.png"));
         setRefPion("01011");
         nouveau = true;
+        numero = 11;
     }//GEN-LAST:event_b01011ActionPerformed
 
     private void b01100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01100ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/01100.png"));
         setRefPion("01100");
         nouveau = true;
+        numero = 12;
     }//GEN-LAST:event_b01100ActionPerformed
 
     private void b01101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01101ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/01101.png"));
         setRefPion("01101");
         nouveau = true;
+        numero = 13;
     }//GEN-LAST:event_b01101ActionPerformed
 
     private void b01110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01110ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/01110.png"));
         setRefPion("01110");
         nouveau = true;
+        numero = 14;
     }//GEN-LAST:event_b01110ActionPerformed
 
     private void b01111ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01111ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/01111.png"));
         setRefPion("01111");
         nouveau = true;
+        numero = 15;
     }//GEN-LAST:event_b01111ActionPerformed
 
     private void b10000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10000ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/10000.png"));
         setRefPion("10000");
         nouveau = true;
+        numero = 16;
     }//GEN-LAST:event_b10000ActionPerformed
 
     private void b10001ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10001ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/10001.png"));
         setRefPion("10001");
         nouveau = true;
+        numero = 17;
     }//GEN-LAST:event_b10001ActionPerformed
 
     private void b10010ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10010ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/10010.png"));
         setRefPion("10010");
         nouveau = true;
+        numero = 18;
     }//GEN-LAST:event_b10010ActionPerformed
 
     private void b10011ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10011ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/10011.png"));
         setRefPion("10011");
         nouveau = true;
+        numero = 19;
     }//GEN-LAST:event_b10011ActionPerformed
 
     private void b10100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10100ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/10100.png"));
         setRefPion("10100");
         nouveau = true;
+        numero = 20;
     }//GEN-LAST:event_b10100ActionPerformed
 
     private void b10101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10101ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/10101.png"));
         setRefPion("10101");
         nouveau = true;
+        numero = 21;
     }//GEN-LAST:event_b10101ActionPerformed
 
     private void b10110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10110ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/10110.png"));
         setRefPion("10110");
         nouveau = true;
+        numero = 22;
     }//GEN-LAST:event_b10110ActionPerformed
 
     private void b10111ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10111ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/10111.png"));
         setRefPion("10111");
         nouveau = true;
+        numero = 23;
     }//GEN-LAST:event_b10111ActionPerformed
 
     private void b11000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11000ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/11000.png"));
         setRefPion("11000");
         nouveau = true;
+        numero = 24;
     }//GEN-LAST:event_b11000ActionPerformed
 
     private void b11001ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11001ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/11001.png"));
         setRefPion("11001");
         nouveau = true;
+        numero = 25;
     }//GEN-LAST:event_b11001ActionPerformed
 
     private void b11010ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11010ActionPerformed
        lPion.setIcon(new ImageIcon("src/images_pions/11010.png"));
        setRefPion("11010");
        nouveau = true;
+       numero = 26;
     }//GEN-LAST:event_b11010ActionPerformed
 
     private void b11011ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11011ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/11011.png"));
         setRefPion("11011");
         nouveau = true;
+        numero = 27;
     }//GEN-LAST:event_b11011ActionPerformed
 
     private void b11100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11100ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/11100.png"));
         setRefPion("11100");
         nouveau = true;
+        numero = 28;
     }//GEN-LAST:event_b11100ActionPerformed
 
     private void b11101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11101ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/11101.png"));
         setRefPion("11101");
         nouveau = true;
+        numero = 29;
     }//GEN-LAST:event_b11101ActionPerformed
 
     private void b11110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11110ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/11110.png"));
         setRefPion("11110");
         nouveau = true;
+        numero = 30;
     }//GEN-LAST:event_b11110ActionPerformed
 
     private void b11111ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11111ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/11111.png"));
         setRefPion("11111");
         nouveau = true;
+        numero = 31;
     }//GEN-LAST:event_b11111ActionPerformed
 
     private void bxxxxxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bxxxxxActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/xxxxx.png"));
         setRefPion("xxxxx");
         nouveau = true;
+        numero = 32;
     }//GEN-LAST:event_bxxxxxActionPerformed
     // </editor-fold>
     

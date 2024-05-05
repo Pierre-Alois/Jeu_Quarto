@@ -522,98 +522,290 @@ public class FJeu extends javax.swing.JFrame {
 
     private void b12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b12ActionPerformed
         System.out.println("b12");
+        if(!coord.contains("12") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "12";
+            if(taille != 2){
+                b12.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b12.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b12ActionPerformed
 
     private void b13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b13ActionPerformed
         System.out.println("b13");
+        if(!coord.contains("13") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "13";
+            if(taille != 2){
+                b13.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b13.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b13ActionPerformed
 
     private void b14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b14ActionPerformed
         System.out.println("b14");
+        if(!coord.contains("14") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "14";
+            if(taille != 2){
+                b14.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b14.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b14ActionPerformed
 
     private void b15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b15ActionPerformed
         System.out.println("b15");
+        if(!coord.contains("15") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "15";
+            if(taille != 2){
+                b15.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b15.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b15ActionPerformed
 
     private void b21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b21ActionPerformed
         System.out.println("b21");
+        if(!coord.contains("21") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "21";
+            if(taille != 2){
+                b21.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b21.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b21ActionPerformed
 
     private void b22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b22ActionPerformed
         System.out.println("b22");
+        if(!coord.contains("22") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "22";
+            if(taille != 2){
+                b22.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b22.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b22ActionPerformed
 
     private void b23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b23ActionPerformed
         System.out.println("b23");
+        if(!coord.contains("23") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "23";
+            if(taille != 2){
+                b23.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b23.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b23ActionPerformed
 
     private void b24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b24ActionPerformed
         System.out.println("b24");
+        if(!coord.contains("24") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "24";
+            if(taille != 2){
+                b24.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b24.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b24ActionPerformed
 
     private void b25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b25ActionPerformed
         System.out.println("b25");
+        if(!coord.contains("25") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "25";
+            if(taille != 2){
+                b25.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b25.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b25ActionPerformed
 
     private void b31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b31ActionPerformed
         System.out.println("b31");
+        if(!coord.contains("31") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "31";
+            if(taille != 2){
+                b31.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b31.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b31ActionPerformed
 
     private void b32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b32ActionPerformed
         System.out.println("b32");
+        if(!coord.contains("32") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "32";
+            if(taille != 2){
+                b32.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b32.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b32ActionPerformed
 
     private void b33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b33ActionPerformed
         System.out.println("b33");
+        if(!coord.contains("33") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "33";
+            if(taille != 2){
+                b33.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b33.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b33ActionPerformed
 
     private void b34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b34ActionPerformed
         System.out.println("b34");
+        if(!coord.contains("34") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "34";
+            if(taille != 2){
+                b34.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b34.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b34ActionPerformed
 
     private void b35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b35ActionPerformed
         System.out.println("b35");
+        if(!coord.contains("35") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "35";
+            if(taille != 2){
+                b35.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b35.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b35ActionPerformed
 
     private void b41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b41ActionPerformed
         System.out.println("b41");
+        if(!coord.contains("41") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "41";
+            if(taille != 2){
+                b41.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b41.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b41ActionPerformed
 
     private void b42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b42ActionPerformed
         System.out.println("b42");
+        if(!coord.contains("42") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "42";
+            if(taille != 2){
+                b42.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b42.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b42ActionPerformed
 
     private void b43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b43ActionPerformed
         System.out.println("b43");
+        if(!coord.contains("43") && bChoix.getText().equalsIgnoreCase("Valider")){
+//            coordTemp = "43";
+            if(taille != 2){
+                b43.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b43.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b43ActionPerformed
 
     private void b44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b44ActionPerformed
         System.out.println("b44");
+        if(!coord.contains("44") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "44";
+            if(taille != 2){
+                b44.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b44.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b44ActionPerformed
 
     private void b45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b45ActionPerformed
         System.out.println("b45");
+        if(!coord.contains("45") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "45";
+            if(taille != 2){
+                b45.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b45.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b45ActionPerformed
 
     private void b51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b51ActionPerformed
         System.out.println("b51");
+        if(!coord.contains("51") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "51";
+            if(taille != 2){
+                b51.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b51.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b51ActionPerformed
 
     private void b52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b52ActionPerformed
         System.out.println("b52");
+        if(!coord.contains("52") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "52";
+            if(taille != 2){
+                b52.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b52.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b52ActionPerformed
 
     private void b53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b53ActionPerformed
         System.out.println("b53");
+        if(!coord.contains("53") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "53";
+            if(taille != 2){
+                b53.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b53.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b53ActionPerformed
 
     private void b54ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b54ActionPerformed
         System.out.println("b54");
+        if(!coord.contains("54") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "54";
+            if(taille != 2){
+                b54.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b54.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b54ActionPerformed
 
     private void b55ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b55ActionPerformed
         System.out.println("b55");
+        if(!coord.contains("55") && bChoix.getText().equalsIgnoreCase("Valider")){
+            coordTemp = "55";
+            if(taille != 2){
+                b55.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                b55.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
     }//GEN-LAST:event_b55ActionPerformed
     // </editor-fold>
     
