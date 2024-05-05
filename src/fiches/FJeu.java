@@ -513,6 +513,8 @@ public class FJeu extends javax.swing.JFrame {
         if(!coord.contains("11") && bChoix.getText().equalsIgnoreCase("Valider")){
             coordTemp = "11";
             if(taille != 2){
+                b11.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
                 b11.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
             }
         }
