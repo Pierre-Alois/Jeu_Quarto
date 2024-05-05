@@ -8,26 +8,26 @@ import javax.swing.JOptionPane;
 
 public class FAccueil extends javax.swing.JFrame {
 
-    private DInfos infos;
+    private final DInfos infos;
     private DOrdi ordi;
-    private DChoixPion pion;
+    private FJeu jeu;
+    //private DChoixPion pion;
     
     private int taille;
+    private String pseudoJ1;
+    private String pseudoJ2;
     
     public FAccueil(){
         initComponents();
         infos = new DInfos(this,false);
         ordi = new DOrdi(this, false);
-        pion = new DChoixPion(this, false);
-        }
-    
-    public int gettaille(){
-        //return pion.gettaille();
-        return infos.tailledelagrille();
+        jeu = new FJeu();
     }
     
-    public void settaille(int taille){
-        this.taille = taille;
+    private void importDonnees(){
+        this.taille = infos.tailledelagrille();
+        this.pseudoJ1 = infos.pseudonymes()[0];
+        this.pseudoJ1 = infos.pseudonymes()[1];
     }
     
     @SuppressWarnings("unchecked")
@@ -40,10 +40,14 @@ public class FAccueil extends javax.swing.JFrame {
         bQuitter = new javax.swing.JButton();
         bRègles = new javax.swing.JButton();
         bCredit = new javax.swing.JButton();
-        bCookie = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Accueil");
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         bCommencer.setBackground(new java.awt.Color(0, 204, 102));
         bCommencer.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
@@ -98,13 +102,6 @@ public class FAccueil extends javax.swing.JFrame {
             }
         });
 
-        bCookie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fiches/téléchargement.jpeg"))); // NOI18N
-        bCookie.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bCookieActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -123,15 +120,10 @@ public class FAccueil extends javax.swing.JFrame {
                 .addGap(165, 165, 165))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(bCommencer)
-                        .addGap(74, 74, 74)
-                        .addComponent(bReprendre)
-                        .addGap(187, 187, 187))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(bCookie)
-                        .addGap(337, 337, 337))))
+                .addComponent(bCommencer)
+                .addGap(74, 74, 74)
+                .addComponent(bReprendre)
+                .addGap(187, 187, 187))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,9 +139,7 @@ public class FAccueil extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bCommencer, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bReprendre, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
-                .addComponent(bCookie)
-                .addGap(80, 80, 80)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bQuitter, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bCredit, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -216,10 +206,22 @@ public class FAccueil extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this,credit);
     }//GEN-LAST:event_bCreditActionPerformed
 
-    private void bCookieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCookieActionPerformed
-       String cookie = "En appuyant sur ce bouton acceptez-vous les cookies présents sur notre jeu ?";
-       JOptionPane.showConfirmDialog(this, cookie);
-    }//GEN-LAST:event_bCookieActionPerformed
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        if(infos.getQuitus()){
+            importDonnees();
+            infos.resetQuitus();
+            this.setVisible(false);
+            if(infos.isSolo()){
+                ordi.setVisible(true);
+            }else {
+                jeu.setTaille(taille);
+                jeu.setVisible(true);
+            }
+        }else if(infos.isSolo() && !ordi.retourCliqué()){
+            jeu.setTaille(taille);
+            jeu.setVisible(true);
+        }
+    }//GEN-LAST:event_formComponentShown
  
     /**
      * @param args the command line arguments
@@ -250,6 +252,7 @@ public class FAccueil extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new FAccueil().setVisible(true);
                 
@@ -259,7 +262,6 @@ public class FAccueil extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCommencer;
-    private javax.swing.JButton bCookie;
     private javax.swing.JButton bCredit;
     private javax.swing.JButton bQuitter;
     private javax.swing.JButton bReprendre;

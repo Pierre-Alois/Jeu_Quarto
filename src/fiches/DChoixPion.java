@@ -8,62 +8,17 @@ import javax.swing.ImageIcon;
 
 public class DChoixPion extends javax.swing.JDialog {
     
-    private DInfos Infos;
+    //private DInfos Infos;
     private int taille;
-    private javax.swing.JButton[] tab;
-    private FJeu Jeu;
+    private final javax.swing.JButton[] tab;
+    private String refPion = "";
+    private boolean nouveau = false;
        
     public DChoixPion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents();         
-    }
-    
-    public int gettaille(){
-        return taille;
-    }
-    
-    public void ChoixPion(){
-        switch (Infos.tailledelagrille()) {
-            case 0:
-                pTaille.setVisible(false);
-                pCoupe.setVisible(false);
-                pJoker.setVisible(true);
-                break;
-            case 1:
-                pTaille.setVisible(true);
-                pCoupe.setVisible(false);
-                pJoker.setVisible(false);
-                break;
-            default:
-                pTaille.setVisible(true);
-                pCoupe.setVisible(true);
-                pJoker.setVisible(false);
-                break;
-        }
-        if(cbJoker.isSelected()){
-            rbNoir.setEnabled(false);
-            rbBlanc.setEnabled(false);
-            rbCarré.setEnabled(false);
-            rbRond.setEnabled(false);
-            rbPlein.setEnabled(false);
-            rbTroué.setEnabled(false);
-            rbGrand.setEnabled(false);
-            rbPetit.setEnabled(false);
-            rbEntier.setEnabled(false);
-            rbTranché.setEnabled(false);                      
-        }else {
-            rbNoir.setEnabled(true);
-            rbBlanc.setEnabled(true);
-            rbCarré.setEnabled(true);
-            rbRond.setEnabled(true);
-            rbPlein.setEnabled(true);
-            rbTroué.setEnabled(true);
-            rbGrand.setEnabled(true);
-            rbPetit.setEnabled(true);
-            rbEntier.setEnabled(true);
-            rbTranché.setEnabled(true);
-        }
+        initComponents();
         
+        // <editor-fold defaultstate="collapsed" desc="Définition tableau de boutons (tab)">
         javax.swing.JButton tab[] = new javax.swing.JButton[33];
         tab[0] = b00000;
         tab[1] = b00001;
@@ -98,8 +53,46 @@ public class DChoixPion extends javax.swing.JDialog {
         tab[30] = b11110;
         tab[31] = b11111;
         tab[32] = bxxxxx;
-        this.tab = tab;
-}
+        this.tab = tab; // </editor-fold>
+    }
+    
+    public void setRefPion(String refPion) {
+        this.refPion = refPion;       
+    }
+    
+    public String getRefPion(){
+        return refPion;
+    }
+
+    public void setTaille(int taille) {
+        this.taille = taille;
+    }
+    
+    public void ChoixPion(){
+        if(cbJoker.isSelected()){
+            rbNoir.setEnabled(false);
+            rbBlanc.setEnabled(false);
+            rbCarré.setEnabled(false);
+            rbRond.setEnabled(false);
+            rbPlein.setEnabled(false);
+            rbTroué.setEnabled(false);
+            rbGrand.setEnabled(false);
+            rbPetit.setEnabled(false);
+            rbEntier.setEnabled(false);
+            rbTranché.setEnabled(false);                      
+        }else {
+            rbNoir.setEnabled(true);
+            rbBlanc.setEnabled(true);
+            rbCarré.setEnabled(true);
+            rbRond.setEnabled(true);
+            rbPlein.setEnabled(true);
+            rbTroué.setEnabled(true);
+            rbGrand.setEnabled(true);
+            rbPetit.setEnabled(true);
+            rbEntier.setEnabled(true);
+            rbTranché.setEnabled(true);
+        }
+    }
        
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -108,7 +101,7 @@ public class DChoixPion extends javax.swing.JDialog {
         bgTaille = new javax.swing.ButtonGroup();
         bgCoupe = new javax.swing.ButtonGroup();
         bgDensité = new javax.swing.ButtonGroup();
-        bgGeo = new javax.swing.ButtonGroup();
+        bgForme = new javax.swing.ButtonGroup();
         bgCouleur = new javax.swing.ButtonGroup();
         lChoixPion = new javax.swing.JLabel();
         rbPlein = new javax.swing.JRadioButton();
@@ -125,7 +118,7 @@ public class DChoixPion extends javax.swing.JDialog {
         rbTranché = new javax.swing.JRadioButton();
         pJoker = new javax.swing.JPanel();
         cbJoker = new javax.swing.JCheckBox();
-        bPoser = new javax.swing.JButton();
+        bDonner = new javax.swing.JButton();
         lPion = new javax.swing.JLabel();
         bReinitialiser = new javax.swing.JButton();
         spPièces = new javax.swing.JScrollPane();
@@ -163,13 +156,14 @@ public class DChoixPion extends javax.swing.JDialog {
         b11110 = new javax.swing.JButton();
         b11111 = new javax.swing.JButton();
         bxxxxx = new javax.swing.JButton();
+        bFiltrer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Choix du pion");
         setPreferredSize(new java.awt.Dimension(1360, 730));
-        addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                formMouseClicked(evt);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
             }
         });
 
@@ -188,10 +182,10 @@ public class DChoixPion extends javax.swing.JDialog {
         bgCouleur.add(rbBlanc);
         rbBlanc.setText("Blanc");
 
-        bgGeo.add(rbCarré);
+        bgForme.add(rbCarré);
         rbCarré.setText("Carré");
 
-        bgGeo.add(rbRond);
+        bgForme.add(rbRond);
         rbRond.setText("Rond");
 
         pTaille.setBackground(new java.awt.Color(255, 255, 255));
@@ -274,13 +268,13 @@ public class DChoixPion extends javax.swing.JDialog {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        bPoser.setBackground(new java.awt.Color(0, 204, 51));
-        bPoser.setFont(new java.awt.Font("Baskerville Old Face", 1, 18)); // NOI18N
-        bPoser.setForeground(new java.awt.Color(255, 255, 255));
-        bPoser.setText("Poser Pion");
-        bPoser.addActionListener(new java.awt.event.ActionListener() {
+        bDonner.setBackground(new java.awt.Color(0, 204, 51));
+        bDonner.setFont(new java.awt.Font("Baskerville Old Face", 1, 18)); // NOI18N
+        bDonner.setForeground(new java.awt.Color(255, 255, 255));
+        bDonner.setText("Donner Pion");
+        bDonner.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bPoserActionPerformed(evt);
+                bDonnerActionPerformed(evt);
             }
         });
 
@@ -298,9 +292,10 @@ public class DChoixPion extends javax.swing.JDialog {
         });
 
         spPièces.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        spPièces.setPreferredSize(new java.awt.Dimension(800, 700));
 
         pPièces.setBackground(new java.awt.Color(255, 255, 255));
-        pPièces.setPreferredSize(new java.awt.Dimension(950, 950));
+        pPièces.setPreferredSize(new java.awt.Dimension(800, 1100));
 
         b00000.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_pions/p00000.png"))); // NOI18N
         b00000.setPreferredSize(new java.awt.Dimension(150, 150));
@@ -601,6 +596,14 @@ public class DChoixPion extends javax.swing.JDialog {
 
         spPièces.setViewportView(pPièces);
 
+        bFiltrer.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bFiltrer.setText("Filtrer");
+        bFiltrer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bFiltrerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -634,30 +637,29 @@ public class DChoixPion extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(pJoker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(bReinitialiser)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bPoser)
-                        .addGap(124, 124, 124))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(bReinitialiser)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 273, Short.MAX_VALUE)
+                                .addComponent(bDonner)
+                                .addGap(124, 124, 124))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(bFiltrer, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(spPièces, javax.swing.GroupLayout.PREFERRED_SIZE, 972, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                        .addComponent(spPièces, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lPion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87))))
+                        .addGap(90, 90, 90))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(bPoser)
-                .addGap(47, 47, 47)
-                .addComponent(lPion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(lChoixPion)
-                        .addGap(26, 26, 26)
+                        .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(pTaille, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
@@ -674,41 +676,265 @@ public class DChoixPion extends javax.swing.JDialog {
                             .addComponent(pJoker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(92, 92, 92)
-                        .addComponent(bReinitialiser)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(spPièces, javax.swing.GroupLayout.PREFERRED_SIZE, 821, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                        .addComponent(bReinitialiser)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bFiltrer, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addComponent(bDonner)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lPion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spPièces, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bPoserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPoserActionPerformed
-        FJeu poser = new FJeu();
-        poser.setVisible(true);
-    }//GEN-LAST:event_bPoserActionPerformed
+    private void bDonnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDonnerActionPerformed
+        if(nouveau){
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_bDonnerActionPerformed
 
     private void bReinitialiserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bReinitialiserActionPerformed
         // En cliquant sur ce bouton, on décoche tous les autres boutons, ce qui affiche ainsi toutes les pièces.
-        rbBlanc.setSelected(false);
-        rbNoir.setSelected(false);
-        rbCarré.setSelected(false);
-        rbRond.setSelected(false);
-        rbPlein.setSelected(false);
-        rbTroué.setSelected(false);
+        bgCouleur.clearSelection();
+        bgForme.clearSelection();
+        bgDensité.clearSelection();
         cbJoker.setSelected(false);
-        rbPetit.setSelected(false);
-        rbTranché.setSelected(false);
-        if(Infos.tailledelagrille()>0){
-            rbGrand.setSelected(false);
-            if(Infos.tailledelagrille()==2){
-                rbEntier.setSelected(false);
+        if(taille > 0){
+            bgTaille.clearSelection();
+            if(taille == 2){
+                bgCoupe.clearSelection();
             }
         }
+        bFiltrer.doClick();
     }//GEN-LAST:event_bReinitialiserActionPerformed
+    
+    // <editor-fold defaultstate="collapsed" desc="ActionPerformed des 33 boutons">
+    private void b00000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00000ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/00000.png"));
+        setRefPion("00000");
+        nouveau = true;
+    }//GEN-LAST:event_b00000ActionPerformed
 
-    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        for(int i=0;i>33;i++){
+    private void b00001ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00001ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/00001.png"));
+        setRefPion("00001");
+        nouveau = true;
+    }//GEN-LAST:event_b00001ActionPerformed
+
+    private void b00010ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00010ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/00010.png"));
+        setRefPion("00010");
+        nouveau = true;
+    }//GEN-LAST:event_b00010ActionPerformed
+
+    private void b00011ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00011ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/00011.png"));
+        setRefPion("00011");
+        nouveau = true;
+    }//GEN-LAST:event_b00011ActionPerformed
+
+    private void b00100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00100ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/00100.png"));
+        setRefPion("00100");
+        nouveau = true;
+    }//GEN-LAST:event_b00100ActionPerformed
+
+    private void b00101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00101ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/00101.png"));
+        setRefPion("00101");
+        nouveau = true;
+    }//GEN-LAST:event_b00101ActionPerformed
+
+    private void b00110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00110ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/00110.png"));
+        setRefPion("00110");
+        nouveau = true;
+    }//GEN-LAST:event_b00110ActionPerformed
+
+    private void b00111ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00111ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/00111.png"));
+        setRefPion("00111");
+        nouveau = true;
+    }//GEN-LAST:event_b00111ActionPerformed
+
+    private void b01000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01000ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/01000.png"));
+        setRefPion("01000");
+        nouveau = true;
+    }//GEN-LAST:event_b01000ActionPerformed
+
+    private void b01001ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01001ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/01001.png"));
+        setRefPion("01001");
+        nouveau = true;
+    }//GEN-LAST:event_b01001ActionPerformed
+
+    private void b01010ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01010ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/01010.png"));
+        setRefPion("01010");
+        nouveau = true;
+    }//GEN-LAST:event_b01010ActionPerformed
+
+    private void b01011ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01011ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/01011.png"));
+        setRefPion("01011");
+        nouveau = true;
+    }//GEN-LAST:event_b01011ActionPerformed
+
+    private void b01100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01100ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/01100.png"));
+        setRefPion("01100");
+        nouveau = true;
+    }//GEN-LAST:event_b01100ActionPerformed
+
+    private void b01101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01101ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/01101.png"));
+        setRefPion("01101");
+        nouveau = true;
+    }//GEN-LAST:event_b01101ActionPerformed
+
+    private void b01110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01110ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/01110.png"));
+        setRefPion("01110");
+        nouveau = true;
+    }//GEN-LAST:event_b01110ActionPerformed
+
+    private void b01111ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01111ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/01111.png"));
+        setRefPion("01111");
+        nouveau = true;
+    }//GEN-LAST:event_b01111ActionPerformed
+
+    private void b10000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10000ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/10000.png"));
+        setRefPion("10000");
+        nouveau = true;
+    }//GEN-LAST:event_b10000ActionPerformed
+
+    private void b10001ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10001ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/10001.png"));
+        setRefPion("10001");
+        nouveau = true;
+    }//GEN-LAST:event_b10001ActionPerformed
+
+    private void b10010ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10010ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/10010.png"));
+        setRefPion("10010");
+        nouveau = true;
+    }//GEN-LAST:event_b10010ActionPerformed
+
+    private void b10011ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10011ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/10011.png"));
+        setRefPion("10011");
+        nouveau = true;
+    }//GEN-LAST:event_b10011ActionPerformed
+
+    private void b10100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10100ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/10100.png"));
+        setRefPion("10100");
+        nouveau = true;
+    }//GEN-LAST:event_b10100ActionPerformed
+
+    private void b10101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10101ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/10101.png"));
+        setRefPion("10101");
+        nouveau = true;
+    }//GEN-LAST:event_b10101ActionPerformed
+
+    private void b10110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10110ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/10110.png"));
+        setRefPion("10110");
+        nouveau = true;
+    }//GEN-LAST:event_b10110ActionPerformed
+
+    private void b10111ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10111ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/10111.png"));
+        setRefPion("10111");
+        nouveau = true;
+    }//GEN-LAST:event_b10111ActionPerformed
+
+    private void b11000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11000ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/11000.png"));
+        setRefPion("11000");
+        nouveau = true;
+    }//GEN-LAST:event_b11000ActionPerformed
+
+    private void b11001ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11001ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/11001.png"));
+        setRefPion("11001");
+        nouveau = true;
+    }//GEN-LAST:event_b11001ActionPerformed
+
+    private void b11010ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11010ActionPerformed
+       lPion.setIcon(new ImageIcon("src/images_pions/11010.png"));
+       setRefPion("11010");
+       nouveau = true;
+    }//GEN-LAST:event_b11010ActionPerformed
+
+    private void b11011ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11011ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/11011.png"));
+        setRefPion("11011");
+        nouveau = true;
+    }//GEN-LAST:event_b11011ActionPerformed
+
+    private void b11100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11100ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/11100.png"));
+        setRefPion("11100");
+        nouveau = true;
+    }//GEN-LAST:event_b11100ActionPerformed
+
+    private void b11101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11101ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/11101.png"));
+        setRefPion("11101");
+        nouveau = true;
+    }//GEN-LAST:event_b11101ActionPerformed
+
+    private void b11110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11110ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/11110.png"));
+        setRefPion("11110");
+        nouveau = true;
+    }//GEN-LAST:event_b11110ActionPerformed
+
+    private void b11111ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11111ActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/11111.png"));
+        setRefPion("11111");
+        nouveau = true;
+    }//GEN-LAST:event_b11111ActionPerformed
+
+    private void bxxxxxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bxxxxxActionPerformed
+        lPion.setIcon(new ImageIcon("src/images_pions/xxxxx.png"));
+        setRefPion("xxxxx");
+        nouveau = true;
+    }//GEN-LAST:event_bxxxxxActionPerformed
+    // </editor-fold>
+    
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        if(taille == 0){
+            pTaille.setVisible(false);
+            pCoupe.setVisible(false);
+            pJoker.setVisible(true);
+        }else if(taille == 1){
+            pTaille.setVisible(true);
+            pCoupe.setVisible(false);
+            pJoker.setVisible(false);
+            bgTaille.clearSelection();
+        }else if(taille == 2){
+            pTaille.setVisible(true);
+            pCoupe.setVisible(true);
+            pJoker.setVisible(false);
+            bgTaille.clearSelection();
+            bgCoupe.clearSelection();
+        }
+        bFiltrer.doClick();
+    }//GEN-LAST:event_formComponentShown
+
+    private void bFiltrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFiltrerActionPerformed
+        for(int i=0;i<33;i++){
             tab[i].setVisible(true);
         }
         if(!cbJoker.isSelected())
@@ -736,12 +962,12 @@ public class DChoixPion extends javax.swing.JDialog {
         }
         if(rbPlein.isSelected()){
             for(int i=4;i<32;i+=8){
-                for(int j=0;j<5;j++)
+                for(int j=0;j<4;j++)
                     tab[i+j].setVisible(false);
             }
         }else if(rbTroué.isSelected()){
             for(int i=0;i<32;i+=8){
-                for(int j=0;j<5;j++)
+                for(int j=0;j<4;j++)
                     tab[i+j].setVisible(false);
             }
         }
@@ -763,173 +989,37 @@ public class DChoixPion extends javax.swing.JDialog {
             for(int i=0;i<16;i++)
                 tab[i].setVisible(false);
         }
-    }//GEN-LAST:event_formMouseClicked
-
-    private void b00000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00000ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/00000.png"));
-        Jeu.setRefPion("00000");
-    }//GEN-LAST:event_b00000ActionPerformed
-
-    private void b00001ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00001ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/00001.png"));
-        Jeu.setRefPion("00001");
-    }//GEN-LAST:event_b00001ActionPerformed
-
-    private void b00010ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00010ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/00010.png"));
-        Jeu.setRefPion("00010");
-    }//GEN-LAST:event_b00010ActionPerformed
-
-    private void b00011ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00011ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/00011.png"));
-        Jeu.setRefPion("00011");
-    }//GEN-LAST:event_b00011ActionPerformed
-
-    private void b00100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00100ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/00100.png"));
-        Jeu.setRefPion("00100");
-    }//GEN-LAST:event_b00100ActionPerformed
-
-    private void b00101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00101ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/00101.png"));
-        Jeu.setRefPion("00101");
-    }//GEN-LAST:event_b00101ActionPerformed
-
-    private void b00110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00110ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/00110.png"));
-        Jeu.setRefPion("00110");
-    }//GEN-LAST:event_b00110ActionPerformed
-
-    private void b00111ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00111ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/00111.png"));
-        Jeu.setRefPion("00111");
-    }//GEN-LAST:event_b00111ActionPerformed
-
-    private void b01000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01000ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/01000.png"));
-        Jeu.setRefPion("01000");
-    }//GEN-LAST:event_b01000ActionPerformed
-
-    private void b01001ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01001ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/01001.png"));
-        Jeu.setRefPion("01001");
-    }//GEN-LAST:event_b01001ActionPerformed
-
-    private void b01010ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01010ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/01010.png"));
-        Jeu.setRefPion("01010");
-    }//GEN-LAST:event_b01010ActionPerformed
-
-    private void b01011ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01011ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/01011.png"));
-        Jeu.setRefPion("01011");
-    }//GEN-LAST:event_b01011ActionPerformed
-
-    private void b01100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01100ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/01100.png"));
-        Jeu.setRefPion("01100");
-    }//GEN-LAST:event_b01100ActionPerformed
-
-    private void b01101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01101ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/01101.png"));
-        Jeu.setRefPion("01101");
-    }//GEN-LAST:event_b01101ActionPerformed
-
-    private void b01110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01110ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/01110.png"));
-        Jeu.setRefPion("01110");
-    }//GEN-LAST:event_b01110ActionPerformed
-
-    private void b01111ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01111ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/01111.png"));
-        Jeu.setRefPion("01111");
-    }//GEN-LAST:event_b01111ActionPerformed
-
-    private void b10000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10000ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/10000.png"));
-        Jeu.setRefPion("10000");
-    }//GEN-LAST:event_b10000ActionPerformed
-
-    private void b10001ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10001ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/10001.png"));
-        Jeu.setRefPion("10001");
-    }//GEN-LAST:event_b10001ActionPerformed
-
-    private void b10010ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10010ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/10010.png"));
-        Jeu.setRefPion("10010");
-    }//GEN-LAST:event_b10010ActionPerformed
-
-    private void b10011ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10011ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/10011.png"));
-        Jeu.setRefPion("10011");
-    }//GEN-LAST:event_b10011ActionPerformed
-
-    private void b10100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10100ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/10100.png"));
-        Jeu.setRefPion("10100");
-    }//GEN-LAST:event_b10100ActionPerformed
-
-    private void b10101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10101ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/10101.png"));
-        Jeu.setRefPion("10101");
-    }//GEN-LAST:event_b10101ActionPerformed
-
-    private void b10110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10110ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/10110.png"));
-        Jeu.setRefPion("10110");
-    }//GEN-LAST:event_b10110ActionPerformed
-
-    private void b10111ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b10111ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/10111.png"));
-        Jeu.setRefPion("10111");
-    }//GEN-LAST:event_b10111ActionPerformed
-
-    private void b11000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11000ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/11000.png"));
-        Jeu.setRefPion("11000");
-    }//GEN-LAST:event_b11000ActionPerformed
-
-    private void b11001ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11001ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/11001.png"));
-        Jeu.setRefPion("11001");
-    }//GEN-LAST:event_b11001ActionPerformed
-
-    private void b11010ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11010ActionPerformed
-       lPion.setIcon(new ImageIcon("src/images_pions/11010.png"));
-       Jeu.setRefPion("11010");
-    }//GEN-LAST:event_b11010ActionPerformed
-
-    private void b11011ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11011ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/11011.png"));
-        Jeu.setRefPion("11011");
-    }//GEN-LAST:event_b11011ActionPerformed
-
-    private void b11100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11100ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/11100.png"));
-        Jeu.setRefPion("11100");
-    }//GEN-LAST:event_b11100ActionPerformed
-
-    private void b11101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11101ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/11101.png"));
-        Jeu.setRefPion("11101");
-    }//GEN-LAST:event_b11101ActionPerformed
-
-    private void b11110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11110ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/11110.png"));
-        Jeu.setRefPion("11110");
-    }//GEN-LAST:event_b11110ActionPerformed
-
-    private void b11111ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11111ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/11111.png"));
-        Jeu.setRefPion("11111");
-    }//GEN-LAST:event_b11111ActionPerformed
-
-    private void bxxxxxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bxxxxxActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/xxxxx.png"));
-        Jeu.setRefPion("xxxxx");
-    }//GEN-LAST:event_bxxxxxActionPerformed
-
+        
+        if(cbJoker.isSelected()){
+            rbNoir.setEnabled(false);
+            rbBlanc.setEnabled(false);
+            rbCarré.setEnabled(false);
+            rbRond.setEnabled(false);
+            rbPlein.setEnabled(false);
+            rbTroué.setEnabled(false);
+            rbGrand.setEnabled(false);
+            rbPetit.setEnabled(false);
+            rbEntier.setEnabled(false);
+            rbTranché.setEnabled(false);
+            for(int i=0;i<32;i++){
+                tab[i].setVisible(false);
+            }
+        }else {
+            rbNoir.setEnabled(true);
+            rbBlanc.setEnabled(true);
+            rbCarré.setEnabled(true);
+            rbRond.setEnabled(true);
+            rbPlein.setEnabled(true);
+            rbTroué.setEnabled(true);
+            rbGrand.setEnabled(true);
+            rbPetit.setEnabled(true);
+            rbEntier.setEnabled(true);
+            rbTranché.setEnabled(true);
+        }
+        
+    }//GEN-LAST:event_bFiltrerActionPerformed
+    // </editor-fold>
+    
     /**
      * @param args the command line arguments
      */
@@ -960,6 +1050,7 @@ public class DChoixPion extends javax.swing.JDialog {
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 DChoixPion dialog = new DChoixPion(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter(){
@@ -1006,12 +1097,13 @@ public class DChoixPion extends javax.swing.JDialog {
     private javax.swing.JButton b11101;
     private javax.swing.JButton b11110;
     private javax.swing.JButton b11111;
-    private javax.swing.JButton bPoser;
+    private javax.swing.JButton bDonner;
+    private javax.swing.JButton bFiltrer;
     private javax.swing.JButton bReinitialiser;
     private javax.swing.ButtonGroup bgCouleur;
     private javax.swing.ButtonGroup bgCoupe;
     private javax.swing.ButtonGroup bgDensité;
-    private javax.swing.ButtonGroup bgGeo;
+    private javax.swing.ButtonGroup bgForme;
     private javax.swing.ButtonGroup bgTaille;
     private javax.swing.JButton bxxxxx;
     private javax.swing.JCheckBox cbJoker;

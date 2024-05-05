@@ -7,17 +7,34 @@ package fiches;
 public class DInfos extends javax.swing.JDialog {
     
     private DOrdi Ordi;
-    private DChoixPion Pion;
+    private boolean quitus = false;
+    private boolean solo = false;
 
     public DInfos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         Ordi = new DOrdi(parent,modal);
-        Pion = new DChoixPion(parent, modal);
+    }
+    
+    public boolean getQuitus(){
+        return quitus;
+    }
+    
+    public void resetQuitus(){
+        quitus = false;
+    }
+    
+    public boolean isSolo(){
+        return solo;
     }
     
     public int tailledelagrille(){
         return cbTGrille.getSelectedIndex();
+    }
+    
+    public String[] pseudonymes(){
+        String [] noms = new String[] {tfJ1.getText(), tfJ2.getText()};
+        return noms;
     }
 
     @SuppressWarnings("unchecked")
@@ -52,18 +69,6 @@ public class DInfos extends javax.swing.JDialog {
         lTGrille.setFont(new java.awt.Font("Rockwell", 3, 14)); // NOI18N
         lTGrille.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lTGrille.setText("Taille de la grille");
-
-        tfJ1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfJ1ActionPerformed(evt);
-            }
-        });
-
-        tfJ2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfJ2ActionPerformed(evt);
-            }
-        });
 
         cbTGrille.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         cbTGrille.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3*3", "4*4", "5*5" }));
@@ -149,10 +154,6 @@ public class DInfos extends javax.swing.JDialog {
         this.getParent().setVisible(true);
     }//GEN-LAST:event_bRetourActionPerformed
 
-    private void tfJ2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfJ2ActionPerformed
-
-    }//GEN-LAST:event_tfJ2ActionPerformed
-
     private void bCommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCommencerActionPerformed
         String nom1 = tfJ1.getText(); // On récupère les Strings écrites pas les joueurs
         String nom2 = tfJ2.getText();
@@ -160,24 +161,17 @@ public class DInfos extends javax.swing.JDialog {
         // Choix de l'ordinateur
         if (nom1.length() !=0 && nom2.length() == 0){
             this.setVisible(false);
-            Ordi.setVisible(true);    
+            solo = true;
+            quitus = true;
+            this.getParent().setVisible(true);
         }
         // Partie avec 2 joueurs
         else if(nom1.length() != 0 && nom2.length() !=0 && !nom1.equalsIgnoreCase(nom2)){
-            this.setVisible(true);  
             this.setVisible(false);
-            FJeu grille = new FJeu();
-            grille.setVisible(true);         
-        }
-        // Manque d'information ou confusion
-        else if(nom1.length() == 0 && nom2.length() == 0 || nom1.equalsIgnoreCase(nom2)){
-            this.setVisible(true);   
+            quitus = true;
+            this.getParent().setVisible(true);
         }
     }//GEN-LAST:event_bCommencerActionPerformed
-
-    private void tfJ1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfJ1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfJ1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,6 +203,7 @@ public class DInfos extends javax.swing.JDialog {
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 DInfos dialog = new DInfos(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {

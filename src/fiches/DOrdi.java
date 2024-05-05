@@ -8,13 +8,17 @@ import javax.swing.JOptionPane;
 
 public class DOrdi extends javax.swing.JDialog {
     
-    private DInfos infos;
+    private boolean retour = false;
     
     public DOrdi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
-
+    
+    public boolean retourCliqué(){
+        return retour;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,8 +30,8 @@ public class DOrdi extends javax.swing.JDialog {
 
         bgNivOrdi = new javax.swing.ButtonGroup();
         lNivOrdi = new javax.swing.JLabel();
-        rbOrdifacile = new javax.swing.JRadioButton();
-        rbOrdiDifficile = new javax.swing.JRadioButton();
+        rbFacile = new javax.swing.JRadioButton();
+        rbDifficile = new javax.swing.JRadioButton();
         bCommencer = new javax.swing.JButton();
         bRetour = new javax.swing.JButton();
 
@@ -38,24 +42,23 @@ public class DOrdi extends javax.swing.JDialog {
         lNivOrdi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lNivOrdi.setText("Choisissez le niveau de l'ordinateur");
 
-        bgNivOrdi.add(rbOrdifacile);
-        rbOrdifacile.setFont(new java.awt.Font("Snap ITC", 1, 24)); // NOI18N
-        rbOrdifacile.setForeground(new java.awt.Color(0, 204, 255));
-        rbOrdifacile.setSelected(true);
-        rbOrdifacile.setText("Facile");
-        rbOrdifacile.addActionListener(new java.awt.event.ActionListener() {
+        bgNivOrdi.add(rbFacile);
+        rbFacile.setFont(new java.awt.Font("Snap ITC", 1, 24)); // NOI18N
+        rbFacile.setForeground(new java.awt.Color(0, 204, 255));
+        rbFacile.setText("Facile");
+        rbFacile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbOrdifacileActionPerformed(evt);
+                rbFacileActionPerformed(evt);
             }
         });
 
-        bgNivOrdi.add(rbOrdiDifficile);
-        rbOrdiDifficile.setFont(new java.awt.Font("Snap ITC", 1, 24)); // NOI18N
-        rbOrdiDifficile.setForeground(new java.awt.Color(153, 0, 153));
-        rbOrdiDifficile.setText("Difficile");
-        rbOrdiDifficile.addActionListener(new java.awt.event.ActionListener() {
+        bgNivOrdi.add(rbDifficile);
+        rbDifficile.setFont(new java.awt.Font("Snap ITC", 1, 24)); // NOI18N
+        rbDifficile.setForeground(new java.awt.Color(153, 0, 153));
+        rbDifficile.setText("Difficile");
+        rbDifficile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbOrdiDifficileActionPerformed(evt);
+                rbDifficileActionPerformed(evt);
             }
         });
 
@@ -94,9 +97,9 @@ public class DOrdi extends javax.swing.JDialog {
                 .addGap(191, 191, 191))
             .addGroup(layout.createSequentialGroup()
                 .addGap(246, 246, 246)
-                .addComponent(rbOrdifacile)
+                .addComponent(rbFacile)
                 .addGap(58, 58, 58)
-                .addComponent(rbOrdiDifficile)
+                .addComponent(rbDifficile)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -106,8 +109,8 @@ public class DOrdi extends javax.swing.JDialog {
                 .addComponent(lNivOrdi)
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbOrdifacile)
-                    .addComponent(rbOrdiDifficile))
+                    .addComponent(rbFacile)
+                    .addComponent(rbDifficile))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -120,28 +123,31 @@ public class DOrdi extends javax.swing.JDialog {
 
     private void bRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetourActionPerformed
        this.setVisible(false);
+       this.retour = true;
        this.getParent().setVisible(true);  
     }//GEN-LAST:event_bRetourActionPerformed
 
     private void bCommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCommencerActionPerformed
-        this.setVisible(false);
-        FJeu grille = new FJeu();
-        grille.setVisible(true);
+        if(rbFacile.isSelected() || rbDifficile.isSelected()){
+            this.setVisible(false);
+            retour = false;
+            this.getParent().setVisible(true);
+        }
     }//GEN-LAST:event_bCommencerActionPerformed
 
-    private void rbOrdifacileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbOrdifacileActionPerformed
+    private void rbFacileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbFacileActionPerformed
         String ordisy = "Vous avez seléctionnés le mode facile, bonne chance ☺";
-        if (rbOrdifacile.isSelected() == true) {
+        if (rbFacile.isSelected() == true) {
         JOptionPane.showMessageDialog(this,ordisy);
         }    
-    }//GEN-LAST:event_rbOrdifacileActionPerformed
+    }//GEN-LAST:event_rbFacileActionPerformed
 
-    private void rbOrdiDifficileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbOrdiDifficileActionPerformed
+    private void rbDifficileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbDifficileActionPerformed
         String ordiff = "Vous avez seléctionnés le mode difficile, bon courage ☺";
-        if (rbOrdiDifficile.isSelected() == true) {
+        if (rbDifficile.isSelected() == true) {
         JOptionPane.showMessageDialog(this,ordiff);
         }
-    }//GEN-LAST:event_rbOrdiDifficileActionPerformed
+    }//GEN-LAST:event_rbDifficileActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -170,6 +176,7 @@ public class DOrdi extends javax.swing.JDialog {
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 DOrdi dialog = new DOrdi(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -188,7 +195,7 @@ public class DOrdi extends javax.swing.JDialog {
     private javax.swing.JButton bRetour;
     private javax.swing.ButtonGroup bgNivOrdi;
     private javax.swing.JLabel lNivOrdi;
-    private javax.swing.JRadioButton rbOrdiDifficile;
-    private javax.swing.JRadioButton rbOrdifacile;
+    private javax.swing.JRadioButton rbDifficile;
+    private javax.swing.JRadioButton rbFacile;
     // End of variables declaration//GEN-END:variables
 }
