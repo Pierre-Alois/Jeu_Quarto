@@ -35,11 +35,11 @@
               <EmptySpace min="-2" pref="292" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="167" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
               <Component id="bQuitter" min="-2" pref="134" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="bCredit" min="-2" pref="98" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
@@ -68,12 +68,12 @@
                   <Component id="bCommencer" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
                   <Component id="bReprendre" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="175" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="bQuitter" min="-2" pref="47" max="-2" attributes="0"/>
-                  <Component id="bCredit" min="-2" pref="47" max="-2" attributes="0"/>
+              <EmptySpace pref="164" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="bQuitter" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
+                  <Component id="bCredit" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
