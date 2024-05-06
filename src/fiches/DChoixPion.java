@@ -10,18 +10,20 @@ public class DChoixPion extends javax.swing.JDialog {
     
     //private DInfos Infos;
     private int taille;
-    private final javax.swing.JButton[] tab;
-    private String refPion = "";
-    private boolean nouveau = false;
-    private int numero;
+    private final javax.swing.JButton[] tab;  //Tableau rempli des 32 pions 
+    private String refPion = "";              // Vide car nous devrons regarder son code binaire (identité)
+    private boolean nouveau = false;          //"Nouveau" représente le nouveau pion séléctionné, différent du précédent
+    private int numero;                       //Représentant l'indice du tableau tab
        
     public DChoixPion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         
-        // <editor-fold defaultstate="collapsed" desc="Définition tableau de boutons (tab)">
+        //Commande permettant de rentrer l'ensemble des pions dans le tableau
+        
+        // <editor-fold defaultstate="collapsed" desc="Définition tableau de boutons (tab)"> 
         javax.swing.JButton tab[] = new javax.swing.JButton[33];
-        tab[0] = b00000;
+        tab[0] = b00000; 
         tab[1] = b00001;
         tab[2] = b00010;
         tab[3] = b00011;
@@ -54,46 +56,21 @@ public class DChoixPion extends javax.swing.JDialog {
         tab[30] = b11110;
         tab[31] = b11111;
         tab[32] = bxxxxx;
-        this.tab = tab; // </editor-fold>
+        this.tab = tab; // </editor-fold> // Technique permettant de mieux optimiser le code pour le visuel en pouvant réduire le lignes de code de la définition du tableau de boutons
     }
     
     public void setRefPion(String refPion) {
         this.refPion = refPion;       
     }
     
-    public String getRefPion(){
+    public String getRefPion(){   //Permet de récupérer la référence du pion
         return refPion;
     }
 
-    public void setTaille(int taille) {
+    public void setTaille(int taille) { //Permet de savoir combien de pions va-t-on de voir afficher dans le menu déroulant (en fonction de la taille choisise)
         this.taille = taille;
     }
     
-    public void ChoixPion(){
-        if(cbJoker.isSelected()){
-            rbNoir.setEnabled(false);
-            rbBlanc.setEnabled(false);
-            rbCarré.setEnabled(false);
-            rbRond.setEnabled(false);
-            rbPlein.setEnabled(false);
-            rbTroué.setEnabled(false);
-            rbGrand.setEnabled(false);
-            rbPetit.setEnabled(false);
-            rbEntier.setEnabled(false);
-            rbTranché.setEnabled(false);                      
-        }else {
-            rbNoir.setEnabled(true);
-            rbBlanc.setEnabled(true);
-            rbCarré.setEnabled(true);
-            rbRond.setEnabled(true);
-            rbPlein.setEnabled(true);
-            rbTroué.setEnabled(true);
-            rbGrand.setEnabled(true);
-            rbPetit.setEnabled(true);
-            rbEntier.setEnabled(true);
-            rbTranché.setEnabled(true);
-        }
-    }
        
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -682,7 +659,7 @@ public class DChoixPion extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(71, 71, 71)
                         .addComponent(bDonner)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lPion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(spPièces, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -692,31 +669,33 @@ public class DChoixPion extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Le bouton sera cliquer une fois qu'un pion a été choisi
     private void bDonnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDonnerActionPerformed
         if(nouveau){
             this.setVisible(false);
-            this.getParent().setName("plateau");
         }
     }//GEN-LAST:event_bDonnerActionPerformed
 
     private void bReinitialiserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bReinitialiserActionPerformed
         // En cliquant sur ce bouton, on décoche tous les autres boutons, ce qui affiche ainsi toutes les pièces.
-        bgCouleur.clearSelection();
+        bgCouleur.clearSelection(); // Rien de sélectionner au commencement 
         bgForme.clearSelection();
         bgDensité.clearSelection();
-        cbJoker.setSelected(false);
-        if(taille > 0){
+        cbJoker.setSelected(false); //Le joker est déselectionné de base, pour laisser le choix au joueur
+        if(taille > 0){               //Nettoie le buttonGroup bgtaille
             bgTaille.clearSelection();
-            if(taille == 2){
+            if(taille == 2){          //Pour la grille 5x5 permet de réinitialiser tous les buttonGroup
                 bgCoupe.clearSelection();
             }
         }
-        bFiltrer.doClick();
+        bFiltrer.doClick(); //Permet de cliquer sur un bouton 
     }//GEN-LAST:event_bReinitialiserActionPerformed
     
-    // <editor-fold defaultstate="collapsed" desc="ActionPerformed des 33 boutons">
+    // Pour plus de lisibilité, nous avons réduit nos méthodes dans des "sous-groupes"
+    
+    // <editor-fold defaultstate="collapsed" desc="ActionPerformed des 33 boutons">   
     private void b00000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00000ActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/00000.png"));
+        lPion.setIcon(new ImageIcon("src/images_pions/00000.png"));  //Le pion a été séléctionné
         setRefPion("00000");
         nouveau = true;
         numero = 0;
@@ -940,7 +919,7 @@ public class DChoixPion extends javax.swing.JDialog {
     }//GEN-LAST:event_b11111ActionPerformed
 
     private void bxxxxxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bxxxxxActionPerformed
-        lPion.setIcon(new ImageIcon("src/images_pions/xxxxx.png"));
+        lPion.setIcon(new ImageIcon("src/images_pions/xxxxx.png")); //Pour notre pièce joker
         setRefPion("xxxxx");
         nouveau = true;
         numero = 32;
@@ -948,16 +927,16 @@ public class DChoixPion extends javax.swing.JDialog {
     // </editor-fold>
     
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        if(taille == 0){
-            pTaille.setVisible(false);
+        if(taille == 0){                    //La grille 3x3 a été choisie 
+            pTaille.setVisible(false); //Caractéristique enlever
             pCoupe.setVisible(false);
-            pJoker.setVisible(true);
-        }else if(taille == 1){
+            pJoker.setVisible(true);    //Joker possible en 3x3
+        }else if(taille == 1){              //La grille 4x4 a été choisie 
             pTaille.setVisible(true);
             pCoupe.setVisible(false);
             pJoker.setVisible(false);
             bgTaille.clearSelection();
-        }else if(taille == 2){
+        }else if(taille == 2){              //La grille 5x5 a été choisie 
             pTaille.setVisible(true);
             pCoupe.setVisible(true);
             pJoker.setVisible(false);
@@ -976,7 +955,7 @@ public class DChoixPion extends javax.swing.JDialog {
             tab[32].setVisible(false);
         
         if(rbBlanc.isSelected()){
-            for(int i=1;i<=31;i+=2)
+            for(int i=1;i<=31;i+=2) //Effacer tous les pions noirs → 32 joker pas besoin
                 tab[i].setVisible(false);
             
         }else if(rbNoir.isSelected()){
