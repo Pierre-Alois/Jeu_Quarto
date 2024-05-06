@@ -2,7 +2,8 @@
 Projet Java - Jeu Quarto
 BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
  */
-package fiches; //FAcccueil est notre fiche principale et toutes nos fonctions passerons par celle-ci
+package fiches; 
+//FAcccueil est notre fiche principale et toutes nos fonctions passeront par celle-ci
 
 import javax.swing.JOptionPane;
 
@@ -12,7 +13,7 @@ public class FAccueil extends javax.swing.JFrame {
     private DOrdi ordi;
     private FJeu jeu;
     
-    private int taille;     //Variable désignant notre taille (Index de notre ComboBox : 0,1 et 2 et non la "taille de la grille")
+    private int taille;   //Variable désignant notre taille (Index de notre ComboBox : 0,1 et 2 et non la "taille de la grille")
     private String pseudoJ1;
     private String pseudoJ2;
     
@@ -24,8 +25,8 @@ public class FAccueil extends javax.swing.JFrame {
     }
     
     private void importDonnees(){
-        this.taille = infos.tailledelagrille(); //Récupération des données de la taille de la grille
-        this.pseudoJ1 = infos.pseudonymes()[0]; //Récupération des pseudos rentrés par le ou les joueurs
+        this.taille = infos.tailledelagrille(); //Récupération de la taille de la grille
+        this.pseudoJ1 = infos.pseudonymes()[0]; //Récupération des pseudos
         this.pseudoJ1 = infos.pseudonymes()[1];
     }
     
@@ -161,8 +162,9 @@ public class FAccueil extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_bQuitterActionPerformed
 
+    //Rappel des règles du jeu pour jouer dans de bonnes conditions
     private void bRèglesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRèglesActionPerformed
-        //Rappel des règles du jeu pour jouer dans de bonnes conditions
+
         String msg = """
               Bienvenue cher(e) joueur(se) ☺,
                                    
@@ -207,7 +209,8 @@ public class FAccueil extends javax.swing.JFrame {
     }//GEN-LAST:event_bCreditActionPerformed
 
     /*
-   //Cette méthode sera exécutée dès lors que l'on effectuera des actions de type "setVisible" sur cette fiche
+    Cette méthode sera exécutée dès lors que l'on effectuera des actions de type
+    "setVisible" sur cette fiche.
     */
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         if(infos.getQuitus()){      

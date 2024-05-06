@@ -9,17 +9,16 @@ import javax.swing.ImageIcon;
 public class DChoixPion extends javax.swing.JDialog {
     
     private int taille;
-    private final javax.swing.JButton[] tab;  //Tableau rempli des 32 pions 
-    private String refPion = "";              // Vide car nous devrons regarder son code binaire (identité)
-    private boolean nouveau = false;          //"Nouveau" représente le nouveau pion séléctionné, différent du précédent
-    private int numero;                       //Représentant l'indice du tableau tab
+    private final javax.swing.JButton[] tab; //Tableau rempli des 32 pions 
+    private String refPion = "";            // Vide car nous devrons regarder son code binaire (identité, ex: 01111)
+    private boolean nouveau = false;       //"Nouveau" représente le nouveau pion séléctionné, différent du précédent
+    private int numero;                   //Représentant l'indice du tableau tab
        
     public DChoixPion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
-        //Commande permettant de rentrer l'ensemble des pions dans le tableau
-        
+    
+    //  Pour plus de lisibilité nous avons caché cette méthode. Cliquer sur '+' pour la dérouler entièrement
         // <editor-fold defaultstate="collapsed" desc="Définition tableau de boutons (tab)"> 
         javax.swing.JButton tab[] = new javax.swing.JButton[33];
         tab[0] = b00000; 
@@ -55,7 +54,7 @@ public class DChoixPion extends javax.swing.JDialog {
         tab[30] = b11110;
         tab[31] = b11111;
         tab[32] = bxxxxx;
-        this.tab = tab; // </editor-fold> // Technique permettant de mieux optimiser le code pour le visuel en pouvant réduire le lignes de code de la définition du tableau de boutons
+        this.tab = tab; // </editor-fold> 
     }
     
     public void setRefPion(String refPion) {
@@ -66,11 +65,11 @@ public class DChoixPion extends javax.swing.JDialog {
         return refPion;
     }
 
-    public void setTaille(int taille) { //Permet de savoir combien de pions va-t-on de voir afficher dans le menu déroulant (en fonction de la taille choisise)
+    public void setTaille(int taille) { //Permet de savoir, selon la taille, combien de pions va-t-on devoir afficher dans le menu déroulant.
         this.taille = taille;
     }
 
-    public boolean getNouveau() {
+    public boolean getNouveau() { // Permet de récupérer l'état du pion (ancien ou nouveau)
         return nouveau;
     }
     
@@ -671,36 +670,42 @@ public class DChoixPion extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    //Le bouton sera cliquer une fois qu'un pion a été choisi
+    //Ce bouton ne sera cliqué que si un pion à été choisi
     private void bDonnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDonnerActionPerformed
         if(nouveau){
             this.setVisible(false);
             tab[numero].setEnabled(false);
         }
     }//GEN-LAST:event_bDonnerActionPerformed
-
+    
+    /*
+    Une fois cliqué, ce bouton, permet de réafficher tous les pions
+    éventuellement cachés auparavant par filtrages.
+    */
     private void bReinitialiserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bReinitialiserActionPerformed
-        // En cliquant sur ce bouton, on décoche tous les autres boutons, ce qui affiche ainsi toutes les pièces.
-        bgCouleur.clearSelection(); // Rien de sélectionner au commencement 
+       
+        bgCouleur.clearSelection();  
         bgForme.clearSelection();
         bgDensité.clearSelection();
         cbJoker.setSelected(false); //Le joker est déselectionné de base, pour laisser le choix au joueur
         if(taille > 0){               //Nettoie le buttonGroup bgtaille
             bgTaille.clearSelection();
-            if(taille == 2){          //Pour la grille 5x5 permet de réinitialiser tous les buttonGroup
+            if(taille == 2){          //Pour la grille 5x5, on réinitialise tous les buttonGroup
                 bgCoupe.clearSelection();
             }
         }
         bFiltrer.doClick(); //Permet de cliquer sur un bouton 
     }//GEN-LAST:event_bReinitialiserActionPerformed
     
-    // Pour plus de lisibilité, nous avons réduit nos méthodes dans des "sous-groupes"
-    
+    /*
+    De la même manière que précédement et pour plus de lisibilité, les boutons
+    liés à tous les pions ont été "raccourcis". Cliquer sur '+' pour les voir. 
+    */
     // <editor-fold defaultstate="collapsed" desc="ActionPerformed des 33 boutons">   
     private void b00000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00000ActionPerformed
         lPion.setIcon(new ImageIcon("src/images_pions/00000.png"));  //Le pion a été séléctionné
-        setRefPion("00000");
-        nouveau = true;
+        setRefPion("00000"); // On change la référence du pion qui devient alors 00000
+        nouveau = true; // Ce pion est nouveau
         numero = 0;
     }//GEN-LAST:event_b00000ActionPerformed
 
@@ -931,12 +936,12 @@ public class DChoixPion extends javax.swing.JDialog {
     
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         if(taille == 0){                    //La grille 3x3 a été choisie 
-            pTaille.setVisible(false); //Caractéristique enlever
+            pTaille.setVisible(false); //Caractéristiques enlevées pour cette grille
             pCoupe.setVisible(false);
-            pJoker.setVisible(true);    //Joker possible en 3x3
+            pJoker.setVisible(true);    //Joker possible que en 3x3
         }else if(taille == 1){              //La grille 4x4 a été choisie 
-            pTaille.setVisible(true);
-            pCoupe.setVisible(false);
+            pTaille.setVisible(true); // Caractéristique disponible pour cette grille
+            pCoupe.setVisible(false);  
             pJoker.setVisible(false);
             bgTaille.clearSelection();
         }else if(taille == 2){              //La grille 5x5 a été choisie 
@@ -949,31 +954,35 @@ public class DChoixPion extends javax.swing.JDialog {
         bFiltrer.doClick();
         nouveau = false;
     }//GEN-LAST:event_formComponentShown
-
+    
+    /*
+    Méthode permettant de n'afficher que les pièces avec certaines
+    caractéristiques bien précises après avoir cliquer sur le bouton "filtrer". 
+    */
     private void bFiltrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFiltrerActionPerformed
         for(int i=0;i<33;i++){
-            tab[i].setVisible(true);
+            tab[i].setVisible(true); // On montre tous les pions disponibles
         }
         if(!cbJoker.isSelected())
-            tab[32].setVisible(false);
+            tab[32].setVisible(false); // Le joker est caché
         
         if(rbBlanc.isSelected()){
-            for(int i=1;i<=31;i+=2) //Effacer tous les pions noirs → 32 joker pas besoin
+            for(int i=1;i<=31;i+=2) // On efface tous les pions noirs (1 pion sur 2)
                 tab[i].setVisible(false);
             
         }else if(rbNoir.isSelected()){
-            for(int i=0;i<31;i+=2)
+            for(int i=0;i<31;i+=2) // On efface tous les pions blancs (1 pion sur 2)
                 tab[i].setVisible(false);
             
         }
         if(rbCarré.isSelected()){
-            for(int i=2;i<32;i+=4){
-                tab[i].setVisible(false);
+            for(int i=2;i<32;i+=4){  // On part de 2,avance de 4 en 4 et cache 2
+                tab[i].setVisible(false); // pions à chaque fois (i et i+1)
                 tab[i+1].setVisible(false);
             }
         }else if(rbRond.isSelected()){
-            for(int i=0;i<32;i+=4){
-                tab[i].setVisible(false);
+            for(int i=0;i<32;i+=4){ // On part de 0,avance de 4 en 4 et cache 2
+                tab[i].setVisible(false); // pions à chaque fois (i et i+1)
                 tab[i+1].setVisible(false);
             }
         }
@@ -988,27 +997,27 @@ public class DChoixPion extends javax.swing.JDialog {
                     tab[i+j].setVisible(false);
             }
         }
-        if(rbGrand.isSelected()){
+        if(rbGrand.isSelected()){ // On supprime les pions de 8 à 15 
             for(int i=8;i<16;i++)
                 tab[i].setVisible(false);
-            for(int i=24;i<32;i++)
+            for(int i=24;i<32;i++) // On supprime les pions de 24 à 31. 
                 tab[i].setVisible(false);
         }else if(rbPetit.isSelected()){
-            for(int i=0;i<8;i++)
+            for(int i=0;i<8;i++) // On supprime les pions de 0 à 7
                 tab[i].setVisible(false);
-            for(int i=16;i<24;i++)
+            for(int i=16;i<24;i++) // On supprime les pions de 16 à 23
                 tab[i].setVisible(false);
         }
-        if(rbEntier.isSelected()){
-            for(int i=31;i>15;i--)
+        if(rbEntier.isSelected()){ // on part de la fin(avant joker) jusqu'à 16
+            for(int i=31;i>15;i--) // et on cache tous
                 tab[i].setVisible(false);
-        }else if(rbTranché.isSelected()){
+        }else if(rbTranché.isSelected()){ // On cache les 16 premiers
             for(int i=0;i<16;i++)
                 tab[i].setVisible(false);
         }
         
-        if(cbJoker.isSelected()){
-            rbNoir.setEnabled(false);
+        if(cbJoker.isSelected()){ // Si le joker est sélectionné,tous les autres
+            rbNoir.setEnabled(false); // seront indisponibles. 
             rbBlanc.setEnabled(false);
             rbCarré.setEnabled(false);
             rbRond.setEnabled(false);
@@ -1019,11 +1028,11 @@ public class DChoixPion extends javax.swing.JDialog {
             rbEntier.setEnabled(false);
             rbTranché.setEnabled(false);
             for(int i=0;i<32;i++){
-                tab[i].setVisible(false);
+                tab[i].setVisible(false); 
             }
-        }else {
-            rbNoir.setEnabled(true);
-            rbBlanc.setEnabled(true);
+        }else {       // Si joker n'est pas cliqué, tous les autres pions seront 
+            rbNoir.setEnabled(true);   // visibles selon la grille et les 
+            rbBlanc.setEnabled(true);  // filtrages.
             rbCarré.setEnabled(true);
             rbRond.setEnabled(true);
             rbPlein.setEnabled(true);
