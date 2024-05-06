@@ -67,7 +67,11 @@ public class DChoixPion extends javax.swing.JDialog {
     public void setTaille(int taille) {
         this.taille = taille;
     }
-       
+
+    public boolean getNouveau() {
+        return nouveau;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -668,6 +672,7 @@ public class DChoixPion extends javax.swing.JDialog {
     private void bDonnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDonnerActionPerformed
         if(nouveau){
             this.setVisible(false);
+            tab[numero].setEnabled(false);
         }
     }//GEN-LAST:event_bDonnerActionPerformed
 

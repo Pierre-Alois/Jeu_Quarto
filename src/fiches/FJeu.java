@@ -4,6 +4,7 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
  */
 package fiches;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
@@ -14,7 +15,7 @@ public class FJeu extends javax.swing.JFrame {
     private int taille;
     private final javax.swing.JButton[] tab;
     private ArrayList<String> coord;
-    private String coordTemp;
+    private String coordTemp = "";
     
     public FJeu() {
         initComponents();
@@ -49,10 +50,7 @@ public class FJeu extends javax.swing.JFrame {
         tab[23] = b54;
         tab[24] = b55;
         this.tab = tab;// </editor-fold>
-    }
-    
-    public void setRefPion(String refPion) {
-        this.refPion = refPion;       
+        this.coord = new ArrayList();
     }
 
     public void setTaille(int taille) {
@@ -90,9 +88,8 @@ public class FJeu extends javax.swing.JFrame {
         b54 = new javax.swing.JButton();
         b55 = new javax.swing.JButton();
         lJoueur = new javax.swing.JLabel();
-        bChoix = new javax.swing.JButton();
+        bAction = new javax.swing.JButton();
         lInstruction = new javax.swing.JLabel();
-        bValider = new javax.swing.JButton();
         pSlogan = new javax.swing.JLabel();
         lPion = new javax.swing.JLabel();
 
@@ -392,22 +389,17 @@ public class FJeu extends javax.swing.JFrame {
 
         lJoueur.setText("lJoueur");
 
-        bChoix.setBackground(new java.awt.Color(255, 204, 51));
-        bChoix.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        bChoix.setText("Choisir pion");
-        bChoix.setPreferredSize(new java.awt.Dimension(130, 130));
-        bChoix.addActionListener(new java.awt.event.ActionListener() {
+        bAction.setBackground(new java.awt.Color(255, 204, 51));
+        bAction.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        bAction.setText("Choisir pion");
+        bAction.setPreferredSize(new java.awt.Dimension(130, 130));
+        bAction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bChoixActionPerformed(evt);
+                bActionActionPerformed(evt);
             }
         });
 
         lInstruction.setText("lInstruction");
-
-        bValider.setBackground(new java.awt.Color(0, 204, 51));
-        bValider.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        bValider.setText("Valider");
-        bValider.setPreferredSize(new java.awt.Dimension(130, 130));
 
         pSlogan.setFont(new java.awt.Font("Segoe Script", 1, 24)); // NOI18N
         pSlogan.setText("Votre différence est votre plus grande force...");
@@ -436,9 +428,7 @@ public class FJeu extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(lPion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(59, 59, 59)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(bValider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(bChoix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(bAction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(183, 183, 183))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(229, 229, 229)
@@ -454,10 +444,7 @@ public class FJeu extends javax.swing.JFrame {
                         .addComponent(lInstruction)
                         .addGap(54, 54, 54)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(bChoix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(47, 47, 47)
-                                .addComponent(bValider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(bAction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lPion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(140, 140, 140))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -472,10 +459,24 @@ public class FJeu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bChoixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bChoixActionPerformed
-        choix.setTaille(taille);
-        choix.setVisible(true);
-    }//GEN-LAST:event_bChoixActionPerformed
+    private void bActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActionActionPerformed
+        if(bAction.getText().equals("Choisir pion")){
+            choix.setTaille(taille);
+            choix.setVisible(true);
+            bAction.setText("Importer");
+            bAction.setBackground(Color.cyan);
+        }else if(bAction.getText().equals("Importer") && choix.getNouveau() && !choix.isVisible()){
+            refPion = choix.getRefPion();
+            lPion.setIcon(new ImageIcon("src/images_pions/" + refPion + ".png"));
+            bAction.setText("Valider");
+            bAction.setBackground(Color.decode(""+52275));
+        }else if(bAction.getText().equals("Valider") && !coordTemp.equals("")){
+            coord.add(coordTemp);
+            coordTemp = "";
+            bAction.setText("Choisir pion");
+            bAction.setBackground(Color.decode(""+16763955));
+        }
+    }//GEN-LAST:event_bActionActionPerformed
     
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         int x = 100;
@@ -507,305 +508,144 @@ public class FJeu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formComponentShown
     
+    public void boutonsCases(String numero){
+        if(!coord.contains(numero) && bAction.getText().equalsIgnoreCase("Valider")){
+            if(!coordTemp.equals("")){
+                tab[Integer.valueOf(coordTemp)].setIcon(null);
+            }
+            coordTemp = numero;
+            if(taille != 2){
+                tab[Integer.valueOf(coordTemp)].setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            }else{
+                tab[Integer.valueOf(coordTemp)].setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+            }
+        }
+    }
+    
     // <editor-fold defaultstate="collapsed" desc="ActionPerformed des 25 boutons">
     private void b11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11ActionPerformed
         System.out.println("b11");
-        if(!coord.contains("11") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "11";
-            if(taille != 2){
-                b11.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b11.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("0");
     }//GEN-LAST:event_b11ActionPerformed
 
     private void b12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b12ActionPerformed
         System.out.println("b12");
-        if(!coord.contains("12") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "12";
-            if(taille != 2){
-                b12.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b12.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("1");
     }//GEN-LAST:event_b12ActionPerformed
 
     private void b13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b13ActionPerformed
         System.out.println("b13");
-        if(!coord.contains("13") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "13";
-            if(taille != 2){
-                b13.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b13.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("2");
     }//GEN-LAST:event_b13ActionPerformed
 
     private void b14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b14ActionPerformed
         System.out.println("b14");
-        if(!coord.contains("14") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "14";
-            if(taille != 2){
-                b14.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b14.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("3");
     }//GEN-LAST:event_b14ActionPerformed
 
     private void b15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b15ActionPerformed
         System.out.println("b15");
-        if(!coord.contains("15") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "15";
-            if(taille != 2){
-                b15.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b15.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("4");
     }//GEN-LAST:event_b15ActionPerformed
 
     private void b21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b21ActionPerformed
         System.out.println("b21");
-        if(!coord.contains("21") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "21";
-            if(taille != 2){
-                b21.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b21.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("5");
     }//GEN-LAST:event_b21ActionPerformed
 
     private void b22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b22ActionPerformed
         System.out.println("b22");
-        if(!coord.contains("22") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "22";
-            if(taille != 2){
-                b22.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b22.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("6");
     }//GEN-LAST:event_b22ActionPerformed
 
     private void b23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b23ActionPerformed
         System.out.println("b23");
-        if(!coord.contains("23") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "23";
-            if(taille != 2){
-                b23.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b23.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("7");
     }//GEN-LAST:event_b23ActionPerformed
 
     private void b24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b24ActionPerformed
         System.out.println("b24");
-        if(!coord.contains("24") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "24";
-            if(taille != 2){
-                b24.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b24.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("8");
     }//GEN-LAST:event_b24ActionPerformed
 
     private void b25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b25ActionPerformed
         System.out.println("b25");
-        if(!coord.contains("25") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "25";
-            if(taille != 2){
-                b25.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b25.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("9");
     }//GEN-LAST:event_b25ActionPerformed
 
     private void b31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b31ActionPerformed
         System.out.println("b31");
-        if(!coord.contains("31") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "31";
-            if(taille != 2){
-                b31.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b31.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("10");
     }//GEN-LAST:event_b31ActionPerformed
 
     private void b32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b32ActionPerformed
         System.out.println("b32");
-        if(!coord.contains("32") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "32";
-            if(taille != 2){
-                b32.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b32.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("11");
     }//GEN-LAST:event_b32ActionPerformed
 
     private void b33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b33ActionPerformed
         System.out.println("b33");
-        if(!coord.contains("33") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "33";
-            if(taille != 2){
-                b33.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b33.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("12");
     }//GEN-LAST:event_b33ActionPerformed
 
     private void b34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b34ActionPerformed
         System.out.println("b34");
-        if(!coord.contains("34") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "34";
-            if(taille != 2){
-                b34.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b34.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("13");
     }//GEN-LAST:event_b34ActionPerformed
 
     private void b35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b35ActionPerformed
         System.out.println("b35");
-        if(!coord.contains("35") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "35";
-            if(taille != 2){
-                b35.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b35.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("14");
     }//GEN-LAST:event_b35ActionPerformed
 
     private void b41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b41ActionPerformed
         System.out.println("b41");
-        if(!coord.contains("41") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "41";
-            if(taille != 2){
-                b41.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b41.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("15");
     }//GEN-LAST:event_b41ActionPerformed
 
     private void b42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b42ActionPerformed
         System.out.println("b42");
-        if(!coord.contains("42") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "42";
-            if(taille != 2){
-                b42.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b42.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("16");
     }//GEN-LAST:event_b42ActionPerformed
 
     private void b43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b43ActionPerformed
         System.out.println("b43");
-        if(!coord.contains("43") && bChoix.getText().equalsIgnoreCase("Valider")){
-//            coordTemp = "43";
-            if(taille != 2){
-                b43.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b43.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("17");
     }//GEN-LAST:event_b43ActionPerformed
 
     private void b44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b44ActionPerformed
         System.out.println("b44");
-        if(!coord.contains("44") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "44";
-            if(taille != 2){
-                b44.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b44.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("18");
     }//GEN-LAST:event_b44ActionPerformed
 
     private void b45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b45ActionPerformed
         System.out.println("b45");
-        if(!coord.contains("45") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "45";
-            if(taille != 2){
-                b45.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b45.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("19");
     }//GEN-LAST:event_b45ActionPerformed
 
     private void b51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b51ActionPerformed
         System.out.println("b51");
-        if(!coord.contains("51") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "51";
-            if(taille != 2){
-                b51.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b51.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("20");
     }//GEN-LAST:event_b51ActionPerformed
 
     private void b52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b52ActionPerformed
         System.out.println("b52");
-        if(!coord.contains("52") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "52";
-            if(taille != 2){
-                b52.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b52.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("21");
     }//GEN-LAST:event_b52ActionPerformed
 
     private void b53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b53ActionPerformed
         System.out.println("b53");
-        if(!coord.contains("53") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "53";
-            if(taille != 2){
-                b53.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b53.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("22");
     }//GEN-LAST:event_b53ActionPerformed
 
     private void b54ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b54ActionPerformed
         System.out.println("b54");
-        if(!coord.contains("54") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "54";
-            if(taille != 2){
-                b54.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b54.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("23");
     }//GEN-LAST:event_b54ActionPerformed
 
     private void b55ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b55ActionPerformed
         System.out.println("b55");
-        if(!coord.contains("55") && bChoix.getText().equalsIgnoreCase("Valider")){
-            coordTemp = "55";
-            if(taille != 2){
-                b55.setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
-            }else{
-                b55.setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
-            }
-        }
+        boutonsCases("24");
     }//GEN-LAST:event_b55ActionPerformed
     // </editor-fold>
     
@@ -871,8 +711,7 @@ public class FJeu extends javax.swing.JFrame {
     private javax.swing.JButton b53;
     private javax.swing.JButton b54;
     private javax.swing.JButton b55;
-    private javax.swing.JButton bChoix;
-    private javax.swing.JButton bValider;
+    private javax.swing.JButton bAction;
     private javax.swing.JLabel lInstruction;
     private javax.swing.JLabel lJoueur;
     private javax.swing.JLabel lPion;
