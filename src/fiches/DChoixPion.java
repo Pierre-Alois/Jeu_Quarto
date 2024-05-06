@@ -8,7 +8,6 @@ import javax.swing.ImageIcon;
 
 public class DChoixPion extends javax.swing.JDialog {
     
-    //private DInfos Infos;
     private int taille;
     private final javax.swing.JButton[] tab;  //Tableau rempli des 32 pions 
     private String refPion = "";              // Vide car nous devrons regarder son code binaire (identité)
@@ -70,7 +69,6 @@ public class DChoixPion extends javax.swing.JDialog {
     public void setTaille(int taille) { //Permet de savoir combien de pions va-t-on de voir afficher dans le menu déroulant (en fonction de la taille choisise)
         this.taille = taille;
     }
-    
        
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
