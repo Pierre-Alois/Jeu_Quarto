@@ -33,7 +33,7 @@ public class DInfos extends javax.swing.JDialog {
     }
     
     public String[] pseudonymes(){
-        String [] noms = new String[] {tfJ1.getText(), tfJ2.getText()};
+        String[] noms = new String[] {tfJ1.getText(), tfJ2.getText()};
         return noms;
     }
 

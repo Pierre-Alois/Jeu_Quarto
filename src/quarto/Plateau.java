@@ -441,8 +441,8 @@ public class Plateau {
     
     // Méthode qui permet de placer un pion depuis l'interface graphique.
     public void posePion(String coo, String ISBN){
-        int x = Integer.valueOf("" + coo.charAt(1)) - 1;
-        int y = Integer.valueOf("" + coo.charAt(2)) - 1;
+        int x = Integer.valueOf("" + coo.charAt(0)) - 1;
+        int y = Integer.valueOf("" + coo.charAt(1)) - 1;
         plateau[x][y] = new Piece(ISBN);
     }
     

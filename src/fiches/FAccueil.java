@@ -19,15 +19,15 @@ public class FAccueil extends javax.swing.JFrame {
     
     public FAccueil(){
         initComponents();
-        infos = new DInfos(this,false); //FAccueil est le parent de DInfos
-        ordi = new DOrdi(this, false); //FAccueil est le parent de DOrdi
-        jeu = new FJeu();                       // FAccueil est le parent de FJeu
+        infos = new DInfos(this,false); // FAccueil est le parent de DInfos
+        ordi = new DOrdi(this, false);  // FAccueil est le parent de DOrdi
+        jeu = new FJeu();                          // FAccueil est le parent de FJeu
     }
     
     private void importDonnees(){
-        this.taille = infos.tailledelagrille(); //Récupération de la taille de la grille
-        this.pseudoJ1 = infos.pseudonymes()[0]; //Récupération des pseudos
-        this.pseudoJ1 = infos.pseudonymes()[1];
+        this.taille = infos.tailledelagrille(); // Récupération de la taille de la grille
+        this.pseudoJ1 = infos.pseudonymes()[0]; // Récupération des pseudos
+        this.pseudoJ2 = infos.pseudonymes()[1];
     }
     
     @SuppressWarnings("unchecked")
@@ -221,6 +221,8 @@ public class FAccueil extends javax.swing.JFrame {
                 ordi.setVisible(true);
             }else {
                 jeu.setTaille(taille);
+                jeu.setPseudoJ1(pseudoJ1);
+                jeu.setPseudoJ2(pseudoJ2);
                 jeu.setVisible(true);
             }
         }else if(infos.isSolo() && !ordi.retourCliqué()){

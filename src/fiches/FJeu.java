@@ -547,8 +547,8 @@ public class FJeu extends javax.swing.JFrame {
     
     // Méthode qui permet de vérifier n'importe quel alignement gagnant. (héritage de Jeu() )
     public boolean verifTot(String coo){
-        int x = Integer.valueOf("" + coo.charAt(1)) - 1;
-        int y = Integer.valueOf("" + coo.charAt(2)) - 1;
+        int x = Integer.valueOf("" + coo.charAt(0)) - 1;
+        int y = Integer.valueOf("" + coo.charAt(1)) - 1;
         if(x==y && grille.diag315())
             return true;
         if(grille.gettaille()-1-x == y && grille.diag45())
