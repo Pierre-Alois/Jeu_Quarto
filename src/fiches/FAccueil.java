@@ -9,8 +9,8 @@ import javax.swing.JOptionPane;
 public class FAccueil extends javax.swing.JFrame {
 
     private final DInfos infos;
-    private DOrdi ordi;
-    private FJeu jeu;
+    private final DOrdi ordi;
+    private final FJeu jeu;
     
     private int taille;     //Variable désignant notre taille (Index de notre ComboBox : 0,1 et 2 et non la "taille de la grille")
     private String pseudoJ1;
@@ -206,9 +206,7 @@ public class FAccueil extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this,credit);
     }//GEN-LAST:event_bCreditActionPerformed
 
-    /*
    //Cette méthode sera exécutée dès lors que l'on effectuera des actions de type "setVisible" sur cette fiche
-    */
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         if(infos.getQuitus()){      
             importDonnees();
@@ -222,6 +220,8 @@ public class FAccueil extends javax.swing.JFrame {
             }
         }else if(infos.isSolo() && !ordi.retourCliqué()){
             jeu.setTaille(taille);
+            jeu.setPseudoJ1(pseudoJ1);
+            jeu.setPseudoJ2(pseudoJ2);
             jeu.setVisible(true);
         }
     }//GEN-LAST:event_formComponentShown

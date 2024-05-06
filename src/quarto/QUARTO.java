@@ -11,9 +11,7 @@ public class QUARTO {
 
     public static void main(String[] args) throws IOException {
 
-                new FAccueil().setVisible(true);
+        new FAccueil().setVisible(true);
        
-        
-        //Jeu j = new Jeu();
     }
 }

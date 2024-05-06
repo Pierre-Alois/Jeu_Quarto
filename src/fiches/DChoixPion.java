@@ -9,10 +9,10 @@ import javax.swing.ImageIcon;
 public class DChoixPion extends javax.swing.JDialog {
     
     private int taille;
-    private final javax.swing.JButton[] tab;  //Tableau rempli des 32 pions 
+    private final javax.swing.JButton[] tab;  // Tableau rempli des 33 pions 
     private String refPion = "";              // Vide car nous devrons regarder son code binaire (identité)
-    private boolean nouveau = false;          //"Nouveau" représente le nouveau pion séléctionné, différent du précédent
-    private int numero;                       //Représentant l'indice du tableau tab
+    private boolean nouveau = false;          // "Nouveau" représente le nouveau pion séléctionné, différent du précédent
+    private int numero;                       // Représentant l'indice du tableau tab
        
     public DChoixPion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
