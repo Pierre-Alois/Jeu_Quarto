@@ -132,6 +132,7 @@ public class FJeu extends javax.swing.JFrame {
         b11.setBorder(null);
         b11.setMaximumSize(new java.awt.Dimension(150, 150));
         b11.setMinimumSize(new java.awt.Dimension(110, 110));
+        b11.setName("11"); // NOI18N
         b11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b11ActionPerformed(evt);
@@ -143,6 +144,7 @@ public class FJeu extends javax.swing.JFrame {
         b12.setBorder(null);
         b12.setMaximumSize(new java.awt.Dimension(150, 150));
         b12.setMinimumSize(new java.awt.Dimension(110, 110));
+        b12.setName("12"); // NOI18N
         b12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b12ActionPerformed(evt);
@@ -154,6 +156,7 @@ public class FJeu extends javax.swing.JFrame {
         b13.setBorder(null);
         b13.setMaximumSize(new java.awt.Dimension(150, 150));
         b13.setMinimumSize(new java.awt.Dimension(110, 110));
+        b13.setName("13"); // NOI18N
         b13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b13ActionPerformed(evt);
@@ -165,6 +168,7 @@ public class FJeu extends javax.swing.JFrame {
         b14.setBorder(null);
         b14.setMaximumSize(new java.awt.Dimension(150, 150));
         b14.setMinimumSize(new java.awt.Dimension(110, 110));
+        b14.setName("14"); // NOI18N
         b14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b14ActionPerformed(evt);
@@ -176,6 +180,7 @@ public class FJeu extends javax.swing.JFrame {
         b15.setBorder(null);
         b15.setMaximumSize(new java.awt.Dimension(150, 150));
         b15.setMinimumSize(new java.awt.Dimension(110, 110));
+        b15.setName("15"); // NOI18N
         b15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b15ActionPerformed(evt);
@@ -187,6 +192,7 @@ public class FJeu extends javax.swing.JFrame {
         b21.setBorder(null);
         b21.setMaximumSize(new java.awt.Dimension(150, 150));
         b21.setMinimumSize(new java.awt.Dimension(110, 110));
+        b21.setName("21"); // NOI18N
         b21.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b21ActionPerformed(evt);
@@ -198,6 +204,7 @@ public class FJeu extends javax.swing.JFrame {
         b22.setBorder(null);
         b22.setMaximumSize(new java.awt.Dimension(150, 150));
         b22.setMinimumSize(new java.awt.Dimension(110, 110));
+        b22.setName("22"); // NOI18N
         b22.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b22ActionPerformed(evt);
@@ -209,6 +216,7 @@ public class FJeu extends javax.swing.JFrame {
         b23.setBorder(null);
         b23.setMaximumSize(new java.awt.Dimension(150, 150));
         b23.setMinimumSize(new java.awt.Dimension(110, 110));
+        b23.setName("23"); // NOI18N
         b23.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b23ActionPerformed(evt);
@@ -220,6 +228,7 @@ public class FJeu extends javax.swing.JFrame {
         b24.setBorder(null);
         b24.setMaximumSize(new java.awt.Dimension(150, 150));
         b24.setMinimumSize(new java.awt.Dimension(110, 110));
+        b24.setName("24"); // NOI18N
         b24.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b24ActionPerformed(evt);
@@ -231,6 +240,7 @@ public class FJeu extends javax.swing.JFrame {
         b25.setBorder(null);
         b25.setMaximumSize(new java.awt.Dimension(150, 150));
         b25.setMinimumSize(new java.awt.Dimension(110, 110));
+        b25.setName("25"); // NOI18N
         b25.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b25ActionPerformed(evt);
@@ -242,6 +252,7 @@ public class FJeu extends javax.swing.JFrame {
         b31.setBorder(null);
         b31.setMaximumSize(new java.awt.Dimension(150, 150));
         b31.setMinimumSize(new java.awt.Dimension(110, 110));
+        b31.setName("31"); // NOI18N
         b31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b31ActionPerformed(evt);
@@ -253,6 +264,7 @@ public class FJeu extends javax.swing.JFrame {
         b32.setBorder(null);
         b32.setMaximumSize(new java.awt.Dimension(150, 150));
         b32.setMinimumSize(new java.awt.Dimension(110, 110));
+        b32.setName("32"); // NOI18N
         b32.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b32ActionPerformed(evt);
@@ -264,6 +276,7 @@ public class FJeu extends javax.swing.JFrame {
         b33.setBorder(null);
         b33.setMaximumSize(new java.awt.Dimension(150, 150));
         b33.setMinimumSize(new java.awt.Dimension(110, 110));
+        b33.setName("33"); // NOI18N
         b33.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b33ActionPerformed(evt);
@@ -275,6 +288,7 @@ public class FJeu extends javax.swing.JFrame {
         b34.setBorder(null);
         b34.setMaximumSize(new java.awt.Dimension(150, 150));
         b34.setMinimumSize(new java.awt.Dimension(110, 110));
+        b34.setName("34"); // NOI18N
         b34.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b34ActionPerformed(evt);
@@ -286,6 +300,7 @@ public class FJeu extends javax.swing.JFrame {
         b35.setBorder(null);
         b35.setMaximumSize(new java.awt.Dimension(150, 150));
         b35.setMinimumSize(new java.awt.Dimension(110, 110));
+        b35.setName("35"); // NOI18N
         b35.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b35ActionPerformed(evt);
@@ -297,6 +312,7 @@ public class FJeu extends javax.swing.JFrame {
         b41.setBorder(null);
         b41.setMaximumSize(new java.awt.Dimension(150, 150));
         b41.setMinimumSize(new java.awt.Dimension(110, 110));
+        b41.setName("41"); // NOI18N
         b41.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b41ActionPerformed(evt);
@@ -308,6 +324,7 @@ public class FJeu extends javax.swing.JFrame {
         b42.setBorder(null);
         b42.setMaximumSize(new java.awt.Dimension(150, 150));
         b42.setMinimumSize(new java.awt.Dimension(110, 110));
+        b42.setName("42"); // NOI18N
         b42.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b42ActionPerformed(evt);
@@ -319,6 +336,7 @@ public class FJeu extends javax.swing.JFrame {
         b43.setBorder(null);
         b43.setMaximumSize(new java.awt.Dimension(150, 150));
         b43.setMinimumSize(new java.awt.Dimension(110, 110));
+        b43.setName("43"); // NOI18N
         b43.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b43ActionPerformed(evt);
@@ -330,6 +348,7 @@ public class FJeu extends javax.swing.JFrame {
         b44.setBorder(null);
         b44.setMaximumSize(new java.awt.Dimension(150, 150));
         b44.setMinimumSize(new java.awt.Dimension(110, 110));
+        b44.setName("44"); // NOI18N
         b44.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b44ActionPerformed(evt);
@@ -341,6 +360,7 @@ public class FJeu extends javax.swing.JFrame {
         b45.setBorder(null);
         b45.setMaximumSize(new java.awt.Dimension(150, 150));
         b45.setMinimumSize(new java.awt.Dimension(110, 110));
+        b45.setName("45"); // NOI18N
         b45.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b45ActionPerformed(evt);
@@ -352,6 +372,7 @@ public class FJeu extends javax.swing.JFrame {
         b51.setBorder(null);
         b51.setMaximumSize(new java.awt.Dimension(150, 150));
         b51.setMinimumSize(new java.awt.Dimension(110, 110));
+        b51.setName("51"); // NOI18N
         b51.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b51ActionPerformed(evt);
@@ -363,6 +384,7 @@ public class FJeu extends javax.swing.JFrame {
         b52.setBorder(null);
         b52.setMaximumSize(new java.awt.Dimension(150, 150));
         b52.setMinimumSize(new java.awt.Dimension(110, 110));
+        b52.setName("52"); // NOI18N
         b52.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b52ActionPerformed(evt);
@@ -374,6 +396,7 @@ public class FJeu extends javax.swing.JFrame {
         b53.setBorder(null);
         b53.setMaximumSize(new java.awt.Dimension(150, 150));
         b53.setMinimumSize(new java.awt.Dimension(110, 110));
+        b53.setName("53"); // NOI18N
         b53.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b53ActionPerformed(evt);
@@ -385,6 +408,7 @@ public class FJeu extends javax.swing.JFrame {
         b54.setBorder(null);
         b54.setMaximumSize(new java.awt.Dimension(150, 150));
         b54.setMinimumSize(new java.awt.Dimension(110, 110));
+        b54.setName("54"); // NOI18N
         b54.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b54ActionPerformed(evt);
@@ -396,6 +420,7 @@ public class FJeu extends javax.swing.JFrame {
         b55.setBorder(null);
         b55.setMaximumSize(new java.awt.Dimension(150, 150));
         b55.setMinimumSize(new java.awt.Dimension(110, 110));
+        b55.setName("55"); // NOI18N
         b55.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b55ActionPerformed(evt);
@@ -512,7 +537,6 @@ public class FJeu extends javax.swing.JFrame {
     }//GEN-LAST:event_bActionActionPerformed
     
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        try {
             int x = 100;
             int y = 78;
             if(taille == 0){
@@ -543,13 +567,6 @@ public class FJeu extends javax.swing.JFrame {
                 pPlateau.setBounds(x, y, pPlateau.getPreferredSize().width, pPlateau.getPreferredSize().height);
                 pPlateau.setLayout(new java.awt.GridLayout(5, 5, 0, 0));
             }
-            
-            Jeu j = new Jeu();
-            this.jeu = j;
-            
-        } catch (IOException ex) {
-            Logger.getLogger(FJeu.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_formComponentShown
     
     public void boutonsCases(String numero){
