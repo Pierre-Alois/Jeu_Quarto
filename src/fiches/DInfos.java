@@ -7,8 +7,8 @@ package fiches;
 public class DInfos extends javax.swing.JDialog {
     
     private DOrdi Ordi;
-    private boolean quitus = false; //Booléen permettant de savoir si toutes les informations ont été rentrés dans Dinfos, le cas échéant nous pourrons démarrer une partie
-    private boolean solo = false;   //Booléen lorsque l'on joue avec un ordinateur en tant que 2e joueur
+    private boolean quitus = false; // Permet de savoir si toutes les informations ont été rentrées dans Dinfos pour démarrer une partie
+    private boolean solo = false;   // L'ordinateur fait office de 2e joueur si true
 
     public DInfos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -16,11 +16,11 @@ public class DInfos extends javax.swing.JDialog {
         Ordi = new DOrdi(parent,modal);
     }
     
-    public boolean getQuitus(){
+    public boolean getQuitus(){ // On récupère le booleen pour connaître l'état de Dinfos
         return quitus;
     }
     
-    public void resetQuitus(){
+    public void resetQuitus(){ // DInfos redevient "incomplet". 
         quitus = false;         
     }
     
@@ -29,7 +29,7 @@ public class DInfos extends javax.swing.JDialog {
     }
     
     public int tailledelagrille(){
-        return cbTGrille.getSelectedIndex(); //Retourne l'index choisie par le joueur dans la ComboBox, pour notre taille de grille
+        return cbTGrille.getSelectedIndex(); //Retourne l'index choisie dans la ComboBox
     }
     
     public String[] pseudonymes(){
@@ -168,7 +168,7 @@ public class DInfos extends javax.swing.JDialog {
         if (nom1.length() !=0 && nom2.length() == 0){
             this.setVisible(false);
             solo = true;
-            quitus = true; //Toutes les informations ont été rentrés, les joeurs pourront démarrer une partie
+            quitus = true; //Toutes les informations ont été rentrées, les joueurs pourront démarrer une partie
             this.getParent().setVisible(true);
         }
         // Partie avec 2 joueurs
