@@ -5,13 +5,10 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
 package fiches;
 
 import java.awt.Color;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Random;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import quarto.Jeu;
+import quarto.Plateau;
 
 public class FJeu extends javax.swing.JFrame {
     
@@ -23,7 +20,7 @@ public class FJeu extends javax.swing.JFrame {
     private String coordTemp = "";
     private String pseudoJ1;
     private String pseudoJ2;
-    private Jeu jeu;
+    private Plateau grille;
     
     public FJeu() {
         initComponents();
@@ -403,6 +400,7 @@ public class FJeu extends javax.swing.JFrame {
         });
         pPlateau.add(b55);
 
+        lJoueur.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         lJoueur.setText("lJoueur");
 
         bAction.setBackground(new java.awt.Color(255, 204, 51));
@@ -415,6 +413,7 @@ public class FJeu extends javax.swing.JFrame {
             }
         });
 
+        lInstruction.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         lInstruction.setText("lInstruction");
 
         pSlogan.setFont(new java.awt.Font("Segoe Script", 1, 24)); // NOI18N
@@ -442,33 +441,34 @@ public class FJeu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pPlateau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pSlogan))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lJoueur, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(220, 220, 220))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lPion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(59, 59, 59)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(bAction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(bSauve, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(183, 183, 183))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(229, 229, 229)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lJoueur, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(220, 220, 220))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lPion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bAction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bSauve, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(183, 183, 183))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lInstruction)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(319, 319, 319))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pSlogan)
+                    .addComponent(lJoueur))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lInstruction)
-                        .addGap(54, 54, 54)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lPion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -479,10 +479,6 @@ public class FJeu extends javax.swing.JFrame {
                                 .addComponent(bSauve, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(167, 167, 167))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(pSlogan)
-                            .addComponent(lJoueur))
-                        .addGap(18, 18, 18)
                         .addComponent(pPlateau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(102, 102, 102))))
         );
@@ -497,59 +493,92 @@ public class FJeu extends javax.swing.JFrame {
             bAction.setText("Importer");
             bAction.setBackground(Color.cyan);
             bSauve.setVisible(false);
+            if(lJoueur.getText().equals(pseudoJ1)){
+                lJoueur.setText(pseudoJ2);
+            }else{
+                lJoueur.setText(pseudoJ1);
+            }
+            lInstruction.setText("Importe le pion que ton adversaire a choisi.");
+            
         }else if(bAction.getText().equals("Importer") && choix.getNouveau() && !choix.isVisible()){
             refPion = choix.getRefPion();
             lPion.setIcon(new ImageIcon("src/images_pions/" + refPion + ".png"));
             bAction.setText("Valider");
             bAction.setBackground(Color.decode(""+52275));
+            lInstruction.setText("Place ton pion.");
+            
         }else if(bAction.getText().equals("Valider") && !coordTemp.equals("")){
+            grille.posePion(tab[Integer.valueOf(coordTemp)].getName(), refPion);
+            if(verifTot(tab[Integer.valueOf(coordTemp)].getName()))
+                System.exit(0);
             coord.add(coordTemp);
             coordTemp = "";
             bAction.setText("Choisir pion");
             bAction.setBackground(Color.decode(""+16763955));
             bSauve.setVisible(true);
+            lInstruction.setText("Va choisir le pion de ton adversaire.");
         }
     }//GEN-LAST:event_bActionActionPerformed
     
-    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        try {
-            int x = 100;
-            int y = 78;
-            if(taille == 0){
-                pPlateau.setBounds(x, y, pPlateau.getMinimumSize().width, pPlateau.getMinimumSize().height);
-                pPlateau.setLayout(new java.awt.GridLayout(3, 3, 0, 0));
-                for(int i=24;i>=0;i-=5){
-                    for(int j=0;j<5;j++){
-                        if(i-j > 12 || (i-j+1) % 5 == 0 || (i-j+1) % 5 == 4){
-                            pPlateau.remove(tab[i-j]);
-                        }else{
-                            tab[i-j].setBounds(150*(4-j), 150*(i % 4), 150, 150);
-                        }
-                    }
-                }
-            }else if(taille == 1){
-                pPlateau.setBounds(x, y, pPlateau.getMaximumSize().width, pPlateau.getMaximumSize().height);
-                pPlateau.setLayout(new java.awt.GridLayout(4, 4, 0, 0));
-                for(int i=24;i>=0;i-=5){
-                    for(int j=0;j<5;j++){
-                        if(i-j > 18 || (i-j+1) % 5 == 0){
-                            pPlateau.remove(tab[i-j]);
-                        }else{
-                            tab[i-j].setBounds(150*(4-j), 150*(i % 4), 150, 150);
-                        }
-                    }
-                }
-            }else if(taille == 2){
-                pPlateau.setBounds(x, y, pPlateau.getPreferredSize().width, pPlateau.getPreferredSize().height);
-                pPlateau.setLayout(new java.awt.GridLayout(5, 5, 0, 0));
-            }
-            
-            Jeu j = new Jeu();
-            this.jeu = j;
-            
-        } catch (IOException ex) {
-            Logger.getLogger(FJeu.class.getName()).log(Level.SEVERE, null, ex);
+    // Méthode qui permet de vérifier n'importe quel alignement gagnant. (héritage de Jeu() )
+    public boolean verifTot(String coo){
+        int x = Integer.valueOf("" + coo.charAt(1)) - 1;
+        int y = Integer.valueOf("" + coo.charAt(2)) - 1;
+        if(x==y && grille.diag315())
+            return true;
+        if(grille.gettaille()-1-x == y && grille.diag45())
+            return true;
+        if(grille.gettaille() != 4 && grille.verifFig(x, y))
+            return true;
+        if(grille.gettaille() == 4){
+            if(grille.carre(x, y))
+                return true;
+            if(grille.vertical(y))
+                return true;
+            if(grille.horizontal(x))
+                return true;
         }
+        return false;
+    }
+    
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        int x = 100;
+        int y = 78;
+        if(taille == 0){
+            pPlateau.setBounds(x, y, pPlateau.getMinimumSize().width, pPlateau.getMinimumSize().height);
+            pPlateau.setLayout(new java.awt.GridLayout(3, 3, 0, 0));
+            for(int i=24;i>=0;i-=5){
+                for(int j=0;j<5;j++){
+                    if(i-j > 12 || (i-j+1) % 5 == 0 || (i-j+1) % 5 == 4){
+                        pPlateau.remove(tab[i-j]);
+                    }else{
+                        tab[i-j].setBounds(150*(4-j), 150*(i % 4), 150, 150);
+                    }
+                }
+            }
+        }else if(taille == 1){
+            pPlateau.setBounds(x, y, pPlateau.getMaximumSize().width, pPlateau.getMaximumSize().height);
+            pPlateau.setLayout(new java.awt.GridLayout(4, 4, 0, 0));
+            for(int i=24;i>=0;i-=5){
+                for(int j=0;j<5;j++){
+                    if(i-j > 18 || (i-j+1) % 5 == 0){
+                        pPlateau.remove(tab[i-j]);
+                    }else{
+                        tab[i-j].setBounds(150*(4-j), 150*(i % 4), 150, 150);
+                    }
+                }
+            }
+        }else if(taille == 2){
+            pPlateau.setBounds(x, y, pPlateau.getPreferredSize().width, pPlateau.getPreferredSize().height);
+            pPlateau.setLayout(new java.awt.GridLayout(5, 5, 0, 0));
+        }
+        Plateau p = new Plateau(3 + taille);
+        this.grille = p;
+        String[] joueurs = new String[]{pseudoJ1, pseudoJ2};
+        Random alea = new Random();
+        int n  = alea.nextInt(0, 2);
+        lJoueur.setText(joueurs[n]);
+        lInstruction.setText("Va choisir le pion de ton adversaire.");
     }//GEN-LAST:event_formComponentShown
     
     public void boutonsCases(String numero){
