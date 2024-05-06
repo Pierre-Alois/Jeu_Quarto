@@ -16,8 +16,6 @@ public class Plateau {
     private Piece[][] plateau;
     private ArrayList<Piece> liste;
     
-    
-    
     // Constructeur
     public Plateau(int taille) {
         this.taille = taille;
@@ -440,7 +438,14 @@ public class Plateau {
         coo = "" + x + y;
         return coo;
     }
-
+    
+    // Méthode qui permet de placer un pion depuis l'interface graphique.
+    public void posePion(String coo, String ISBN){
+        int x = Integer.valueOf("" + coo.charAt(1)) - 1;
+        int y = Integer.valueOf("" + coo.charAt(2)) - 1;
+        plateau[x][y] = new Piece(ISBN);
+    }
+    
     // Méthode vérifiant si une case du plateau n'est pas occupée.
     public boolean caseLibre(int x, int y) {
         return plateau[x][y] == null;
