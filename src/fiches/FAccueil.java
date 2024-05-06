@@ -2,7 +2,7 @@
 Projet Java - Jeu Quarto
 BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
  */
-package fiches;
+package fiches; //FAcccueil est notre fiche principale et toutes nos fonctions passerons par celle-ci
 
 import javax.swing.JOptionPane;
 
@@ -12,20 +12,20 @@ public class FAccueil extends javax.swing.JFrame {
     private DOrdi ordi;
     private FJeu jeu;
     
-    private int taille;
+    private int taille;     //Variable désignant notre taille (Index de notre ComboBox : 0,1 et 2 et non la "taille de la grille")
     private String pseudoJ1;
     private String pseudoJ2;
     
     public FAccueil(){
         initComponents();
-        infos = new DInfos(this,false);
-        ordi = new DOrdi(this, false);
-        jeu = new FJeu();
+        infos = new DInfos(this,false); //FAccueil est le parent de DInfos
+        ordi = new DOrdi(this, false); //FAccueil est le parent de DOrdi
+        jeu = new FJeu();                       // FAccueil est le parent de FJeu
     }
     
     private void importDonnees(){
-        this.taille = infos.tailledelagrille();
-        this.pseudoJ1 = infos.pseudonymes()[0];
+        this.taille = infos.tailledelagrille(); //Récupération des données de la taille de la grille
+        this.pseudoJ1 = infos.pseudonymes()[0]; //Récupération des pseudos rentrés par le ou les joueurs
         this.pseudoJ1 = infos.pseudonymes()[1];
     }
     
@@ -149,8 +149,8 @@ public class FAccueil extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bCommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCommencerActionPerformed
-        this.setVisible(false); 
-        infos.setVisible(true);
+        this.setVisible(false); //Nous rendons invisible FAcceuil
+        infos.setVisible(true); //Nous rendons visible FInfos
     }//GEN-LAST:event_bCommencerActionPerformed
 
     private void bReprendreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bReprendreActionPerformed
@@ -162,6 +162,7 @@ public class FAccueil extends javax.swing.JFrame {
     }//GEN-LAST:event_bQuitterActionPerformed
 
     private void bRèglesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRèglesActionPerformed
+        //Rappel des règles du jeu pour jouer dans de bonnes conditions
         String msg = """
               Bienvenue cher(e) joueur(se) ☺,
                                    
@@ -193,7 +194,7 @@ public class FAccueil extends javax.swing.JFrame {
               Bon match , que le ou la meilleur(e) gagne et gare à l'ordinateur ;) !
               
               """;
-                JOptionPane.showMessageDialog(this,msg);
+                JOptionPane.showMessageDialog(this,msg); //Appparition d'une pop-up pour afficher les règles
     }//GEN-LAST:event_bRèglesActionPerformed
 
     private void bCreditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCreditActionPerformed
@@ -205,8 +206,11 @@ public class FAccueil extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this,credit);
     }//GEN-LAST:event_bCreditActionPerformed
 
+    /*
+   //Cette méthode sera exécutée dès lors que l'on effectuera des actions de type "setVisible" sur cette fiche
+    */
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        if(infos.getQuitus()){
+        if(infos.getQuitus()){      
             importDonnees();
             infos.resetQuitus();
             this.setVisible(false);

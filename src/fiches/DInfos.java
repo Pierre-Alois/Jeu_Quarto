@@ -7,8 +7,8 @@ package fiches;
 public class DInfos extends javax.swing.JDialog {
     
     private DOrdi Ordi;
-    private boolean quitus = false;
-    private boolean solo = false;
+    private boolean quitus = false; //Booléen permettant de savoir si toutes les informations ont été rentrés dans Dinfos, le cas échéant nous pourrons démarrer une partie
+    private boolean solo = false;   //Booléen lorsque l'on joue avec un ordinateur en tant que 2e joueur
 
     public DInfos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -21,7 +21,7 @@ public class DInfos extends javax.swing.JDialog {
     }
     
     public void resetQuitus(){
-        quitus = false;
+        quitus = false;         
     }
     
     public boolean isSolo(){
@@ -29,7 +29,7 @@ public class DInfos extends javax.swing.JDialog {
     }
     
     public int tailledelagrille(){
-        return cbTGrille.getSelectedIndex();
+        return cbTGrille.getSelectedIndex(); //Retourne l'index choisie par le joueur dans la ComboBox, pour notre taille de grille
     }
     
     public String[] pseudonymes(){
@@ -69,6 +69,12 @@ public class DInfos extends javax.swing.JDialog {
         lTGrille.setFont(new java.awt.Font("Rockwell", 3, 14)); // NOI18N
         lTGrille.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lTGrille.setText("Taille de la grille");
+
+        tfJ1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfJ1ActionPerformed(evt);
+            }
+        });
 
         cbTGrille.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         cbTGrille.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3 × 3", "4 × 4", "5 × 5" }));
@@ -150,8 +156,8 @@ public class DInfos extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetourActionPerformed
-        this.setVisible(false);
-        this.getParent().setVisible(true);
+        this.setVisible(false);             //Nous rendons invisible DInfos
+        this.getParent().setVisible(true);  //Nous rendons invisible FAccueil
     }//GEN-LAST:event_bRetourActionPerformed
 
     private void bCommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCommencerActionPerformed
@@ -162,7 +168,7 @@ public class DInfos extends javax.swing.JDialog {
         if (nom1.length() !=0 && nom2.length() == 0){
             this.setVisible(false);
             solo = true;
-            quitus = true;
+            quitus = true; //Toutes les informations ont été rentrés, les joeurs pourront démarrer une partie
             this.getParent().setVisible(true);
         }
         // Partie avec 2 joueurs
@@ -172,6 +178,10 @@ public class DInfos extends javax.swing.JDialog {
             this.getParent().setVisible(true);
         }
     }//GEN-LAST:event_bCommencerActionPerformed
+
+    private void tfJ1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfJ1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfJ1ActionPerformed
 
     /**
      * @param args the command line arguments
