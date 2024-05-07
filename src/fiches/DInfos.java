@@ -7,7 +7,7 @@ package fiches;
 public class DInfos extends javax.swing.JDialog {
     
     private DOrdi Ordi;
-    private boolean quitus = false; // Permet de savoir si toutes les informations ont été rentrées dans Dinfos pour démarrer une partie
+    private boolean quitus = false; // Permet de savoir si toutes les informations ont été rentrées dans Dinfos pour lancer une partie
     private boolean solo = false;   // L'ordinateur fait office de 2e joueur si true
 
     public DInfos(java.awt.Frame parent, boolean modal) {
@@ -162,14 +162,14 @@ public class DInfos extends javax.swing.JDialog {
     }//GEN-LAST:event_bRetourActionPerformed
 
     private void bCommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCommencerActionPerformed
-        String nom1 = tfJ1.getText(); // On récupère les Strings écrites pas les joueurs
+        String nom1 = tfJ1.getText(); // On récupère les pseudos des joueurs
         String nom2 = tfJ2.getText();
         
         // Choix de l'ordinateur
         if (nom1.length() !=0 && nom2.length() == 0){
             this.setVisible(false);
-            solo = true;
-            quitus = true; //Toutes les informations ont été rentrées, les joueurs pourront démarrer une partie
+            solo = true; 
+            quitus = true; 
             this.getParent().setVisible(true);
         }
         // Partie avec 2 joueurs

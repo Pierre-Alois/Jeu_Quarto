@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 public class DOrdi extends javax.swing.JDialog {
     
-    private boolean retour = false; //Booléen indiquant si aucun choix n'a été fait
+    private boolean retour = false; //Booléen faux précisant qu'aucun choix n'a été effectué
     
     public DOrdi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -122,7 +122,7 @@ public class DOrdi extends javax.swing.JDialog {
        this.getParent().setVisible(true);  // On réaffiche FAccueil,son parent
     }//GEN-LAST:event_bRetourActionPerformed
     
-    // Bouton pour commencer la partie dès le choix de l'ordinateur a été choisi
+    // Bouton pour commencer la partie dès que le niveau de l'ordinateur a été choisi
     private void bCommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCommencerActionPerformed
         if(rbFacile.isSelected() || rbDifficile.isSelected()){ 
             this.setVisible(false);
@@ -130,10 +130,11 @@ public class DOrdi extends javax.swing.JDialog {
             this.getParent().setVisible(true);
         }
     }//GEN-LAST:event_bCommencerActionPerformed
-
+    
+    // Niveaux de l'ordinateur
     private void rbFacileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbFacileActionPerformed
         String ordisy = "Vous avez seléctionné le mode facile, bonne chance ☺"; 
-        if (rbFacile.isSelected() == true) {    //Si le niveau facile est séléctionné, voici un message pour le joueur
+        if (rbFacile.isSelected() == true) {    // On informe le joueur du mode qu'il a choisi.
         JOptionPane.showMessageDialog(this,ordisy);
         }    
     }//GEN-LAST:event_rbFacileActionPerformed
@@ -143,7 +144,7 @@ public class DOrdi extends javax.swing.JDialog {
                         Vous avez seléctionné le mode difficile,
                         malheureusement il faudra attendre notre mise à jour pour pouvoir y jouer,
                         vous êtes donc redirigés vers le mode facile, encore un peu de patience ☺""";
-        if (rbDifficile.isSelected() == true) {     //Si le niveau difficile est séléctionné, voici un message pour le joueur
+        if (rbDifficile.isSelected() == true) {    
         JOptionPane.showMessageDialog(this,ordiff);
         }
     }//GEN-LAST:event_rbDifficileActionPerformed

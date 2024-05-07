@@ -10,7 +10,7 @@ public class DChoixPion extends javax.swing.JDialog {
     
     private int taille;
     private final javax.swing.JButton[] tab; //Tableau rempli des 32 pions 
-    private String refPion = "";             // Vide car nous devrons regarder son code binaire (identité, ex: 01111)
+    private String refPion = "" ;            // Vide car nous devrons regarder son code binaire (identité, ex: 01111)
     private boolean nouveau = false;         //"Nouveau" représente le nouveau pion séléctionné, différent du précédent
     private int numero;                      //Représentant l'indice du tableau tab
        
@@ -679,7 +679,7 @@ public class DChoixPion extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    //Ce bouton ne sera cliqué que si un pion à été choisi
+    //Ce bouton ne sera cliqué que si un pion a été choisi
     private void bDonnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDonnerActionPerformed
         if(nouveau){
             this.setVisible(false);
@@ -708,7 +708,8 @@ public class DChoixPion extends javax.swing.JDialog {
     
     /*
     De la même manière que précédement et pour plus de lisibilité, les boutons
-    liés à tous les pions ont été "raccourcis". Cliquer sur '+' pour les voir. 
+    liés à tous les méthodes des pions ont été "raccourcis". 
+    Cliquer sur '+' pour les voir. 
     */
     // <editor-fold defaultstate="collapsed" desc="ActionPerformed des 33 boutons">   
     private void b00000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00000ActionPerformed
@@ -965,7 +966,7 @@ public class DChoixPion extends javax.swing.JDialog {
     }//GEN-LAST:event_formComponentShown
     
     /*
-    Méthode permettant de n'afficher que les pièces avec certaines
+    Méthode permettant de n'afficher que les pions avec certaines
     caractéristiques bien précises après avoir cliquer sur le bouton "filtrer". 
     */
     private void bFiltrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFiltrerActionPerformed
