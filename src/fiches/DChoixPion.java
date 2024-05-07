@@ -57,16 +57,16 @@ public class DChoixPion extends javax.swing.JDialog {
         this.tab = tab; // </editor-fold> 
     }
     
+    // Setters
     public void setRefPion(String refPion) {
         this.refPion = refPion;       
     }
-    
+     public void setTaille(int taille) { //Permet de savoir, selon la taille, combien de pions va-t-on devoir afficher dans le menu déroulant.
+        this.taille = taille;
+    }
+     //Getters
     public String getRefPion(){   //Permet de récupérer la référence du pion
         return refPion;
-    }
-
-    public void setTaille(int taille) { //Permet de savoir, selon la taille, combien de pions va-t-on devoir afficher dans le menu déroulant.
-        this.taille = taille;
     }
 
     public boolean getNouveau() { // Permet de récupérer l'état du pion (ancien ou nouveau)
