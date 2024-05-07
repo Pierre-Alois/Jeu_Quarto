@@ -546,12 +546,13 @@ public class FJeu extends javax.swing.JFrame {
                 lJoueur.setText(pseudoJ2);
                 if(terminator){ // Si l'ordinateur joue il posera son pion
                     coordTemp = grille.poseOrdi();
+                    boutonsCases(coordTemp);
                     bAction.doClick();
                 }
             }else{                  
                 lJoueur.setText(pseudoJ1);
+                lInstruction.setText("Place ton pion.");
             }
-            lInstruction.setText("Place ton pion.");
             
         }else if(bAction.getText().equals("Valider") && !coordTemp.equals("")){ // On valide notre choix 
             grille.posePion(tab[Integer.valueOf(coordTemp)].getName(), refPion);
@@ -575,7 +576,7 @@ public class FJeu extends javax.swing.JFrame {
             }
             coord.add(coordTemp);
             coordTemp = "";
-            if(lJoueur.equals(pseudoJ2) && terminator){
+            if(lJoueur.getText().equals(pseudoJ2) && terminator){
                 choixOrdi();
             }else{
                 bAction.setText("Choisir pion");

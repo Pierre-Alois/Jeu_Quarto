@@ -74,8 +74,12 @@ public class DChoixPion extends javax.swing.JDialog {
     }
     
     public void moinsPièce(String ref){
-        int val = Integer.parseInt(ref, 2);
-        tab[val].setEnabled(false);
+        if(ref.startsWith("x")){
+            tab[32].setEnabled(false);
+        }else{
+            int val = Integer.parseInt(ref, 2);
+            tab[val].setEnabled(false);
+        }
     }
     
     @SuppressWarnings("unchecked")
