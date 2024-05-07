@@ -5,8 +5,14 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
 package fiches;
 
 import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import quarto.Plateau;
@@ -27,6 +33,8 @@ public class FJeu extends javax.swing.JFrame {
     private String pseudoJ2;
     private Plateau grille;
     private boolean terminator = false;
+    private static final String FichierQuarto = "FichierQuarto.txt";
+    private boolean charge = false;
     
     public FJeu() {
         initComponents();
@@ -630,17 +638,19 @@ public class FJeu extends javax.swing.JFrame {
             pPlateau.setBounds(x, y, pPlateau.getPreferredSize().width, pPlateau.getPreferredSize().height);
             pPlateau.setLayout(new java.awt.GridLayout(5, 5, 0, 0));
         }
-        this.grille = new Plateau(3 + taille);
-        if(pseudoJ2.equals("Y,6c3L=30Fln}k"))
-            terminator = true;
-        String[] joueurs = new String[]{pseudoJ1, pseudoJ2};
-        Random alea = new Random();
-        int n  = alea.nextInt(0, 2);
-        if(terminator && n == 1){
-            choixOrdi();
-        }else{
-            lJoueur.setText(joueurs[n]);
-            lInstruction.setText("Va choisir le pion de ton adversaire.");
+        if(!charge){
+            this.grille = new Plateau(3 + taille);
+            if(pseudoJ2.equals("Y,6c3L=30Fln}k"))
+                terminator = true;
+            String[] joueurs = new String[]{pseudoJ1, pseudoJ2};
+            Random alea = new Random();
+            int n  = alea.nextInt(0, 2);
+            if(terminator && n == 1){
+                choixOrdi();
+            }else{
+                lJoueur.setText(joueurs[n]);
+                lInstruction.setText("Va choisir le pion de ton adversaire.");
+            }
         }
     }//GEN-LAST:event_formComponentShown
     
@@ -798,8 +808,87 @@ public class FJeu extends javax.swing.JFrame {
     // </editor-fold>
     
     private void bSauveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSauveActionPerformed
-        // TODO add your handling code here:
+        try {
+            sauvegarde(lJoueur.getText().equals(pseudoJ1));
+        } catch (IOException ex) {
+            Logger.getLogger(FJeu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JOptionPane.showMessageDialog(this, "Partie sauvegardée.", "Sauvegarde effectuée", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_bSauveActionPerformed
+    
+    public void sauvegarde(boolean qui) throws IOException{ // Méthode permettant de sauvegarder ou non la partie en cours
+        try{
+            FileWriter fich = new FileWriter(FichierQuarto);
+            fich.write(pseudoJ1 + System.lineSeparator() + pseudoJ2 + System.lineSeparator());
+            fich.write(qui + System.lineSeparator());
+            fich.write(taille + System.lineSeparator());
+
+            for(int x = 0;x<taille+3;x++){
+                for(int y = 0; y<taille+3;y++){
+                    if(!grille.caseLibre(x,y)){
+                        fich.write(grille.getplateau()[x][y].getISBN() + System.lineSeparator());
+                    }
+                    else{
+                        fich.write("null" + System.lineSeparator());
+                    }
+                }
+            } 
+            fich.close();              // ferme le fichier
+        } catch(IOException ex){
+            System.out.println("Le fichier n'a pas pu être sauvegarder.");
+        }
+    }
+    
+    public void charger(){
+        try {
+            this.setVisible(true);
+            FileReader fich = new FileReader(FichierQuarto);
+            BufferedReader br = new BufferedReader(fich);
+            
+            String ligne = br.readLine();
+            if(ligne != null){
+                charge = true;
+                pseudoJ1 = ligne;
+                ligne = br.readLine();
+                pseudoJ2 = ligne;
+                if(ligne.equals("Y,6c3L=30Fln}k"))
+                    terminator = true;
+                ligne = br.readLine();
+                if(ligne.equals("true")){
+                    lJoueur.setText(pseudoJ1);
+                }else{
+                    lJoueur.setText(pseudoJ2);
+                }
+                taille = Integer.valueOf(br.readLine());
+
+                this.grille = new Plateau(taille+3);
+
+                for(int x = 0;x<taille+3;x++){
+                    for(int y = 0; y<taille+3;y++){
+                        ligne = br.readLine();
+                        if(ligne.equals("null")){
+                            continue;
+                        }
+                        this.grille.setplateau(x, y, ligne);
+                        choix.moinsPièce(ligne);
+                        coord.add("" + (x * 5 + y));
+                        if(taille != 2){ // Pour avoir un visuel agréable on affichera des pions de différentes tailles selon les grilles. 
+                            tab[(x * 5 + y)].setIcon(new ImageIcon("src/images_pions/p" + ligne + ".png")); // p = petit pion
+                        }else{
+                            tab[(x * 5 + y)].setIcon(new ImageIcon("src/images_pions/tp" + ligne + ".png")); // tp = très petit pion
+                        }
+                    }
+                }
+                lInstruction.setText("Va choisir le pion de ton adversaire.");
+                this.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(this, "Pas de fichier de sauvegarde.", "Sauvegarde inexistante", JOptionPane.ERROR_MESSAGE);
+            }
+            fich.close();
+        } catch(IOException ex){
+            System.out.println("Pas de fichier de sauvegarde.");
+        }
+    }
     
     /**
      * @param args the command line arguments

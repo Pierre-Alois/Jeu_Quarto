@@ -155,7 +155,8 @@ public class FAccueil extends javax.swing.JFrame {
     }//GEN-LAST:event_bCommencerActionPerformed
 
     private void bReprendreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bReprendreActionPerformed
-        // TODO add your handling code here:
+        jeu.charger();
+        this.setVisible(false);
     }//GEN-LAST:event_bReprendreActionPerformed
 
     private void bQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bQuitterActionPerformed
@@ -224,12 +225,14 @@ public class FAccueil extends javax.swing.JFrame {
                 jeu.setPseudoJ1(pseudoJ1);
                 jeu.setPseudoJ2(pseudoJ2);
                 jeu.setVisible(true);
+                this.setVisible(false);
             }
         }else if(infos.isSolo() && !ordi.retourCliqué()){
             jeu.setTaille(taille);
             jeu.setPseudoJ1(pseudoJ1);
             jeu.setPseudoJ2("Y,6c3L=30Fln}k");
             jeu.setVisible(true);
+            this.setVisible(false);
         }
     }//GEN-LAST:event_formComponentShown
  
