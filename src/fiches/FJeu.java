@@ -515,9 +515,8 @@ public class FJeu extends javax.swing.JFrame {
     /* 
     Ce bouton permet de:
     - choisir un pion pour son adversaire (Joueur ou ordinateur)
-    - de l'importer
-    - de le placer sur la grille
-    - de valider son choix et passer la main à l'adversaire
+    - de l'importer et passer la main à l'adversaire
+    - de valider son choix (pion placé sur la grille)
     */
     private void bActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActionActionPerformed
         if(bAction.getText().equals("Choisir pion")){ // 1ere étape du tour
@@ -537,12 +536,13 @@ public class FJeu extends javax.swing.JFrame {
                 lJoueur.setText(pseudoJ2);
                 if(terminator){
                     coordTemp = grille.poseOrdi();
+                    boutonsCases(coordTemp);
                     bAction.doClick();
                 }
             }else{                          // On précise qui choisi le pion et qui joue
                 lJoueur.setText(pseudoJ1);
+                lInstruction.setText("Place ton pion.");
             }
-            lInstruction.setText("Place ton pion.");
             
         }else if(bAction.getText().equals("Valider") && !coordTemp.equals("")){ // Dernière étape du tour. 
             grille.posePion(tab[Integer.valueOf(coordTemp)].getName(), refPion);
@@ -566,7 +566,7 @@ public class FJeu extends javax.swing.JFrame {
             }
             coord.add(coordTemp);
             coordTemp = "";
-            if(lJoueur.equals(pseudoJ2) && terminator){
+            if(lJoueur.getText().equals(pseudoJ2) && terminator){
                 choixOrdi();
             }else{
                 bAction.setText("Choisir pion");
