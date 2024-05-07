@@ -5,29 +5,39 @@ BERTIN Pierre-Aloïs - CALMET Pierre - SAID Gabriel
 package fiches;
 
 import java.awt.Color;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import quarto.Jeu;
 import quarto.Plateau;
 
 /*
-Cette fiche est la fiche principale de la partie. On y trouve la grille de jeu
-ainsi qu'un bouton à mutiples facettes pour jouer un tour entier. 
+Cette fiche est la fiche principale de la partie. On y trouve : 
+- La grille de jeu 
+- Un bouton à mutiples fonctionnalités pour permettre au joueur de jouer un tour
+entier
+- Un bouton pour sauvegarder la partie en cours. 
 */
 public class FJeu extends javax.swing.JFrame {
     
     private final DChoixPion choix;
-    private String refPion; // Reférence du pion
+    private String refPion; 
     private int taille;
-    private final javax.swing.JButton[] tab; // Tableau rassemblant tous les boutons de la grille
+    private final javax.swing.JButton[] tab; // Tableau rassemblant l'ensemble des boutons de la grille
     private ArrayList<String> coord; // Liste des coordonnées du pion choisi
     private String coordTemp = ""; // Coordonnées du pion choisi
     private String pseudoJ1;
     private String pseudoJ2;
     private Plateau grille;
-    private boolean terminator = false;
+    private boolean terminator = false; // Ordinateur existant ou non
+    private static final String FichierQuarto = "FichierQuarto.txt"; // Fichier de sauvegarde
     
+    // Coonstructeur
     public FJeu() {
         initComponents();
         
@@ -515,16 +525,15 @@ public class FJeu extends javax.swing.JFrame {
     /* 
     Ce bouton permet de:
     - choisir un pion pour son adversaire (Joueur ou ordinateur)
-    - de l'importer
-    - de le placer sur la grille
-    - de valider son choix et passer la main à l'adversaire
+    - de l'importer et passer la main à l'adversaire
+    - de valider son choix (pion placé sur la grille)
     */
     private void bActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActionActionPerformed
-        if(bAction.getText().equals("Choisir pion")){ // 1ere étape du tour
+        if(bAction.getText().equals("Choisir pion")){ // On choisit le pion pour l'adversaire
             choix.setTaille(taille);
             choix.setVisible(true); //Seuls les pions "autorisés" à la grille choisie seront visibles
-            bAction.setText("Importer"); // 2e étape du tour
-            bAction.setBackground(Color.cyan);
+            bAction.setText("Importer"); // On apporte le pion dans Fjeu
+            bAction.setBackground(Color.cyan); // Changement de couleur du bouton pour ne pas embrouiller le joueur
             bSauve.setVisible(false);
             lInstruction.setText("Importe le pion que tu as choisi.");
             
@@ -535,18 +544,18 @@ public class FJeu extends javax.swing.JFrame {
             bAction.setBackground(Color.decode("52275"));
             if(lJoueur.getText().equals(pseudoJ1)){
                 lJoueur.setText(pseudoJ2);
-                if(terminator){
+                if(terminator){ // Si l'ordinateur joue il posera son pion
                     coordTemp = grille.poseOrdi();
                     bAction.doClick();
                 }
-            }else{                          // On précise qui choisi le pion et qui joue
+            }else{                  
                 lJoueur.setText(pseudoJ1);
             }
             lInstruction.setText("Place ton pion.");
             
-        }else if(bAction.getText().equals("Valider") && !coordTemp.equals("")){ // Dernière étape du tour. 
+        }else if(bAction.getText().equals("Valider") && !coordTemp.equals("")){ // On valide notre choix 
             grille.posePion(tab[Integer.valueOf(coordTemp)].getName(), refPion);
-            if(verifTot(tab[Integer.valueOf(coordTemp)].getName())){            // On vérifie l'alignement et affiche un message aux joueurs
+            if(verifTot(tab[Integer.valueOf(coordTemp)].getName())){  // On vérifie l'alignement et affiche un message aux joueurs
                 String msg = lJoueur.getText() + """
                                                   a gagné !
                                                  Youpi ! Hourra !
@@ -570,8 +579,8 @@ public class FJeu extends javax.swing.JFrame {
                 choixOrdi();
             }else{
                 bAction.setText("Choisir pion");
-                bAction.setBackground(Color.decode("16763955"));        // Le bouton change de couleur
-                bSauve.setVisible(true);
+                bAction.setBackground(Color.decode("16763955"));        
+                bSauve.setVisible(true); // Le joueur peut désormais sauvegarder sa partie.
                 lInstruction.setText("Va choisir le pion de ton adversaire.");
             }
         }
@@ -598,7 +607,7 @@ public class FJeu extends javax.swing.JFrame {
         return false;
     }
     
-    // Méthode
+
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         int x = 100;
         int y = 78;
@@ -644,6 +653,7 @@ public class FJeu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formComponentShown
     
+    // Méthode permettant à l'ordinateur de choisir un pion au hasard pour le joueur 1.
     public void choixOrdi(){
         bSauve.setVisible(false);
         refPion = grille.choixOrdi();
@@ -655,6 +665,7 @@ public class FJeu extends javax.swing.JFrame {
         bAction.setBackground(Color.decode("52275"));
     }
     
+    // Méthode permettant au joueur/ordinateur de placer son pion sur la grille de jeu. 
     public void boutonsCases(String numero){
         if(!coord.contains(numero) && bAction.getText().equalsIgnoreCase("Valider")){
             if(!coordTemp.equals("")){
@@ -797,8 +808,9 @@ public class FJeu extends javax.swing.JFrame {
     }//GEN-LAST:event_b55ActionPerformed
     // </editor-fold>
     
+    // Bouton permettant au joueur de sauvegarder la partie dans l'état actuel dès qu'il est pressé. 
     private void bSauveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSauveActionPerformed
-        // TODO add your handling code here:
+            
     }//GEN-LAST:event_bSauveActionPerformed
     
     /**

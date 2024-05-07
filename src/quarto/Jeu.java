@@ -191,8 +191,7 @@ public class Jeu{
                     if(choix1.equals("O") || choix1.equals("N")){
                         break;
                     }
-                }
-                
+                }               
                 if(choix1.equals("O")){
                     this.j1 = new Joueur(ligne);
                     ligne = br.readLine();
