@@ -11,14 +11,18 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import quarto.Plateau;
 
+/*
+Cette fiche est la fiche principale de la partie. On y trouve la grille de jeu
+ainsi qu'un bouton à mutiples facettes pour jouer un tour entier. 
+*/
 public class FJeu extends javax.swing.JFrame {
     
     private final DChoixPion choix;
-    private String refPion;
+    private String refPion; // Reférence du pion
     private int taille;
-    private final javax.swing.JButton[] tab;
-    private ArrayList<String> coord;
-    private String coordTemp = "";
+    private final javax.swing.JButton[] tab; // Tableau rassemblant tous les boutons de la grille
+    private ArrayList<String> coord; // Liste des coordonnées du pion choisi
+    private String coordTemp = ""; // Coordonnées du pion choisi
     private String pseudoJ1;
     private String pseudoJ2;
     private Plateau grille;
@@ -59,7 +63,8 @@ public class FJeu extends javax.swing.JFrame {
         this.tab = tab;// </editor-fold>
         this.coord = new ArrayList();
     }
-
+    
+    // Setters
     public void setTaille(int taille) {
         this.taille = taille;
     }
@@ -507,18 +512,24 @@ public class FJeu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /* 
+    Ce bouton permet de:
+    - choisir un pion pour son adversaire (Joueur ou ordinateur)
+    - de l'importer
+    - de le placer sur la grille
+    - de valider son choix et passer la main à l'adversaire
+    */
     private void bActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActionActionPerformed
-        if(bAction.getText().equals("Choisir pion")){
+        if(bAction.getText().equals("Choisir pion")){ // 1ere étape du tour
             choix.setTaille(taille);
-            choix.setVisible(true);
-            bAction.setText("Importer");
+            choix.setVisible(true); //Seuls les pions "autorisés" à la grille choisie seront visibles
+            bAction.setText("Importer"); // 2e étape du tour
             bAction.setBackground(Color.cyan);
             bSauve.setVisible(false);
             lInstruction.setText("Importe le pion que tu as choisi.");
             
         }else if(bAction.getText().equals("Importer") && choix.getNouveau() && !choix.isVisible()){
-            refPion = choix.getRefPion();
+            refPion = choix.getRefPion(); // On récupère la référence du pion pour pouvoir le placer et le rendre visible
             lPion.setIcon(new ImageIcon("src/images_pions/" + refPion + ".png"));
             bAction.setText("Valider");
             bAction.setBackground(Color.decode("52275"));
@@ -528,14 +539,14 @@ public class FJeu extends javax.swing.JFrame {
                     coordTemp = grille.poseOrdi();
                     bAction.doClick();
                 }
-            }else{
+            }else{                          // On précise qui choisi le pion et qui joue
                 lJoueur.setText(pseudoJ1);
             }
             lInstruction.setText("Place ton pion.");
             
-        }else if(bAction.getText().equals("Valider") && !coordTemp.equals("")){
+        }else if(bAction.getText().equals("Valider") && !coordTemp.equals("")){ // Dernière étape du tour. 
             grille.posePion(tab[Integer.valueOf(coordTemp)].getName(), refPion);
-            if(verifTot(tab[Integer.valueOf(coordTemp)].getName())){
+            if(verifTot(tab[Integer.valueOf(coordTemp)].getName())){            // On vérifie l'alignement et affiche un message aux joueurs
                 String msg = lJoueur.getText() + """
                                                   a gagné !
                                                  Youpi ! Hourra !
@@ -559,7 +570,7 @@ public class FJeu extends javax.swing.JFrame {
                 choixOrdi();
             }else{
                 bAction.setText("Choisir pion");
-                bAction.setBackground(Color.decode("16763955"));
+                bAction.setBackground(Color.decode("16763955"));        // Le bouton change de couleur
                 bSauve.setVisible(true);
                 lInstruction.setText("Va choisir le pion de ton adversaire.");
             }
@@ -587,6 +598,7 @@ public class FJeu extends javax.swing.JFrame {
         return false;
     }
     
+    // Méthode
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         int x = 100;
         int y = 78;
@@ -648,15 +660,16 @@ public class FJeu extends javax.swing.JFrame {
             if(!coordTemp.equals("")){
                 tab[Integer.valueOf(coordTemp)].setIcon(null);
             }
-            coordTemp = numero;
-            if(taille != 2){
-                tab[Integer.valueOf(coordTemp)].setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png"));
+            coordTemp = numero; // Les coordonnées du pion choisie sont liées au numéro du bouton du tableau tab
+            if(taille != 2){ // Pour avoir un visuel agréable on affichera des pions de différentes tailles selon les grilles. 
+                tab[Integer.valueOf(coordTemp)].setIcon(new ImageIcon("src/images_pions/p" + refPion + ".png")); // p = petit pion
             }else{
-                tab[Integer.valueOf(coordTemp)].setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png"));
+                tab[Integer.valueOf(coordTemp)].setIcon(new ImageIcon("src/images_pions/tp" + refPion + ".png")); // tp = très petit pion
             }
         }
     }
     
+    // Méthodes rassemblant les boutons de la grille
     // <editor-fold defaultstate="collapsed" desc="ActionPerformed des 25 boutons">
     private void b11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b11ActionPerformed
         System.out.println("b11");

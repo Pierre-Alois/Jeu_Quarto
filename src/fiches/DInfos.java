@@ -16,6 +16,7 @@ public class DInfos extends javax.swing.JDialog {
         Ordi = new DOrdi(parent,modal);
     }
     
+    // Getter
     public boolean getQuitus(){ // On récupère le booleen pour connaître l'état de Dinfos
         return quitus;
     }
