@@ -78,15 +78,15 @@ public class Jeu{
             }
             
             if(qui == -1 && j2.getClass().getSimpleName().equals("Ordi")){
-                coo = p.ordiFacile();
+                coo = p.ordiFacile()[1];
             }else{
                 coo = p.position(p.choixPiece());
             }
             
             p.afficher();
             
-            x = Integer.valueOf("" + coo.charAt(0));
-            y = Integer.valueOf("" + coo.charAt(1));
+            x = Integer.valueOf("" + coo.charAt(0))-1;
+            y = Integer.valueOf("" + coo.charAt(1))-1;
             
             if(verifTot(x, y)){
                 break;

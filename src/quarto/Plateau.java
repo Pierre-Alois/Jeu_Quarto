@@ -435,7 +435,7 @@ public class Plateau {
             System.out.println("Case déjà occupée.");
         }
         plateau[x][y] = pion;
-        coo = "" + x + y;
+        coo = "" + (x+1) + (y+1);
         return coo;
     }
     
@@ -443,7 +443,33 @@ public class Plateau {
     public void posePion(String coo, String ISBN){
         int x = Integer.valueOf("" + coo.charAt(0)) - 1;
         int y = Integer.valueOf("" + coo.charAt(1)) - 1;
-        plateau[x][y] = new Piece(ISBN);
+        Piece pion = new Piece(ISBN);
+        plateau[x][y] = pion;
+        liste.remove(pion);
+    }
+    
+    // Méthode qui permet à l'ordinateur de poser un pion.
+    public String poseOrdi(){
+        Random alea = new Random();
+        ArrayList<String> libre = new ArrayList<String>();
+        for (int i = 0; i < taille; i++) {
+            for (int j = 0; j < taille; j++) {
+                if (caseLibre(i, j)) {
+                    libre.add("" + i + j);
+                }
+            }
+        }
+        String coo = libre.get(alea.nextInt(0, libre.size()));
+        int x = Integer.valueOf("" + coo.charAt(0));
+        int y = Integer.valueOf("" + coo.charAt(1));
+        return "" + (x * 5 + y);
+    }
+    
+    // Méthode permettant à l'ordinateur choisir un pion.
+    public String choixOrdi(){
+        Random alea = new Random();
+        Piece pion = liste.get(alea.nextInt(0, liste.size()));
+        return pion.getISBN();
     }
     
     // Méthode vérifiant si une case du plateau n'est pas occupée.
@@ -457,9 +483,9 @@ public class Plateau {
         return sc.nextLine();
     }
 
-    public String ordiFacile() {
+    public String[] ordiFacile() {
         Random alea = new Random();
-        Piece pion = liste.remove(alea.nextInt(0, liste.size()));
+        Piece pion = liste.get(alea.nextInt(0, liste.size()));
         ArrayList<String> libre = new ArrayList<String>();
         for (int i = 0; i < taille; i++) {
             for (int j = 0; j < taille; j++) {
@@ -469,10 +495,10 @@ public class Plateau {
             }
         }
         String coo = libre.get(alea.nextInt(0, libre.size()));
-        int x = Integer.valueOf("" + coo.charAt(0));
-        int y = Integer.valueOf("" + coo.charAt(1));
-        plateau[x][y] = pion;
-        return coo;
+        int x = Integer.valueOf("" + coo.charAt(0)) + 1;
+        int y = Integer.valueOf("" + coo.charAt(1)) + 1;
+        String[] pose = new String[] {pion.getISBN(), convert(x,y)};
+        return pose;
     }
 
     public void afficher() {
@@ -484,5 +510,3 @@ public class Plateau {
         }
     }
 }
-
-   

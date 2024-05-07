@@ -73,6 +73,11 @@ public class DChoixPion extends javax.swing.JDialog {
         return nouveau;
     }
     
+    public void moinsPièce(String ref){
+        int val = Integer.parseInt(ref, 2);
+        tab[val].setEnabled(false);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

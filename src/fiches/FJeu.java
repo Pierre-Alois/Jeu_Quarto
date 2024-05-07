@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import quarto.Plateau;
 
 public class FJeu extends javax.swing.JFrame {
@@ -21,6 +22,7 @@ public class FJeu extends javax.swing.JFrame {
     private String pseudoJ1;
     private String pseudoJ2;
     private Plateau grille;
+    private boolean terminator = false;
     
     public FJeu() {
         initComponents();
@@ -513,30 +515,54 @@ public class FJeu extends javax.swing.JFrame {
             bAction.setText("Importer");
             bAction.setBackground(Color.cyan);
             bSauve.setVisible(false);
-            if(lJoueur.getText().equals(pseudoJ1)){
-                lJoueur.setText(pseudoJ2);
-            }else{
-                lJoueur.setText(pseudoJ1);
-            }
-            lInstruction.setText("Importe le pion que ton adversaire a choisi.");
+            lInstruction.setText("Importe le pion que tu as choisi.");
             
         }else if(bAction.getText().equals("Importer") && choix.getNouveau() && !choix.isVisible()){
             refPion = choix.getRefPion();
             lPion.setIcon(new ImageIcon("src/images_pions/" + refPion + ".png"));
             bAction.setText("Valider");
-            bAction.setBackground(Color.decode(""+52275));
+            bAction.setBackground(Color.decode("52275"));
+            if(lJoueur.getText().equals(pseudoJ1)){
+                lJoueur.setText(pseudoJ2);
+                if(terminator){
+                    coordTemp = grille.poseOrdi();
+                    bAction.doClick();
+                }
+            }else{
+                lJoueur.setText(pseudoJ1);
+            }
             lInstruction.setText("Place ton pion.");
             
         }else if(bAction.getText().equals("Valider") && !coordTemp.equals("")){
             grille.posePion(tab[Integer.valueOf(coordTemp)].getName(), refPion);
-            if(verifTot(tab[Integer.valueOf(coordTemp)].getName()))
-                System.exit(0);
+            if(verifTot(tab[Integer.valueOf(coordTemp)].getName())){
+                String msg = lJoueur.getText() + """
+                                                  a gagné !
+                                                 Youpi ! Hourra !
+                                                 
+                                                 Voulez-vous fermer le logiciel ?""";
+                String title = "Victoire !";
+                if(lJoueur.getText().equals("Y,6c3L=30Fln}k")){
+                    title = "Défaite...";
+                    msg = "Terminator t'a occit.";
+                }
+                if(JOptionPane.showConfirmDialog(this, msg, title, JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE) == 0){
+                    System.exit(0);
+                }else{
+                    bAction.setEnabled(false);
+                    bSauve.setEnabled(false);
+                }
+            }
             coord.add(coordTemp);
             coordTemp = "";
-            bAction.setText("Choisir pion");
-            bAction.setBackground(Color.decode(""+16763955));
-            bSauve.setVisible(true);
-            lInstruction.setText("Va choisir le pion de ton adversaire.");
+            if(lJoueur.equals(pseudoJ2) && terminator){
+                choixOrdi();
+            }else{
+                bAction.setText("Choisir pion");
+                bAction.setBackground(Color.decode("16763955"));
+                bSauve.setVisible(true);
+                lInstruction.setText("Va choisir le pion de ton adversaire.");
+            }
         }
     }//GEN-LAST:event_bActionActionPerformed
     
@@ -592,14 +618,30 @@ public class FJeu extends javax.swing.JFrame {
             pPlateau.setBounds(x, y, pPlateau.getPreferredSize().width, pPlateau.getPreferredSize().height);
             pPlateau.setLayout(new java.awt.GridLayout(5, 5, 0, 0));
         }
-        Plateau p = new Plateau(3 + taille);
-        this.grille = p;
+        this.grille = new Plateau(3 + taille);
+        if(pseudoJ2.equals("Y,6c3L=30Fln}k"))
+            terminator = true;
         String[] joueurs = new String[]{pseudoJ1, pseudoJ2};
         Random alea = new Random();
         int n  = alea.nextInt(0, 2);
-        lJoueur.setText(joueurs[n]);
-        lInstruction.setText("Va choisir le pion de ton adversaire.");
+        if(terminator && n == 1){
+            choixOrdi();
+        }else{
+            lJoueur.setText(joueurs[n]);
+            lInstruction.setText("Va choisir le pion de ton adversaire.");
+        }
     }//GEN-LAST:event_formComponentShown
+    
+    public void choixOrdi(){
+        bSauve.setVisible(false);
+        refPion = grille.choixOrdi();
+        choix.moinsPièce(refPion);
+        lPion.setIcon(new ImageIcon("src/images_pions/" + refPion + ".png"));
+        lJoueur.setText(pseudoJ1);
+        lInstruction.setText("Place ton pion.");
+        bAction.setText("Valider");
+        bAction.setBackground(Color.decode("52275"));
+    }
     
     public void boutonsCases(String numero){
         if(!coord.contains(numero) && bAction.getText().equalsIgnoreCase("Valider")){

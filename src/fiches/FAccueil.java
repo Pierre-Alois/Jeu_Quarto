@@ -228,7 +228,7 @@ public class FAccueil extends javax.swing.JFrame {
         }else if(infos.isSolo() && !ordi.retourCliqué()){
             jeu.setTaille(taille);
             jeu.setPseudoJ1(pseudoJ1);
-            jeu.setPseudoJ2(pseudoJ2);
+            jeu.setPseudoJ2("Y,6c3L=30Fln}k");
             jeu.setVisible(true);
         }
     }//GEN-LAST:event_formComponentShown
