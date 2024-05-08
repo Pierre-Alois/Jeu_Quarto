@@ -43,10 +43,18 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="bCommencer" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-              <Component id="bReprendre" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="187" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="bCommencer" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                      <Component id="bReprendre" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="187" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="bCookie" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="322" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -68,7 +76,9 @@
                   <Component id="bCommencer" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
                   <Component id="bReprendre" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="164" max="32767" attributes="0"/>
+              <EmptySpace pref="81" max="32767" attributes="0"/>
+              <Component id="bCookie" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="bQuitter" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
                   <Component id="bCredit" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
@@ -168,6 +178,16 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bCreditActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bCookie">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images_jeu/t&#xe9;l&#xe9;chargement.jpeg"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bCookieActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
