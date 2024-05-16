@@ -887,7 +887,7 @@ public class FJeu extends javax.swing.JFrame {
                     }
                 }
                 lInstruction.setText("Va choisir le pion de ton adversaire.");
-                this.setVisible(true);
+                //this.setVisible(true);
             }else{
                 JOptionPane.showMessageDialog(this, "Pas de fichier de sauvegarde.", "Sauvegarde inexistante", JOptionPane.ERROR_MESSAGE);
             }

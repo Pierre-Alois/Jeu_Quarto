@@ -28,6 +28,10 @@ public class DInfos extends javax.swing.JDialog {
     public boolean isSolo(){
         return solo;
     }
+
+    public void resetSolo() {
+        this.solo = false;
+    }
     
     public int tailledelagrille(){
         return cbTGrille.getSelectedIndex(); //Retourne l'index choisie dans la ComboBox

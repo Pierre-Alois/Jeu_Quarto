@@ -119,6 +119,7 @@ public class DOrdi extends javax.swing.JDialog {
     private void bRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetourActionPerformed
        this.setVisible(false);
        this.retour = true;
+       bgNivOrdi.clearSelection();
        this.getParent().setVisible(true);  // On réaffiche FAccueil,son parent
     }//GEN-LAST:event_bRetourActionPerformed
     

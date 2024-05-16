@@ -248,6 +248,8 @@ public class FAccueil extends javax.swing.JFrame {
             jeu.setPseudoJ2("Y,6c3L=30Fln}k");
             jeu.setVisible(true);
             this.setVisible(false);
+        }else if(ordi.retourCliqué()){
+            infos.resetSolo();
         }
     }//GEN-LAST:event_formComponentShown
 
