@@ -125,6 +125,7 @@ public class FJeu extends javax.swing.JFrame {
         pSlogan = new javax.swing.JLabel();
         lPion = new javax.swing.JLabel();
         bSauve = new javax.swing.JButton();
+        bQuiter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Plateau du Jeu");
@@ -476,11 +477,20 @@ public class FJeu extends javax.swing.JFrame {
             }
         });
 
+        bQuiter.setBackground(new java.awt.Color(255, 0, 0));
+        bQuiter.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bQuiter.setText("Partir");
+        bQuiter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bQuiterActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pPlateau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -488,8 +498,9 @@ public class FJeu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                 .addComponent(lPion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lJoueur, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(bQuiter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lJoueur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(bAction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bSauve, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -516,7 +527,9 @@ public class FJeu extends javax.swing.JFrame {
                                 .addComponent(bAction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(bSauve, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(167, 167, 167))))
+                                .addGap(67, 67, 67)
+                                .addComponent(bQuiter, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(51, 51, 51))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(pPlateau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(102, 102, 102))))
@@ -574,6 +587,7 @@ public class FJeu extends javax.swing.JFrame {
                 }else{
                     bAction.setEnabled(false);
                     bSauve.setEnabled(false);
+                    bQuiter.setVisible(true);
                 }
             }
             coord.add(coordTemp);
@@ -656,6 +670,7 @@ public class FJeu extends javax.swing.JFrame {
                 lInstruction.setText("Va choisir le pion de ton adversaire.");
             }
         }
+        bQuiter.setVisible(false);
     }//GEN-LAST:event_formComponentShown
     
     // Méthode permettant à l'ordinateur de choisir un pion au hasard pour le joueur 1.
@@ -822,6 +837,10 @@ public class FJeu extends javax.swing.JFrame {
         }
         JOptionPane.showMessageDialog(this, "Partie sauvegardée.", "Sauvegarde effectuée", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_bSauveActionPerformed
+
+    private void bQuiterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bQuiterActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_bQuiterActionPerformed
     
     public void sauvegarde(boolean qui) throws IOException{ // Méthode permettant de sauvegarder ou non la partie en cours
         try{
@@ -960,6 +979,7 @@ public class FJeu extends javax.swing.JFrame {
     private javax.swing.JButton b54;
     private javax.swing.JButton b55;
     private javax.swing.JButton bAction;
+    private javax.swing.JButton bQuiter;
     private javax.swing.JButton bSauve;
     private javax.swing.JLabel lInstruction;
     private javax.swing.JLabel lJoueur;
